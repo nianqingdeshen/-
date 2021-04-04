@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="ETL流服务器迁移部署">
+<meta name="description" content="数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库同步">
+<meta property="og:title" content="ETL流服务器迁移部署">
 <meta property="og:url" content="http://example.com/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/index.html">
 <meta property="og:site_name" content="Ben&#39;s Blog">
-<meta property="og:description" content="ETL流服务器迁移部署">
+<meta property="og:description" content="数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/.com//Users/admin/AppData/Roaming/Typora/typora-user-images/image-20210117224247161.png">
 <meta property="article:published_time" content="2021-03-30T08:36:41.152Z">
-<meta property="article:modified_time" content="2021-04-03T10:54:22.569Z">
+<meta property="article:modified_time" content="2021-04-04T14:46:59.776Z">
 <meta property="article:author" content="Ben">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/.com//Users/admin/AppData/Roaming/Typora/typora-user-images/image-20210117224247161.png">
 
 
 
@@ -130,7 +128,7 @@
 
 
 
-  <title>数据库同步 | Ben's Blog</title>
+  <title>ETL流服务器迁移部署 | Ben's Blog</title>
   
 
 
@@ -234,6 +232,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-book">
+          <a href="/book" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            book
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -318,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库同步</h1>
+          <h1 class="post-title" itemprop="name headline">ETL流服务器迁移部署</h1>
         
 
         <div class="post-meta">
@@ -390,7 +398,11 @@
       
 
       
-        <h2><span id="etl流服务器迁移部署">ETL流服务器迁移部署</span></h2><span id="more"></span>
+        <blockquote>
+<p>数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。</p>
+</blockquote>
+<span id="more"></span>
+
 <p>老的服务器版本：CentOS Linux release 7.6.1810</p>
 <p>新的服务器版本：CentOS Linux release 7.9.2009</p>
 <p>新服务器位置：华东2（上海）syp-etl</p>
@@ -491,143 +503,15 @@
 <li>表情包编码异常数据</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.ETL例子：ami_business_school.job we_chat_user.ktr</span><br><span class="line">2.表输入数据库连接编码：characterEncoding utf8  </span><br><span class="line">3.表&amp;字段编码：utf8mb4</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>增量数据表,数据超过100M的表采用增量更新、其余仍是全量更新</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>表名</th>
-<th>压缩大小*70（MB）</th>
-<th align="right">对应数据库表名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>direction</td>
-<td>92</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>direction_xlab</td>
-<td>38</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>imp_SalesAActual</td>
-<td>6.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>Qry_IMSales</td>
-<td>17.7</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tbl_CPA_Rawdata</td>
-<td>46.7</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblcrm_activies_user</td>
-<td>30.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblcrm_Contacts</td>
-<td>39</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_Customer_Segmentation</td>
-<td>40.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_DocCall</td>
-<td>110.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_DocCall_bak</td>
-<td>110.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_Login</td>
-<td>2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_RTD_Detail</td>
-<td>9.1</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblDecile</td>
-<td>8.3</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblDistributorSalesDetail</td>
-<td>113.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHC</td>
-<td>2.2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHospital</td>
-<td>10.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHP_PROPERTY</td>
-<td>10.1</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblMS_DATA</td>
-<td>37.0</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblKeyHP</td>
-<td>2.2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblPharmHPlink</td>
-<td>6.9</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblSalesBDetail_OLD</td>
-<td>18.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblTargetHospital</td>
-<td>29.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblTerritoryHospital</td>
-<td>46.3</td>
-<td align="right"></td>
-</tr>
-</tbody></table>
-<ul>
-<li>通过kettle上传数据到maxcompute</li>
-</ul>
+<li><p>通过kettle上传数据到maxcompute</p>
 <p>下载kettle的maxcompute插件</p>
+</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aliyun-kettle-odps-plugin-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
 
 <p>官方文档地址：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/68911">https://developer.aliyun.com/article/68911</a>  ［ETL实践指南］基于Kettle的MaxCompute插件实现数据上云</p>
 <p>AccessID和Accesskey获取：阿里云账号头像-&gt;Accesskey管理-&gt;创建AccessKey-&gt;得到AccessKey ID (AccessID)和 AccessKey Secret(AccessKey)  </p>
-<p><img src="/.com//Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210117224247161.png" alt="image-20210117224247161"></p>
 <h3><span id="六-疑问">六、疑问</span></h3><ul>
 <li>中转机</li>
 </ul>
@@ -669,8 +553,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/04/03/%E7%94%B3%E8%AF%B7%E5%8F%98%E6%9B%B4-%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/" rel="prev" title="申请变更-部署文档">
-                申请变更-部署文档 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/" rel="prev" title="Hexo切换主题">
+                Hexo切换主题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -752,7 +636,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -774,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -892,7 +776,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">ETL流服务器迁移部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">一、创建分用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">二、安装相关服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">三、迁移相关文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">四、配置启动相关任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">五、其他(修改+新增)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">六、疑问</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">一、创建分用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">二、安装相关服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">三、迁移相关文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">四、配置启动相关任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">五、其他(修改+新增)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">六、疑问</span></a></li></ol></div>
             
 
           </div>

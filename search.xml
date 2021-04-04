@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>数据库同步</title>
+    <title>Hexo切换主题</title>
+    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本次主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错一</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错二</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
+<li>在git bash 中输入以下代码创建相应的page：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
+<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后在git hash 中加载相应的插件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4><span id="加载图片">加载图片</span></h4><ul>
+<li>修改主配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>图片引用设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ETL流服务器迁移部署</title>
     <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
-    <content><![CDATA[<h2><span id="etl流服务器迁移部署">ETL流服务器迁移部署</span></h2><span id="more"></span>
+    <content><![CDATA[<blockquote>
+<p>数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。</p>
+</blockquote>
+<span id="more"></span>
+
 <p>老的服务器版本：CentOS Linux release 7.6.1810</p>
 <p>新的服务器版本：CentOS Linux release 7.9.2009</p>
 <p>新服务器位置：华东2（上海）syp-etl</p>
@@ -104,143 +198,15 @@
 <li>表情包编码异常数据</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.ETL例子：ami_business_school.job we_chat_user.ktr</span><br><span class="line">2.表输入数据库连接编码：characterEncoding utf8  </span><br><span class="line">3.表&amp;字段编码：utf8mb4</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li>增量数据表,数据超过100M的表采用增量更新、其余仍是全量更新</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>表名</th>
-<th>压缩大小*70（MB）</th>
-<th align="right">对应数据库表名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>direction</td>
-<td>92</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>direction_xlab</td>
-<td>38</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>imp_SalesAActual</td>
-<td>6.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>Qry_IMSales</td>
-<td>17.7</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tbl_CPA_Rawdata</td>
-<td>46.7</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblcrm_activies_user</td>
-<td>30.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblcrm_Contacts</td>
-<td>39</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_Customer_Segmentation</td>
-<td>40.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_DocCall</td>
-<td>110.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_DocCall_bak</td>
-<td>110.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_Login</td>
-<td>2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblCRM_RTD_Detail</td>
-<td>9.1</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblDecile</td>
-<td>8.3</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblDistributorSalesDetail</td>
-<td>113.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHC</td>
-<td>2.2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHospital</td>
-<td>10.6</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblHP_PROPERTY</td>
-<td>10.1</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblMS_DATA</td>
-<td>37.0</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblKeyHP</td>
-<td>2.2</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblPharmHPlink</td>
-<td>6.9</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblSalesBDetail_OLD</td>
-<td>18.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblTargetHospital</td>
-<td>29.5</td>
-<td align="right"></td>
-</tr>
-<tr>
-<td>tblTerritoryHospital</td>
-<td>46.3</td>
-<td align="right"></td>
-</tr>
-</tbody></table>
-<ul>
-<li>通过kettle上传数据到maxcompute</li>
-</ul>
+<li><p>通过kettle上传数据到maxcompute</p>
 <p>下载kettle的maxcompute插件</p>
+</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aliyun-kettle-odps-plugin-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
 
 <p>官方文档地址：<a href="https://developer.aliyun.com/article/68911">https://developer.aliyun.com/article/68911</a>  ［ETL实践指南］基于Kettle的MaxCompute插件实现数据上云</p>
 <p>AccessID和Accesskey获取：阿里云账号头像-&gt;Accesskey管理-&gt;创建AccessKey-&gt;得到AccessKey ID (AccessID)和 AccessKey Secret(AccessKey)  </p>
-<p><img src="/.com//Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210117224247161.png" alt="image-20210117224247161"></p>
 <h3><span id="六-疑问">六、疑问</span></h3><ul>
 <li>中转机</li>
 </ul>
@@ -255,97 +221,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo切换主题</title>
-    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
-    <content><![CDATA[<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+    <title>book</title>
+    <url>/2021/04/04/book/</url>
+    <content><![CDATA[<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">&#123;% pdf http:<span class="comment">//7xov2f.com1.z0.glb.clouddn.com/bash_freshman.pdf %&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><span id="more"></span>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 
-<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+	<div class="row">
+    <embed src="http://7xov2f.com1.z0.glb.clouddn.com/bash_freshman.pdf" width="100%" height="550" type="application/pdf">
+	</div>
 
-<ul>
-<li>页面报错一</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>页面报错二</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
-<li>在git bash 中输入以下代码创建相应的page：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性)：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
-<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>然后在git hash 中加载相应的插件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
-
-<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>article_name</title>
-    <url>/2021/04/03/article-name/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/.com//blog\source_posts\article-name\image-20210309010643180.png" alt="asd"></p>
-<p><img src="/.com//image-20210309010643180.png" alt="asd"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>申请变更-部署文档</title>
-    <url>/2021/04/03/%E7%94%B3%E8%AF%B7%E5%8F%98%E6%9B%B4-%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h3><span id="申请变更-部署文档">申请变更-部署文档</span></h3><span id="more"></span>
-
-<h4><span id="1修改etl流程-添加hc_type字段-位置dcustomer-client2test_kettle_to_maxcomputekjb-tbl_hcktr">1.修改ETL流程 添加hc_type字段  位置：D:\customer-client2\test_kettle_to_maxcompute.kjb      tbl_hc.ktr</span></h4><p><img src="/.com//image-20210309010643180.png" alt="image-20210309010643180">]</p>
-<p>[image-20210309010643180)(/image-20210309010643180.png)] </p>
-<h4><span id="2继续修改-tbl_hcktr添加字段映射">2.继续修改 tbl_hc.ktr,添加字段映射</span></h4><p><img src="/.com//Users\年轻的神\AppData\Roaming\Typora\typora-user-images\image-20210309011006051.png" alt="image-20210309011006051"></p>
-<h4><span id="3dataworks平台修改tbl_hc-表-ddi_sales_detail_rds表-ddi_sales_target_rds表-ddi_sales_and_target_rds表添加字段hc_type-并提交正式环境">3.Dataworks平台，修改tbl_hc 表、ddi_sales_detail_rds表、ddi_sales_target_rds表、ddi_sales_and_target_rds表添加字段hc_type ，并提交正式环境</span></h4><h4><span id="4任务节点ddi_salesdetail_sales_sp-修改代码">4.任务节点ddi_salesdetail_sales_sp 修改代码</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT OVERWRITE TABLE NS_Allergan_Xlab.ddi_sales_detail_rds PARTITION( dt&#x3D;&#39;$&#123;dt&#125;&#39;)</span><br><span class="line">SELECT  tds.mon</span><br><span class="line">        ,tds.report_date</span><br><span class="line">        ,tds.sales_date</span><br><span class="line">        ,structure.tlsmcode</span><br><span class="line">        ,if(structure.tlsmnamecn is null ,&#39;Others&#39;,structure.tlsmnamecn)</span><br><span class="line">        ,structure.slsmcode</span><br><span class="line">        ,structure.slsmnamecn</span><br><span class="line">        ,structure.flsmcode</span><br><span class="line">        ,structure.flsmnamecn</span><br><span class="line">        ,structure.repcode</span><br><span class="line">        ,structure.repnamecn</span><br><span class="line">        ,if(tds.cust_code is null,&#39;XXXX&#39;,tds.cust_code)</span><br><span class="line">        ,tds.hospital</span><br><span class="line">        ,if(tds.province_name_cn&#x3D;&#39;XXXX&#39; or tds.province_name_cn&#x3D;&#39;未知省&#39;,&#39;其它地区&#39;,tds.province_name_cn)</span><br><span class="line">        ,if(tds.cust_city&#x3D;&#39;null&#39;or tds.cust_city&#x3D;&#39;全国其他未知地市&#39;,&#39;其它地区&#39;,tds.cust_city)</span><br><span class="line">        ,if(tds.city_type&#x3D;&#39;null&#39; or tds.city_type is null or tds.city_type &#x3D;&#39;&#39;,&#39;Other&#39;,tds.city_type) as city_type</span><br><span class="line">        ,if(tds.chain&#x3D;&#39;null&#39; or tds.chain&#x3D;&#39;&#39; or tds.chain is null,&#39;AA非集团机构&#39;,tds.chain)</span><br><span class="line">        </span><br><span class="line">        ,territory.bu</span><br><span class="line">        ,tds.brand_id</span><br><span class="line">        ,tds.product_id</span><br><span class="line">        ,tds.product_name</span><br><span class="line">        ,tds.ta_name</span><br><span class="line">        -- 乘以销售比例，注意关联不上的sales_percen_tage有可能为空</span><br><span class="line">        ,tds.qty*(</span><br><span class="line">            IF(territory.sales_percen_tage IS NULL,1,territory.sales_percen_tage)</span><br><span class="line">        )AS qty</span><br><span class="line">        ,tds.amount*(</span><br><span class="line">            IF(territory.sales_percen_tage IS NULL,1,territory.sales_percen_tage)</span><br><span class="line">        ) AS amount</span><br><span class="line">        ,tds.price</span><br><span class="line">        ,hc_type</span><br><span class="line">FROM    (</span><br><span class="line">            -- 中间表</span><br><span class="line">            SELECT  *</span><br><span class="line">            FROM    ns_allergan_xlab.ddi_sales_detail_m1_tds</span><br><span class="line">            WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">          </span><br><span class="line">        ) tds</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              SELECT  te.Period</span><br><span class="line">                      ,head_count</span><br><span class="line">                      ,hospital_id</span><br><span class="line">                      ,product_id</span><br><span class="line">                      ,department_id AS bu</span><br><span class="line">                      ,te.sales_percen_tage</span><br><span class="line">                     ,hc.hc_type</span><br><span class="line">              FROM    (</span><br><span class="line">                    -- 关联territory，获取坑位号、销售比例</span><br><span class="line">                          SELECT  period</span><br><span class="line">                                  ,head_count</span><br><span class="line">                                  ,hospital_id</span><br><span class="line">                                  ,product_id</span><br><span class="line">                                  ,sales_percen_tage</span><br><span class="line">                          FROM    ns_allergan_xlab.amap_territory_hospital_ods</span><br><span class="line">                          WHERE   deleted &#x3D; 0</span><br><span class="line">                          -- 使用当前坑位销售比例 ,架构跟着报告月份report_date走，取最大的报告月份</span><br><span class="line">                          AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (select REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) from NS_Allergan_Xlab.ddi_direction_all_ods where dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">                          AND     ds &#x3D; &#39;$&#123;dt&#125;&#39; </span><br><span class="line">                      ) te</span><br><span class="line">                    left join (</span><br><span class="line">                 --  关联hc，获取department_id BU</span><br><span class="line">                             SELECT  period</span><br><span class="line">                                  ,hc_code</span><br><span class="line">                                  ,department_id</span><br><span class="line">                                  ,hc_type</span><br><span class="line">                          FROM    ns_allergan_xlab.tbl_hc</span><br><span class="line">                          WHERE   Deleted &#x3D; 0</span><br><span class="line">                          AND     pt &#x3D; &#39;$&#123;dt&#125;&#39; and department_id !&#x3D;&#39;EC&#39;</span><br><span class="line">                      ) HC</span><br><span class="line">              WHERE   trim(te.Period) &#x3D; (HC.PERIOD)</span><br><span class="line">              AND     trim(te.head_count) &#x3D; trim(HC.hc_code)</span><br><span class="line">          ) territory</span><br><span class="line">ON      trim(tds.product_id) &#x3D; trim(territory.product_id)</span><br><span class="line">AND     trim(tds.cust_code) &#x3D; trim(territory.hospital_id) </span><br><span class="line">LEFT JOIN    (</span><br><span class="line">    -- 关联架构表 获取架构信息</span><br><span class="line">            SELECT  repcode</span><br><span class="line">                    ,repnamecn</span><br><span class="line">                    ,period</span><br><span class="line">                    ,flsmcode</span><br><span class="line">                    ,flsmnamecn</span><br><span class="line">                    ,slsmcode</span><br><span class="line">                    ,slsmnamecn</span><br><span class="line">                    ,tlsmcode</span><br><span class="line">                    ,tlsmnamecn</span><br><span class="line">            FROM    NS_Allergan_Xlab.amap_sales_structure</span><br><span class="line">            WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">            -- 架构跟着报告月份report_date走，取最大的报告月份</span><br><span class="line">            AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (select REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) from NS_Allergan_Xlab.ddi_direction_all_ods where dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">        ) structure</span><br><span class="line">ON      trim(territory.head_count) &#x3D; trim(structure.repcode) ;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5任务节点ddi_sales_target_rds_sp-修改代码">5.任务节点ddi_sales_target_rds_sp 修改代码</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">INSERT OVERWRITE TABLE ns_allergan_xlab.ddi_sales_target_rds PARTITION(dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">SELECT  t.period</span><br><span class="line">        ,repcode</span><br><span class="line">        ,repnamecn</span><br><span class="line">        ,flsmcode</span><br><span class="line">        ,flsmnamecn</span><br><span class="line">        ,slsmcode</span><br><span class="line">        ,slsmnamecn</span><br><span class="line">        ,tlsmcode</span><br><span class="line">        ,tlsmnamecn</span><br><span class="line">        ,t.hospital_id</span><br><span class="line">        ,t.product_id</span><br><span class="line">        ,price.wholesalersprice_rmb as price</span><br><span class="line">        ,t.target_unit</span><br><span class="line">        ,t.target_value*(if(price.wholesalersprice_rmb is null,0,price.wholesalersprice_rmb)) as target_value</span><br><span class="line">        ,t.hc_type</span><br><span class="line">FROM    (</span><br><span class="line">            SELECT  hospital.period</span><br><span class="line">                    ,hospital.hospital_id</span><br><span class="line">                    ,hospital.product_id</span><br><span class="line">                    ,territory.head_count</span><br><span class="line">                    ,territory.target_percen_tage</span><br><span class="line">                    ,IF(</span><br><span class="line">                        territory.target_percen_tage IS NULL</span><br><span class="line">                        ,1</span><br><span class="line">                        ,territory.target_percen_tage</span><br><span class="line">                    )* hospital.target_unit AS target_unit</span><br><span class="line">                    ,IF(</span><br><span class="line">                        territory.target_percen_tage IS NULL</span><br><span class="line">                        ,1</span><br><span class="line">                        ,territory.target_percen_tage</span><br><span class="line">                    )* hospital.target_unit AS target_value</span><br><span class="line">                    ,territory.hc_type</span><br><span class="line">            FROM    (    -- 目标医院</span><br><span class="line">                        SELECT  trim(period) AS period</span><br><span class="line">                                ,trim(hospital_id) AS hospital_id</span><br><span class="line">                                ,trim(product_id) AS product_id</span><br><span class="line">                                ,sum(target_unit) AS target_unit</span><br><span class="line">                        FROM    NS_Allergan_Xlab.tbl_target_hospital</span><br><span class="line">                        WHERE   pt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">                        AND     deleted &#x3D; 0</span><br><span class="line">                        AND REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &gt;&#x3D;&#39;201801&#39;</span><br><span class="line">                        GROUP BY trim(period)</span><br><span class="line">                                 ,trim(hospital_id)</span><br><span class="line">                                 ,trim(product_id)</span><br><span class="line">                    ) hospital</span><br><span class="line">            LEFT JOIN (  </span><br><span class="line">                </span><br><span class="line">                select te.Period</span><br><span class="line">                      ,head_count</span><br><span class="line">                      ,hospital_id</span><br><span class="line">                      ,product_id</span><br><span class="line">                      ,department_id AS bu</span><br><span class="line">                      ,te.target_percen_tage</span><br><span class="line">                     ,hc.hc_type</span><br><span class="line">                      from (  -- 医院管理坑位号</span><br><span class="line">                          SELECT  period</span><br><span class="line">                                  ,trim(head_count) as head_count</span><br><span class="line">                                  ,hospital_id</span><br><span class="line">                                  ,product_id</span><br><span class="line">                                  ,target_percen_tage</span><br><span class="line">                          FROM    NS_Allergan_Xlab.amap_territory_hospital_ods</span><br><span class="line">                          WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">                          AND     deleted &#x3D; 0</span><br><span class="line">                          and    trim(head_count) not like &#39;%EC%&#39;</span><br><span class="line">                          AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D;  (select REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) from NS_Allergan_Xlab.ddi_direction_all_ods where dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">                ) te left join (</span><br><span class="line">                    --  关联hc，获取department_id BU</span><br><span class="line">                          SELECT  period</span><br><span class="line">                                  ,hc_code</span><br><span class="line">                                  ,department_id</span><br><span class="line">                                  ,hc_type</span><br><span class="line">                          FROM    ns_allergan_xlab.tbl_hc</span><br><span class="line">                          WHERE   Deleted &#x3D; 0</span><br><span class="line">                          AND     pt &#x3D; &#39;$&#123;dt&#125;&#39; and department_id !&#x3D;&#39;EC&#39; </span><br><span class="line">                      ) HC</span><br><span class="line">                        WHERE   trim(te.Period) &#x3D; (HC.PERIOD)</span><br><span class="line">                        AND     trim(te.head_count) &#x3D; trim(HC.hc_code)</span><br><span class="line">                      ) territory</span><br><span class="line">            ON      trim(territory.hospital_id) &#x3D; trim(hospital.hospital_id)</span><br><span class="line">            AND     trim(territory.product_id) &#x3D; trim(hospital.product_id)</span><br><span class="line">        ) t</span><br><span class="line">LEFT JOIN (    -- 根据坑位号管理人员架构</span><br><span class="line">              SELECT  repcode</span><br><span class="line">                      ,repnamecn</span><br><span class="line">                      ,period</span><br><span class="line">                      ,flsmcode</span><br><span class="line">                      ,flsmnamecn</span><br><span class="line">                      ,slsmcode</span><br><span class="line">                      ,slsmnamecn</span><br><span class="line">                      ,tlsmcode</span><br><span class="line">                      ,tlsmnamecn</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_sales_structure</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D;  (select REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) from NS_Allergan_Xlab.ddi_direction_all_ods where dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">          ) structure</span><br><span class="line">ON      trim(t.head_count) &#x3D; trim(structure.repcode) LEFT</span><br><span class="line">JOIN    ( -- 关联价格</span><br><span class="line"></span><br><span class="line">            SELECT  REPLACE(replace(substr(trim(period),1,7),&quot;-&quot;,&quot;&#x2F;&quot;),&quot;&#x2F;&quot;,&#39;&#39;) AS period</span><br><span class="line">                    ,product_id</span><br><span class="line">                    ,trim(wholesalersprice_rmb) AS wholesalersprice_rmb</span><br><span class="line">            FROM    NS_Allergan_Xlab.amap_price_ods</span><br><span class="line">            WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39; and period !&#x3D;&#39;null&#39;</span><br><span class="line">            AND     substr(period,1,4)&gt;&#x3D; &#39;2018&#39;</span><br><span class="line">        ) price</span><br><span class="line">ON    price.period &#x3D; trim(replace(substr(t.period,1,7),&quot;-&quot;,&quot;&quot;))</span><br><span class="line">AND     trim(price.product_id) &#x3D; trim(t.product_id);</span><br></pre></td></tr></table></figure>
-
-<h4><span id="6任务节点-ddi_sales_and_target_rds修改代码">6.任务节点 ddi_sales_and_target_rds修改代码</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- sales target 合并</span><br><span class="line">-- 1. 补全target维度新-- sales target 合并</span><br><span class="line">-- 1. 补全target维度新</span><br><span class="line">INSERT OVERWRITE TABLE ns_allergan_xlab.ddi_sales_and_target_rds</span><br><span class="line">PARTITION(dt&#x3D;$&#123;dt&#125;)</span><br><span class="line">SELECT  REPLACE(substr(t.period,1,7),&quot;-&quot;,&quot;&quot;) AS mon</span><br><span class="line">        ,t.period</span><br><span class="line">        ,&#39;2000-02-01 00:00:00&#39; AS sales_date</span><br><span class="line">        ,tlsmcode</span><br><span class="line">        ,IF(tlsmnamecn IS NULL,&#39;Others&#39;,tlsmnamecn) AS tlsmnamecn</span><br><span class="line">        ,slsmcode</span><br><span class="line">        ,slsmnamecn</span><br><span class="line">        ,flsmcode</span><br><span class="line">        ,flsmnamecn</span><br><span class="line">        ,repcode</span><br><span class="line">        ,repnamecn</span><br><span class="line">        ,t.hospital_id</span><br><span class="line">        ,province.hospital</span><br><span class="line">        ,IF(</span><br><span class="line">            province.province_name_cn&#x3D;&#39;XXXX&#39; or province.province_name_cn is null</span><br><span class="line">            ,&#39;其它地区&#39;</span><br><span class="line">            ,province.province_name_cn</span><br><span class="line">        ) AS province</span><br><span class="line">        ,IF(province.cust_city&#x3D;&#39;null&#39; or province.cust_city is null,&#39;其它地区&#39;,province.cust_city) AS city</span><br><span class="line">        ,if(city.citytype&#x3D;&#39;Others&#39; or city.citytype is null or city.citytype&#x3D;&#39;&#39; ,&#39;Other&#39;,city.citytype) as citytype</span><br><span class="line">        ,if(property.chain&#x3D;&#39;null&#39; or property.chain&#x3D;&#39;&#39; or property.chain is null,&#39;AA非集团机构&#39;,property.chain)</span><br><span class="line">        ,ta.bu</span><br><span class="line">        ,brand.brand_name</span><br><span class="line">        ,t.product_id</span><br><span class="line">        ,product.product_name</span><br><span class="line">        ,ta.ta_name</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) AS qty</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) AS amt</span><br><span class="line">        ,DOUBLE(IF(t.target_unit&#x3D;0,0,t.target_value&#x2F;t.target_unit)) AS price</span><br><span class="line">        ,t.target_unit</span><br><span class="line">        ,t.target_value</span><br><span class="line">        ,0 AS is_sales</span><br><span class="line">        ,hc_type</span><br><span class="line">FROM    (</span><br><span class="line">            SELECT  *</span><br><span class="line">            FROM    ns_allergan_xlab.ddi_sales_target_rds</span><br><span class="line">            WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">        ) t</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联product 表获取brand_id</span><br><span class="line">              SELECT  product_id</span><br><span class="line">                      ,short_name_en AS product_name</span><br><span class="line">                      ,brand_id</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_product_ods</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">          ) product</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(t.product_id)) &#x3D; TOUPPER(trim(product.product_id)) LEFT</span><br><span class="line">JOIN    (</span><br><span class="line">            -- 关联brand 表获取ta_id    </span><br><span class="line">            SELECT  brand_id </span><br><span class="line">                    ,name_en as brand_name</span><br><span class="line">                    ,ta_id</span><br><span class="line">            FROM    NS_Allergan_Xlab.amap_brand_ods</span><br><span class="line">            WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">            AND     deleted &#x3D; 0</span><br><span class="line">        ) brand</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(product.brand_id)) &#x3D; TOUPPER(trim(brand.brand_id))</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联ta 表获取ta_name                </span><br><span class="line">              SELECT  name_en AS ta_name</span><br><span class="line">                      ,ta_id</span><br><span class="line">                      ,bu</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_ta_ods</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39; and bu !&#x3D;&#39;EC&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">          ) ta</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(brand.ta_id)) &#x3D; TOUPPER(trim(ta.ta_id)) LEFT</span><br><span class="line">JOIN    (</span><br><span class="line">            SELECT  DISTINCT hospital_id</span><br><span class="line">                    ,hospital</span><br><span class="line">                    ,cust_city</span><br><span class="line">                    ,province_name_cn</span><br><span class="line">            FROM    NS_Allergan_Xlab.ddi_direction_all_ods</span><br><span class="line">            WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">        ) province</span><br><span class="line">ON      trim(t.hospital_id) &#x3D; trim(province.hospital_id)</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联city 表获取citytype</span><br><span class="line">              SELECT  DISTINCT namecn</span><br><span class="line">                      ,citytype</span><br><span class="line">              FROM    NS_Allergan_Xlab.ddi_tbl_city_ods</span><br><span class="line">              WHERE   dt &#x3D; $&#123;dt&#125; and citytype !&#x3D;&#39;null&#39;</span><br><span class="line">          ) city</span><br><span class="line">ON      trim(province.cust_city) &#x3D; trim(city.namecn)</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              SELECT  period</span><br><span class="line">                      ,ta_id</span><br><span class="line">                      ,hospital_id</span><br><span class="line">                      ,chain</span><br><span class="line">              FROM    NS_Allergan_Xlab.ddi_tbl_hp_property_ods</span><br><span class="line">              WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">              AND     replace(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (SELECT REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) FROM NS_Allergan_Xlab.ddi_direction_all_ods WHERE dt &#x3D; $&#123;dt&#125;)</span><br><span class="line">          ) property</span><br><span class="line">ON      TOUPPER(trim(ta.ta_id)) &#x3D; TOUPPER(trim(property.ta_id))</span><br><span class="line">AND     TOUPPER(trim(property.hospital_id)) &#x3D; TOUPPER(trim(t.hospital_id))</span><br><span class="line">where ta.bu is not null</span><br><span class="line">union all </span><br><span class="line"></span><br><span class="line">-- 补全无采购机构数据</span><br><span class="line">--odps sql </span><br><span class="line">--********************************************************************--</span><br><span class="line">--author:阙文斌</span><br><span class="line">--create time:2021-02-20 17:17:14</span><br><span class="line">--********************************************************************--</span><br><span class="line"></span><br><span class="line">SELECT   REPLACE(substr(t.period,1,7),&quot;-&quot;,&quot;&quot;) AS mon</span><br><span class="line">        ,to_char(t.period, &#39;yyyy-mm-dd hh:mm:ss&#39;)</span><br><span class="line">        ,&#39;2000-02-01 00:00:00&#39; AS sales_date</span><br><span class="line">        ,tlsmcode</span><br><span class="line">        ,IF(tlsmnamecn IS NULL,&#39;Others&#39;,tlsmnamecn) AS tlsmnamecn</span><br><span class="line">        ,slsmcode</span><br><span class="line">        ,slsmnamecn</span><br><span class="line">        ,flsmcode</span><br><span class="line">        ,flsmnamecn</span><br><span class="line">        ,repcode</span><br><span class="line">        ,repnamecn</span><br><span class="line">        ,t.hospital_id</span><br><span class="line">        ,province.hospital</span><br><span class="line">        ,IF(</span><br><span class="line">            province.province_name_cn&#x3D;&#39;XXXX&#39; or province.province_name_cn is null</span><br><span class="line">            ,&#39;其它地区&#39;</span><br><span class="line">            ,province.province_name_cn</span><br><span class="line">        ) AS province</span><br><span class="line">        ,IF(province.cust_city&#x3D;&#39;null&#39; or province.cust_city is null,&#39;其它地区&#39;,province.cust_city) AS city</span><br><span class="line">        ,if(city.citytype&#x3D;&#39;Others&#39; or city.citytype is null or city.citytype&#x3D;&#39;&#39; ,&#39;Other&#39;,city.citytype) as citytype</span><br><span class="line">        ,if(property.chain&#x3D;&#39;null&#39; or property.chain&#x3D;&#39;&#39; or property.chain is null,&#39;AA非集团机构&#39;,property.chain)</span><br><span class="line">        ,ta.bu</span><br><span class="line">        ,brand.brand_name</span><br><span class="line">        ,t.product_id</span><br><span class="line">        ,product.product_name</span><br><span class="line">        ,ta.ta_name</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) AS qty</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) AS amt</span><br><span class="line">        ,0 AS price</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) as target_unit</span><br><span class="line">        ,DOUBLE(IF(1!&#x3D;2,0,0)) as target_value</span><br><span class="line">        ,1 AS is_sales</span><br><span class="line">        ,hc_type</span><br><span class="line">        </span><br><span class="line">FROM    (</span><br><span class="line">-- 无采购记录的机构 时间：最大报告月</span><br><span class="line">SELECT  territory.period,head_count,hospital_id,product_id,bu,</span><br><span class="line">repcode,repnamecn,flsmcode,flsmnamecn,slsmcode,slsmnamecn,tlsmcode,tlsmnamecn</span><br><span class="line">,hc_type</span><br><span class="line">FROM    (</span><br><span class="line">            SELECT  te.Period</span><br><span class="line">                    ,head_count</span><br><span class="line">                    ,hospital_id</span><br><span class="line">                    ,product_id</span><br><span class="line">                    ,department_id AS bu</span><br><span class="line">                    ,hc_type</span><br><span class="line">            FROM    (</span><br><span class="line">                        -- 关联territory，获取坑位号、销售比例</span><br><span class="line">                        -- 无采购记录的机构 时间：最大报告月</span><br><span class="line">                        SELECT  DISTINCT period</span><br><span class="line">                                ,head_count</span><br><span class="line">                                ,hospital_id</span><br><span class="line">                                ,product_id</span><br><span class="line">                        FROM    NS_Allergan_Xlab.amap_territory_hospital_ods</span><br><span class="line">                        WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39; and deleted&#x3D;0</span><br><span class="line">                        AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (SELECT REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) FROM NS_Allergan_Xlab.ddi_direction_all_ods WHERE dt &#x3D; $&#123;dt&#125;)</span><br><span class="line">                        AND     concat(REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;),hospital_id,product_id) NOT IN (SELECT DISTINCT concat(mon,cust_code,product_id) FROM NS_Allergan_Xlab.ddi_sales_detail_rds WHERE dt &#x3D; &#39;$&#123;dt&#125;&#39;)</span><br><span class="line">                 </span><br><span class="line">                    ) te</span><br><span class="line">            LEFT JOIN (</span><br><span class="line">                          --  关联hc，获取department_id BU</span><br><span class="line">                          SELECT  period</span><br><span class="line">                                  ,hc_code</span><br><span class="line">                                  ,department_id</span><br><span class="line">                                  ,hc_type</span><br><span class="line">                          FROM    ns_allergan_xlab.tbl_hc</span><br><span class="line">                          WHERE   Deleted &#x3D; 0</span><br><span class="line">                          AND     pt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">                          AND     department_id !&#x3D; &#39;EC&#39;</span><br><span class="line">                      ) HC</span><br><span class="line">            WHERE   trim(te.Period) &#x3D; (HC.PERIOD)</span><br><span class="line">            AND     trim(te.head_count) &#x3D; trim(HC.hc_code)</span><br><span class="line">        ) territory</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联架构表 获取架构信息</span><br><span class="line">              SELECT  repcode</span><br><span class="line">                      ,repnamecn</span><br><span class="line">                      ,period</span><br><span class="line">                      ,flsmcode</span><br><span class="line">                      ,flsmnamecn</span><br><span class="line">                      ,slsmcode</span><br><span class="line">                      ,slsmnamecn</span><br><span class="line">                      ,tlsmcode</span><br><span class="line">                      ,tlsmnamecn</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_sales_structure</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              -- 架构跟着报告月份report_date走，取最大的报告月份</span><br><span class="line">              AND     REPLACE(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (SELECT REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) FROM NS_Allergan_Xlab.ddi_direction_all_ods WHERE dt &#x3D; $&#123;dt&#125;)</span><br><span class="line">          ) structure</span><br><span class="line">ON      trim(territory.head_count) &#x3D; trim(structure.repcode)</span><br><span class="line">) t</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联product 表获取brand_id</span><br><span class="line">              SELECT  product_id</span><br><span class="line">                      ,short_name_en AS product_name</span><br><span class="line">                      ,brand_id</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_product_ods</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">          ) product</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(t.product_id)) &#x3D; TOUPPER(trim(product.product_id)) LEFT</span><br><span class="line">JOIN    (</span><br><span class="line">            -- 关联brand 表获取ta_id    </span><br><span class="line">            SELECT  brand_id </span><br><span class="line">                    ,name_en as brand_name</span><br><span class="line">                    ,ta_id</span><br><span class="line">            FROM    NS_Allergan_Xlab.amap_brand_ods</span><br><span class="line">            WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">            AND     deleted &#x3D; 0</span><br><span class="line">        ) brand</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(product.brand_id)) &#x3D; TOUPPER(trim(brand.brand_id))</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联ta 表获取ta_name                </span><br><span class="line">              SELECT  name_en AS ta_name</span><br><span class="line">                      ,ta_id</span><br><span class="line">                      ,bu</span><br><span class="line">              FROM    NS_Allergan_Xlab.amap_ta_ods</span><br><span class="line">              WHERE   ds &#x3D; &#39;$&#123;dt&#125;&#39; and bu !&#x3D;&#39;EC&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">          ) ta</span><br><span class="line">-- 关联时注意大小写</span><br><span class="line">ON      TOUPPER(trim(brand.ta_id)) &#x3D; TOUPPER(trim(ta.ta_id)) LEFT</span><br><span class="line">JOIN    (</span><br><span class="line">            SELECT  DISTINCT hospital_id</span><br><span class="line">                    ,hospital</span><br><span class="line">                    ,cust_city</span><br><span class="line">                    ,province_name_cn</span><br><span class="line">            FROM    NS_Allergan_Xlab.ddi_direction_all_ods</span><br><span class="line">            WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">        ) province</span><br><span class="line">ON      trim(t.hospital_id) &#x3D; trim(province.hospital_id)</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              -- 关联city 表获取citytype</span><br><span class="line">              SELECT  DISTINCT namecn</span><br><span class="line">                      ,citytype</span><br><span class="line">              FROM    NS_Allergan_Xlab.ddi_tbl_city_ods</span><br><span class="line">              WHERE   dt &#x3D; $&#123;dt&#125; and citytype !&#x3D;&#39;null&#39;</span><br><span class="line">          ) city</span><br><span class="line">ON      trim(province.cust_city) &#x3D; trim(city.namecn)</span><br><span class="line">LEFT JOIN (</span><br><span class="line">              SELECT  period</span><br><span class="line">                      ,ta_id</span><br><span class="line">                      ,hospital_id</span><br><span class="line">                      ,chain</span><br><span class="line">              FROM    NS_Allergan_Xlab.ddi_tbl_hp_property_ods</span><br><span class="line">              WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;</span><br><span class="line">              AND     deleted &#x3D; 0</span><br><span class="line">              AND     replace(substr(period,1,7),&quot;-&quot;,&quot;&quot;) &#x3D; (SELECT REPLACE(substr(max(report_date),1,7),&quot;-&quot;,&quot;&quot;) FROM NS_Allergan_Xlab.ddi_direction_all_ods WHERE dt &#x3D; $&#123;dt&#125;)</span><br><span class="line">          ) property</span><br><span class="line">ON      TOUPPER(trim(ta.ta_id)) &#x3D; TOUPPER(trim(property.ta_id))</span><br><span class="line">AND     TOUPPER(trim(property.hospital_id)) &#x3D; TOUPPER(trim(t.hospital_id))</span><br><span class="line">-- 排查EC 部门的</span><br><span class="line">UNION ALL</span><br><span class="line">-- 合并sales数据</span><br><span class="line">SELECT  mon</span><br><span class="line">        ,reprot_date</span><br><span class="line">        ,sales_date</span><br><span class="line">        ,tlsmcode</span><br><span class="line">        ,tlsmnamecn</span><br><span class="line">        ,slsmcode</span><br><span class="line">        ,slsmnamecn</span><br><span class="line">        ,flsmcode</span><br><span class="line">        ,flsmnamecn</span><br><span class="line">        ,repcode</span><br><span class="line">        ,repnamecn</span><br><span class="line">        ,cust_code</span><br><span class="line">        ,hospital</span><br><span class="line">        ,cust_province</span><br><span class="line">        ,cust_city</span><br><span class="line">        ,if(city_type&#x3D;&#39;未知&#39; or city_type&#x3D;&#39;Others&#39; or city_type is null and city_type&#x3D;&#39;&#39; ,&#39;Other&#39;,city_type) as city_type</span><br><span class="line">        ,chain</span><br><span class="line">        ,bu</span><br><span class="line">        ,brand_id</span><br><span class="line">        ,product_id</span><br><span class="line">        ,product_name</span><br><span class="line">        ,ta_name</span><br><span class="line">        ,DOUBLE(qty)</span><br><span class="line">        ,DOUBLE(amt)</span><br><span class="line">        ,DOUBLE(price)</span><br><span class="line">        ,0 AS target_unit</span><br><span class="line">        ,0 AS target_value</span><br><span class="line">        ,1 AS is_sales</span><br><span class="line">        ,hc_type</span><br><span class="line">FROM    ns_allergan_xlab.ddi_sales_detail_rds</span><br><span class="line">WHERE   dt &#x3D; &#39;$&#123;dt&#125;&#39;;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="7修改azureampali数据库-syppro_rds_masterrds_sales_and_target_rds表-添加字段-hc_type">7.修改Azure&amp;Ali数据库  syppro_rds_master.rds_sales_and_target_rds表 添加字段 hc_type</span></h4><h4><span id="8修改任务节点ddi_sales_and_target_rds_to_mysqlampddi_sales_and_target_rds_to_ali_mysql">8.修改任务节点ddi_sales_and_target_rds_to_mysql&amp;ddi_sales_and_target_rds_to_ali_mysql</span></h4><p>添加hc_type映射</p>
-<h4><span id="9修改powerbi-sfe-销量业绩报告报表-添加hc_type筛选字段">9.修改PowerBI SFE 销量业绩报告报表  添加hc_type筛选字段</span></h4>]]></content>
-      <categories>
-        <category>服务器</category>
-      </categories>
-      <tags>
-        <tag>Daworks</tag>
-      </tags>
   </entry>
 </search>
