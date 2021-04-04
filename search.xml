@@ -1,96 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo切换主题</title>
-    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>本次主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>页面报错一</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>页面报错二</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
-<li>在git bash 中输入以下代码创建相应的page：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
-<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>然后在git hash 中加载相应的插件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
-
-<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<h4><span id="加载图片">加载图片</span></h4><ul>
-<li>修改主配置文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图片引用设置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>遇到错误</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决办法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ETL流服务器迁移部署</title>
     <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<blockquote>
@@ -221,14 +131,102 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo切换主题</title>
+    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本次主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错一</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错二</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
+<li>在git bash 中输入以下代码创建相应的page：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
+<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后在git hash 中加载相应的插件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4><span id="加载图片">加载图片</span></h4><ul>
+<li>修改主配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>图片引用设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>book</title>
     <url>/2021/04/04/book/</url>
-    <content><![CDATA[<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">&#123;% pdf http:<span class="comment">//7xov2f.com1.z0.glb.clouddn.com/bash_freshman.pdf %&#125;</span></span><br></pre></td></tr></table></figure>
-
-
+    <content><![CDATA[
 
 	<div class="row">
-    <embed src="http://7xov2f.com1.z0.glb.clouddn.com/bash_freshman.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
