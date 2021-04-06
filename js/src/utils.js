@@ -93,6 +93,7 @@ NexT.utils = NexT.$u = {
       }
     });
   },
+   
 
   registerBackToTop: function () {
     var THRESHOLD = 50;
@@ -296,6 +297,9 @@ NexT.utils = NexT.$u = {
 //    return this.isPisces() || this.isGemini();
 //  }
 };
+
+
+
 
 $(document).ready(function () {
 
