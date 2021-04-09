@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="开窗函数," />
 
 
 
@@ -81,12 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ben&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/Hexo/index.html">
+<meta name="description" content="本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库SQL基础">
+<meta property="og:url" content="http://example.com/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Ben&#39;s Blog">
+<meta property="og:description" content="本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-07T00:35:31.584Z">
+<meta property="article:modified_time" content="2021-04-09T02:20:03.291Z">
 <meta property="article:author" content="Ben">
+<meta property="article:tag" content="开窗函数">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/Hexo/"/>
+  <link rel="canonical" href="http://example.com/2021/04/07/开窗函数/"/>
 
 
 
 
 
-  <title>Tag: Hexo | Ben's Blog</title>
+  <title>数据库SQL基础 | Ben's Blog</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,54 +285,217 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ben's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/" itemprop="url">
-              
-                <span itemprop="name">Hexo切换主题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">数据库SQL基础</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-04-03T14:40:44+08:00"
-              content="2021/04/03" >
-          04-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-07T08:35:31+08:00">
+                2021/04/07
+              </time>
+            
 
-    </header>
-  </article>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2常用的开窗函数">2.常用的开窗函数</span></h4><ul>
+<li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>聚合开窗函数-count()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select studentId,math,departmentId,classId,</span><br><span class="line">-- 以符合条件的所有行作为窗口</span><br><span class="line">count(math) over() as count1,</span><br><span class="line">-- 以按classId分组的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId) as count2,</span><br><span class="line">-- 以按classId分组、按math排序的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math) as count3,</span><br><span class="line">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math rows between 1 preceding and 2 following) as count4</span><br><span class="line">from student_scores where departmentId&#x3D;&#39;department1&#39;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>聚合开窗函数-sum()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-min()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-max()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-avg()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-first_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-last_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lag(col,n,default)</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lead()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-cume_dist()</strong></p>
+</li>
+</ul>
+<h4><span id="3几种排序函数区别">3.几种排序函数区别</span></h4><ul>
+<li><p>row_number() over()：对相等的值不进行区分，相等的值对应的排名相同，序号从1到n连续。</p>
+</li>
+<li><p>rank() over()：相等的值排名相同，但若有相等的值，则序号从1到n不连续。如果有两个人都排在第3名，则没有第4名。</p>
+</li>
+<li><p>dense_rank() over()：对相等的值排名相同，但序号从1到n连续。如果有两个人都排在第一名，则排在第2名（假设仅有1个第二名）的人是第3个人。</p>
+</li>
+<li><p>ntile( n ) over()：可以看作是把有序的数据集合平均分配到指定的数量n的桶中,将桶号分配给每一行，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select id,stu_name,course_name,grades</span><br><span class="line">		row_number() over(order by grades) as row_num,</span><br><span class="line">		rank() over(order by grades) as rank,</span><br><span class="line">		desen_rank() over(order by grades) as desen_rank,</span><br><span class="line">		ntile(5) over(order by grades) as ntile</span><br><span class="line">from student_grades;</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/" rel="tag"># 开窗函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/07/SQL%E5%9F%BA%E7%A1%80/" rel="next" title="数据库SQL基础">
+                <i class="fa fa-chevron-left"></i> 数据库SQL基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +503,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -355,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,6 +686,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.创建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.常用的开窗函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3.几种排序函数区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -655,6 +852,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

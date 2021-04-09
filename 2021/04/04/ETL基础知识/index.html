@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ETL基础知识," />
 
 
 
@@ -81,12 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ben&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/Hexo/index.html">
+<meta name="description" content="介绍ETL数据同步基础知识。包含ETL概念和简介，ETL抽取策略。  概念ETL即数据抽取（Extract）、转换（Transform）、装载（Load）的过程。 抽取策略 时间戳方式  需要在OLTP（联机事务处理系统）系统中业务表中统一添加时间字段作为时戳（如表中已有相应的时间字段，可以不必添加），每当OLTP系统中更新修改业务数据时，必须同时修改时戳字段值。当作ETL加载时，通过系统时间与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ETL基础知识">
+<meta property="og:url" content="http://example.com/2021/04/04/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Ben&#39;s Blog">
+<meta property="og:description" content="介绍ETL数据同步基础知识。包含ETL概念和简介，ETL抽取策略。  概念ETL即数据抽取（Extract）、转换（Transform）、装载（Load）的过程。 抽取策略 时间戳方式  需要在OLTP（联机事务处理系统）系统中业务表中统一添加时间字段作为时戳（如表中已有相应的时间字段，可以不必添加），每当OLTP系统中更新修改业务数据时，必须同时修改时戳字段值。当作ETL加载时，通过系统时间与">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-04T14:55:58.000Z">
+<meta property="article:modified_time" content="2021-04-09T02:18:52.850Z">
 <meta property="article:author" content="Ben">
+<meta property="article:tag" content="ETL基础知识">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/Hexo/"/>
+  <link rel="canonical" href="http://example.com/2021/04/04/ETL基础知识/"/>
 
 
 
 
 
-  <title>Tag: Hexo | Ben's Blog</title>
+  <title>ETL基础知识 | Ben's Blog</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,54 +285,211 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/04/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ben's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/" itemprop="url">
-              
-                <span itemprop="name">Hexo切换主题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ETL基础知识</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-04-03T14:40:44+08:00"
-              content="2021/04/03" >
-          04-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-04T22:55:58+08:00">
+                2021/04/04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ETL/" itemprop="url" rel="index">
+                    <span itemprop="name">ETL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>介绍ETL数据同步基础知识。包含ETL概念和简介，ETL抽取策略。</p>
+</blockquote>
+<h3><span id="概念">概念</span></h3><p>ETL即数据抽取（Extract）、转换（Transform）、装载（Load）的过程。</p>
+<h3><span id="抽取策略">抽取策略</span></h3><ul>
+<li>时间戳方式</li>
+</ul>
+<p>需要在<em>OLTP</em>（<strong>联机事务处理系统）</strong>系统中业务表中统一添加时间字段作为时戳（如表中已有相应的时间字段，可以不必添加），每当<em>OLTP</em>系统中更新修改业务数据时，必须同时修改时戳字段值。当作<em>ETL</em>加载时，通过系统时间与时戳字段的比较来决定进行何种数据抽取。</p>
+<p>​    优点：<em>ETL</em>系统设计清晰，源数据抽取相对清楚简单，速度快。<strong>可以实现数据的递增加载</strong>。</p>
+<p>​    缺点：时戳维护需要由<em>OLTP</em>系统完成，需要修改原<em>OLTP</em>系统中业务表结构；且所有添加时戳的表，在业务系统中，数据发生变化时，同时更新时戳字段，需要对原<em>OLTP</em>系统业务操作程序作修改，工作量大，改动面大，风险大。但如果业务表在最初设计的时候考虑到这点，应用此方案是最好的选择。</p>
+<ul>
+<li>日志表方式</li>
+</ul>
+<p>在<em>OLTP</em>系统中添加系统日志表，当业务数据发生变化时，更新维护日志表内容，当作<em>ETL</em>加载时，通过读日志表数据决定加载那些数据及如何加载。</p>
+<p>​    优点：不需要修改<em>OLTP</em>表结构，源数据抽取清楚，速度较快。<strong>可以实现数据的递增加载。</strong></p>
+<p>​    缺点：日志表维护需要由<em>OLTP</em>系统完成，需要对<em>OLTP</em>系统业务操作程序作修改，记录日志信息。日志表维护较为麻烦，对原有系统有较大影响。工作量较大，改动较大，有一定风险。</p>
+<ul>
+<li>全表比对方式</li>
+</ul>
+<p>在<em>ETL</em>过程中，抽取所有源数据，并进行相应规则转换，完成后先不插入目标，而对每条数据进行目标表比对。根据主键值进行插入与更新的判定，目标表已存在该主键值的，表示该记录已有，并进行其余字段比对，如有不同，进行<em>Update</em>操作，如目标表没有存在该主键值，表示该记录还没有，即进行<em>Insert</em>操作。</p>
+<p>优点：对已有系统表结构不产生影响，不需要修改业务操作程序，所有抽取规则由<em>ETL</em>完成，管理维护统一，可以实现数据的递增加载，没有风险。</p>
+<p>缺点：<em>ETL</em>比对较复杂，设计较为复杂，速度较慢</p>
+<ul>
+<li>全表删除插入方式</li>
+</ul>
+<p>每次<em>ETL</em>操作均删除目标表数据，由<em>ETL</em>全新加载数据。</p>
+<p>​    优点：<em>ETL</em>加载规则简单，速度快。</p>
+<p>​    缺点：对于维表加代理键不适应，当<em>OLTP</em>系统产生删除数据操作时，<em>OLAP</em>层将不会记录到所删除的历史数据。不可以实现数据的递增加载。</p>
+<ul>
+<li>设置触发器方式</li>
+</ul>
+<p>通过在源系统的数据库中设置触发器，每当有<em>Update</em>、<em>Insert</em>、<em>Delete</em>操作时触发一个事件将发生改变的记录抽取到相应的临时表中。</p>
+<p>​    优点：<em>ETL</em>加载规则简单，速度快，不需要修改<em>OLTP</em>表结构，可以实现数据的递增加载。</p>
+<p>​    缺点：对源系统性能有一些影响。需建立一张临时表。</p>
+<ul>
+<li>Oracle 变化数据捕捉（CDC 方式）</li>
+</ul>
+<p><em>CDC</em>特性是在<em>Oracle9i</em>数据库中引入的，它简化了识别自上次提取后发生变化的数据的过程。<em>CDC</em>能够帮助识别从上次提取之后发生变化的数据。利用<em>CDC</em>，在对源表进行<em>Update</em>、<em>Insert</em>或<em>Delete</em>等操作的同时就可以提取数据，并且变化的数据被保存在数据库的变化表中。这样就可以捕获发生变化的数据，然后利用数据库视图以一种可控的方式提供给目标系统。</p>
+<h3><span id="附">附</span></h3><h4><span id="oltp-olap">OLTP OLAP</span></h4><p>从字面上来看OLTP是做事务处理，OLAP是做分析处理。从对数据库操作来看，OLTP主要是对数据的增删改，OLAP是对数据的查询。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># ETL基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/04/book/" rel="next" title="引用pdf测试">
+                <i class="fa fa-chevron-left"></i> 引用pdf测试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/" rel="prev" title="数据库SQL优化">
+                数据库SQL优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +497,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -355,8 +521,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,6 +680,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">抽取策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">附</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">OLTP OLAP</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -655,6 +846,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

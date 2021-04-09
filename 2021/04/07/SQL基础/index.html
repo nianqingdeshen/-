@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SQL基础," />
 
 
 
@@ -81,12 +81,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ben&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/Hexo/index.html">
+<meta name="description" content="本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库SQL基础">
+<meta property="og:url" content="http://example.com/2021/04/07/SQL%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Ben&#39;s Blog">
+<meta property="og:description" content="本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-07T00:14:33.925Z">
+<meta property="article:modified_time" content="2021-04-09T02:19:17.484Z">
 <meta property="article:author" content="Ben">
+<meta property="article:tag" content="SQL基础">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/Hexo/"/>
+  <link rel="canonical" href="http://example.com/2021/04/07/SQL基础/"/>
 
 
 
 
 
-  <title>Tag: Hexo | Ben's Blog</title>
+  <title>数据库SQL基础 | Ben's Blog</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -280,54 +285,179 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Hexo<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/SQL%E5%9F%BA%E7%A1%80/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ben's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/" itemprop="url">
-              
-                <span itemprop="name">Hexo切换主题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">数据库SQL基础</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-04-03T14:40:44+08:00"
-              content="2021/04/03" >
-          04-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-07T08:14:33+08:00">
+                2021/04/07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL%E5%9F%BA%E7%A1%80/" rel="tag"># SQL基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/07/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" rel="next" title="存储过程">
+                <i class="fa fa-chevron-left"></i> 存储过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/" rel="prev" title="数据库SQL基础">
+                数据库SQL基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +465,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -355,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,6 +648,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.创建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.避免在索引上使用计算</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -655,6 +814,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

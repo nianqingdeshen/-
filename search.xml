@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo切换主题</title>
+    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错一</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错二</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
+<li>在git bash 中输入以下代码创建相应的page：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
+<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后在git hash 中加载相应的插件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>修改头像为圆形、旋转动画</p>
+</li>
+<li><p>修改<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,新增以下代码:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line">  &#x2F;&#x2F;设置圆形</span><br><span class="line">+  border-radius: 50%;</span><br><span class="line">+  transition: 2s all;</span><br><span class="line">&#125;</span><br><span class="line">   &#x2F;&#x2F;旋转</span><br><span class="line">+ .site-author-image:hover&#123;</span><br><span class="line">+   transform: rotate(360deg);</span><br><span class="line">+ &#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4><span id="加载图片">加载图片</span></h4><ul>
+<li>修改主配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>图片引用设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h4><span id="上传pdf">上传pdf</span></h4><ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置页面</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改标签云颜色">修改标签云颜色</span></h4><ul>
+<li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">+ &#123;&#123; tagcloud(&#123;min_font: 13, max_font: 31, amount: 1000, color: true, start_color: &#39;#9733EE&#39;, end_color: &#39;#FF512F&#39;&#125;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改首页文章间隔宽度">修改首页文章间隔宽度</span></h4><ul>
+<li>打开<code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，修改.post{}</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123; <span class="attribute">margin-top</span>: <span class="number">12px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改文章页宽">修改文章页宽</span></h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop-large          &#x3D; 900px</span><br><span class="line">+ $content-desktop-large          &#x3D; 1000px</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改首页文章页宽">修改首页文章页宽</span></h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ETL流服务器迁移部署</title>
     <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<blockquote>
@@ -131,7 +258,75 @@
       </tags>
   </entry>
   <entry>
-    <title>book</title>
+    <title>ETL基础知识</title>
+    <url>/2021/04/04/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<blockquote>
+<p>介绍ETL数据同步基础知识。包含ETL概念和简介，ETL抽取策略。</p>
+</blockquote>
+<h3><span id="概念">概念</span></h3><p>ETL即数据抽取（Extract）、转换（Transform）、装载（Load）的过程。</p>
+<h3><span id="抽取策略">抽取策略</span></h3><ul>
+<li>时间戳方式</li>
+</ul>
+<p>需要在<em>OLTP</em>（<strong>联机事务处理系统）</strong>系统中业务表中统一添加时间字段作为时戳（如表中已有相应的时间字段，可以不必添加），每当<em>OLTP</em>系统中更新修改业务数据时，必须同时修改时戳字段值。当作<em>ETL</em>加载时，通过系统时间与时戳字段的比较来决定进行何种数据抽取。</p>
+<p>​    优点：<em>ETL</em>系统设计清晰，源数据抽取相对清楚简单，速度快。<strong>可以实现数据的递增加载</strong>。</p>
+<p>​    缺点：时戳维护需要由<em>OLTP</em>系统完成，需要修改原<em>OLTP</em>系统中业务表结构；且所有添加时戳的表，在业务系统中，数据发生变化时，同时更新时戳字段，需要对原<em>OLTP</em>系统业务操作程序作修改，工作量大，改动面大，风险大。但如果业务表在最初设计的时候考虑到这点，应用此方案是最好的选择。</p>
+<ul>
+<li>日志表方式</li>
+</ul>
+<p>在<em>OLTP</em>系统中添加系统日志表，当业务数据发生变化时，更新维护日志表内容，当作<em>ETL</em>加载时，通过读日志表数据决定加载那些数据及如何加载。</p>
+<p>​    优点：不需要修改<em>OLTP</em>表结构，源数据抽取清楚，速度较快。<strong>可以实现数据的递增加载。</strong></p>
+<p>​    缺点：日志表维护需要由<em>OLTP</em>系统完成，需要对<em>OLTP</em>系统业务操作程序作修改，记录日志信息。日志表维护较为麻烦，对原有系统有较大影响。工作量较大，改动较大，有一定风险。</p>
+<ul>
+<li>全表比对方式</li>
+</ul>
+<p>在<em>ETL</em>过程中，抽取所有源数据，并进行相应规则转换，完成后先不插入目标，而对每条数据进行目标表比对。根据主键值进行插入与更新的判定，目标表已存在该主键值的，表示该记录已有，并进行其余字段比对，如有不同，进行<em>Update</em>操作，如目标表没有存在该主键值，表示该记录还没有，即进行<em>Insert</em>操作。</p>
+<p>优点：对已有系统表结构不产生影响，不需要修改业务操作程序，所有抽取规则由<em>ETL</em>完成，管理维护统一，可以实现数据的递增加载，没有风险。</p>
+<p>缺点：<em>ETL</em>比对较复杂，设计较为复杂，速度较慢</p>
+<ul>
+<li>全表删除插入方式</li>
+</ul>
+<p>每次<em>ETL</em>操作均删除目标表数据，由<em>ETL</em>全新加载数据。</p>
+<p>​    优点：<em>ETL</em>加载规则简单，速度快。</p>
+<p>​    缺点：对于维表加代理键不适应，当<em>OLTP</em>系统产生删除数据操作时，<em>OLAP</em>层将不会记录到所删除的历史数据。不可以实现数据的递增加载。</p>
+<ul>
+<li>设置触发器方式</li>
+</ul>
+<p>通过在源系统的数据库中设置触发器，每当有<em>Update</em>、<em>Insert</em>、<em>Delete</em>操作时触发一个事件将发生改变的记录抽取到相应的临时表中。</p>
+<p>​    优点：<em>ETL</em>加载规则简单，速度快，不需要修改<em>OLTP</em>表结构，可以实现数据的递增加载。</p>
+<p>​    缺点：对源系统性能有一些影响。需建立一张临时表。</p>
+<ul>
+<li>Oracle 变化数据捕捉（CDC 方式）</li>
+</ul>
+<p><em>CDC</em>特性是在<em>Oracle9i</em>数据库中引入的，它简化了识别自上次提取后发生变化的数据的过程。<em>CDC</em>能够帮助识别从上次提取之后发生变化的数据。利用<em>CDC</em>，在对源表进行<em>Update</em>、<em>Insert</em>或<em>Delete</em>等操作的同时就可以提取数据，并且变化的数据被保存在数据库的变化表中。这样就可以捕获发生变化的数据，然后利用数据库视图以一种可控的方式提供给目标系统。</p>
+<h3><span id="附">附</span></h3><h4><span id="oltp-olap">OLTP OLAP</span></h4><p>从字面上来看OLTP是做事务处理，OLAP是做分析处理。从对数据库操作来看，OLTP主要是对数据的增删改，OLAP是对数据的查询。</p>
+]]></content>
+      <categories>
+        <category>ETL</category>
+      </categories>
+      <tags>
+        <tag>ETL基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL基础</title>
+    <url>/2021/04/07/SQL%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>引用pdf测试</title>
     <url>/2021/04/04/book/</url>
     <content><![CDATA[
 
@@ -143,130 +338,181 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hexo切换主题</title>
-    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
+    <title>存储过程</title>
+    <url>/2021/04/07/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<blockquote>
-<p>本次主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+<p>本文主要介绍存储过程相关知识。主要介绍存储过程优点、概念、分类、创建存储过程、存储过程中使用到的代码块、存储过程与函数区别等。供借鉴学习。</p>
 </blockquote>
 <span id="more"></span>
 
-<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+<h4><span id="1存储过程概念及分类">1.存储过程概念及分类</span></h4><ul>
+<li>概念：存储过程(stored procedure)是一组为了完成特定功能的SQL语句集合，经编译后存储在服务器端的数据库中，利用存储过程可以加速SQL语句的执行。</li>
+<li>分类：系统存储过程和自定义存储过程。</li>
+</ul>
+<h4><span id="2存储过程优点">2.存储过程优点</span></h4><ul>
+<li>提高应用程序的通用性和可移植性：存储过程创建后，可以在程序中被多次调用，而不必重新编写该存储过程的SQL语句。并且数据库专业人员可以随时对存储过程进行修改，且对程序源代码没有影响，这样就极大的提高了程序的可移植性。</li>
+<li>可以更有效的管理用户操作数据库的权限：在Sql Server数据库中，系统管理员可以通过对执行某一存储过程的权限进行限制，从而实现对相应的数据访问进行控制，避免非授权用户对数据库的访问，保证数据的安全。</li>
+<li>可以提高SQL的速度：存储过程是编译过的，如果某一个操作包含大量的SQL代码或分别被执行多次，那么使用存储过程比直接使用单条SQL语句执行速度快的多。</li>
+<li>减轻服务器的负担：当用户的操作是针对数据库对象的操作时，如果使用单条调用的方式，那么网络上还必须传输大量的SQL语句，如果使用存储过程，则直接发送过程的调用命令即可，降低了网络的负担。</li>
+</ul>
+<h4><span id="1创建存储过程">1.创建存储过程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">drop procedure if exists &#96;存储过程名&#96;;</span><br><span class="line">delimiter ;;</span><br><span class="line">create procedure &#96;存储过程名&#96;(IN MaterNum char(30),... (参数))</span><br><span class="line">begin</span><br><span class="line"></span><br><span class="line">end</span><br><span class="line">;;</span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
 
-<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<h4><span id="2-调用存储过程">2. 调用存储过程</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CALL 存储过程名(参数); </span><br></pre></td></tr></table></figure>
 
-<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+<h4><span id="3常用代码块">3.常用代码块</span></h4><ul>
+<li>CASE</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE case_value</span><br><span class="line">	WHEN when_value THEN</span><br><span class="line">		statement_list</span><br><span class="line">	ELSE</span><br><span class="line">		statement_list</span><br><span class="line">END CASE;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>页面报错一</li>
+<li>IF…ELSE</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IF search_condition THEN</span><br><span class="line">	statement_list</span><br><span class="line">ELSE</span><br><span class="line">	statement_list</span><br><span class="line">END IF;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>页面报错二</li>
+<li>WHILE</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
-<li>在git bash 中输入以下代码创建相应的page：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WHILE search_condition DO</span><br><span class="line">	statement_list</span><br><span class="line">END WHILE;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+<li>LOOP</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">label: LOOP</span><br><span class="line">	statement_list</span><br><span class="line"></span><br><span class="line">	IF exit_condition THEN</span><br><span class="line">		LEAVE label; </span><br><span class="line">	END IF; </span><br><span class="line">END LOOP label;</span><br></pre></td></tr></table></figure>
 
-<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
-<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>然后在git hash 中加载相应的插件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>修改头像为圆形、旋转动画</p>
-</li>
-<li><p>修改<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,新增以下代码:</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line">  &#x2F;&#x2F;设置圆形</span><br><span class="line">+  border-radius: 50%;</span><br><span class="line">+  transition: 2s all;</span><br><span class="line">&#125;</span><br><span class="line">   &#x2F;&#x2F;旋转</span><br><span class="line">+ .site-author-image:hover&#123;</span><br><span class="line">+   transform: rotate(360deg);</span><br><span class="line">+ &#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<h4><span id="加载图片">加载图片</span></h4><ul>
-<li>修改主配置文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图片引用设置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>遇到错误</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决办法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<h4><span id="上传pdf">上传pdf</span></h4><ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置页面</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改标签云颜色">修改标签云颜色</span></h4><ul>
-<li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">+ &#123;&#123; tagcloud(&#123;min_font: 13, max_font: 31, amount: 1000, color: true, start_color: &#39;#9733EE&#39;, end_color: &#39;#FF512F&#39;&#125;) &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改首页文章间隔宽度">修改首页文章间隔宽度</span></h4><ul>
-<li>打开<code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，修改.post{}</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123; <span class="attribute">margin-top</span>: <span class="number">12px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改文章页宽">修改文章页宽</span></h4><ul>
-<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop-large          &#x3D; 900px</span><br><span class="line">+ $content-desktop-large          &#x3D; 1000px</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改首页文章页宽">修改首页文章页宽</span></h4><ul>
-<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
+        <tag>存储过程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL基础</title>
+    <url>/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2常用的开窗函数">2.常用的开窗函数</span></h4><ul>
+<li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>聚合开窗函数-count()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select studentId,math,departmentId,classId,</span><br><span class="line">-- 以符合条件的所有行作为窗口</span><br><span class="line">count(math) over() as count1,</span><br><span class="line">-- 以按classId分组的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId) as count2,</span><br><span class="line">-- 以按classId分组、按math排序的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math) as count3,</span><br><span class="line">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math rows between 1 preceding and 2 following) as count4</span><br><span class="line">from student_scores where departmentId&#x3D;&#39;department1&#39;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>聚合开窗函数-sum()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-min()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-max()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-avg()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-first_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-last_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lag(col,n,default)</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lead()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-cume_dist()</strong></p>
+</li>
+</ul>
+<h4><span id="3几种排序函数区别">3.几种排序函数区别</span></h4><ul>
+<li><p>row_number() over()：对相等的值不进行区分，相等的值对应的排名相同，序号从1到n连续。</p>
+</li>
+<li><p>rank() over()：相等的值排名相同，但若有相等的值，则序号从1到n不连续。如果有两个人都排在第3名，则没有第4名。</p>
+</li>
+<li><p>dense_rank() over()：对相等的值排名相同，但序号从1到n连续。如果有两个人都排在第一名，则排在第2名（假设仅有1个第二名）的人是第3个人。</p>
+</li>
+<li><p>ntile( n ) over()：可以看作是把有序的数据集合平均分配到指定的数量n的桶中,将桶号分配给每一行，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id,stu_name,course_name,grades</span><br><span class="line">		row_number() over(order by grades) as row_num,</span><br><span class="line">		rank() over(order by grades) as rank,</span><br><span class="line">		desen_rank() over(order by grades) as desen_rank,</span><br><span class="line">		ntile(5) over(order by grades) as ntile</span><br><span class="line">from student_grades;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>开窗函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL优化</title>
+    <url>/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN <a href="https://lss0555.blog.csdn.net/">lss0555</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建索引">1.创建索引</span></h4><ul>
+<li>要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
+<li>在经常需要进行检索的字段上创建索引</li>
+<li>创建索引给检索带来的性能提升往往是巨大的，因此在发现检索速度过慢的时候应该首先想到的就是创建索引</li>
+<li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
+</ul>
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4><p>效率低：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<p>效率高：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3使用预编译查询">3.使用预编译查询</span></h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
+<h4><span id="4调整where字句中的连接顺序">4.调整Where字句中的连接顺序</span></h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
+<h4><span id="5尽量将多条sql语句压缩到一句sql中">5.尽量将多条SQL语句压缩到一句SQL中</span></h4><p>每次执行SQL的时候都要建立网络连接、进行权限校验、进行SQL语句的查询优化、发送执行结果，这个过程<br>是非常耗时的，因此应该尽量避免过多的执行SQL语句，能够压缩到一句SQL执行的语句就不要用多条来执行。</p>
+<h4><span id="6用where字句替换having字句">6.用where字句替换HAVING字句</span></h4><p>避免使用HAVING字句，因为HAVING只会在检索出所有记录之后才对结果集进行过滤，而where则是在聚合前<br>刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于聚合函数<br>的过滤，除此之外，应该将条件写在where字句中。</p>
+<h4><span id="7使用表的别名">7.使用表的别名</span></h4><p>当在SQL语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减<br>少哪些友列名歧义引起的语法错误。</p>
+<h4><span id="8用union-all替换union">8.用union all替换union</span></h4><p>当SQL语句需要union两个查询结果集合时，即使检索结果中不会有重复的记录，如果使用union这两个结果集<br>同样会尝试进行合并，然后在输出最终结果前进行排序，因此如果可以判断检索结果中不会有重复的记录时候，应<br>该用union all，这样效率就会因此得到提高。</p>
+<h4><span id="9考虑使用临时表暂存中间结果">9.考虑使用“临时表”暂存中间结果</span></h4><p>简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。<br>但是也得避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
+<h4><span id="10只在必要的情况下才使用事务">10.只在必要的情况下才使用事务</span></h4><p>SQL Server中一句SQL语句默认就是一个事务，在该语句执行完成后也是默认commit的。其实，这就是begin tran的一个最小化的形式，好比在每句语句开头隐含了一个begin tran，结束时隐含了一个commit。<br>有些情况下，我们需要显式声明begin tran，比如做“插、删、改”操作需要同时修改几个表，要求要么几个表都修改成功，要么都不成功。begin tran 可以起到这样的作用，它可以把若干SQL语句套在一起执行，最后再一起commit。 好处是保证了数据的一致性，但任何事情都不是完美无缺的。Begin tran付出的代价是在提交之前，所有SQL语句锁住的资源都不能释放，直到commit掉。<br>可见，如果Begin tran套住的SQL语句太多，那数据库的性能就糟糕了。在该大事务提交之前，必然会阻塞别的语句，造成block很多。<br>Begin tran使用的原则是，在保证数据一致性的前提下，begin tran 套住的SQL语句越少越好！有些情况下可以采用触发器同步数据，不一定要用begin translation。</p>
+<h4><span id="11尽量避免使用游标">11.尽量避免使用游标</span></h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
+<h4><span id="12用varcharnvarchar-代替-charnchar">12.用varchar/nvarchar 代替 char/nchar</span></h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
+<h4><span id="13查询select语句优化">13.查询select语句优化</span></h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
+<pre><code> select id from t where num is null           
+</code></pre>
+<p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
+<pre><code>  select id from t where num=0
+  select id from t where num=10 or num=20
+</code></pre>
+<p>可以这样查询：</p>
+<pre><code>  select id from t where num=10
+   union all
+  select id from t where num=20
+</code></pre>
+<p>4.不能前置百分</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
+
+
+<p>若要提高效率，可以考虑全文检索。</p>
+<pre><code> select id from t where num in(1,2,3)
+</code></pre>
+<p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
+<pre><code>select id from t where num between 1 and 3 
+</code></pre>
+<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
+
+<p>相反的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
+
+<h4><span id="14更新update语句优化">14.更新Update语句优化</span></h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
+<h4><span id="15插入insert语句优化">15.插入Insert语句优化</span></h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL优化</tag>
       </tags>
   </entry>
 </search>
