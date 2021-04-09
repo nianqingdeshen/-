@@ -51,151 +51,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo切换主题</title>
-    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-
-<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>页面报错一</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>页面报错二</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
-<li>在git bash 中输入以下代码创建相应的page：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
-<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>然后在git hash 中加载相应的插件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
-
-<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>修改头像为圆形、旋转动画</p>
-</li>
-<li><p>修改<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,新增以下代码:</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line">  &#x2F;&#x2F;设置圆形</span><br><span class="line">+  border-radius: 50%;</span><br><span class="line">+  transition: 2s all;</span><br><span class="line">&#125;</span><br><span class="line">   &#x2F;&#x2F;旋转</span><br><span class="line">+ .site-author-image:hover&#123;</span><br><span class="line">+   transform: rotate(360deg);</span><br><span class="line">+ &#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<h4><span id="加载图片">加载图片</span></h4><ul>
-<li>修改主配置文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>图片引用设置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>遇到错误</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决办法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<h4><span id="上传pdf">上传pdf</span></h4><ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置页面</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改标签云颜色">修改标签云颜色</span></h4><ul>
-<li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">+ &#123;&#123; tagcloud(&#123;min_font: 13, max_font: 31, amount: 1000, color: true, start_color: &#39;#9733EE&#39;, end_color: &#39;#FF512F&#39;&#125;) &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改首页文章间隔宽度">修改首页文章间隔宽度</span></h4><ul>
-<li>打开<code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，修改.post{}</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123; <span class="attribute">margin-top</span>: <span class="number">12px</span>; &#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改文章页宽">修改文章页宽</span></h4><ul>
-<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop-large          &#x3D; 900px</span><br><span class="line">+ $content-desktop-large          &#x3D; 1000px</span><br></pre></td></tr></table></figure>
-
-<h4><span id="修改首页文章页宽">修改首页文章页宽</span></h4><ul>
-<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库SQL基础</title>
-    <url>/2021/04/07/SQL%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>SQL基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ETL流服务器迁移部署</title>
     <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
     <content><![CDATA[<blockquote>
@@ -326,6 +181,183 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo切换主题</title>
+    <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="获取开源的-hexo-主题">获取开源的 Hexo 主题</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改主题-_configyml">修改主题 _config.yml</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h4><span id="运行测试">运行测试</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错一</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错二</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置标签和分类">配置标签和分类</span></h4><ul>
+<li>在git bash 中输入以下代码创建相应的page：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="配置搜索功能">配置搜索功能</span></h4><ul>
+<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Search Config</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 100</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后在git hash 中加载相应的插件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
+
+<h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>修改头像为圆形、旋转动画</p>
+</li>
+<li><p>修改<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,新增以下代码:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.site-author-image &#123;</span><br><span class="line">  display: block;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  padding: $site-author-image-padding;</span><br><span class="line">  max-width: $site-author-image-width;</span><br><span class="line">  height: $site-author-image-height;</span><br><span class="line">  border: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line">  &#x2F;&#x2F;设置圆形</span><br><span class="line">+  border-radius: 50%;</span><br><span class="line">+  transition: 2s all;</span><br><span class="line">&#125;</span><br><span class="line">   &#x2F;&#x2F;旋转</span><br><span class="line">+ .site-author-image:hover&#123;</span><br><span class="line">+   transform: rotate(360deg);</span><br><span class="line">+ &#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="主题设定">主题设定</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4><span id="加载图片">加载图片</span></h4><ul>
+<li>修改主配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>图片引用设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h4><span id="上传pdf">上传pdf</span></h4><ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置页面</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改标签云颜色">修改标签云颜色</span></h4><ul>
+<li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">+ &#123;&#123; tagcloud(&#123;min_font: 13, max_font: 31, amount: 1000, color: true, start_color: &#39;#9733EE&#39;, end_color: &#39;#FF512F&#39;&#125;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改首页文章间隔宽度">修改首页文章间隔宽度</span></h4><ul>
+<li>打开<code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，修改.post{}</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123; <span class="attribute">margin-top</span>: <span class="number">12px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改文章页宽">修改文章页宽</span></h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop-large          &#x3D; 900px</span><br><span class="line">+ $content-desktop-large          &#x3D; 1000px</span><br></pre></td></tr></table></figure>
+
+<h4><span id="修改首页文章页宽">修改首页文章页宽</span></h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
+
+<h4><span id="上一页下一页-按钮错误显示">‘上一页’，‘下一页’ 按钮错误显示</span></h4><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的html代码改为‘下一页’和‘上一页’即可！</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>QlikView基础使用</title>
+    <url>/2021/04/04/QlikView%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="/book/QlikView.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+      <categories>
+        <category>BI</category>
+      </categories>
+      <tags>
+        <tag>QlikView</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL基础</title>
+    <url>/2021/04/07/SQL%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>引用pdf测试</title>
+    <url>/2021/04/04/book/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>存储过程</title>
     <url>/2021/04/07/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<blockquote>
@@ -376,18 +408,6 @@
       </tags>
   </entry>
   <entry>
-    <title>引用pdf测试</title>
-    <url>/2021/04/04/book/</url>
-    <content><![CDATA[
-
-	<div class="row">
-    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>工作总结</title>
     <url>/2021/04/09/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
@@ -415,54 +435,6 @@
       </categories>
       <tags>
         <tag>工作总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>常见的SQL场景</title>
-    <url>/2021/04/09/%E5%B8%B8%E7%94%A8sql%E6%83%85%E6%99%AF/</url>
-    <content><![CDATA[<blockquote>
-<p>主要介绍在写SQL过程中，经常遇到的场景。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="1将查询数据导入已有表中">1.将查询数据导入已有表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insert into 表 select * from tablename</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2将查询数据导入新表中">2.将查询数据导入新表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table rds_rep_practice_describle_v2 as</span><br><span class="line">select distinct *  from  rds_rep_practice_describle group by concat(rep_id,item03)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3去除字符串中间的空格">3.<strong>去除字符串中间的空格</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REPLACE(&#39;ababab&#39;,&#39;abab&#39;,&#39;12&#39;)&#x3D;&#39;12ab&#39;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4根据逗号拆分数据分一行为多行">4.根据逗号拆分数据分一行为多行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 根据逗号拆分一行数据为多行,help_top表的help_topic_id 从0 开始</span><br><span class="line">SELECT</span><br><span class="line">    a.member_uuid,</span><br><span class="line">    substring_index(substring_index( a.member_role_name, &#39;,&#39;, b.id + 1 ), &#39;,&#39;,- 1 ) AS member_role_name</span><br><span class="line">FROM</span><br><span class="line">    fyk_new_upload_members_tds a</span><br><span class="line">JOIN help_top b</span><br><span class="line">ON b.id &lt; ( length( a.member_role_name ) - length( REPLACE ( a.member_role_name, &#39;,&#39;, &#39;&#39; ) ) + 1 )</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">BEGIN</span><br><span class="line">set @name&#x3D;&quot;abc,ad,cd&quot;;</span><br><span class="line"></span><br><span class="line">insert into test (item)</span><br><span class="line">SELECT</span><br><span class="line">SUBSTRING_INDEX(SUBSTRING_INDEX(@name,&#39;,&#39;,help_topic_id+1),&#39;,&#39;,-1) AS num</span><br><span class="line">FROM</span><br><span class="line">mysql.help_topic</span><br><span class="line">WHERE</span><br><span class="line">help_topic_id &lt; LENGTH(@name)-LENGTH(REPLACE(@name,&#39;,&#39;,&#39;&#39;))+1;</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5hive-根据多个字段去重">5.<strong>Hive 根据多个字段去重</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- hive 根据多个字段去重</span><br><span class="line">SELECT *</span><br><span class="line">FROM (</span><br><span class="line">SELECT T.*, ROW_NUMBER() OVER(PARTITION BY hcp_veeva_id,hcp_doctor_name,hcp_doctor_hospital order by 1) RN</span><br><span class="line">FROM NS_Allergan_Xlab.hcp_doctor_360_target_rds T where ds&#x3D;&#39;$&#123;dt&#125;&#39;</span><br><span class="line">) A</span><br><span class="line">WHERE A.RN&#x3D;1;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="6mysql-设置变量参与循环">6.<strong>mysql 设置变量参与循环</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 设置变量参与循环</span><br><span class="line">while @i&lt;&#x3D;@num DO</span><br><span class="line">set @i&#x3D;@i+1;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="7mysql-group_concat用法">7.mysql group_concat()用法</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</span><br><span class="line">语法：group_concat( [distinct] 要连接的字段 [order by 排序字段 asc&#x2F;desc  ] [separator &#39;分隔符&#39;] )</span><br><span class="line">例子：select name, group_concat(id) from table_name group by name;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="8mysql-查看表的最后更新时间">8.MySQL <strong>查看表的最后更新时间</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查看表的最后更新时间</span><br><span class="line">SELECT</span><br><span class="line">    &#96;TABLE_NAME&#96;, &#96;UPDATE_TIME&#96;</span><br><span class="line">FROM</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;</span><br><span class="line">WHERE</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_SCHEMA&#96; &#x3D; &#39;ieipdb2&#39;</span><br><span class="line">AND</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_NAME&#96; &#x3D; &#39;s_index_report&#39;;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="9mysql-查询一个的字段及注释">9.MySQL 查询一个的字段及注释</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，字段的注释</span><br><span class="line">SELECT</span><br><span class="line">    TABLE_NAME,</span><br><span class="line">    COLUMN_NAME,</span><br><span class="line">    COLUMN_TYPE,</span><br><span class="line">    COLUMN_COMMENT</span><br><span class="line">FROM</span><br><span class="line">    information_schema. COLUMNS</span><br><span class="line">WHERE</span><br><span class="line">    table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">AND table_name &#x3D; &#39;ods_direction_xlab&#39;;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="10mysql查询一个表的所有列名数据类型">10.MySQL<strong>查询一个表的所有列名，数据类型</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，数据类型</span><br><span class="line">select column_name,data_type from information_schema.columns</span><br><span class="line">where table_name &#x3D; &#39;Sys_User&#39;;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="11根据b表数据更新a表数据">11.<strong>根据b表数据更新A表数据</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update 表A as a ,表B as b</span><br><span class="line">set a.role_id&#x3D;b.set_value</span><br><span class="line">where a.role_id&#x3D;b.set_key</span><br></pre></td></tr></table></figure>
-
-<h4><span id="12mysql查询表注释">12.MySQL<strong>查询表注释</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">table_name ,</span><br><span class="line">table_comment</span><br><span class="line">FROM</span><br><span class="line">information_schema.TABLES</span><br><span class="line">WHERE</span><br><span class="line">table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">and left(TABLE_NAME,3)&#x3D;&#39;ods&#39;</span><br><span class="line">ORDER BY</span><br><span class="line">table_name;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="13-查看表的大小">13. <strong>查看表的大小</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select concat(round(sum(data_length&#x2F;1024&#x2F;1024&#x2F;1024),2),&#39;G&#39;) as data from information_schema.tables</span><br><span class="line">where table_schema&#x3D;&#39;allergan_sales_ab&#39; and table_name &#x3D; &#39;tblcrm_doccall_detail_veeva&#39;;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="14查询字段在哪个表中">14.查询字段在哪个表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select table_schema ,table_name   from information_schema.columns where column_name &#x3D; &#39;comparison_approval_status&#39;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="15mysql实现累加">15.MySQL实现累加</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET @csum :&#x3D; 0;</span><br><span class="line">SELECT 日期, 净利润, (@csum :&#x3D; @csum + 净利润) AS 累计利润</span><br><span class="line">FROM daily_pnl_view;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="16行转列-列转行">16.行转列、列转行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 建测试表</span><br><span class="line">DROP TABLE IF EXISTS tb_score;</span><br><span class="line">CREATE TABLE tb_score(</span><br><span class="line">    id INT(11) NOT NULL auto_increment,</span><br><span class="line">    userid VARCHAR(20) NOT NULL COMMENT &#39;用户id&#39;,</span><br><span class="line">    subject VARCHAR(20) COMMENT &#39;科目&#39;,</span><br><span class="line">    score DOUBLE COMMENT &#39;成绩&#39;,</span><br><span class="line">    PRIMARY KEY(id)</span><br><span class="line">)ENGINE &#x3D; INNODB DEFAULT CHARSET &#x3D; utf8;</span><br><span class="line">-- 插入数据</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;语文&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;数学&#39;,92);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;英语&#39;,80);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;语文&#39;,88);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;数学&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;英语&#39;,75.5);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;语文&#39;,70);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;数学&#39;,85);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;英语&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;政治&#39;,82);</span><br><span class="line">-- 行转列 </span><br><span class="line">	-- 1.利用case when then 进行行转列 或 if </span><br><span class="line">SELECT userid,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;语文&#39; THEN score ELSE 0 END) as &#39;语文&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;数学&#39; THEN score ELSE 0 END) as &#39;数学&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;英语&#39; THEN score ELSE 0 END) as &#39;英语&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;政治&#39; THEN score ELSE 0 END) as &#39;政治&#39; </span><br><span class="line">FROM tb_score </span><br><span class="line">GROUP BY userid;</span><br><span class="line">	-- 2.left join 自关联做限制	</span><br><span class="line">select t1.userid,</span><br><span class="line">t1.score as &#39;语文&#39;,</span><br><span class="line">t2.score as &#39;数学&#39;,</span><br><span class="line">t3.score as &#39;英语&#39;,</span><br><span class="line">t4.score as &#39;政治&#39;</span><br><span class="line">from tb_score t1</span><br><span class="line">left join tb_score t2 on t1.userid &#x3D;t2.userid and t2.subject &#x3D;&#39;数学&#39;</span><br><span class="line">left join tb_score t3 on t1.userid&#x3D;t3.userid and t3.subject &#x3D;&#39;英语&#39;</span><br><span class="line">left join tb_score t4 on t1.userid&#x3D;t4.userid and t4.subject &#x3D;&#39;政治&#39;</span><br><span class="line">where t1.subject&#x3D;&#39;语文&#39; group by t1.userid;</span><br><span class="line">-- 列转行。union all 查询每个tag的数据，然后union all和并起来</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>SQL基础</tag>
       </tags>
   </entry>
   <entry>
@@ -531,6 +503,54 @@
       </categories>
       <tags>
         <tag>SQL优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见的SQL场景</title>
+    <url>/2021/04/09/%E5%B8%B8%E7%94%A8sql%E6%83%85%E6%99%AF/</url>
+    <content><![CDATA[<blockquote>
+<p>主要介绍在写SQL过程中，经常遇到的场景。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1将查询数据导入已有表中">1.将查询数据导入已有表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insert into 表 select * from tablename</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2将查询数据导入新表中">2.将查询数据导入新表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table rds_rep_practice_describle_v2 as</span><br><span class="line">select distinct *  from  rds_rep_practice_describle group by concat(rep_id,item03)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3去除字符串中间的空格">3.<strong>去除字符串中间的空格</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REPLACE(&#39;ababab&#39;,&#39;abab&#39;,&#39;12&#39;)&#x3D;&#39;12ab&#39;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4根据逗号拆分数据分一行为多行">4.根据逗号拆分数据分一行为多行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 根据逗号拆分一行数据为多行,help_top表的help_topic_id 从0 开始</span><br><span class="line">SELECT</span><br><span class="line">    a.member_uuid,</span><br><span class="line">    substring_index(substring_index( a.member_role_name, &#39;,&#39;, b.id + 1 ), &#39;,&#39;,- 1 ) AS member_role_name</span><br><span class="line">FROM</span><br><span class="line">    fyk_new_upload_members_tds a</span><br><span class="line">JOIN help_top b</span><br><span class="line">ON b.id &lt; ( length( a.member_role_name ) - length( REPLACE ( a.member_role_name, &#39;,&#39;, &#39;&#39; ) ) + 1 )</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">BEGIN</span><br><span class="line">set @name&#x3D;&quot;abc,ad,cd&quot;;</span><br><span class="line"></span><br><span class="line">insert into test (item)</span><br><span class="line">SELECT</span><br><span class="line">SUBSTRING_INDEX(SUBSTRING_INDEX(@name,&#39;,&#39;,help_topic_id+1),&#39;,&#39;,-1) AS num</span><br><span class="line">FROM</span><br><span class="line">mysql.help_topic</span><br><span class="line">WHERE</span><br><span class="line">help_topic_id &lt; LENGTH(@name)-LENGTH(REPLACE(@name,&#39;,&#39;,&#39;&#39;))+1;</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5hive-根据多个字段去重">5.<strong>Hive 根据多个字段去重</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- hive 根据多个字段去重</span><br><span class="line">SELECT *</span><br><span class="line">FROM (</span><br><span class="line">SELECT T.*, ROW_NUMBER() OVER(PARTITION BY hcp_veeva_id,hcp_doctor_name,hcp_doctor_hospital order by 1) RN</span><br><span class="line">FROM NS_Allergan_Xlab.hcp_doctor_360_target_rds T where ds&#x3D;&#39;$&#123;dt&#125;&#39;</span><br><span class="line">) A</span><br><span class="line">WHERE A.RN&#x3D;1;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="6mysql-设置变量参与循环">6.<strong>mysql 设置变量参与循环</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 设置变量参与循环</span><br><span class="line">while @i&lt;&#x3D;@num DO</span><br><span class="line">set @i&#x3D;@i+1;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="7mysql-group_concat用法">7.mysql group_concat()用法</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</span><br><span class="line">语法：group_concat( [distinct] 要连接的字段 [order by 排序字段 asc&#x2F;desc  ] [separator &#39;分隔符&#39;] )</span><br><span class="line">例子：select name, group_concat(id) from table_name group by name;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="8mysql-查看表的最后更新时间">8.MySQL <strong>查看表的最后更新时间</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查看表的最后更新时间</span><br><span class="line">SELECT</span><br><span class="line">    &#96;TABLE_NAME&#96;, &#96;UPDATE_TIME&#96;</span><br><span class="line">FROM</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;</span><br><span class="line">WHERE</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_SCHEMA&#96; &#x3D; &#39;ieipdb2&#39;</span><br><span class="line">AND</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_NAME&#96; &#x3D; &#39;s_index_report&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="9mysql-查询一个的字段及注释">9.MySQL 查询一个的字段及注释</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，字段的注释</span><br><span class="line">SELECT</span><br><span class="line">    TABLE_NAME,</span><br><span class="line">    COLUMN_NAME,</span><br><span class="line">    COLUMN_TYPE,</span><br><span class="line">    COLUMN_COMMENT</span><br><span class="line">FROM</span><br><span class="line">    information_schema. COLUMNS</span><br><span class="line">WHERE</span><br><span class="line">    table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">AND table_name &#x3D; &#39;ods_direction_xlab&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="10mysql查询一个表的所有列名数据类型">10.MySQL<strong>查询一个表的所有列名，数据类型</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，数据类型</span><br><span class="line">select column_name,data_type from information_schema.columns</span><br><span class="line">where table_name &#x3D; &#39;Sys_User&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="11根据b表数据更新a表数据">11.<strong>根据b表数据更新A表数据</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update 表A as a ,表B as b</span><br><span class="line">set a.role_id&#x3D;b.set_value</span><br><span class="line">where a.role_id&#x3D;b.set_key</span><br></pre></td></tr></table></figure>
+
+<h4><span id="12mysql查询表注释">12.MySQL<strong>查询表注释</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">table_name ,</span><br><span class="line">table_comment</span><br><span class="line">FROM</span><br><span class="line">information_schema.TABLES</span><br><span class="line">WHERE</span><br><span class="line">table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">and left(TABLE_NAME,3)&#x3D;&#39;ods&#39;</span><br><span class="line">ORDER BY</span><br><span class="line">table_name;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="13-查看表的大小">13. <strong>查看表的大小</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select concat(round(sum(data_length&#x2F;1024&#x2F;1024&#x2F;1024),2),&#39;G&#39;) as data from information_schema.tables</span><br><span class="line">where table_schema&#x3D;&#39;allergan_sales_ab&#39; and table_name &#x3D; &#39;tblcrm_doccall_detail_veeva&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="14查询字段在哪个表中">14.查询字段在哪个表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select table_schema ,table_name   from information_schema.columns where column_name &#x3D; &#39;comparison_approval_status&#39;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="15mysql实现累加">15.MySQL实现累加</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET @csum :&#x3D; 0;</span><br><span class="line">SELECT 日期, 净利润, (@csum :&#x3D; @csum + 净利润) AS 累计利润</span><br><span class="line">FROM daily_pnl_view;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="16行转列-列转行">16.行转列、列转行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 建测试表</span><br><span class="line">DROP TABLE IF EXISTS tb_score;</span><br><span class="line">CREATE TABLE tb_score(</span><br><span class="line">    id INT(11) NOT NULL auto_increment,</span><br><span class="line">    userid VARCHAR(20) NOT NULL COMMENT &#39;用户id&#39;,</span><br><span class="line">    subject VARCHAR(20) COMMENT &#39;科目&#39;,</span><br><span class="line">    score DOUBLE COMMENT &#39;成绩&#39;,</span><br><span class="line">    PRIMARY KEY(id)</span><br><span class="line">)ENGINE &#x3D; INNODB DEFAULT CHARSET &#x3D; utf8;</span><br><span class="line">-- 插入数据</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;语文&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;数学&#39;,92);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;英语&#39;,80);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;语文&#39;,88);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;数学&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;英语&#39;,75.5);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;语文&#39;,70);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;数学&#39;,85);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;英语&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;政治&#39;,82);</span><br><span class="line">-- 行转列 </span><br><span class="line">	-- 1.利用case when then 进行行转列 或 if </span><br><span class="line">SELECT userid,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;语文&#39; THEN score ELSE 0 END) as &#39;语文&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;数学&#39; THEN score ELSE 0 END) as &#39;数学&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;英语&#39; THEN score ELSE 0 END) as &#39;英语&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;政治&#39; THEN score ELSE 0 END) as &#39;政治&#39; </span><br><span class="line">FROM tb_score </span><br><span class="line">GROUP BY userid;</span><br><span class="line">	-- 2.left join 自关联做限制	</span><br><span class="line">select t1.userid,</span><br><span class="line">t1.score as &#39;语文&#39;,</span><br><span class="line">t2.score as &#39;数学&#39;,</span><br><span class="line">t3.score as &#39;英语&#39;,</span><br><span class="line">t4.score as &#39;政治&#39;</span><br><span class="line">from tb_score t1</span><br><span class="line">left join tb_score t2 on t1.userid &#x3D;t2.userid and t2.subject &#x3D;&#39;数学&#39;</span><br><span class="line">left join tb_score t3 on t1.userid&#x3D;t3.userid and t3.subject &#x3D;&#39;英语&#39;</span><br><span class="line">left join tb_score t4 on t1.userid&#x3D;t4.userid and t4.subject &#x3D;&#39;政治&#39;</span><br><span class="line">where t1.subject&#x3D;&#39;语文&#39; group by t1.userid;</span><br><span class="line">-- 列转行。union all 查询每个tag的数据，然后union all和并起来</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL基础</tag>
       </tags>
   </entry>
   <entry>
