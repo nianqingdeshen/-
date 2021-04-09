@@ -51,136 +51,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ETL流服务器迁移部署</title>
-    <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
-    <content><![CDATA[<blockquote>
-<p>数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>老的服务器版本：CentOS Linux release 7.6.1810</p>
-<p>新的服务器版本：CentOS Linux release 7.9.2009</p>
-<p>新服务器位置：华东2（上海）syp-etl</p>
-<h3><span id="一-创建分用户">一、创建分用户</span></h3><ul>
-<li><p>一版情况下禁止以root用户登录系统</p>
-</li>
-<li><p>创建分用户sy-devops-user，开启sudo权限</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">为普通用户添加sudo权限</span><br><span class="line">1.root用户下创建分用户</span><br><span class="line">eg: useradd syp-devops-user</span><br><span class="line">2.vim &#x2F;etc&#x2F;sudoers &#x2F;&#x2F;打开sudo的配置文件</span><br><span class="line">3.在“root ALL&#x3D;(ALL)ALL”这一行下面，加入一行： 用户名 ALL&#x3D;(ALL) ALL</span><br><span class="line">eg:syp-devops-user ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-
-<h3><span id="二-安装相关服务">二、安装相关服务</span></h3><ul>
-<li>sftp</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装&#x2F;卸载vsftpd服务</span><br><span class="line">yum -y install vsftpd</span><br><span class="line">yun remove vsftpd</span><br><span class="line">2.创建sftp用户</span><br><span class="line">useradd -d &#x2F;home&#x2F;username username</span><br><span class="line">3.启动|关闭|重启|查看vsftpd服务器</span><br><span class="line">service vsftpd start|stop|restart|status</span><br><span class="line">4.设置sftp用户密码，尽量与原来密码一致</span><br><span class="line">passwd username</span><br><span class="line">5.通知Allergan配置数据库访问白名单 </span><br><span class="line">6.通知供应商上传服务器ip改变</span><br><span class="line">7.设置开机启动</span><br><span class="line">systemctl enable vsftpd.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>crontab</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装&#x2F;卸载crontab服务</span><br><span class="line">yum install -y crontabs</span><br><span class="line">yun remove crontabs</span><br><span class="line">2.启动|关闭|重启|查看服务状态</span><br><span class="line">service crond start|stop|restart|status</span><br><span class="line">3.配置定时任务,查看定时任务&#x2F;编辑定时任务</span><br><span class="line">crontab -l&#x2F;-e</span><br><span class="line">配置：minute hour day(month) month day(week)</span><br><span class="line">4.设置开机启动</span><br><span class="line">在&#x2F;etc&#x2F;rc.d&#x2F;rc.local 脚本中加入一行：&#x2F;sbin&#x2F;service crond start </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>kettle</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.下载kettle安装包，当前使用版本8.2</span><br><span class="line">https:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;pentaho&#x2F;files&#x2F;Data%20Integration&#x2F;</span><br><span class="line">2.通过sftp上传到服务器</span><br><span class="line">解压，kettle无需安装，运行spoon.sh</span><br><span class="line">3.设置桌面快捷方式、桌面创建kettle.desktop文件</span><br><span class="line">[Desktop Entry]</span><br><span class="line">Encoding&#x3D;UTF-8</span><br><span class="line">Name&#x3D;kettle</span><br><span class="line">Exec&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;kettle-8.2.0.0_342&#x2F;spoon.sh</span><br><span class="line">Icon&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;kettle-8.2.0.0_342&#x2F;spoon.png</span><br><span class="line">Terminal&#x3D;false</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Categories&#x3D;Application;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>jdk</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.下载jdk的linux版本安装包，当前版本8</span><br><span class="line">2.通过sftp上传到服务器</span><br><span class="line">3.安装位置：&#x2F;url&#x2F;java&#x2F;jdk1.8.0_271-amd64</span><br><span class="line">4.环境变量配置</span><br><span class="line">配置文件：&#x2F;etc&#x2F;profile</span><br><span class="line">内容：</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;user&#x2F;java&#x2F;jdk1.8.0_271-amd64</span><br><span class="line">exprot PATH&#x3D;$JAVA_HOME&#x2F;bin:$PATH</span><br><span class="line">export CLASSPATH&#x3D;.:$JAVA_HOME&#x2F;lib&#x2F;tools.jar</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>vnc</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装VNC 默认port:5901</span><br><span class="line">yum install -y tigervnc-server vnc</span><br><span class="line">2.启动桌面进程方式</span><br><span class="line">systemctl enable vncserver@:1.service</span><br><span class="line">systemctl start vncserver@:1.service</span><br><span class="line">3.查看运行的桌面</span><br><span class="line">vncserver -list</span><br><span class="line">4.查看某个桌面进程的状态</span><br><span class="line">systemctl status vncserver@:1.service</span><br><span class="line">5.杀掉某个桌面</span><br><span class="line">vncserver -kill :1</span><br><span class="line">6.设置Vnc密码</span><br><span class="line">vncpasswd</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>通过阿里云自带的vnc连接</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.阿里云平台-&gt;控制台-&gt;云服务器ESC-&gt;对应服务器-&gt;远程连接-&gt;选择VNC远程连接</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>CentOS 中文化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.查看当前语言</span><br><span class="line">echo $LANG</span><br><span class="line">2.查看当前支持的所有语言，如果有“zh_cn”则有中文</span><br><span class="line">locale</span><br><span class="line">3.安装中文语言包</span><br><span class="line"> centos7：yum install kde-l10n-Chinese   centos6:yum groupinstall Chinese-support</span><br><span class="line">4.查看是否安装成功</span><br><span class="line">locale -a | grep &quot;zh_CN&quot;</span><br><span class="line">5.备份修改配置文件</span><br><span class="line">cp &#x2F;etc&#x2F;locale.conf &#x2F;home&#x2F;locale.conf.backup</span><br><span class="line">vim &#x2F;etc&#x2F;locale.conf</span><br><span class="line">将LANG&#x3D;en_US.UTF-8改成 LANG&#x3D;zh_CN.UTF-8</span><br><span class="line">保存退出</span><br><span class="line">6.重启</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-<h3><span id="三-迁移相关文件">三、迁移相关文件</span></h3><ul>
-<li>新建文件夹</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">脚本存储位置：mkdir &#x2F;data&#x2F;work&#x2F;scripts</span><br><span class="line">数据文件存储位置:mkdir &#x2F;data&#x2F;allergan</span><br><span class="line">日志存储位置：mkdir &#x2F;data&#x2F;work&#x2F;logs</span><br><span class="line">根据业务创建不同文件夹存储不同的数据</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_ali_online</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_finance</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_calls-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_dingtalk</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;from_transit_computer</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrmdata</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrm_data</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;executed_file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建SFTP用户</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">中转机：allergan_sales_ab 主目录：&#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">小艾数据：allergan_members 主目录：&#x2F;data&#x2F;allergan&#x2F;alergan_members</span><br><span class="line">eg:</span><br><span class="line">useradd  &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab -g whell allergan_sales_ab</span><br><span class="line">useradd  &#x2F;data&#x2F;allergan&#x2F;allergan_members -g allergan_members allergan_members</span><br><span class="line">注意修改主目录的权限给各个用户</span><br><span class="line">eg:</span><br><span class="line">chown -R allergan_members.allergan_members &#x2F;data&#x2F;allergan&#x2F;alllergan_members</span><br><span class="line">chown -R allergan_sales_ab.whell &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">修改配置文件vsftpd.conf,将sftp用户限制在主目录中</span><br><span class="line">eg:</span><br><span class="line">vim &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</span><br><span class="line">修改chroot_local_user&#x3D;YES # 将SFTP本地用户禁锢在宿主目录中</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>迁移文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">使用xftp等工具，将老的Etl服务器的脚本拿出，再通过xftp等工具放入到新的服务器中</span><br><span class="line">方法二：</span><br><span class="line">进入老的ETL服务器终端直接使用命令</span><br><span class="line">eg:</span><br><span class="line">scp &#x2F;data&#x2F;allergan -r  root@etl.idata.mobi:&#x2F;data&#x2F;</span><br><span class="line">scp &#x2F;data&#x2F;work&#x2F;scripts -r  root@etl.idata.mobi:&#x2F;data&#x2F;work&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="四-配置启动相关任务">四、配置启动相关任务</span></h3><ul>
-<li>crontab 定时任务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.crontab定时任务配置</span><br><span class="line">eg:crontab -e </span><br><span class="line">写入</span><br><span class="line">00 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans&#x2F;tools.sh</span><br><span class="line">30 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans_azure&#x2F;tools.sh</span><br><span class="line">25 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires&#x2F;tools.sh</span><br><span class="line">30 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires_azure&#x2F;tools.sh</span><br><span class="line">20 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors&#x2F;tools.sh</span><br><span class="line">30 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors_azure&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab_azure&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap_azure&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">00 01 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;transit_computer_azure&#x2F;tools.sh</span><br><span class="line">2.注意修改文件为可执行文件</span><br><span class="line">eg:chmod +x &#x2F;data&#x2F;work&#x2F;scritps&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">2.重启crontab</span><br><span class="line">service crond restart</span><br></pre></td></tr></table></figure>
-
-<h3><span id="五-其他修改新增">五、其他(修改+新增)</span></h3><ul>
-<li>中转机ETL流任务修改</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有两个ETL流任务中需要添加一个sftp上传,将销售相关数据上传一份到新的ETL流服务器</span><br><span class="line">脚本位置：</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl.kjb</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl_hospital.kjb</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Dataworks任务流修改</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.数据集成，添加数据源FTP</span><br><span class="line">2.修改节点：amap_hospital_name_ftp_to_odps的数据源</span><br><span class="line">注：这个节点是直接从etl流服务器拿数据</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>脚本任务有改动</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.用户问卷</span><br><span class="line">更新频率：日</span><br><span class="line">齐数上传时间：6:00</span><br><span class="line">任务执行时间：7:00（azure）7:10（ali）</span><br><span class="line">文件名称：user_questionnaire_detail_时间戳.zip</span><br><span class="line">执行顺序：先入库azure,再入库ali</span><br><span class="line">流程：拷贝文件到executed_file中一份，再重命名文件为questionnaire_details.zip，再执行kjb（azure）脚本将文件解压到etocrm_data中并删除questionnaire_details.zip文件。读取解压后的美丽问卷.csv到数据库中。ali脚本直接运行kjb，读取美丽问卷.csv,不再需要解压缩。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Menarini脚本需要改动</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.menarini的数据上传地址需要改动etl.idata.mobi</span><br><span class="line">Teamviewer连接menarini远程公共机</span><br><span class="line">kettle位置：C:\WorkSpace\pdi-ce-9.0.0.0-423\data-integration</span><br><span class="line">脚本位置：C:\WorkSpace\Menarini\kettle\sftp_table.kjb</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>增加任务流程 中转机需要每天更新的表DDI</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.中转机</span><br><span class="line">中转机脚本位置：D:\customer-client\allergan_data_every_day.kjb</span><br><span class="line">kettle程序位置：E:\Download\kettle\data-integration</span><br><span class="line">自动化脚本位置：C:\Users\SYWin02\Desktop\every_day_job.bat</span><br><span class="line">定时设置步骤：计算机管理-&gt;任务计划程序-&gt;创建基本任务</span><br><span class="line">定时任务名称：每天同步到etl.idata.mobi服务器的数据定时任务</span><br><span class="line">运行日志脚本位置：D:\log\every_day时间戳.log</span><br><span class="line">2.ETL服务器</span><br><span class="line">脚本位置：&#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;transit_computer_azure</span><br><span class="line">日志位置：&#x2F;data&#x2F;work&#x2F;log&#x2F;transit_computer_azure_时间戳.log</span><br><span class="line">接受数据文件位置：&#x2F;data&#x2F;allergan&#x2F;from_transit_computer</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>增加任务流程 验真扫码数据</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.ETL服务器</span><br><span class="line">脚本位置：&#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;scancode_azure</span><br><span class="line">日志位置：&#x2F;data&#x2F;work&#x2F;logs&#x2F;scan_时间戳.log</span><br><span class="line">接受数据文件位置：&#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;scancode_时间戳.zip</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表情包编码异常数据</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.ETL例子：ami_business_school.job we_chat_user.ktr</span><br><span class="line">2.表输入数据库连接编码：characterEncoding utf8  </span><br><span class="line">3.表&amp;字段编码：utf8mb4</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>通过kettle上传数据到maxcompute</p>
-<p>下载kettle的maxcompute插件</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aliyun-kettle-odps-plugin-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>官方文档地址：<a href="https://developer.aliyun.com/article/68911">https://developer.aliyun.com/article/68911</a>  ［ETL实践指南］基于Kettle的MaxCompute插件实现数据上云</p>
-<p>AccessID和Accesskey获取：阿里云账号头像-&gt;Accesskey管理-&gt;创建AccessKey-&gt;得到AccessKey ID (AccessID)和 AccessKey Secret(AccessKey)  </p>
-<h3><span id="六-疑问">六、疑问</span></h3><ul>
-<li>中转机</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.在allergan_data_etl.job中有取自Pchina_calls_tables.txt的表的同步任务，不知道做什么用</span><br><span class="line">2.除了D:\customer-client\allergan_data_every_day.kjb任务的脚本定时任务，其他任务的定时任务脚本不知道在哪里设置的·</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务器</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo切换主题</title>
     <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
     <content><![CDATA[<blockquote>
@@ -326,16 +196,134 @@
       </tags>
   </entry>
   <entry>
-    <title>引用pdf测试</title>
-    <url>/2021/04/04/book/</url>
-    <content><![CDATA[
+    <title>ETL流服务器迁移部署</title>
+    <url>/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/</url>
+    <content><![CDATA[<blockquote>
+<p>数据同步的ETL流服务器遭到挖矿程序侵入。经慎重考虑、迁移服务器。其中包括分用户、sftp用户的创建、SFTP、crontab、kettle、jdk、vnc相关服务的安装。记录生产环境相关文件的位置。配置任务、启动任务、以及在迁移部署中的一些改动。也包含服务器迁移之后其他平台的改动如：中转机、Dataworks。</p>
+</blockquote>
+<span id="more"></span>
 
-	<div class="row">
-    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
-	</div>
+<p>老的服务器版本：CentOS Linux release 7.6.1810</p>
+<p>新的服务器版本：CentOS Linux release 7.9.2009</p>
+<p>新服务器位置：华东2（上海）syp-etl</p>
+<h3><span id="一-创建分用户">一、创建分用户</span></h3><ul>
+<li><p>一版情况下禁止以root用户登录系统</p>
+</li>
+<li><p>创建分用户sy-devops-user，开启sudo权限</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">为普通用户添加sudo权限</span><br><span class="line">1.root用户下创建分用户</span><br><span class="line">eg: useradd syp-devops-user</span><br><span class="line">2.vim &#x2F;etc&#x2F;sudoers &#x2F;&#x2F;打开sudo的配置文件</span><br><span class="line">3.在“root ALL&#x3D;(ALL)ALL”这一行下面，加入一行： 用户名 ALL&#x3D;(ALL) ALL</span><br><span class="line">eg:syp-devops-user ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
 
+<h3><span id="二-安装相关服务">二、安装相关服务</span></h3><ul>
+<li>sftp</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装&#x2F;卸载vsftpd服务</span><br><span class="line">yum -y install vsftpd</span><br><span class="line">yun remove vsftpd</span><br><span class="line">2.创建sftp用户</span><br><span class="line">useradd -d &#x2F;home&#x2F;username username</span><br><span class="line">3.启动|关闭|重启|查看vsftpd服务器</span><br><span class="line">service vsftpd start|stop|restart|status</span><br><span class="line">4.设置sftp用户密码，尽量与原来密码一致</span><br><span class="line">passwd username</span><br><span class="line">5.通知Allergan配置数据库访问白名单 </span><br><span class="line">6.通知供应商上传服务器ip改变</span><br><span class="line">7.设置开机启动</span><br><span class="line">systemctl enable vsftpd.service</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>crontab</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装&#x2F;卸载crontab服务</span><br><span class="line">yum install -y crontabs</span><br><span class="line">yun remove crontabs</span><br><span class="line">2.启动|关闭|重启|查看服务状态</span><br><span class="line">service crond start|stop|restart|status</span><br><span class="line">3.配置定时任务,查看定时任务&#x2F;编辑定时任务</span><br><span class="line">crontab -l&#x2F;-e</span><br><span class="line">配置：minute hour day(month) month day(week)</span><br><span class="line">4.设置开机启动</span><br><span class="line">在&#x2F;etc&#x2F;rc.d&#x2F;rc.local 脚本中加入一行：&#x2F;sbin&#x2F;service crond start </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>kettle</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.下载kettle安装包，当前使用版本8.2</span><br><span class="line">https:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;pentaho&#x2F;files&#x2F;Data%20Integration&#x2F;</span><br><span class="line">2.通过sftp上传到服务器</span><br><span class="line">解压，kettle无需安装，运行spoon.sh</span><br><span class="line">3.设置桌面快捷方式、桌面创建kettle.desktop文件</span><br><span class="line">[Desktop Entry]</span><br><span class="line">Encoding&#x3D;UTF-8</span><br><span class="line">Name&#x3D;kettle</span><br><span class="line">Exec&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;kettle-8.2.0.0_342&#x2F;spoon.sh</span><br><span class="line">Icon&#x3D;&#x2F;usr&#x2F;local&#x2F;src&#x2F;kettle-8.2.0.0_342&#x2F;spoon.png</span><br><span class="line">Terminal&#x3D;false</span><br><span class="line">Type&#x3D;Application</span><br><span class="line">Categories&#x3D;Application;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jdk</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.下载jdk的linux版本安装包，当前版本8</span><br><span class="line">2.通过sftp上传到服务器</span><br><span class="line">3.安装位置：&#x2F;url&#x2F;java&#x2F;jdk1.8.0_271-amd64</span><br><span class="line">4.环境变量配置</span><br><span class="line">配置文件：&#x2F;etc&#x2F;profile</span><br><span class="line">内容：</span><br><span class="line">export JAVA_HOME&#x3D;&#x2F;user&#x2F;java&#x2F;jdk1.8.0_271-amd64</span><br><span class="line">exprot PATH&#x3D;$JAVA_HOME&#x2F;bin:$PATH</span><br><span class="line">export CLASSPATH&#x3D;.:$JAVA_HOME&#x2F;lib&#x2F;tools.jar</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>vnc</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.安装VNC 默认port:5901</span><br><span class="line">yum install -y tigervnc-server vnc</span><br><span class="line">2.启动桌面进程方式</span><br><span class="line">systemctl enable vncserver@:1.service</span><br><span class="line">systemctl start vncserver@:1.service</span><br><span class="line">3.查看运行的桌面</span><br><span class="line">vncserver -list</span><br><span class="line">4.查看某个桌面进程的状态</span><br><span class="line">systemctl status vncserver@:1.service</span><br><span class="line">5.杀掉某个桌面</span><br><span class="line">vncserver -kill :1</span><br><span class="line">6.设置Vnc密码</span><br><span class="line">vncpasswd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过阿里云自带的vnc连接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.阿里云平台-&gt;控制台-&gt;云服务器ESC-&gt;对应服务器-&gt;远程连接-&gt;选择VNC远程连接</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CentOS 中文化</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.查看当前语言</span><br><span class="line">echo $LANG</span><br><span class="line">2.查看当前支持的所有语言，如果有“zh_cn”则有中文</span><br><span class="line">locale</span><br><span class="line">3.安装中文语言包</span><br><span class="line"> centos7：yum install kde-l10n-Chinese   centos6:yum groupinstall Chinese-support</span><br><span class="line">4.查看是否安装成功</span><br><span class="line">locale -a | grep &quot;zh_CN&quot;</span><br><span class="line">5.备份修改配置文件</span><br><span class="line">cp &#x2F;etc&#x2F;locale.conf &#x2F;home&#x2F;locale.conf.backup</span><br><span class="line">vim &#x2F;etc&#x2F;locale.conf</span><br><span class="line">将LANG&#x3D;en_US.UTF-8改成 LANG&#x3D;zh_CN.UTF-8</span><br><span class="line">保存退出</span><br><span class="line">6.重启</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<h3><span id="三-迁移相关文件">三、迁移相关文件</span></h3><ul>
+<li>新建文件夹</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">脚本存储位置：mkdir &#x2F;data&#x2F;work&#x2F;scripts</span><br><span class="line">数据文件存储位置:mkdir &#x2F;data&#x2F;allergan</span><br><span class="line">日志存储位置：mkdir &#x2F;data&#x2F;work&#x2F;logs</span><br><span class="line">根据业务创建不同文件夹存储不同的数据</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_ali_online</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_finance</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_calls-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_dingtalk</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;from_transit_computer</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrmdata</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrm_data</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;executed_file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建SFTP用户</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">中转机：allergan_sales_ab 主目录：&#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">小艾数据：allergan_members 主目录：&#x2F;data&#x2F;allergan&#x2F;alergan_members</span><br><span class="line">eg:</span><br><span class="line">useradd  &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab -g whell allergan_sales_ab</span><br><span class="line">useradd  &#x2F;data&#x2F;allergan&#x2F;allergan_members -g allergan_members allergan_members</span><br><span class="line">注意修改主目录的权限给各个用户</span><br><span class="line">eg:</span><br><span class="line">chown -R allergan_members.allergan_members &#x2F;data&#x2F;allergan&#x2F;alllergan_members</span><br><span class="line">chown -R allergan_sales_ab.whell &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">修改配置文件vsftpd.conf,将sftp用户限制在主目录中</span><br><span class="line">eg:</span><br><span class="line">vim &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</span><br><span class="line">修改chroot_local_user&#x3D;YES # 将SFTP本地用户禁锢在宿主目录中</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>迁移文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line">使用xftp等工具，将老的Etl服务器的脚本拿出，再通过xftp等工具放入到新的服务器中</span><br><span class="line">方法二：</span><br><span class="line">进入老的ETL服务器终端直接使用命令</span><br><span class="line">eg:</span><br><span class="line">scp &#x2F;data&#x2F;allergan -r  root@etl.idata.mobi:&#x2F;data&#x2F;</span><br><span class="line">scp &#x2F;data&#x2F;work&#x2F;scripts -r  root@etl.idata.mobi:&#x2F;data&#x2F;work&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="四-配置启动相关任务">四、配置启动相关任务</span></h3><ul>
+<li>crontab 定时任务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.crontab定时任务配置</span><br><span class="line">eg:crontab -e </span><br><span class="line">写入</span><br><span class="line">00 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans&#x2F;tools.sh</span><br><span class="line">30 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans_azure&#x2F;tools.sh</span><br><span class="line">25 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires&#x2F;tools.sh</span><br><span class="line">30 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires_azure&#x2F;tools.sh</span><br><span class="line">20 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors&#x2F;tools.sh</span><br><span class="line">30 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors_azure&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab_azure&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap_azure&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">00 01 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;transit_computer_azure&#x2F;tools.sh</span><br><span class="line">2.注意修改文件为可执行文件</span><br><span class="line">eg:chmod +x &#x2F;data&#x2F;work&#x2F;scritps&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">2.重启crontab</span><br><span class="line">service crond restart</span><br></pre></td></tr></table></figure>
+
+<h3><span id="五-其他修改新增">五、其他(修改+新增)</span></h3><ul>
+<li>中转机ETL流任务修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有两个ETL流任务中需要添加一个sftp上传,将销售相关数据上传一份到新的ETL流服务器</span><br><span class="line">脚本位置：</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl.kjb</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl_hospital.kjb</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Dataworks任务流修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.数据集成，添加数据源FTP</span><br><span class="line">2.修改节点：amap_hospital_name_ftp_to_odps的数据源</span><br><span class="line">注：这个节点是直接从etl流服务器拿数据</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>脚本任务有改动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.用户问卷</span><br><span class="line">更新频率：日</span><br><span class="line">齐数上传时间：6:00</span><br><span class="line">任务执行时间：7:00（azure）7:10（ali）</span><br><span class="line">文件名称：user_questionnaire_detail_时间戳.zip</span><br><span class="line">执行顺序：先入库azure,再入库ali</span><br><span class="line">流程：拷贝文件到executed_file中一份，再重命名文件为questionnaire_details.zip，再执行kjb（azure）脚本将文件解压到etocrm_data中并删除questionnaire_details.zip文件。读取解压后的美丽问卷.csv到数据库中。ali脚本直接运行kjb，读取美丽问卷.csv,不再需要解压缩。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Menarini脚本需要改动</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.menarini的数据上传地址需要改动etl.idata.mobi</span><br><span class="line">Teamviewer连接menarini远程公共机</span><br><span class="line">kettle位置：C:\WorkSpace\pdi-ce-9.0.0.0-423\data-integration</span><br><span class="line">脚本位置：C:\WorkSpace\Menarini\kettle\sftp_table.kjb</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>增加任务流程 中转机需要每天更新的表DDI</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.中转机</span><br><span class="line">中转机脚本位置：D:\customer-client\allergan_data_every_day.kjb</span><br><span class="line">kettle程序位置：E:\Download\kettle\data-integration</span><br><span class="line">自动化脚本位置：C:\Users\SYWin02\Desktop\every_day_job.bat</span><br><span class="line">定时设置步骤：计算机管理-&gt;任务计划程序-&gt;创建基本任务</span><br><span class="line">定时任务名称：每天同步到etl.idata.mobi服务器的数据定时任务</span><br><span class="line">运行日志脚本位置：D:\log\every_day时间戳.log</span><br><span class="line">2.ETL服务器</span><br><span class="line">脚本位置：&#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;transit_computer_azure</span><br><span class="line">日志位置：&#x2F;data&#x2F;work&#x2F;log&#x2F;transit_computer_azure_时间戳.log</span><br><span class="line">接受数据文件位置：&#x2F;data&#x2F;allergan&#x2F;from_transit_computer</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>增加任务流程 验真扫码数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.ETL服务器</span><br><span class="line">脚本位置：&#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;scancode_azure</span><br><span class="line">日志位置：&#x2F;data&#x2F;work&#x2F;logs&#x2F;scan_时间戳.log</span><br><span class="line">接受数据文件位置：&#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;scancode_时间戳.zip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>表情包编码异常数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.ETL例子：ami_business_school.job we_chat_user.ktr</span><br><span class="line">2.表输入数据库连接编码：characterEncoding utf8  </span><br><span class="line">3.表&amp;字段编码：utf8mb4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>通过kettle上传数据到maxcompute</p>
+<p>下载kettle的maxcompute插件</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aliyun-kettle-odps-plugin-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>官方文档地址：<a href="https://developer.aliyun.com/article/68911">https://developer.aliyun.com/article/68911</a>  ［ETL实践指南］基于Kettle的MaxCompute插件实现数据上云</p>
+<p>AccessID和Accesskey获取：阿里云账号头像-&gt;Accesskey管理-&gt;创建AccessKey-&gt;得到AccessKey ID (AccessID)和 AccessKey Secret(AccessKey)  </p>
+<h3><span id="六-疑问">六、疑问</span></h3><ul>
+<li>中转机</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.在allergan_data_etl.job中有取自Pchina_calls_tables.txt的表的同步任务，不知道做什么用</span><br><span class="line">2.除了D:\customer-client\allergan_data_every_day.kjb任务的脚本定时任务，其他任务的定时任务脚本不知道在哪里设置的·</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>存储过程</title>
@@ -388,63 +376,93 @@
       </tags>
   </entry>
   <entry>
-    <title>数据库SQL基础</title>
-    <url>/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/</url>
+    <title>引用pdf测试</title>
+    <url>/2021/04/04/book/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>工作总结</title>
+    <url>/2021/04/09/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
-<p>本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。</p>
+<p>在上海工作了一年2020年3月到2021年3月。人数第一份正式工作感慨很多，也学到了很多。记录下来总结一下，给第一份工作画个句号。包含：对自己职业发展路线的思考以及工作方法的总结</p>
 </blockquote>
 <span id="more"></span>
 
-<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+<h3><span id="职业发展路线">职业发展路线</span></h3><p>​    我是以Java工程师的角色应招进入公司的。但发生了偏差，实际从事的是数据方面的工作。没有抱怨，毕竟招聘时，也曾聊过可能会串岗。正式工作内容包含 ETL开发、数据开发、BI开发、运维工作。工作初期还是遇到了很多问题，比如Excel不熟练、各种工具都是大学未曾学到的。所以当时学到很着急，感觉自己哪里都不会。工作一年渐渐进入节奏。也渐渐对数据工作有了兴趣。数据作为所有业务的支持，是最低层的、最基础的、最重要的。通过数据可以直观反映一个公司业务的情况、前提是对数据进行采集、抽取、清洗、探查、转换、分析、展现。数据能够最直接地展示它的价值，其它语言及岗位只是对数据结果进行展示和输出。所以为什么不直接从事数据方面的工作呢！</p>
+<p>​    职业规划：3年内主要做技术积累，期间积累的不仅仅是技术，更多的是对数据分析的方法、对业务的理解。技术总有办法解决，重要的是如何分析数据、如何将数据与业务连接。3年到5年技术管理层，数据解决方案、数据处理架构。5年后纯管理层或者创业，数据分析决策者</p>
+<h3><span id="工作方法">工作方法</span></h3><ul>
+<li>文档：先写文档，再执行。先写文档，再执行。先写文档，再执行。写出来才能说出来。</li>
+<li>工作边界：划清楚自己当前工作的工作边界，以达到某种目的或状态为止。</li>
+<li>清晰：对自己工作范围内的事情要清晰明白，做到心中有把握。对需求要清晰，不懂要问，不能似是而非。</li>
+<li>跳出思考：对某一难以解决的问题，要学会跳出固定思维去解决。不能执拗某个点。</li>
+<li>沟通：有效的沟通能够了解更多自身知识体系外的知识，且做事情更准确有效。说不出来是应为没有写过。</li>
+<li>规范：做东西要符合某一规范，不管是自己的还是企业的，最好是自己的。</li>
+<li>总结：项目结果后要学会总结、反思。</li>
+<li>通用性：不管是文档还是代码都要留有余地或弹性的空间。</li>
+<li>谦逊：保持谦虚的态度，多写、多看、多听。不要眼高手低、多去实践。不低估自己、不高估自己。</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>工作总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见的SQL场景</title>
+    <url>/2021/04/09/%E5%B8%B8%E7%94%A8sql%E6%83%85%E6%99%AF/</url>
+    <content><![CDATA[<blockquote>
+<p>主要介绍在写SQL过程中，经常遇到的场景。</p>
+</blockquote>
+<span id="more"></span>
 
-<h4><span id="2常用的开窗函数">2.常用的开窗函数</span></h4><ul>
-<li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
+<h4><span id="1将查询数据导入已有表中">1.将查询数据导入已有表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">insert into 表 select * from tablename</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><strong>聚合开窗函数-count()</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select studentId,math,departmentId,classId,</span><br><span class="line">-- 以符合条件的所有行作为窗口</span><br><span class="line">count(math) over() as count1,</span><br><span class="line">-- 以按classId分组的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId) as count2,</span><br><span class="line">-- 以按classId分组、按math排序的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math) as count3,</span><br><span class="line">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math rows between 1 preceding and 2 following) as count4</span><br><span class="line">from student_scores where departmentId&#x3D;&#39;department1&#39;;</span><br></pre></td></tr></table></figure>
+<h4><span id="2将查询数据导入新表中">2.将查询数据导入新表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table rds_rep_practice_describle_v2 as</span><br><span class="line">select distinct *  from  rds_rep_practice_describle group by concat(rep_id,item03)</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p><strong>聚合开窗函数-sum()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-min()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-max()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-avg()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-first_value()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-last_value()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-lag(col,n,default)</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-lead()</strong></p>
-</li>
-<li><p><strong>聚合开窗函数-cume_dist()</strong></p>
-</li>
-</ul>
-<h4><span id="3几种排序函数区别">3.几种排序函数区别</span></h4><ul>
-<li><p>row_number() over()：对相等的值不进行区分，相等的值对应的排名相同，序号从1到n连续。</p>
-</li>
-<li><p>rank() over()：相等的值排名相同，但若有相等的值，则序号从1到n不连续。如果有两个人都排在第3名，则没有第4名。</p>
-</li>
-<li><p>dense_rank() over()：对相等的值排名相同，但序号从1到n连续。如果有两个人都排在第一名，则排在第2名（假设仅有1个第二名）的人是第3个人。</p>
-</li>
-<li><p>ntile( n ) over()：可以看作是把有序的数据集合平均分配到指定的数量n的桶中,将桶号分配给每一行，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id,stu_name,course_name,grades</span><br><span class="line">		row_number() over(order by grades) as row_num,</span><br><span class="line">		rank() over(order by grades) as rank,</span><br><span class="line">		desen_rank() over(order by grades) as desen_rank,</span><br><span class="line">		ntile(5) over(order by grades) as ntile</span><br><span class="line">from student_grades;</span><br></pre></td></tr></table></figure>
+<h4><span id="3去除字符串中间的空格">3.<strong>去除字符串中间的空格</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">REPLACE(&#39;ababab&#39;,&#39;abab&#39;,&#39;12&#39;)&#x3D;&#39;12ab&#39;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4根据逗号拆分数据分一行为多行">4.根据逗号拆分数据分一行为多行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 根据逗号拆分一行数据为多行,help_top表的help_topic_id 从0 开始</span><br><span class="line">SELECT</span><br><span class="line">    a.member_uuid,</span><br><span class="line">    substring_index(substring_index( a.member_role_name, &#39;,&#39;, b.id + 1 ), &#39;,&#39;,- 1 ) AS member_role_name</span><br><span class="line">FROM</span><br><span class="line">    fyk_new_upload_members_tds a</span><br><span class="line">JOIN help_top b</span><br><span class="line">ON b.id &lt; ( length( a.member_role_name ) - length( REPLACE ( a.member_role_name, &#39;,&#39;, &#39;&#39; ) ) + 1 )</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">BEGIN</span><br><span class="line">set @name&#x3D;&quot;abc,ad,cd&quot;;</span><br><span class="line"></span><br><span class="line">insert into test (item)</span><br><span class="line">SELECT</span><br><span class="line">SUBSTRING_INDEX(SUBSTRING_INDEX(@name,&#39;,&#39;,help_topic_id+1),&#39;,&#39;,-1) AS num</span><br><span class="line">FROM</span><br><span class="line">mysql.help_topic</span><br><span class="line">WHERE</span><br><span class="line">help_topic_id &lt; LENGTH(@name)-LENGTH(REPLACE(@name,&#39;,&#39;,&#39;&#39;))+1;</span><br><span class="line"></span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5hive-根据多个字段去重">5.<strong>Hive 根据多个字段去重</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- hive 根据多个字段去重</span><br><span class="line">SELECT *</span><br><span class="line">FROM (</span><br><span class="line">SELECT T.*, ROW_NUMBER() OVER(PARTITION BY hcp_veeva_id,hcp_doctor_name,hcp_doctor_hospital order by 1) RN</span><br><span class="line">FROM NS_Allergan_Xlab.hcp_doctor_360_target_rds T where ds&#x3D;&#39;$&#123;dt&#125;&#39;</span><br><span class="line">) A</span><br><span class="line">WHERE A.RN&#x3D;1;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="6mysql-设置变量参与循环">6.<strong>mysql 设置变量参与循环</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- mysql 设置变量参与循环</span><br><span class="line">while @i&lt;&#x3D;@num DO</span><br><span class="line">set @i&#x3D;@i+1;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="7mysql-group_concat用法">7.mysql group_concat()用法</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</span><br><span class="line">语法：group_concat( [distinct] 要连接的字段 [order by 排序字段 asc&#x2F;desc  ] [separator &#39;分隔符&#39;] )</span><br><span class="line">例子：select name, group_concat(id) from table_name group by name;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="8mysql-查看表的最后更新时间">8.MySQL <strong>查看表的最后更新时间</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查看表的最后更新时间</span><br><span class="line">SELECT</span><br><span class="line">    &#96;TABLE_NAME&#96;, &#96;UPDATE_TIME&#96;</span><br><span class="line">FROM</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;</span><br><span class="line">WHERE</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_SCHEMA&#96; &#x3D; &#39;ieipdb2&#39;</span><br><span class="line">AND</span><br><span class="line">    &#96;information_schema&#96;.&#96;TABLES&#96;.&#96;TABLE_NAME&#96; &#x3D; &#39;s_index_report&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="9mysql-查询一个的字段及注释">9.MySQL 查询一个的字段及注释</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，字段的注释</span><br><span class="line">SELECT</span><br><span class="line">    TABLE_NAME,</span><br><span class="line">    COLUMN_NAME,</span><br><span class="line">    COLUMN_TYPE,</span><br><span class="line">    COLUMN_COMMENT</span><br><span class="line">FROM</span><br><span class="line">    information_schema. COLUMNS</span><br><span class="line">WHERE</span><br><span class="line">    table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">AND table_name &#x3D; &#39;ods_direction_xlab&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="10mysql查询一个表的所有列名数据类型">10.MySQL<strong>查询一个表的所有列名，数据类型</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询一个表的所有列名，数据类型</span><br><span class="line">select column_name,data_type from information_schema.columns</span><br><span class="line">where table_name &#x3D; &#39;Sys_User&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="11根据b表数据更新a表数据">11.<strong>根据b表数据更新A表数据</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">update 表A as a ,表B as b</span><br><span class="line">set a.role_id&#x3D;b.set_value</span><br><span class="line">where a.role_id&#x3D;b.set_key</span><br></pre></td></tr></table></figure>
+
+<h4><span id="12mysql查询表注释">12.MySQL<strong>查询表注释</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">table_name ,</span><br><span class="line">table_comment</span><br><span class="line">FROM</span><br><span class="line">information_schema.TABLES</span><br><span class="line">WHERE</span><br><span class="line">table_schema &#x3D; &#39;allergan_sales_ab&#39;</span><br><span class="line">and left(TABLE_NAME,3)&#x3D;&#39;ods&#39;</span><br><span class="line">ORDER BY</span><br><span class="line">table_name;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="13-查看表的大小">13. <strong>查看表的大小</strong></span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select concat(round(sum(data_length&#x2F;1024&#x2F;1024&#x2F;1024),2),&#39;G&#39;) as data from information_schema.tables</span><br><span class="line">where table_schema&#x3D;&#39;allergan_sales_ab&#39; and table_name &#x3D; &#39;tblcrm_doccall_detail_veeva&#39;;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="14查询字段在哪个表中">14.查询字段在哪个表中</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select table_schema ,table_name   from information_schema.columns where column_name &#x3D; &#39;comparison_approval_status&#39;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="15mysql实现累加">15.MySQL实现累加</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET @csum :&#x3D; 0;</span><br><span class="line">SELECT 日期, 净利润, (@csum :&#x3D; @csum + 净利润) AS 累计利润</span><br><span class="line">FROM daily_pnl_view;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="16行转列-列转行">16.行转列、列转行</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 建测试表</span><br><span class="line">DROP TABLE IF EXISTS tb_score;</span><br><span class="line">CREATE TABLE tb_score(</span><br><span class="line">    id INT(11) NOT NULL auto_increment,</span><br><span class="line">    userid VARCHAR(20) NOT NULL COMMENT &#39;用户id&#39;,</span><br><span class="line">    subject VARCHAR(20) COMMENT &#39;科目&#39;,</span><br><span class="line">    score DOUBLE COMMENT &#39;成绩&#39;,</span><br><span class="line">    PRIMARY KEY(id)</span><br><span class="line">)ENGINE &#x3D; INNODB DEFAULT CHARSET &#x3D; utf8;</span><br><span class="line">-- 插入数据</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;语文&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;数学&#39;,92);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;001&#39;,&#39;英语&#39;,80);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;语文&#39;,88);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;数学&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;002&#39;,&#39;英语&#39;,75.5);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;语文&#39;,70);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;数学&#39;,85);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;英语&#39;,90);</span><br><span class="line">INSERT INTO tb_score(userid,subject,score) VALUES (&#39;003&#39;,&#39;政治&#39;,82);</span><br><span class="line">-- 行转列 </span><br><span class="line">	-- 1.利用case when then 进行行转列 或 if </span><br><span class="line">SELECT userid,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;语文&#39; THEN score ELSE 0 END) as &#39;语文&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;数学&#39; THEN score ELSE 0 END) as &#39;数学&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;英语&#39; THEN score ELSE 0 END) as &#39;英语&#39;,</span><br><span class="line">SUM(CASE &#96;subject&#96; WHEN &#39;政治&#39; THEN score ELSE 0 END) as &#39;政治&#39; </span><br><span class="line">FROM tb_score </span><br><span class="line">GROUP BY userid;</span><br><span class="line">	-- 2.left join 自关联做限制	</span><br><span class="line">select t1.userid,</span><br><span class="line">t1.score as &#39;语文&#39;,</span><br><span class="line">t2.score as &#39;数学&#39;,</span><br><span class="line">t3.score as &#39;英语&#39;,</span><br><span class="line">t4.score as &#39;政治&#39;</span><br><span class="line">from tb_score t1</span><br><span class="line">left join tb_score t2 on t1.userid &#x3D;t2.userid and t2.subject &#x3D;&#39;数学&#39;</span><br><span class="line">left join tb_score t3 on t1.userid&#x3D;t3.userid and t3.subject &#x3D;&#39;英语&#39;</span><br><span class="line">left join tb_score t4 on t1.userid&#x3D;t4.userid and t4.subject &#x3D;&#39;政治&#39;</span><br><span class="line">where t1.subject&#x3D;&#39;语文&#39; group by t1.userid;</span><br><span class="line">-- 列转行。union all 查询每个tag的数据，然后union all和并起来</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>开窗函数</tag>
+        <tag>SQL基础</tag>
       </tags>
   </entry>
   <entry>
@@ -513,6 +531,66 @@
       </categories>
       <tags>
         <tag>SQL优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL基础</title>
+    <url>/2021/04/07/%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2常用的开窗函数">2.常用的开窗函数</span></h4><ul>
+<li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>聚合开窗函数-count()</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select studentId,math,departmentId,classId,</span><br><span class="line">-- 以符合条件的所有行作为窗口</span><br><span class="line">count(math) over() as count1,</span><br><span class="line">-- 以按classId分组的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId) as count2,</span><br><span class="line">-- 以按classId分组、按math排序的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math) as count3,</span><br><span class="line">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math rows between 1 preceding and 2 following) as count4</span><br><span class="line">from student_scores where departmentId&#x3D;&#39;department1&#39;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>聚合开窗函数-sum()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-min()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-max()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-avg()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-first_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-last_value()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lag(col,n,default)</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-lead()</strong></p>
+</li>
+<li><p><strong>聚合开窗函数-cume_dist()</strong></p>
+</li>
+</ul>
+<h4><span id="3几种排序函数区别">3.几种排序函数区别</span></h4><ul>
+<li><p>row_number() over()：对相等的值不进行区分，相等的值对应的排名相同，序号从1到n连续。</p>
+</li>
+<li><p>rank() over()：相等的值排名相同，但若有相等的值，则序号从1到n不连续。如果有两个人都排在第3名，则没有第4名。</p>
+</li>
+<li><p>dense_rank() over()：对相等的值排名相同，但序号从1到n连续。如果有两个人都排在第一名，则排在第2名（假设仅有1个第二名）的人是第3个人。</p>
+</li>
+<li><p>ntile( n ) over()：可以看作是把有序的数据集合平均分配到指定的数量n的桶中,将桶号分配给每一行，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id,stu_name,course_name,grades</span><br><span class="line">		row_number() over(order by grades) as row_num,</span><br><span class="line">		rank() over(order by grades) as rank,</span><br><span class="line">		desen_rank() over(order by grades) as desen_rank,</span><br><span class="line">		ntile(5) over(order by grades) as ntile</span><br><span class="line">from student_grades;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>开窗函数</tag>
       </tags>
   </entry>
 </search>
