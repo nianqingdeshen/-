@@ -231,7 +231,8 @@
 
 <h4><span id="设置代码高亮">设置代码高亮</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
 
-<h4><span id="修改语言">修改语言</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-Hans </span><br></pre></td></tr></table></figure>
+<h4><span id="修改语言">修改语言</span></h4><p>j进入<code>\languages</code>文件夹，有zh-Hans.yml 文件 修改名称为zh-CN.yml ,然后设置主题语言选项为zh-CN</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: zh-CN</span><br></pre></td></tr></table></figure>
 
 <h4><span id="设置头像">设置头像</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
 
@@ -278,7 +279,9 @@
 <ul>
 <li>配置页面</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br><span class="line">-- 图片使用中文名称引用时会造成中文会乱码，无法正常显示，暂时没有解决</span><br></pre></td></tr></table></figure>
+
+
 
 <h4><span id="修改标签云颜色">修改标签云颜色</span></h4><ul>
 <li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
@@ -301,6 +304,12 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
 
 <h4><span id="上一页下一页-按钮错误显示">‘上一页’，‘下一页’ 按钮错误显示</span></h4><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的html代码改为‘下一页’和‘上一页’即可！</p>
+<h4><span id="sidebar中post点击出错">sidebar中post点击出错</span></h4><p>我是直接将链接去除了。打开<code>next &gt; layout &gt; _macro &gt; sidebar.swig</code> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(theme.menu.archives).split(&#39;||&#39;)[0] | trim &#125;&#125;&quot;&gt;</span><br><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(config.archive_dir) &#125;&#125;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="主页footer内容不居中">主页footer内容不居中</span></h4><p>打开<code>next\source\css\_schemes\Mist\index.styl</code>,</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.footer-inner中得text-align改为center</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -311,11 +320,16 @@
   </entry>
   <entry>
     <title>QlikView基础使用</title>
-    <url>/2021/04/04/QlikView%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[
+    <url>/2021/04/09/QlikView/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等</p>
+</blockquote>
+<span id="more"></span>
+
+
 
 	<div class="row">
-    <embed src="/book/QlikView.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="./QlikView.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
@@ -351,11 +365,36 @@
     <content><![CDATA[
 
 	<div class="row">
-    <embed src="/book/Menarini.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="QlikView.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>infocus入职培训</title>
+    <url>/2021/04/09/%E5%85%A5%E8%81%8C%E5%9F%B9%E8%AE%AD/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+	<div class="row">
+    <embed src="./入职培训.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
 ]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>总结</tag>
+      </tags>
   </entry>
   <entry>
     <title>存储过程</title>
@@ -411,7 +450,7 @@
     <title>工作总结</title>
     <url>/2021/04/09/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
-<p>在上海工作了一年2020年3月到2021年3月。人数第一份正式工作感慨很多，也学到了很多。记录下来总结一下，给第一份工作画个句号。包含：对自己职业发展路线的思考以及工作方法的总结</p>
+<p>在上海工作了一年2020年3月到2021年3月。人数第一份正式工作感慨很多，也学到了很多。记录下来总结一下，给第一份工作画个句号。包含：对自己职业发展路线的思考以及工作方法的总结。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -438,78 +477,10 @@
       </tags>
   </entry>
   <entry>
-    <title>数据库SQL优化</title>
-    <url>/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN <a href="https://lss0555.blog.csdn.net/">lss0555</a></p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="1创建索引">1.创建索引</span></h4><ul>
-<li>要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
-<li>在经常需要进行检索的字段上创建索引</li>
-<li>创建索引给检索带来的性能提升往往是巨大的，因此在发现检索速度过慢的时候应该首先想到的就是创建索引</li>
-<li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
-</ul>
-<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4><p>效率低：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
-
-<p>效率高：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3使用预编译查询">3.使用预编译查询</span></h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
-<h4><span id="4调整where字句中的连接顺序">4.调整Where字句中的连接顺序</span></h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
-<h4><span id="5尽量将多条sql语句压缩到一句sql中">5.尽量将多条SQL语句压缩到一句SQL中</span></h4><p>每次执行SQL的时候都要建立网络连接、进行权限校验、进行SQL语句的查询优化、发送执行结果，这个过程<br>是非常耗时的，因此应该尽量避免过多的执行SQL语句，能够压缩到一句SQL执行的语句就不要用多条来执行。</p>
-<h4><span id="6用where字句替换having字句">6.用where字句替换HAVING字句</span></h4><p>避免使用HAVING字句，因为HAVING只会在检索出所有记录之后才对结果集进行过滤，而where则是在聚合前<br>刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于聚合函数<br>的过滤，除此之外，应该将条件写在where字句中。</p>
-<h4><span id="7使用表的别名">7.使用表的别名</span></h4><p>当在SQL语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减<br>少哪些友列名歧义引起的语法错误。</p>
-<h4><span id="8用union-all替换union">8.用union all替换union</span></h4><p>当SQL语句需要union两个查询结果集合时，即使检索结果中不会有重复的记录，如果使用union这两个结果集<br>同样会尝试进行合并，然后在输出最终结果前进行排序，因此如果可以判断检索结果中不会有重复的记录时候，应<br>该用union all，这样效率就会因此得到提高。</p>
-<h4><span id="9考虑使用临时表暂存中间结果">9.考虑使用“临时表”暂存中间结果</span></h4><p>简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。<br>但是也得避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
-<h4><span id="10只在必要的情况下才使用事务">10.只在必要的情况下才使用事务</span></h4><p>SQL Server中一句SQL语句默认就是一个事务，在该语句执行完成后也是默认commit的。其实，这就是begin tran的一个最小化的形式，好比在每句语句开头隐含了一个begin tran，结束时隐含了一个commit。<br>有些情况下，我们需要显式声明begin tran，比如做“插、删、改”操作需要同时修改几个表，要求要么几个表都修改成功，要么都不成功。begin tran 可以起到这样的作用，它可以把若干SQL语句套在一起执行，最后再一起commit。 好处是保证了数据的一致性，但任何事情都不是完美无缺的。Begin tran付出的代价是在提交之前，所有SQL语句锁住的资源都不能释放，直到commit掉。<br>可见，如果Begin tran套住的SQL语句太多，那数据库的性能就糟糕了。在该大事务提交之前，必然会阻塞别的语句，造成block很多。<br>Begin tran使用的原则是，在保证数据一致性的前提下，begin tran 套住的SQL语句越少越好！有些情况下可以采用触发器同步数据，不一定要用begin translation。</p>
-<h4><span id="11尽量避免使用游标">11.尽量避免使用游标</span></h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
-<h4><span id="12用varcharnvarchar-代替-charnchar">12.用varchar/nvarchar 代替 char/nchar</span></h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
-<h4><span id="13查询select语句优化">13.查询select语句优化</span></h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
-<pre><code> select id from t where num is null           
-</code></pre>
-<p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
-<pre><code>  select id from t where num=0
-  select id from t where num=10 or num=20
-</code></pre>
-<p>可以这样查询：</p>
-<pre><code>  select id from t where num=10
-   union all
-  select id from t where num=20
-</code></pre>
-<p>4.不能前置百分</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
-
-
-<p>若要提高效率，可以考虑全文检索。</p>
-<pre><code> select id from t where num in(1,2,3)
-</code></pre>
-<p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
-<pre><code>select id from t where num between 1 and 3 
-</code></pre>
-<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
-
-<p>相反的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
-
-<h4><span id="14更新update语句优化">14.更新Update语句优化</span></h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
-<h4><span id="15插入insert语句优化">15.插入Insert语句优化</span></h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>SQL优化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常见的SQL场景</title>
     <url>/2021/04/09/%E5%B8%B8%E7%94%A8sql%E6%83%85%E6%99%AF/</url>
     <content><![CDATA[<blockquote>
-<p>主要介绍在写SQL过程中，经常遇到的场景。</p>
+<p>主要介绍在写SQL过程中，经常遇到的场景。包含系统表的使用，查询表字段、注释、大小，行转列，列转行，多行数据合并一行，一行拆分多行、实现累加等多个场景。</p>
 </blockquote>
 <span id="more"></span>
 
@@ -611,6 +582,74 @@
       </categories>
       <tags>
         <tag>开窗函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL优化</title>
+    <url>/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN <a href="https://lss0555.blog.csdn.net/">lss0555</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建索引">1.创建索引</span></h4><ul>
+<li>要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
+<li>在经常需要进行检索的字段上创建索引</li>
+<li>创建索引给检索带来的性能提升往往是巨大的，因此在发现检索速度过慢的时候应该首先想到的就是创建索引</li>
+<li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
+</ul>
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4><p>效率低：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<p>效率高：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3使用预编译查询">3.使用预编译查询</span></h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
+<h4><span id="4调整where字句中的连接顺序">4.调整Where字句中的连接顺序</span></h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
+<h4><span id="5尽量将多条sql语句压缩到一句sql中">5.尽量将多条SQL语句压缩到一句SQL中</span></h4><p>每次执行SQL的时候都要建立网络连接、进行权限校验、进行SQL语句的查询优化、发送执行结果，这个过程<br>是非常耗时的，因此应该尽量避免过多的执行SQL语句，能够压缩到一句SQL执行的语句就不要用多条来执行。</p>
+<h4><span id="6用where字句替换having字句">6.用where字句替换HAVING字句</span></h4><p>避免使用HAVING字句，因为HAVING只会在检索出所有记录之后才对结果集进行过滤，而where则是在聚合前<br>刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于聚合函数<br>的过滤，除此之外，应该将条件写在where字句中。</p>
+<h4><span id="7使用表的别名">7.使用表的别名</span></h4><p>当在SQL语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减<br>少哪些友列名歧义引起的语法错误。</p>
+<h4><span id="8用union-all替换union">8.用union all替换union</span></h4><p>当SQL语句需要union两个查询结果集合时，即使检索结果中不会有重复的记录，如果使用union这两个结果集<br>同样会尝试进行合并，然后在输出最终结果前进行排序，因此如果可以判断检索结果中不会有重复的记录时候，应<br>该用union all，这样效率就会因此得到提高。</p>
+<h4><span id="9考虑使用临时表暂存中间结果">9.考虑使用“临时表”暂存中间结果</span></h4><p>简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。<br>但是也得避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
+<h4><span id="10只在必要的情况下才使用事务">10.只在必要的情况下才使用事务</span></h4><p>SQL Server中一句SQL语句默认就是一个事务，在该语句执行完成后也是默认commit的。其实，这就是begin tran的一个最小化的形式，好比在每句语句开头隐含了一个begin tran，结束时隐含了一个commit。<br>有些情况下，我们需要显式声明begin tran，比如做“插、删、改”操作需要同时修改几个表，要求要么几个表都修改成功，要么都不成功。begin tran 可以起到这样的作用，它可以把若干SQL语句套在一起执行，最后再一起commit。 好处是保证了数据的一致性，但任何事情都不是完美无缺的。Begin tran付出的代价是在提交之前，所有SQL语句锁住的资源都不能释放，直到commit掉。<br>可见，如果Begin tran套住的SQL语句太多，那数据库的性能就糟糕了。在该大事务提交之前，必然会阻塞别的语句，造成block很多。<br>Begin tran使用的原则是，在保证数据一致性的前提下，begin tran 套住的SQL语句越少越好！有些情况下可以采用触发器同步数据，不一定要用begin translation。</p>
+<h4><span id="11尽量避免使用游标">11.尽量避免使用游标</span></h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
+<h4><span id="12用varcharnvarchar-代替-charnchar">12.用varchar/nvarchar 代替 char/nchar</span></h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
+<h4><span id="13查询select语句优化">13.查询select语句优化</span></h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
+<pre><code> select id from t where num is null           
+</code></pre>
+<p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
+<pre><code>  select id from t where num=0
+  select id from t where num=10 or num=20
+</code></pre>
+<p>可以这样查询：</p>
+<pre><code>  select id from t where num=10
+   union all
+  select id from t where num=20
+</code></pre>
+<p>4.不能前置百分</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
+
+
+<p>若要提高效率，可以考虑全文检索。</p>
+<pre><code> select id from t where num in(1,2,3)
+</code></pre>
+<p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
+<pre><code>select id from t where num between 1 and 3 
+</code></pre>
+<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
+
+<p>相反的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
+
+<h4><span id="14更新update语句优化">14.更新Update语句优化</span></h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
+<h4><span id="15插入insert语句优化">15.插入Insert语句优化</span></h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL优化</tag>
       </tags>
   </entry>
 </search>
