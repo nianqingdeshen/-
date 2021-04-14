@@ -181,6 +181,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Excel基础知识</title>
+    <url>/2021/04/09/Excel%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2><span id="excel">Excel</span></h2><h4><span id="excel拆分sheets">Excel拆分Sheets</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub 分拆工作表()    </span><br><span class="line">Dim sht As Worksheet      </span><br><span class="line">Dim MyBook As Workbook     </span><br><span class="line">Set MyBook &#x3D; ActiveWorkbook      </span><br><span class="line">For Each sht In MyBook.Sheets        </span><br><span class="line">sht.Copy</span><br><span class="line">ActiveWorkbook.SaveAs Filename:&#x3D;MyBook.Path &amp; &quot;\&quot; &amp; sht.Name, FileFormat:&#x3D;xlOpenXMLWorkbook     &#39;将工作簿另存为xlsx格式           ActiveWorkbook.Close     </span><br><span class="line">Next      </span><br><span class="line">MsgBox &quot;文件已经被分拆完毕!&quot;  </span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+
+<h4><span id="分离中英文">分离中英文</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;LEFT(A1,LENB(A1)-LEN(A1))</span><br></pre></td></tr></table></figure>
+
+<h4><span id="英文月份变为数字">英文月份变为数字</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;MONTH(A20&amp;&quot;-1&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="一维表变二维表">一维表变二维表</span></h4><p>数据-自表格/区域-逆转置</p>
+<h4><span id="数字变ym">数字变YM</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;if(A1&lt;10,2020&amp;&quot;0&quot;&amp;A1,2020&amp;A1)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="英文月份变ym">英文月份变YM</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;IF(MONTH(J3&amp;&quot;-1&quot;)&lt;10,2019&amp;&quot;0&quot;&amp;MONTH(J3&amp;&quot;-1&quot;),2019&amp;MONTH(J3&amp;&quot;-1&quot;))</span><br></pre></td></tr></table></figure>
+
+<h4><span id="同步两个sheet数据">同步两个sheet数据</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub Worksheet_Change(ByVal Target As Range)</span><br><span class="line">Application.EnableEvents &#x3D; False</span><br><span class="line">Sheet1.Range(&quot;a1:z999&quot;).Copy Sheet2.Range(&quot;a1&quot;)</span><br><span class="line">Application.EnableEvents &#x3D; True</span><br><span class="line">Sheet1.Range(&quot;a1&quot;).Select</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+
+<h4><span id="vlookup">vlookup</span></h4><p>注意查找的数据与查找数据域的第一列匹配</p>
+]]></content>
+      <categories>
+        <category>Excel</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git基础命令</title>
     <url>/2021/04/09/Git%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<blockquote>
@@ -232,7 +262,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4><span id="代码合并提交标准">代码合并提交标准</span></h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#x31;&#x2e;&#x31;">&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#x31;&#x2e;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#102;&#105;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;">&#102;&#105;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4><span id="上次远程仓库">上次远程仓库</span></h4><ul>
 <li>git add .</li>
@@ -290,36 +320,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Excel基础知识</title>
-    <url>/2021/04/09/Excel%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
-</blockquote>
-<span id="more"></span>
-
-<h2><span id="excel">Excel</span></h2><h4><span id="excel拆分sheets">Excel拆分Sheets</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub 分拆工作表()    </span><br><span class="line">Dim sht As Worksheet      </span><br><span class="line">Dim MyBook As Workbook     </span><br><span class="line">Set MyBook &#x3D; ActiveWorkbook      </span><br><span class="line">For Each sht In MyBook.Sheets        </span><br><span class="line">sht.Copy</span><br><span class="line">ActiveWorkbook.SaveAs Filename:&#x3D;MyBook.Path &amp; &quot;\&quot; &amp; sht.Name, FileFormat:&#x3D;xlOpenXMLWorkbook     &#39;将工作簿另存为xlsx格式           ActiveWorkbook.Close     </span><br><span class="line">Next      </span><br><span class="line">MsgBox &quot;文件已经被分拆完毕!&quot;  </span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-
-<h4><span id="分离中英文">分离中英文</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;LEFT(A1,LENB(A1)-LEN(A1))</span><br></pre></td></tr></table></figure>
-
-<h4><span id="英文月份变为数字">英文月份变为数字</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;MONTH(A20&amp;&quot;-1&quot;)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="一维表变二维表">一维表变二维表</span></h4><p>数据-自表格/区域-逆转置</p>
-<h4><span id="数字变ym">数字变YM</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;if(A1&lt;10,2020&amp;&quot;0&quot;&amp;A1,2020&amp;A1)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="英文月份变ym">英文月份变YM</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;IF(MONTH(J3&amp;&quot;-1&quot;)&lt;10,2019&amp;&quot;0&quot;&amp;MONTH(J3&amp;&quot;-1&quot;),2019&amp;MONTH(J3&amp;&quot;-1&quot;))</span><br></pre></td></tr></table></figure>
-
-<h4><span id="同步两个sheet数据">同步两个sheet数据</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Private Sub Worksheet_Change(ByVal Target As Range)</span><br><span class="line">Application.EnableEvents &#x3D; False</span><br><span class="line">Sheet1.Range(&quot;a1:z999&quot;).Copy Sheet2.Range(&quot;a1&quot;)</span><br><span class="line">Application.EnableEvents &#x3D; True</span><br><span class="line">Sheet1.Range(&quot;a1&quot;).Select</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
-
-<h4><span id="vlookup">vlookup</span></h4><p>注意查找的数据与查找数据域的第一列匹配</p>
-]]></content>
-      <categories>
-        <category>Excel</category>
-      </categories>
-      <tags>
-        <tag>Excel</tag>
       </tags>
   </entry>
   <entry>
@@ -2456,8 +2456,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4><span id="复制远程服务器文件到本地">复制远程服务器文件到本地</span></h4><ul>
-<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#x76;&#x6f;&#112;&#115;&#45;&#117;&#115;&#x65;&#114;&#64;&#x34;&#55;&#x2e;&#x39;&#57;&#x2e;&#50;&#x33;&#54;&#x2e;&#x31;&#x38;&#x31;">&#x73;&#121;&#45;&#100;&#101;&#x76;&#x6f;&#112;&#115;&#45;&#117;&#115;&#x65;&#114;&#64;&#x34;&#55;&#x2e;&#x39;&#57;&#x2e;&#50;&#x33;&#54;&#x2e;&#x31;&#x38;&#x31;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#115;&#x79;&#45;&#x64;&#101;&#x76;&#111;&#112;&#115;&#45;&#x75;&#115;&#x65;&#114;&#64;&#52;&#x37;&#x2e;&#57;&#57;&#46;&#50;&#51;&#54;&#x2e;&#x31;&#56;&#49;">&#115;&#x79;&#45;&#x64;&#101;&#x76;&#111;&#112;&#115;&#45;&#x75;&#115;&#x65;&#114;&#64;&#52;&#x37;&#x2e;&#57;&#57;&#46;&#50;&#51;&#54;&#x2e;&#x31;&#56;&#49;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#115;&#121;&#45;&#x64;&#x65;&#118;&#111;&#112;&#115;&#45;&#x75;&#x73;&#101;&#x72;&#x40;&#52;&#55;&#x2e;&#57;&#x39;&#x2e;&#50;&#51;&#54;&#46;&#x31;&#x38;&#49;">&#115;&#121;&#45;&#x64;&#x65;&#118;&#111;&#112;&#115;&#45;&#x75;&#x73;&#101;&#x72;&#x40;&#52;&#55;&#x2e;&#57;&#x39;&#x2e;&#50;&#51;&#54;&#46;&#x31;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#115;&#x79;&#x2d;&#x64;&#x65;&#118;&#x6f;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#x37;&#46;&#x39;&#57;&#x2e;&#50;&#51;&#x36;&#46;&#49;&#x38;&#x31;">&#115;&#x79;&#x2d;&#x64;&#x65;&#118;&#x6f;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#x37;&#46;&#x39;&#57;&#x2e;&#50;&#51;&#x36;&#46;&#49;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4><span id="linux解压和压缩">Linux解压和压缩</span></h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
