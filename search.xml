@@ -262,7 +262,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4><span id="代码合并提交标准">代码合并提交标准</span></h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#102;&#105;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;">&#102;&#105;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#49;&#x2e;&#x31;">&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#49;&#x2e;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4><span id="上次远程仓库">上次远程仓库</span></h4><ul>
 <li>git add .</li>
@@ -445,11 +445,45 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
 
-<h4><span id="上一页下一页-按钮错误显示">‘上一页’，‘下一页’ 按钮错误显示</span></h4><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的html代码改为‘下一页’和‘上一页’即可！</p>
+<h4><span id="翻页按钮错误显示">翻页按钮错误显示</span></h4><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的html代码改为‘下一页’和‘上一页’即可！</p>
 <h4><span id="sidebar中post点击出错">sidebar中post点击出错</span></h4><p>我是直接将链接去除了。打开<code>next &gt; layout &gt; _macro &gt; sidebar.swig</code> </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(theme.menu.archives).split(&#39;||&#39;)[0] | trim &#125;&#125;&quot;&gt;</span><br><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(config.archive_dir) &#125;&#125;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
 
 <h4><span id="主页footer内容不居中">主页footer内容不居中</span></h4><p>打开<code>next\source\css\_schemes\Mist\index.styl</code>，.footer-inner中的text-align改为center</p>
+<h4><span id="添加背景音乐">添加背景音乐</span></h4><p>注册网易云音乐，分享歌单，获取外链播放器</p>
+<p>修改 <code>themes/next/layout/_macro/sidebar.swig</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 111行左右 &#123;% endif %&#125;后</span><br><span class="line">&lt;!-- 音乐播放器 --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;330 height&#x3D;110 src&#x3D;&quot;&#123;&#123; theme.background_music&#125;&#125;&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">background_music: &#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;0&amp;id&#x3D;2120628564&amp;auto&#x3D;1&amp;height&#x3D;66</span><br></pre></td></tr></table></figure>
+
+<h4><span id="添加评论和留言板">添加评论和留言板</span></h4><p>本来是想使用多说的评论系统，但是貌似停止服务了。而disqus需要翻墙。所以目前使用的评论系统是来必力，韩国的。</p>
+<ul>
+<li><p>注册账号：来必力官网<a href="https://livere.com/">https://livere.com</a></p>
+</li>
+<li><p>安装免费的city版本</p>
+</li>
+<li><p>复制data-uuid</p>
+</li>
+<li><p>打开主题目录下的 <code>blog/themes/next/_config.yml</code> 配置文件，定位到 <code>livere_uid</code> 字段，粘贴上刚刚复制的UID。</p>
+</li>
+</ul>
+<p>留言板的设置与标签、分类、搜索配置类似</p>
+<ul>
+<li><p>进入到博客的根目录，运行命令：hexo new page guestbook</p>
+</li>
+<li><p>生成<code>index.md</code>，在里面可以写一些留言板介绍内容等-</p>
+</li>
+<li><p>修改菜单目录在themes/next/_config.yml中修改配置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  tags: &#x2F;tags||tags</span><br><span class="line">  categories: &#x2F;categories&#x2F;||th</span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br><span class="line">  about: &#x2F;about||user</span><br><span class="line">+ guestbook: &#x2F;guestbook&#x2F;||comment #留言</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置语言。找到 <code>languages</code> 文件夹里面的 <code>zh-Hans.yml</code> 文件，<code>menu</code> 子项中添加留言：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">+ guestbook: 留言</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -1539,25 +1573,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法-二分查找</title>
-    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h4><span id="二分查找">二分查找</span></h4><p><strong>前提条件：表中的数据是顺序存储结构</strong></p>
-<p><strong>查找过程：首先，假设表中的数据是按升序排列，将表中的中间位置记录的数据与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录的数据将表分成前后两个表，如果中间位置的数据大于要查找的关键字就查找前一个表，如果中间位置的数据大于要查找的关键字就查找后一个表；重复以上过程，直到查到满足条件的记录，就查找成功，否则要查找的数据不存在数据表中，查找不成功。</strong></p>
-<span id="more"></span>
-
-<p><strong>示例：在数组中查找值，返回下标</strong></p>
-<p><strong>示例代码：binary_search.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *二分查找</span><br><span class="line"> *要求数列是顺序存储结构 </span><br><span class="line">*&#x2F; </span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">	&#x2F;&#x2F;数据 </span><br><span class="line">	int a[6]&#x3D;&#123;2,8,16,34,51,67&#125;;</span><br><span class="line">	&#x2F;&#x2F;要查找的数据 </span><br><span class="line">	int x&#x3D;51;</span><br><span class="line">int binary_search(int s,int e)&#123;</span><br><span class="line">	&#x2F;&#x2F;m:数组的中间位置 </span><br><span class="line">	int m &#x3D;s+ (e-s)&#x2F;2;</span><br><span class="line">	&#x2F;&#x2F;如果开始地址大于尾地址，数组查找完了 并没有找到值 </span><br><span class="line">	if(s &gt; e)</span><br><span class="line">		return -1;</span><br><span class="line">	else &#123;</span><br><span class="line">		&#x2F;&#x2F;如果中间位置的值等于要查询的值，就放回要查找的值在数组中的下标 </span><br><span class="line">		if(a[m] &#x3D;&#x3D; x) </span><br><span class="line">		return m;</span><br><span class="line">		else if(a[m] &gt; x)&#x2F;&#x2F;如果中间位置的值大于要查询的值，就一中间位置划分数组，查询前一部分 </span><br><span class="line">			return binary_search(s,m-1);</span><br><span class="line">		else &#x2F;&#x2F;如果中间位置的值小于要查询的值，就一中间位置划分数组，查询后一部分 </span><br><span class="line">		  return binary_search(m+1,e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	&#x2F;&#x2F;调用二分查询 </span><br><span class="line">	int m &#x3D; binary_search(0,5);</span><br><span class="line">	if(m!&#x3D;-1)</span><br><span class="line">		printf(&quot;查找成功，查找数据的下标为%d&quot;,m);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;查找失败，查找数据不存在&quot;);</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法-KMP</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-KMP/</url>
     <content><![CDATA[<h4><span id="kmp字符串匹配算法">KMP(字符串匹配算法)</span></h4><p><strong>理解：KMP算法是优化的字符串匹配算法，核心是通过利用匹配失败后的信息，尽量减少要查询的字符串与模板字符串的比较。</strong></p>
@@ -1708,6 +1723,25 @@
 
 <p><strong>暴力字符串匹配示例代码：kmp0.cpp</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int t;</span><br><span class="line">bool check(char a[],char b[],int s1,int n,int s2,int m)&#123;</span><br><span class="line">	int l&#x3D;s1;</span><br><span class="line">	t&#x3D;0;</span><br><span class="line">	for(int i&#x3D;s2;i&lt;&#x3D;m;i++)&#123;</span><br><span class="line">		if(a[l]&#x3D;&#x3D;b[i])</span><br><span class="line">			t++;l++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(t&#x3D;&#x3D;l) return true;</span><br><span class="line">	if(l&#x3D;&#x3D;m) return false;</span><br><span class="line">	check(a,b,s1+1,n,s2,m);	</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	char a[n];</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;n;i++)</span><br><span class="line">		a[i]&#x3D;getchar();</span><br><span class="line">		</span><br><span class="line">	int m;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;m);</span><br><span class="line">	char b[m];</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;m;i++)</span><br><span class="line">		b[m]&#x3D;getchar();</span><br><span class="line">		</span><br><span class="line">	if(check(a,b,0,n,0,m))</span><br><span class="line">		printf(&quot;true&quot;);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;false&quot;);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-二分查找</title>
+    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h4><span id="二分查找">二分查找</span></h4><p><strong>前提条件：表中的数据是顺序存储结构</strong></p>
+<p><strong>查找过程：首先，假设表中的数据是按升序排列，将表中的中间位置记录的数据与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录的数据将表分成前后两个表，如果中间位置的数据大于要查找的关键字就查找前一个表，如果中间位置的数据大于要查找的关键字就查找后一个表；重复以上过程，直到查到满足条件的记录，就查找成功，否则要查找的数据不存在数据表中，查找不成功。</strong></p>
+<span id="more"></span>
+
+<p><strong>示例：在数组中查找值，返回下标</strong></p>
+<p><strong>示例代码：binary_search.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *二分查找</span><br><span class="line"> *要求数列是顺序存储结构 </span><br><span class="line">*&#x2F; </span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">	&#x2F;&#x2F;数据 </span><br><span class="line">	int a[6]&#x3D;&#123;2,8,16,34,51,67&#125;;</span><br><span class="line">	&#x2F;&#x2F;要查找的数据 </span><br><span class="line">	int x&#x3D;51;</span><br><span class="line">int binary_search(int s,int e)&#123;</span><br><span class="line">	&#x2F;&#x2F;m:数组的中间位置 </span><br><span class="line">	int m &#x3D;s+ (e-s)&#x2F;2;</span><br><span class="line">	&#x2F;&#x2F;如果开始地址大于尾地址，数组查找完了 并没有找到值 </span><br><span class="line">	if(s &gt; e)</span><br><span class="line">		return -1;</span><br><span class="line">	else &#123;</span><br><span class="line">		&#x2F;&#x2F;如果中间位置的值等于要查询的值，就放回要查找的值在数组中的下标 </span><br><span class="line">		if(a[m] &#x3D;&#x3D; x) </span><br><span class="line">		return m;</span><br><span class="line">		else if(a[m] &gt; x)&#x2F;&#x2F;如果中间位置的值大于要查询的值，就一中间位置划分数组，查询前一部分 </span><br><span class="line">			return binary_search(s,m-1);</span><br><span class="line">		else &#x2F;&#x2F;如果中间位置的值小于要查询的值，就一中间位置划分数组，查询后一部分 </span><br><span class="line">		  return binary_search(m+1,e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	&#x2F;&#x2F;调用二分查询 </span><br><span class="line">	int m &#x3D; binary_search(0,5);</span><br><span class="line">	if(m!&#x3D;-1)</span><br><span class="line">		printf(&quot;查找成功，查找数据的下标为%d&quot;,m);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;查找失败，查找数据不存在&quot;);</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2223,75 +2257,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法-最小生成树</title>
-    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</url>
-    <content><![CDATA[<h4><span id="最小生成树">最小生成树</span></h4><p><strong>概念：保持图连通的最少边的树称为生成树，n个结点的生成树，有n-1条边，当边的权值和最小称为最小生成树，也称最小权值生成树。</strong></p>
-<span id="more"></span>
-
-<h4><span id="并查集">并查集</span></h4><p><strong>概念：并查集是一种树型的数据结构，用于处理一些不相交</strong><a href="https://baike.baidu.com/item/%E9%9B%86%E5%90%88/2908117"><strong>集合</strong></a><strong>（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</strong></p>
-<p><strong>理解：并查集，集指集合；查指查找元素所在的集合，即元素最终的根节点；并将两个元素所在的集合合并为一个集合，前提需要判断两个元素是否属于同一个集合。</strong></p>
-<p><strong>示例：检查一个图中存不存在环如图：</strong></p>
-<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/8.1.png" alt="8.1"></p>
-<p><strong>过程：创建一个数组parent[]表示该结点的父节点如表所示</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>结点</strong></th>
-<th><strong>0</strong></th>
-<th><strong>1</strong></th>
-<th><strong>2</strong></th>
-<th><strong>3</strong></th>
-<th><strong>4</strong></th>
-<th><strong>5</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Parent</strong></td>
-<td><strong>1</strong></td>
-<td><strong>-1</strong></td>
-<td><strong>1</strong></td>
-<td><strong>1</strong></td>
-<td><strong>3</strong></td>
-<td><strong>2</strong></td>
-</tr>
-</tbody></table>
-<p><strong>创建parent[]数组是为了查找某一节点的根节点是哪个，这样就可以判断任意两个结点在不在同一集合里，因为我们只需要一层层查找他们的根节点，找到最终的根节点，判断是否相同就行了。相同说明这两个结点在同一个集合里。创建一个find_root()函数查找节点的最终根节点。</strong></p>
-<p><strong>若将俩个集合合并在一起，只需要将两个集合的根节点任意一个设置为另一个的根节点就行了。</strong></p>
-<p><strong>压缩路径：为了使树的高度不呈直线的形式上升，压缩路径。但合并集合时，比较x和y节点集合树的高度，高度低的一方向高度高的一方合并。</strong></p>
-<p><strong>示例代码:union.cpp union2.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;顶点的数量 </span><br><span class="line">#define VERTICES 6</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化parent[]数组 </span><br><span class="line">int initialise(int parent[])&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;VERTICES;i++)&#123;</span><br><span class="line">		parent[i]&#x3D;-1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查找顶点</span><br><span class="line">int find_root(int x,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;x;</span><br><span class="line">	while(parent[x_root]!&#x3D;-1)&#123;</span><br><span class="line">		x_root&#x3D;parent[x_root];</span><br><span class="line">	&#125;</span><br><span class="line">	return x_root;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;合并两个集合 返回1成功，返回0合并失败（两个顶点在一个集合中） </span><br><span class="line">int union_vertices(int x,int y,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;find_root(x,parent);</span><br><span class="line">	int y_root&#x3D;find_root(y,parent);</span><br><span class="line">	if(x_root&#x3D;&#x3D;y_root) &#123;&#x2F;&#x2F;如果两个结点的根是同一个 </span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;&#x2F;&#x2F;否则将两树合并成一个树 </span><br><span class="line">		parent[x_root]&#x3D;y_root; </span><br><span class="line">		return 1;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int parent[VERTICES]&#x3D;&#123;0&#125;;</span><br><span class="line">	&#x2F;&#x2F;图 6条边，每条边连接两个顶点 </span><br><span class="line">	int edges[5][2]&#x3D;&#123;</span><br><span class="line">		&#123;0,1&#125;,&#123;1,2&#125;,&#123;1,3&#125;,&#123;3,4&#125;,&#123;2,5&#125;</span><br><span class="line">	&#125; ;</span><br><span class="line">	</span><br><span class="line">	initialise(parent);&#x2F;&#x2F;初始化parent数组，全为-1 </span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;5;i++)&#123;</span><br><span class="line">		int x &#x3D; edges[i][0];</span><br><span class="line">		int y &#x3D; edges[i][1];</span><br><span class="line">		</span><br><span class="line">		if(union_vertices(x,y,parent)&#x3D;&#x3D;0)&#123;</span><br><span class="line">			printf(&quot;Cycle existence!&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;No Cycle found!&quot;) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p><strong>示例代码:union2.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;顶点的数量 </span><br><span class="line">#define VERTICES 6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化parent[]数组 rank[]记录数的高度 </span><br><span class="line">int initialise(int parent[],int rank[])&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;VERTICES;i++)&#123;</span><br><span class="line">		parent[i]&#x3D;-1;</span><br><span class="line">		rank[i]&#x3D;0; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;查找顶点</span><br><span class="line">int find_root(int x,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;x;</span><br><span class="line">	while(parent[x_root]!&#x3D;-1)&#123;</span><br><span class="line">		x_root&#x3D;parent[x_root];</span><br><span class="line">	&#125;</span><br><span class="line">	return x_root;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;合并两个集合 返回1成功，返回0合并失败（两个顶点在一个集合中） </span><br><span class="line">int union_vertices(int x,int y,int parent[],int rank[]) &#123;</span><br><span class="line">	int x_root&#x3D;find_root(x,parent);</span><br><span class="line">	int y_root&#x3D;find_root(y,parent);</span><br><span class="line">	if(x_root&#x3D;&#x3D;y_root) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		&#x2F;&#x2F;压缩路径 </span><br><span class="line">		if(rank[x_root]&gt;rank[y_root])&#123;</span><br><span class="line">			parent[y_root]&#x3D;x_root; </span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			if(rank[y_root]&gt;rank[x_root])&#123;</span><br><span class="line">				parent[x_root]&#x3D;y_root;	</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				parent[x_root]&#x3D;y_root;</span><br><span class="line">				rank[y_root]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">		return 1;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int parent[VERTICES];</span><br><span class="line">	int rank[VERTICES];</span><br><span class="line">	&#x2F;&#x2F;图 6条边，每条边连接两个顶点 </span><br><span class="line">	int edges[6][2]&#x3D;&#123;</span><br><span class="line">		&#123;0,1&#125;,&#123;1,2&#125;,&#123;1,3&#125;,&#123;3,4&#125;,&#123;2,5&#125;,&#123;5,4&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	initialise(parent,rank);</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;6;i++)&#123;</span><br><span class="line">		int x &#x3D; edges[i][0];</span><br><span class="line">		int y &#x3D; edges[i][1];</span><br><span class="line">		</span><br><span class="line">		if(union_vertices(x,y,parent,rank)&#x3D;&#x3D;0)&#123;</span><br><span class="line">			printf(&quot;Cycle existence!&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;No Cycle found!&quot;) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-深搜</title>
-    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/</url>
-    <content><![CDATA[<h4><span id="深度优先搜索dfs">深度优先搜索（DFS）</span></h4><p>概念思想：DFS属于图算法的一种，从一个顶点开始向下搜索没有遍历过的结点，直至不能再深入为止，且每个结点只能遍历一次。</p>
-<span id="more"></span>
-
-<p>例子解释：如图从A结点开始深搜，遍历的过程为：A-&gt;D-&gt;G-&gt;H-&gt;C-&gt;F-&gt;B-E</p>
-<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/3.png" alt="3.1"></p>
-<p><strong>对二维网络进行深度优先搜索，遇到1则向其八个方向搜索，其他八个方向也有1则以这个点为原点向它的八个方向搜索，已经遍历过的点，不再遍历。直至遍历的都为0，则在返回上一个点，换个方向继续搜索，如例子解释的遍历方式一样。如例题遍历到的第一个1数组下标为[1,4]，从这个点的上方开始围绕着这个点其它八个方向的点遍历，遍历到右边是遇到第二个为1的点数组下标[1,5],继续上述操作。即遍历一次经[1,4]-&gt;[1,5]-&gt;[2,6]-&gt;[2,5]-&gt;[2,4]-&gt;[2,3]。</strong></p>
-<p><strong>示例代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;多少岛屿及最大岛屿问题 </span><br><span class="line">&#x2F;*</span><br><span class="line">8 16</span><br><span class="line">0000000000000000</span><br><span class="line">0000110011000000</span><br><span class="line">0001111000111000</span><br><span class="line">0000000000000000</span><br><span class="line">0011111100000110</span><br><span class="line">0011100000000000</span><br><span class="line">0100001111111100</span><br><span class="line">0000000000000000</span><br><span class="line">*&#x2F;   </span><br><span class="line">int a[500][500];</span><br><span class="line">int n, m, c, max;&#x2F;&#x2F;c:面积 </span><br><span class="line">void dfs(int x, int y)&#123;</span><br><span class="line">	if(a[x][y]&#x3D;&#x3D;0)	</span><br><span class="line">		return;	</span><br><span class="line">	c ++;	</span><br><span class="line">	a[x][y] &#x3D; 0;</span><br><span class="line">	dfs(x,y+1);	</span><br><span class="line">	dfs(x,y-1);	</span><br><span class="line">	dfs(x-1,y);	</span><br><span class="line">	dfs(x+1,y);	</span><br><span class="line">	dfs(x+1,y+1);	</span><br><span class="line">	dfs(x+1,y-1);	</span><br><span class="line">	dfs(x-1,y+1);	</span><br><span class="line">	dfs(x-1,y-1);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int k, i, j, sum;</span><br><span class="line">	printf(&quot;求二维网络岛屿数及最大岛屿面积，0代表海域，1代表岛屿\n&quot;); </span><br><span class="line">	printf(&quot;请输入行列值：&quot;); </span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;n, &amp;m);</span><br><span class="line">	printf(&quot;请输入由0和1组成的%d行%d列的二维网络\n&quot;,n,m);</span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			scanf(&quot;%1d&quot;,&amp;a[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i  ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			if(a[i][j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">				sum ++;</span><br><span class="line">				c &#x3D; 0;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">				if(c &gt; max)</span><br><span class="line">					max &#x3D; c ;	</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;岛屿总数量为：%d，最大岛屿面积为：%d\n&quot;,sum,max);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法-贪心</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/</url>
     <content><![CDATA[<h4><span id="贪心">贪心</span></h4><p><strong>前提：问题的全局最优解可以通过一步步获得多个局部最优解获得，问题必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</strong></p>
@@ -2363,6 +2328,25 @@
       </tags>
   </entry>
   <entry>
+    <title>算法-深搜</title>
+    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/</url>
+    <content><![CDATA[<h4><span id="深度优先搜索dfs">深度优先搜索（DFS）</span></h4><p>概念思想：DFS属于图算法的一种，从一个顶点开始向下搜索没有遍历过的结点，直至不能再深入为止，且每个结点只能遍历一次。</p>
+<span id="more"></span>
+
+<p>例子解释：如图从A结点开始深搜，遍历的过程为：A-&gt;D-&gt;G-&gt;H-&gt;C-&gt;F-&gt;B-E</p>
+<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/3.png" alt="3.1"></p>
+<p><strong>对二维网络进行深度优先搜索，遇到1则向其八个方向搜索，其他八个方向也有1则以这个点为原点向它的八个方向搜索，已经遍历过的点，不再遍历。直至遍历的都为0，则在返回上一个点，换个方向继续搜索，如例子解释的遍历方式一样。如例题遍历到的第一个1数组下标为[1,4]，从这个点的上方开始围绕着这个点其它八个方向的点遍历，遍历到右边是遇到第二个为1的点数组下标[1,5],继续上述操作。即遍历一次经[1,4]-&gt;[1,5]-&gt;[2,6]-&gt;[2,5]-&gt;[2,4]-&gt;[2,3]。</strong></p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;多少岛屿及最大岛屿问题 </span><br><span class="line">&#x2F;*</span><br><span class="line">8 16</span><br><span class="line">0000000000000000</span><br><span class="line">0000110011000000</span><br><span class="line">0001111000111000</span><br><span class="line">0000000000000000</span><br><span class="line">0011111100000110</span><br><span class="line">0011100000000000</span><br><span class="line">0100001111111100</span><br><span class="line">0000000000000000</span><br><span class="line">*&#x2F;   </span><br><span class="line">int a[500][500];</span><br><span class="line">int n, m, c, max;&#x2F;&#x2F;c:面积 </span><br><span class="line">void dfs(int x, int y)&#123;</span><br><span class="line">	if(a[x][y]&#x3D;&#x3D;0)	</span><br><span class="line">		return;	</span><br><span class="line">	c ++;	</span><br><span class="line">	a[x][y] &#x3D; 0;</span><br><span class="line">	dfs(x,y+1);	</span><br><span class="line">	dfs(x,y-1);	</span><br><span class="line">	dfs(x-1,y);	</span><br><span class="line">	dfs(x+1,y);	</span><br><span class="line">	dfs(x+1,y+1);	</span><br><span class="line">	dfs(x+1,y-1);	</span><br><span class="line">	dfs(x-1,y+1);	</span><br><span class="line">	dfs(x-1,y-1);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int k, i, j, sum;</span><br><span class="line">	printf(&quot;求二维网络岛屿数及最大岛屿面积，0代表海域，1代表岛屿\n&quot;); </span><br><span class="line">	printf(&quot;请输入行列值：&quot;); </span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;n, &amp;m);</span><br><span class="line">	printf(&quot;请输入由0和1组成的%d行%d列的二维网络\n&quot;,n,m);</span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			scanf(&quot;%1d&quot;,&amp;a[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i  ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			if(a[i][j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">				sum ++;</span><br><span class="line">				c &#x3D; 0;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">				if(c &gt; max)</span><br><span class="line">					max &#x3D; c ;	</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;岛屿总数量为：%d，最大岛屿面积为：%d\n&quot;,sum,max);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-递归与回溯</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E4%B8%8E%E5%9B%9E%E6%BA%AF/</url>
     <content><![CDATA[<h4><span id="递归">递归</span></h4><p><strong>程序调用自身。构成递归构成的条件：</strong></p>
@@ -2384,6 +2368,56 @@
 <p><strong>示例：八皇后问题</strong></p>
 <p><strong>示例代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;八皇后问题</span><br><span class="line">&#x2F;*</span><br><span class="line"> *在8x8的棋盘上合法放置八个皇后，即每个皇后不和其他皇后在同一列、行和对角线上</span><br><span class="line"> *方法：回溯（确定每一行只能放置一个皇后，且合法，遍历每一行位置放置皇后，直至放置八个为止）</span><br><span class="line"> *返回上一层选择不同的位置放置皇后，直至到第一次的所有位置，即穷举所有可能。 </span><br><span class="line">*&#x2F; </span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int solution&#x3D;0;&#x2F;&#x2F;方案</span><br><span class="line">int arr[8][8]; &#x2F;&#x2F;棋盘</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;检查点是否合法（即是否存在其他的皇后在该点所在的列、行、左右对角线 ）</span><br><span class="line">int check(int i, int j)&#123; &#x2F;&#x2F;i行j列 </span><br><span class="line">	int k,h;</span><br><span class="line">	&#x2F;&#x2F;判断列是否合法（遍历每层只放一个皇后，所有不用再重复检查一行是否有其他皇后）</span><br><span class="line">	for(k &#x3D; 0; k &lt; 8 ; k ++)&#123;</span><br><span class="line">		if(arr[k][j] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;判断左对角线是否合法</span><br><span class="line">	for(k &#x3D; i - 1,h &#x3D; j - 1; k &gt;&#x3D; 0 &amp;&amp; h &gt;&#x3D; 0; k --, h--)&#123;</span><br><span class="line">		if(arr[k][h] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;判断右对角线是否合法</span><br><span class="line">	for(k &#x3D; i - 1,h &#x3D; j + 1; k &gt;&#x3D; 0 &amp;&amp; h &lt; 8; k --, h ++)&#123;</span><br><span class="line">		if(arr[k][h] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	return 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;放置皇后,i指棋盘层数 </span><br><span class="line">void queen(int i) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(i &gt; 7)&#123;</span><br><span class="line">		solution ++; </span><br><span class="line">		return ;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;遍历棋盘的每一点 深度回溯</span><br><span class="line">	for(j &#x3D; 0; j &lt; 8; j ++) &#123;</span><br><span class="line">		if(check(i,j))&#123;</span><br><span class="line">			arr[i][j] &#x3D; 1;&#x2F;&#x2F;放置皇后</span><br><span class="line">			queen(i + 1);&#x2F;&#x2F;遍历下一层 </span><br><span class="line">			arr[i][j] &#x3D; 0;&#x2F;&#x2F;将此点重置为零，避免回溯出现脏数据</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	queen(0);</span><br><span class="line">	printf(&quot;%d\n&quot;,solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-最小生成树</title>
+    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</url>
+    <content><![CDATA[<h4><span id="最小生成树">最小生成树</span></h4><p><strong>概念：保持图连通的最少边的树称为生成树，n个结点的生成树，有n-1条边，当边的权值和最小称为最小生成树，也称最小权值生成树。</strong></p>
+<span id="more"></span>
+
+<h4><span id="并查集">并查集</span></h4><p><strong>概念：并查集是一种树型的数据结构，用于处理一些不相交</strong><a href="https://baike.baidu.com/item/%E9%9B%86%E5%90%88/2908117"><strong>集合</strong></a><strong>（Disjoint Sets）的合并及查询问题。常常在使用中以森林来表示。</strong></p>
+<p><strong>理解：并查集，集指集合；查指查找元素所在的集合，即元素最终的根节点；并将两个元素所在的集合合并为一个集合，前提需要判断两个元素是否属于同一个集合。</strong></p>
+<p><strong>示例：检查一个图中存不存在环如图：</strong></p>
+<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/8.1.png" alt="8.1"></p>
+<p><strong>过程：创建一个数组parent[]表示该结点的父节点如表所示</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>结点</strong></th>
+<th><strong>0</strong></th>
+<th><strong>1</strong></th>
+<th><strong>2</strong></th>
+<th><strong>3</strong></th>
+<th><strong>4</strong></th>
+<th><strong>5</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Parent</strong></td>
+<td><strong>1</strong></td>
+<td><strong>-1</strong></td>
+<td><strong>1</strong></td>
+<td><strong>1</strong></td>
+<td><strong>3</strong></td>
+<td><strong>2</strong></td>
+</tr>
+</tbody></table>
+<p><strong>创建parent[]数组是为了查找某一节点的根节点是哪个，这样就可以判断任意两个结点在不在同一集合里，因为我们只需要一层层查找他们的根节点，找到最终的根节点，判断是否相同就行了。相同说明这两个结点在同一个集合里。创建一个find_root()函数查找节点的最终根节点。</strong></p>
+<p><strong>若将俩个集合合并在一起，只需要将两个集合的根节点任意一个设置为另一个的根节点就行了。</strong></p>
+<p><strong>压缩路径：为了使树的高度不呈直线的形式上升，压缩路径。但合并集合时，比较x和y节点集合树的高度，高度低的一方向高度高的一方合并。</strong></p>
+<p><strong>示例代码:union.cpp union2.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;顶点的数量 </span><br><span class="line">#define VERTICES 6</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化parent[]数组 </span><br><span class="line">int initialise(int parent[])&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;VERTICES;i++)&#123;</span><br><span class="line">		parent[i]&#x3D;-1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查找顶点</span><br><span class="line">int find_root(int x,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;x;</span><br><span class="line">	while(parent[x_root]!&#x3D;-1)&#123;</span><br><span class="line">		x_root&#x3D;parent[x_root];</span><br><span class="line">	&#125;</span><br><span class="line">	return x_root;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;合并两个集合 返回1成功，返回0合并失败（两个顶点在一个集合中） </span><br><span class="line">int union_vertices(int x,int y,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;find_root(x,parent);</span><br><span class="line">	int y_root&#x3D;find_root(y,parent);</span><br><span class="line">	if(x_root&#x3D;&#x3D;y_root) &#123;&#x2F;&#x2F;如果两个结点的根是同一个 </span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;&#x2F;&#x2F;否则将两树合并成一个树 </span><br><span class="line">		parent[x_root]&#x3D;y_root; </span><br><span class="line">		return 1;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int parent[VERTICES]&#x3D;&#123;0&#125;;</span><br><span class="line">	&#x2F;&#x2F;图 6条边，每条边连接两个顶点 </span><br><span class="line">	int edges[5][2]&#x3D;&#123;</span><br><span class="line">		&#123;0,1&#125;,&#123;1,2&#125;,&#123;1,3&#125;,&#123;3,4&#125;,&#123;2,5&#125;</span><br><span class="line">	&#125; ;</span><br><span class="line">	</span><br><span class="line">	initialise(parent);&#x2F;&#x2F;初始化parent数组，全为-1 </span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;5;i++)&#123;</span><br><span class="line">		int x &#x3D; edges[i][0];</span><br><span class="line">		int y &#x3D; edges[i][1];</span><br><span class="line">		</span><br><span class="line">		if(union_vertices(x,y,parent)&#x3D;&#x3D;0)&#123;</span><br><span class="line">			printf(&quot;Cycle existence!&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;No Cycle found!&quot;) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>示例代码:union2.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;顶点的数量 </span><br><span class="line">#define VERTICES 6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化parent[]数组 rank[]记录数的高度 </span><br><span class="line">int initialise(int parent[],int rank[])&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;VERTICES;i++)&#123;</span><br><span class="line">		parent[i]&#x3D;-1;</span><br><span class="line">		rank[i]&#x3D;0; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;查找顶点</span><br><span class="line">int find_root(int x,int parent[]) &#123;</span><br><span class="line">	int x_root&#x3D;x;</span><br><span class="line">	while(parent[x_root]!&#x3D;-1)&#123;</span><br><span class="line">		x_root&#x3D;parent[x_root];</span><br><span class="line">	&#125;</span><br><span class="line">	return x_root;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;合并两个集合 返回1成功，返回0合并失败（两个顶点在一个集合中） </span><br><span class="line">int union_vertices(int x,int y,int parent[],int rank[]) &#123;</span><br><span class="line">	int x_root&#x3D;find_root(x,parent);</span><br><span class="line">	int y_root&#x3D;find_root(y,parent);</span><br><span class="line">	if(x_root&#x3D;&#x3D;y_root) &#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		&#x2F;&#x2F;压缩路径 </span><br><span class="line">		if(rank[x_root]&gt;rank[y_root])&#123;</span><br><span class="line">			parent[y_root]&#x3D;x_root; </span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			if(rank[y_root]&gt;rank[x_root])&#123;</span><br><span class="line">				parent[x_root]&#x3D;y_root;	</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				parent[x_root]&#x3D;y_root;</span><br><span class="line">				rank[y_root]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">		return 1;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int parent[VERTICES];</span><br><span class="line">	int rank[VERTICES];</span><br><span class="line">	&#x2F;&#x2F;图 6条边，每条边连接两个顶点 </span><br><span class="line">	int edges[6][2]&#x3D;&#123;</span><br><span class="line">		&#123;0,1&#125;,&#123;1,2&#125;,&#123;1,3&#125;,&#123;3,4&#125;,&#123;2,5&#125;,&#123;5,4&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	initialise(parent,rank);</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;0;i&lt;6;i++)&#123;</span><br><span class="line">		int x &#x3D; edges[i][0];</span><br><span class="line">		int y &#x3D; edges[i][1];</span><br><span class="line">		</span><br><span class="line">		if(union_vertices(x,y,parent,rank)&#x3D;&#x3D;0)&#123;</span><br><span class="line">			printf(&quot;Cycle existence!&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;No Cycle found!&quot;) ;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2456,8 +2490,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4><span id="复制远程服务器文件到本地">复制远程服务器文件到本地</span></h4><ul>
-<li>scp <a href="mailto:&#115;&#121;&#45;&#x64;&#x65;&#118;&#111;&#112;&#115;&#45;&#x75;&#x73;&#101;&#x72;&#x40;&#52;&#55;&#x2e;&#57;&#x39;&#x2e;&#50;&#51;&#54;&#46;&#x31;&#x38;&#49;">&#115;&#121;&#45;&#x64;&#x65;&#118;&#111;&#112;&#115;&#45;&#x75;&#x73;&#101;&#x72;&#x40;&#52;&#55;&#x2e;&#57;&#x39;&#x2e;&#50;&#51;&#54;&#46;&#x31;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#115;&#x79;&#x2d;&#x64;&#x65;&#118;&#x6f;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#x37;&#46;&#x39;&#57;&#x2e;&#50;&#51;&#x36;&#46;&#49;&#x38;&#x31;">&#115;&#x79;&#x2d;&#x64;&#x65;&#118;&#x6f;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#x37;&#46;&#x39;&#57;&#x2e;&#50;&#51;&#x36;&#46;&#49;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#x73;&#121;&#45;&#x64;&#101;&#118;&#x6f;&#x70;&#115;&#x2d;&#117;&#115;&#101;&#114;&#64;&#x34;&#55;&#x2e;&#57;&#57;&#46;&#50;&#x33;&#x36;&#x2e;&#49;&#x38;&#49;">&#x73;&#121;&#45;&#x64;&#101;&#118;&#x6f;&#x70;&#115;&#x2d;&#117;&#115;&#101;&#114;&#64;&#x34;&#55;&#x2e;&#57;&#57;&#46;&#50;&#x33;&#x36;&#x2e;&#49;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#115;&#121;&#x2d;&#x64;&#x65;&#x76;&#x6f;&#112;&#115;&#45;&#x75;&#115;&#101;&#114;&#64;&#x34;&#x37;&#46;&#x39;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#x31;&#x38;&#x31;">&#115;&#121;&#x2d;&#x64;&#x65;&#x76;&#x6f;&#112;&#115;&#45;&#x75;&#115;&#101;&#114;&#64;&#x34;&#x37;&#46;&#x39;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#x31;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4><span id="linux解压和压缩">Linux解压和压缩</span></h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
