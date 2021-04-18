@@ -89,7 +89,7 @@
 <meta property="og:description" content="本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-03T06:40:44.251Z">
-<meta property="article:modified_time" content="2021-04-15T14:07:59.044Z">
+<meta property="article:modified_time" content="2021-04-17T12:01:43.390Z">
 <meta property="article:author" content="Ben">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
     root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":{"display":"post"}}},
@@ -138,6 +138,9 @@
 
 
 
+   
+  <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -392,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  2.1k
                 </span>
               
 
@@ -548,9 +551,10 @@
 <p>修改 <code>themes/next/layout/_macro/sidebar.swig</code> 文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 111行左右 &#123;% endif %&#125;后</span><br><span class="line">&lt;!-- 音乐播放器 --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;330 height&#x3D;110 src&#x3D;&quot;&#123;&#123; theme.background_music&#125;&#125;&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置</p>
+<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background_music: &#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;0&amp;id&#x3D;2120628564&amp;auto&#x3D;1&amp;height&#x3D;66</span><br></pre></td></tr></table></figure>
 
+<p>上面过程能够实现背景音乐的添加，但是一刷新页面就会导致音乐重放回到初始状态。使用 <code>Pajx</code> 实现背景音乐全局播放</p>
 <h4><span id="添加评论和留言板">添加评论和留言板</span></h4><p>本来是想使用多说的评论系统，但是貌似停止服务了。而disqus需要翻墙。所以目前使用的评论系统是来必力，韩国的。</p>
 <ul>
 <li><p>注册账号：来必力官网<a target="_blank" rel="noopener" href="https://livere.com/">https://livere.com</a></p>
@@ -578,6 +582,22 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">+ guestbook: 留言</span><br></pre></td></tr></table></figure>
 
+<h4><span id="文章加密">文章加密</span></h4><p>需要安装“ hexo-blog-encrypt”扩展实现加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+
+<p>修改文章信息头</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2020-03-13 21:12:21</span><br><span class="line">password: 123456</span><br></pre></td></tr></table></figure>
+
+<h4><span id="草稿">草稿</span></h4><p>这里的草稿相当于很多博客都有的“私密文章”功能。</p>
+<p>会在source/drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到drafts目录之中。</p>
+<p>我没有类似需求，所以没有做，具体实现请参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e1cf1ca131b">https://www.jianshu.com/p/8e1cf1ca131b</a>  </p>
+<h4><span id="关于资源文件夹">关于资源文件夹</span></h4><p>_posts下md文件过多杂乱，可以在__posts文件夹下，按照类型自己创建文件夹，但是引用图片或pdf时要注意路径。</p>
+<h4><span id="未解决问题">未解决问题</span></h4><ul>
+<li>文章列表目录调整导航不灵</li>
+<li>背景音乐刷新会被重置，并且播放音乐不切换头像</li>
+<li>评论系统的评论有可能会被墙掉</li>
+<li>文章发布上去UI会有变化</li>
+</ul>
 
       
     </div>
@@ -672,6 +692,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -706,7 +728,7 @@
               
                 <a href="">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -855,7 +877,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">hexo+github搭建个人博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">获取开源的 Hexo 主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">修改主题 _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">运行测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">配置标签和分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">配置搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">设置代码高亮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">设置头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">主题设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">上传pdf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">修改标签云颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">修改首页文章间隔宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">修改文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">16.</span> <span class="nav-text">修改首页文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">17.</span> <span class="nav-text">翻页按钮错误显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">18.</span> <span class="nav-text">sidebar中post点击出错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">19.</span> <span class="nav-text">主页footer内容不居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">20.</span> <span class="nav-text">添加背景音乐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">21.</span> <span class="nav-text">添加评论和留言板</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">hexo+github搭建个人博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">获取开源的 Hexo 主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">修改主题 _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">运行测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">配置标签和分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">配置搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">设置代码高亮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">设置头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">主题设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">上传pdf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">13.</span> <span class="nav-text">修改标签云颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">14.</span> <span class="nav-text">修改首页文章间隔宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">15.</span> <span class="nav-text">修改文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">16.</span> <span class="nav-text">修改首页文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">17.</span> <span class="nav-text">翻页按钮错误显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">18.</span> <span class="nav-text">sidebar中post点击出错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">19.</span> <span class="nav-text">主页footer内容不居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">20.</span> <span class="nav-text">添加背景音乐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">21.</span> <span class="nav-text">添加评论和留言板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">22.</span> <span class="nav-text">文章加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">23.</span> <span class="nav-text">草稿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">24.</span> <span class="nav-text">关于资源文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">25.</span> <span class="nav-text">未解决问题</span></a></li></ol></div>
             
 
           </div>
@@ -889,7 +911,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.9k</span>
+    <span title="Site words total count">35.2k</span>
   
 </div>
 

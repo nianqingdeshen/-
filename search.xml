@@ -211,6 +211,150 @@
       </tags>
   </entry>
   <entry>
+    <title>Git基础命令</title>
+    <url>/2021/04/09/Git%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="git常用命令">git常用命令</span></h4><ul>
+<li>查看远程仓库地址 - git remote -v</li>
+<li>拉取远程代码更新本地 git pull -p</li>
+<li>拉取远程代码更新本地 git fetch –prune origin</li>
+</ul>
+<h4><span id="git分支操作">git分支操作</span></h4><ul>
+<li>git创建分支 - git branch dev</li>
+<li> 切换到该分支 - git checkout bugFix</li>
+<li>git创建远程分支：- git pull origin dev:dev</li>
+</ul>
+<h4><span id="git合并分支">git合并分支</span></h4><ul>
+<li><p>进入要合并的分支（如开发分支合并到master，则进入master目录）</p>
+<ul>
+<li><p>git checkout master</p>
+</li>
+<li><p>git pull</p>
+</li>
+</ul>
+</li>
+<li><p>查看本地和远程仓库的所有分支 - git branch -a</p>
+</li>
+<li><p>查看本地仓库所有分支 - git branch</p>
+</li>
+<li><p>使用merge合并开发分支 - git merge 分支名</p>
+</li>
+<li><p>查看合并之后的状态 - git status</p>
+</li>
+<li><p>将本地分支与远程保持同步 - git fecth</p>
+</li>
+<li><p>拉取远程分支并同时创建对应的本地分支- git checkout -b 本地分支名 origin/远程分支名</p>
+</li>
+<li><p>将本地所有分支与远程保持同步 git fetch –all</p>
+</li>
+<li><p>拉取所有分支代码 git pull –all</p>
+</li>
+</ul>
+<h4><span id="git查看与远程代码区别">git查看与远程代码区别</span></h4><ul>
+<li>git status  </li>
+<li>git diff</li>
+</ul>
+<h4><span id="windows下git-diff-正文中文乱码问题">windows下git -diff 正文中文乱码问题</span></h4><ul>
+<li>set LESSCHARSET=utf-8</li>
+</ul>
+<h4><span id="代码合并提交标准">代码合并提交标准</span></h4><ul>
+<li>eg：git commit -m “<a href="mailto:&#102;&#x69;&#x78;&#64;&#48;&#46;&#49;&#x2e;&#49;">&#102;&#x69;&#x78;&#64;&#48;&#46;&#49;&#x2e;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+</ul>
+<h4><span id="上次远程仓库">上次远程仓库</span></h4><ul>
+<li>git add .</li>
+<li>git comment -m “”</li>
+<li>git push</li>
+</ul>
+<h4><span id="git-log-win10中文乱码">git log win10中文乱码</span></h4><ul>
+<li>bash 环境下  export LESSCHARSET = utf-8</li>
+<li>cmd环境下  set LESSCHARSET = utf-8</li>
+</ul>
+<p>git push –set-upstream origin dev-0.1-qwb -f 强制覆盖分支</p>
+<p>git branch -D dev-0.1-qwb 删除分支</p>
+<p>git pull origin master</p>
+<h3><span id="一-建立本地仓库上传文件-按-github-新建成功的描述步骤输入命令">一、建立本地仓库，上传文件。按 github 新建成功的描述步骤输入命令</span></h3><ol>
+<li><p>“ git init ”</p>
+</li>
+<li><p>“ git add . ”（此处有 . 需要一同输入）</p>
+</li>
+<li><p>“git commit -m “my commit””（”my commit”为本次提交描述）</p>
+</li>
+<li><p>“git remote add origin <a href="https://github.com/vincentChen02/testUpload.git%E2%80%9D%EF%BC%88https%E5%9C%B0%E5%9D%80%E4%B8%BA%E5%9C%A8github%E4%B8%8A%E6%96%B0%E5%BB%BA%E4%BB%93%E7%94%9F%E6%88%90%E7%9A%84%E8%B7%AF%E5%BE%84%EF%BC%89">https://github.com/vincentChen02/testUpload.git”（https地址为在github上新建仓生成的路径）</a></p>
+</li>
+<li><p>“git push -u origin master” （此处会弹出输入github 账号密码）</p>
+</li>
+</ol>
+<h3><span id="二-修改github仓库名">二、修改Github仓库名</span></h3><ol>
+<li>在github上重命名仓库</li>
+</ol>
+<p>​    setting-&gt;tag-&gt;rename</p>
+<ol start="2">
+<li>修改本地仓库信息</li>
+</ol>
+<p>​    git remote -v (检查当前远程仓库信息)</p>
+<p>​    git remote set-url origin <a href="mailto:git@github.com">git@github.com</a>:username/newrepo.git (修改本地对应的远程仓库的地址)</p>
+<p>​    git remote -v (确认当前远程仓库信息已修改)</p>
+<h3><span id="三-删除远程仓库文件">三、删除远程仓库文件</span></h3><ol>
+<li>将远程代码pull到本地，保持本地仓库跟远端仓库同步</li>
+</ol>
+<p>​    git pull （拉取最新的仓库）</p>
+<ol start="2">
+<li>删掉要删除的文件</li>
+</ol>
+<p>​    git rm filename (删除本地文件-filename:文件名)</p>
+<ol start="3">
+<li>提交操作</li>
+</ol>
+<p>​    “git commit -m “my commit””（”my commit”为本次提交描述）</p>
+<ol start="4">
+<li>push到远程</li>
+</ol>
+<p>​    “git push origin master” （此处会弹出输入github 账号密码）</p>
+]]></content>
+      <categories>
+        <category>命令</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>QlikView基础使用</title>
+    <url>/2021/04/09/QlikView/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等。附加实战项目DEMO的用户手册，简单介绍Qlikview报表的使用和基础功能。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="基础使用">基础使用</span></h4>
+
+	<div class="row">
+    <embed src="./QlikView.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<h4><span id="demo">DEMO</span></h4>
+
+	<div class="row">
+    <embed src="./MenariniQlikview.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+      <categories>
+        <category>BI</category>
+      </categories>
+      <tags>
+        <tag>QlikView</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo切换主题</title>
     <url>/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/</url>
     <content><![CDATA[<blockquote>
@@ -344,9 +488,10 @@
 <p>修改 <code>themes/next/layout/_macro/sidebar.swig</code> 文件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-- 111行左右 &#123;% endif %&#125;后</span><br><span class="line">&lt;!-- 音乐播放器 --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;330 height&#x3D;110 src&#x3D;&quot;&#123;&#123; theme.background_music&#125;&#125;&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 
-<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置</p>
+<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">background_music: &#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;0&amp;id&#x3D;2120628564&amp;auto&#x3D;1&amp;height&#x3D;66</span><br></pre></td></tr></table></figure>
 
+<p>上面过程能够实现背景音乐的添加，但是一刷新页面就会导致音乐重放回到初始状态。使用 <code>Pajx</code> 实现背景音乐全局播放</p>
 <h4><span id="添加评论和留言板">添加评论和留言板</span></h4><p>本来是想使用多说的评论系统，但是貌似停止服务了。而disqus需要翻墙。所以目前使用的评论系统是来必力，韩国的。</p>
 <ul>
 <li><p>注册账号：来必力官网<a href="https://livere.com/">https://livere.com</a></p>
@@ -374,156 +519,28 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">+ guestbook: 留言</span><br></pre></td></tr></table></figure>
 
+<h4><span id="文章加密">文章加密</span></h4><p>需要安装“ hexo-blog-encrypt”扩展实现加密</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+
+<p>修改文章信息头</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2020-03-13 21:12:21</span><br><span class="line">password: 123456</span><br></pre></td></tr></table></figure>
+
+<h4><span id="草稿">草稿</span></h4><p>这里的草稿相当于很多博客都有的“私密文章”功能。</p>
+<p>会在source/drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到drafts目录之中。</p>
+<p>我没有类似需求，所以没有做，具体实现请参考链接：<a href="https://www.jianshu.com/p/8e1cf1ca131b">https://www.jianshu.com/p/8e1cf1ca131b</a>  </p>
+<h4><span id="关于资源文件夹">关于资源文件夹</span></h4><p>_posts下md文件过多杂乱，可以在__posts文件夹下，按照类型自己创建文件夹，但是引用图片或pdf时要注意路径。</p>
+<h4><span id="未解决问题">未解决问题</span></h4><ul>
+<li>文章列表目录调整导航不灵</li>
+<li>背景音乐刷新会被重置，并且播放音乐不切换头像</li>
+<li>评论系统的评论有可能会被墙掉</li>
+<li>文章发布上去UI会有变化</li>
+</ul>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git基础命令</title>
-    <url>/2021/04/09/Git%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="git常用命令">git常用命令</span></h4><ul>
-<li>查看远程仓库地址 - git remote -v</li>
-<li>拉取远程代码更新本地 git pull -p</li>
-<li>拉取远程代码更新本地 git fetch –prune origin</li>
-</ul>
-<h4><span id="git分支操作">git分支操作</span></h4><ul>
-<li>git创建分支 - git branch dev</li>
-<li> 切换到该分支 - git checkout bugFix</li>
-<li>git创建远程分支：- git pull origin dev:dev</li>
-</ul>
-<h4><span id="git合并分支">git合并分支</span></h4><ul>
-<li><p>进入要合并的分支（如开发分支合并到master，则进入master目录）</p>
-<ul>
-<li><p>git checkout master</p>
-</li>
-<li><p>git pull</p>
-</li>
-</ul>
-</li>
-<li><p>查看本地和远程仓库的所有分支 - git branch -a</p>
-</li>
-<li><p>查看本地仓库所有分支 - git branch</p>
-</li>
-<li><p>使用merge合并开发分支 - git merge 分支名</p>
-</li>
-<li><p>查看合并之后的状态 - git status</p>
-</li>
-<li><p>将本地分支与远程保持同步 - git fecth</p>
-</li>
-<li><p>拉取远程分支并同时创建对应的本地分支- git checkout -b 本地分支名 origin/远程分支名</p>
-</li>
-<li><p>将本地所有分支与远程保持同步 git fetch –all</p>
-</li>
-<li><p>拉取所有分支代码 git pull –all</p>
-</li>
-</ul>
-<h4><span id="git查看与远程代码区别">git查看与远程代码区别</span></h4><ul>
-<li>git status  </li>
-<li>git diff</li>
-</ul>
-<h4><span id="windows下git-diff-正文中文乱码问题">windows下git -diff 正文中文乱码问题</span></h4><ul>
-<li>set LESSCHARSET=utf-8</li>
-</ul>
-<h4><span id="代码合并提交标准">代码合并提交标准</span></h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#x31;&#x2e;&#49;">&#x66;&#105;&#120;&#x40;&#48;&#x2e;&#x31;&#x2e;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
-</ul>
-<h4><span id="上次远程仓库">上次远程仓库</span></h4><ul>
-<li>git add .</li>
-<li>git comment -m “”</li>
-<li>git push</li>
-</ul>
-<h4><span id="git-log-win10中文乱码">git log win10中文乱码</span></h4><ul>
-<li>bash 环境下  export LESSCHARSET = utf-8</li>
-<li>cmd环境下  set LESSCHARSET = utf-8</li>
-</ul>
-<p>git push –set-upstream origin dev-0.1-qwb -f 强制覆盖分支</p>
-<p>git branch -D dev-0.1-qwb 删除分支</p>
-<p>git pull origin master</p>
-<h3><span id="一-建立本地仓库上传文件-按-github-新建成功的描述步骤输入命令">一、建立本地仓库，上传文件。按 github 新建成功的描述步骤输入命令</span></h3><ol>
-<li><p>“ git init ”</p>
-</li>
-<li><p>“ git add . ”（此处有 . 需要一同输入）</p>
-</li>
-<li><p>“git commit -m “my commit””（”my commit”为本次提交描述）</p>
-</li>
-<li><p>“git remote add origin <a href="https://github.com/vincentChen02/testUpload.git%E2%80%9D%EF%BC%88https%E5%9C%B0%E5%9D%80%E4%B8%BA%E5%9C%A8github%E4%B8%8A%E6%96%B0%E5%BB%BA%E4%BB%93%E7%94%9F%E6%88%90%E7%9A%84%E8%B7%AF%E5%BE%84%EF%BC%89">https://github.com/vincentChen02/testUpload.git”（https地址为在github上新建仓生成的路径）</a></p>
-</li>
-<li><p>“git push -u origin master” （此处会弹出输入github 账号密码）</p>
-</li>
-</ol>
-<h3><span id="二-修改github仓库名">二、修改Github仓库名</span></h3><ol>
-<li>在github上重命名仓库</li>
-</ol>
-<p>​    setting-&gt;tag-&gt;rename</p>
-<ol start="2">
-<li>修改本地仓库信息</li>
-</ol>
-<p>​    git remote -v (检查当前远程仓库信息)</p>
-<p>​    git remote set-url origin <a href="mailto:git@github.com">git@github.com</a>:username/newrepo.git (修改本地对应的远程仓库的地址)</p>
-<p>​    git remote -v (确认当前远程仓库信息已修改)</p>
-<h3><span id="三-删除远程仓库文件">三、删除远程仓库文件</span></h3><ol>
-<li>将远程代码pull到本地，保持本地仓库跟远端仓库同步</li>
-</ol>
-<p>​    git pull （拉取最新的仓库）</p>
-<ol start="2">
-<li>删掉要删除的文件</li>
-</ol>
-<p>​    git rm filename (删除本地文件-filename:文件名)</p>
-<ol start="3">
-<li>提交操作</li>
-</ol>
-<p>​    “git commit -m “my commit””（”my commit”为本次提交描述）</p>
-<ol start="4">
-<li>push到远程</li>
-</ol>
-<p>​    “git push origin master” （此处会弹出输入github 账号密码）</p>
-]]></content>
-      <categories>
-        <category>命令</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>QlikView基础使用</title>
-    <url>/2021/04/09/QlikView/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等。附加实战项目DEMO的用户手册，简单介绍Qlikview报表的使用和基础功能。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="基础使用">基础使用</span></h4>
-
-	<div class="row">
-    <embed src="./QlikView.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<h4><span id="demo">DEMO</span></h4>
-
-	<div class="row">
-    <embed src="./MenariniQlikview.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-]]></content>
-      <categories>
-        <category>BI</category>
-      </categories>
-      <tags>
-        <tag>QlikView</tag>
       </tags>
   </entry>
   <entry>
@@ -805,6 +822,74 @@
       </categories>
       <tags>
         <tag>开窗函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL优化</title>
+    <url>/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN <a href="https://lss0555.blog.csdn.net/">lss0555</a></p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建索引">1.创建索引</span></h4><ul>
+<li>要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
+<li>在经常需要进行检索的字段上创建索引</li>
+<li>创建索引给检索带来的性能提升往往是巨大的，因此在发现检索速度过慢的时候应该首先想到的就是创建索引</li>
+<li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
+</ul>
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4><p>效率低：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<p>效率高：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3使用预编译查询">3.使用预编译查询</span></h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
+<h4><span id="4调整where字句中的连接顺序">4.调整Where字句中的连接顺序</span></h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
+<h4><span id="5尽量将多条sql语句压缩到一句sql中">5.尽量将多条SQL语句压缩到一句SQL中</span></h4><p>每次执行SQL的时候都要建立网络连接、进行权限校验、进行SQL语句的查询优化、发送执行结果，这个过程<br>是非常耗时的，因此应该尽量避免过多的执行SQL语句，能够压缩到一句SQL执行的语句就不要用多条来执行。</p>
+<h4><span id="6用where字句替换having字句">6.用where字句替换HAVING字句</span></h4><p>避免使用HAVING字句，因为HAVING只会在检索出所有记录之后才对结果集进行过滤，而where则是在聚合前<br>刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于聚合函数<br>的过滤，除此之外，应该将条件写在where字句中。</p>
+<h4><span id="7使用表的别名">7.使用表的别名</span></h4><p>当在SQL语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减<br>少哪些友列名歧义引起的语法错误。</p>
+<h4><span id="8用union-all替换union">8.用union all替换union</span></h4><p>当SQL语句需要union两个查询结果集合时，即使检索结果中不会有重复的记录，如果使用union这两个结果集<br>同样会尝试进行合并，然后在输出最终结果前进行排序，因此如果可以判断检索结果中不会有重复的记录时候，应<br>该用union all，这样效率就会因此得到提高。</p>
+<h4><span id="9考虑使用临时表暂存中间结果">9.考虑使用“临时表”暂存中间结果</span></h4><p>简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。<br>但是也得避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
+<h4><span id="10只在必要的情况下才使用事务">10.只在必要的情况下才使用事务</span></h4><p>SQL Server中一句SQL语句默认就是一个事务，在该语句执行完成后也是默认commit的。其实，这就是begin tran的一个最小化的形式，好比在每句语句开头隐含了一个begin tran，结束时隐含了一个commit。<br>有些情况下，我们需要显式声明begin tran，比如做“插、删、改”操作需要同时修改几个表，要求要么几个表都修改成功，要么都不成功。begin tran 可以起到这样的作用，它可以把若干SQL语句套在一起执行，最后再一起commit。 好处是保证了数据的一致性，但任何事情都不是完美无缺的。Begin tran付出的代价是在提交之前，所有SQL语句锁住的资源都不能释放，直到commit掉。<br>可见，如果Begin tran套住的SQL语句太多，那数据库的性能就糟糕了。在该大事务提交之前，必然会阻塞别的语句，造成block很多。<br>Begin tran使用的原则是，在保证数据一致性的前提下，begin tran 套住的SQL语句越少越好！有些情况下可以采用触发器同步数据，不一定要用begin translation。</p>
+<h4><span id="11尽量避免使用游标">11.尽量避免使用游标</span></h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
+<h4><span id="12用varcharnvarchar-代替-charnchar">12.用varchar/nvarchar 代替 char/nchar</span></h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
+<h4><span id="13查询select语句优化">13.查询select语句优化</span></h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
+<pre><code> select id from t where num is null           
+</code></pre>
+<p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
+<pre><code>  select id from t where num=0
+  select id from t where num=10 or num=20
+</code></pre>
+<p>可以这样查询：</p>
+<pre><code>  select id from t where num=10
+   union all
+  select id from t where num=20
+</code></pre>
+<p>4.不能前置百分</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
+
+
+<p>若要提高效率，可以考虑全文检索。</p>
+<pre><code> select id from t where num in(1,2,3)
+</code></pre>
+<p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
+<pre><code>select id from t where num between 1 and 3 
+</code></pre>
+<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
+
+<p>相反的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
+
+<h4><span id="14更新update语句优化">14.更新Update语句优化</span></h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
+<h4><span id="15插入insert语句优化">15.插入Insert语句优化</span></h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL优化</tag>
       </tags>
   </entry>
   <entry>
@@ -1217,74 +1302,6 @@
       </categories>
       <tags>
         <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据库SQL优化</title>
-    <url>/2021/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93sql%E8%B0%83%E4%BC%98/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN <a href="https://lss0555.blog.csdn.net/">lss0555</a></p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="1创建索引">1.创建索引</span></h4><ul>
-<li>要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引</li>
-<li>在经常需要进行检索的字段上创建索引</li>
-<li>创建索引给检索带来的性能提升往往是巨大的，因此在发现检索速度过慢的时候应该首先想到的就是创建索引</li>
-<li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
-</ul>
-<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4><p>效率低：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
-
-<p>效率高：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3使用预编译查询">3.使用预编译查询</span></h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
-<h4><span id="4调整where字句中的连接顺序">4.调整Where字句中的连接顺序</span></h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
-<h4><span id="5尽量将多条sql语句压缩到一句sql中">5.尽量将多条SQL语句压缩到一句SQL中</span></h4><p>每次执行SQL的时候都要建立网络连接、进行权限校验、进行SQL语句的查询优化、发送执行结果，这个过程<br>是非常耗时的，因此应该尽量避免过多的执行SQL语句，能够压缩到一句SQL执行的语句就不要用多条来执行。</p>
-<h4><span id="6用where字句替换having字句">6.用where字句替换HAVING字句</span></h4><p>避免使用HAVING字句，因为HAVING只会在检索出所有记录之后才对结果集进行过滤，而where则是在聚合前<br>刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于聚合函数<br>的过滤，除此之外，应该将条件写在where字句中。</p>
-<h4><span id="7使用表的别名">7.使用表的别名</span></h4><p>当在SQL语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减<br>少哪些友列名歧义引起的语法错误。</p>
-<h4><span id="8用union-all替换union">8.用union all替换union</span></h4><p>当SQL语句需要union两个查询结果集合时，即使检索结果中不会有重复的记录，如果使用union这两个结果集<br>同样会尝试进行合并，然后在输出最终结果前进行排序，因此如果可以判断检索结果中不会有重复的记录时候，应<br>该用union all，这样效率就会因此得到提高。</p>
-<h4><span id="9考虑使用临时表暂存中间结果">9.考虑使用“临时表”暂存中间结果</span></h4><p>简化SQL语句的重要方法就是采用临时表暂存中间结果，但是，临时表的好处远远不止这些，将临时结果暂存在临时表，后面的查询就在tempdb中了，这可以避免程序中多次扫描主表，也大大减少了程序执行中“共享锁”阻塞“更新锁”，减少了阻塞，提高了并发性能。<br>但是也得避免频繁创建和删除临时表，以减少系统表资源的消耗。</p>
-<h4><span id="10只在必要的情况下才使用事务">10.只在必要的情况下才使用事务</span></h4><p>SQL Server中一句SQL语句默认就是一个事务，在该语句执行完成后也是默认commit的。其实，这就是begin tran的一个最小化的形式，好比在每句语句开头隐含了一个begin tran，结束时隐含了一个commit。<br>有些情况下，我们需要显式声明begin tran，比如做“插、删、改”操作需要同时修改几个表，要求要么几个表都修改成功，要么都不成功。begin tran 可以起到这样的作用，它可以把若干SQL语句套在一起执行，最后再一起commit。 好处是保证了数据的一致性，但任何事情都不是完美无缺的。Begin tran付出的代价是在提交之前，所有SQL语句锁住的资源都不能释放，直到commit掉。<br>可见，如果Begin tran套住的SQL语句太多，那数据库的性能就糟糕了。在该大事务提交之前，必然会阻塞别的语句，造成block很多。<br>Begin tran使用的原则是，在保证数据一致性的前提下，begin tran 套住的SQL语句越少越好！有些情况下可以采用触发器同步数据，不一定要用begin translation。</p>
-<h4><span id="11尽量避免使用游标">11.尽量避免使用游标</span></h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
-<h4><span id="12用varcharnvarchar-代替-charnchar">12.用varchar/nvarchar 代替 char/nchar</span></h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
-<h4><span id="13查询select语句优化">13.查询select语句优化</span></h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
-<pre><code> select id from t where num is null           
-</code></pre>
-<p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
-<pre><code>  select id from t where num=0
-  select id from t where num=10 or num=20
-</code></pre>
-<p>可以这样查询：</p>
-<pre><code>  select id from t where num=10
-   union all
-  select id from t where num=20
-</code></pre>
-<p>4.不能前置百分</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
-
-
-<p>若要提高效率，可以考虑全文检索。</p>
-<pre><code> select id from t where num in(1,2,3)
-</code></pre>
-<p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
-<pre><code>select id from t where num between 1 and 3 
-</code></pre>
-<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
-
-<p>相反的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
-
-<h4><span id="14更新update语句优化">14.更新Update语句优化</span></h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
-<h4><span id="15插入insert语句优化">15.插入Insert语句优化</span></h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>SQL优化</tag>
       </tags>
   </entry>
   <entry>
@@ -1754,6 +1771,29 @@
       </tags>
   </entry>
   <entry>
+    <title>算法-全排列</title>
+    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E5%85%A8%E6%8E%92%E5%88%97/</url>
+    <content><![CDATA[<h4><span id="全排列">全排列</span></h4><p><strong>概念</strong>：<strong>从n个不同元素中任取m（m≤n）个元素，按照一定的顺序排列起来，叫做从n个不同元素中取出m个元素的一个排列。当m=n时所有的排列情况叫全排列。</strong></p>
+<span id="more"></span>
+
+<p><strong>示例：对a[1,2,3,4,5]进行全排列</strong></p>
+<p><strong>分析过程：全排列：如 对1，2，3，4，5全排列，先取出其中任意一个数如1，然后对其他的数全排列，再取出除1之外的任意一个数，然后对其他的数全排列，依次这样下去，直到五个数取完为止 。</strong></p>
+<p><strong>示例代码：premutation.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">全排列：如 对1，2，3，4，5全排列</span><br><span class="line">先取出其中任意一个数如1，然后对其他的数全排列</span><br><span class="line">再取出除1之外的任意一个数，然后对其他的数全排列</span><br><span class="line">依次这样下去，直到五个数取完为止 </span><br><span class="line">*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;交换值 </span><br><span class="line">void swap(int a[],int p,int q) &#123;</span><br><span class="line">	int temp&#x3D; a[p];</span><br><span class="line">	a[p]&#x3D;a[q];</span><br><span class="line">	a[q]&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输出 </span><br><span class="line">void print(int a[],int n) &#123;</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		printf(&quot;%d&quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;全排列 </span><br><span class="line">void perm(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	&#x2F;&#x2F;直到取到结束下标为止 </span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		&#x2F;&#x2F;重复的数不必再排列 </span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			for(j &#x3D; p; j &lt; i; j++) &#123;</span><br><span class="line">				if(a[j] &#x3D;&#x3D; a[i]) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(i &#x3D;&#x3D; j) &#123;</span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换数据 </span><br><span class="line">				perm(a,p+1,q);&#x2F;&#x2F;对剩余的数进行全排列 </span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换回来 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void perm2(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">			perm(a,p+1,q);</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	printf(&quot;请输入数据个数：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	int a[n]; </span><br><span class="line">	printf(&quot;\n请输入数据：&quot;);</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	perm(a,0,n-1);printf(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;) ;</span><br><span class="line">	</span><br><span class="line">	perm2(a,0,n-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：对b[1,1,2,3,4]进行全排列</strong></p>
+<p><strong>分析过程：重复数据，如果有重复数据则不必再全排列</strong></p>
+<p><strong>示例代码：premutation.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">全排列：如 对1，2，3，4，5全排列</span><br><span class="line">先取出其中任意一个数如1，然后对其他的数全排列</span><br><span class="line">再取出除1之外的任意一个数，然后对其他的数全排列</span><br><span class="line">依次这样下去，直到五个数取完为止 </span><br><span class="line">*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;交换值 </span><br><span class="line">void swap(int a[],int p,int q) &#123;</span><br><span class="line">	int temp&#x3D; a[p];</span><br><span class="line">	a[p]&#x3D;a[q];</span><br><span class="line">	a[q]&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输出 </span><br><span class="line">void print(int a[],int n) &#123;</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		printf(&quot;%d&quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;全排列 </span><br><span class="line">void perm(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	&#x2F;&#x2F;直到取到结束下标为止 </span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		&#x2F;&#x2F;重复的数不必再排列 </span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			for(j &#x3D; p; j &lt; i; j++) &#123;</span><br><span class="line">				if(a[j] &#x3D;&#x3D; a[i]) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(i &#x3D;&#x3D; j) &#123;</span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换数据 </span><br><span class="line">				perm(a,p+1,q);&#x2F;&#x2F;对剩余的数进行全排列 </span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换回来 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void perm2(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">			perm(a,p+1,q);</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	printf(&quot;请输入数据个数：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	int a[n]; </span><br><span class="line">	printf(&quot;\n请输入数据：&quot;);</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	perm(a,0,n-1);printf(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;) ;</span><br><span class="line">	</span><br><span class="line">	perm2(a,0,n-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-动态规划</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<h4><span id="动态规划">动态规划</span></h4><p><strong>概念：求解决策过程中最优化的数学方法。把多个阶段过程转换为一系列单阶段问题，利用各个阶段间的关系，逐个求解。</strong></p>
@@ -1777,29 +1817,6 @@
 <p><strong>示例代码：dp2.cpp</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;背包容量为s,有一堆物品大小不同，随意挑选物品，判断背包是否能正好背装满。 </span><br><span class="line">&#x2F;&#x2F;递归</span><br><span class="line">bool subset(int arr[],int i,int s) &#123;</span><br><span class="line">	if(s &#x3D;&#x3D; 0)  return true;</span><br><span class="line">	else if(i &#x3D;&#x3D; 0) return arr[0] &#x3D;&#x3D; s;</span><br><span class="line">	else if(arr[i]&gt;s) return subset(arr,i-1,s);</span><br><span class="line">	else &#123;</span><br><span class="line">		int A &#x3D; subset(arr,i-1,s-arr[i]);</span><br><span class="line">		int B &#x3D; subset(arr,i-1,s);</span><br><span class="line">		return A or B;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int sub[6][100];</span><br><span class="line">bool dp_subset(int goods[],int s,int length) &#123;</span><br><span class="line">	for(int i&#x3D;0; i&lt;length; i++) &#123; &#x2F;&#x2F;初始化</span><br><span class="line">		for(int j&#x3D;0; j&lt;&#x3D;s; j++) &#123;</span><br><span class="line">			if(i&#x3D;&#x3D;0) sub[0][j]&#x3D;0;</span><br><span class="line">			if(j&#x3D;&#x3D;0) sub[i][0]&#x3D;1;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sub[0][goods[0]]&#x3D;1;</span><br><span class="line">	for(int i&#x3D;1; i&lt;length; i++) &#123; &#x2F;&#x2F;初始化</span><br><span class="line">		for(int j&#x3D;1; j&lt;&#x3D;s; j++) &#123;</span><br><span class="line"></span><br><span class="line">			if(goods[i]&gt;s)</span><br><span class="line">				sub[i][j]&#x3D;sub[i-1][j] ;</span><br><span class="line">			else &#123;</span><br><span class="line">				int A &#x3D; sub[i-1][j-goods[i]];</span><br><span class="line">				int B &#x3D; sub[i-1][j];</span><br><span class="line">				sub[i][j] &#x3D; A or B; </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return sub[length-1][s];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	int s;&#x2F;&#x2F;背包容量 </span><br><span class="line">	printf(&quot;请输入背包容量：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;s); </span><br><span class="line">	</span><br><span class="line">	int length;&#x2F;&#x2F;物品的数量 </span><br><span class="line">	printf(&quot;\n请输入物品的数量：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;length);</span><br><span class="line">	</span><br><span class="line">	int goods[length]; &#x2F;&#x2F;物品重量&#x3D; &#123;3 34 4 12 5 2&#125;</span><br><span class="line">	printf(&quot;\n请输入每个物品的重量：&quot;);</span><br><span class="line">	for(int i&#x3D;0;i&lt;length;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;goods[i]); </span><br><span class="line">	&#125;</span><br><span class="line">	if(dp_subset(goods,s,length))</span><br><span class="line">		printf(&quot;\ntrue&quot;);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;\nfalse&quot;);</span><br><span class="line">	</span><br><span class="line">&#x2F;*	printf(&quot;%d\n&quot;,dp_subset(goods,s,length));</span><br><span class="line">	for(int i&#x3D;0; i&lt;length; i++) &#123; &#x2F;&#x2F;初始化</span><br><span class="line">		for(int j&#x3D;0; j&lt;&#x3D;s; j++) &#123;</span><br><span class="line">			printf(&quot;%d &quot;,sub[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;*&#x2F;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-全排列</title>
-    <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E5%85%A8%E6%8E%92%E5%88%97/</url>
-    <content><![CDATA[<h4><span id="全排列">全排列</span></h4><p><strong>概念</strong>：<strong>从n个不同元素中任取m（m≤n）个元素，按照一定的顺序排列起来，叫做从n个不同元素中取出m个元素的一个排列。当m=n时所有的排列情况叫全排列。</strong></p>
-<span id="more"></span>
-
-<p><strong>示例：对a[1,2,3,4,5]进行全排列</strong></p>
-<p><strong>分析过程：全排列：如 对1，2，3，4，5全排列，先取出其中任意一个数如1，然后对其他的数全排列，再取出除1之外的任意一个数，然后对其他的数全排列，依次这样下去，直到五个数取完为止 。</strong></p>
-<p><strong>示例代码：premutation.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">全排列：如 对1，2，3，4，5全排列</span><br><span class="line">先取出其中任意一个数如1，然后对其他的数全排列</span><br><span class="line">再取出除1之外的任意一个数，然后对其他的数全排列</span><br><span class="line">依次这样下去，直到五个数取完为止 </span><br><span class="line">*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;交换值 </span><br><span class="line">void swap(int a[],int p,int q) &#123;</span><br><span class="line">	int temp&#x3D; a[p];</span><br><span class="line">	a[p]&#x3D;a[q];</span><br><span class="line">	a[q]&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输出 </span><br><span class="line">void print(int a[],int n) &#123;</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		printf(&quot;%d&quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;全排列 </span><br><span class="line">void perm(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	&#x2F;&#x2F;直到取到结束下标为止 </span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		&#x2F;&#x2F;重复的数不必再排列 </span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			for(j &#x3D; p; j &lt; i; j++) &#123;</span><br><span class="line">				if(a[j] &#x3D;&#x3D; a[i]) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(i &#x3D;&#x3D; j) &#123;</span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换数据 </span><br><span class="line">				perm(a,p+1,q);&#x2F;&#x2F;对剩余的数进行全排列 </span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换回来 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void perm2(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">			perm(a,p+1,q);</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	printf(&quot;请输入数据个数：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	int a[n]; </span><br><span class="line">	printf(&quot;\n请输入数据：&quot;);</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	perm(a,0,n-1);printf(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;) ;</span><br><span class="line">	</span><br><span class="line">	perm2(a,0,n-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例：对b[1,1,2,3,4]进行全排列</strong></p>
-<p><strong>分析过程：重复数据，如果有重复数据则不必再全排列</strong></p>
-<p><strong>示例代码：premutation.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">全排列：如 对1，2，3，4，5全排列</span><br><span class="line">先取出其中任意一个数如1，然后对其他的数全排列</span><br><span class="line">再取出除1之外的任意一个数，然后对其他的数全排列</span><br><span class="line">依次这样下去，直到五个数取完为止 </span><br><span class="line">*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;交换值 </span><br><span class="line">void swap(int a[],int p,int q) &#123;</span><br><span class="line">	int temp&#x3D; a[p];</span><br><span class="line">	a[p]&#x3D;a[q];</span><br><span class="line">	a[q]&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;输出 </span><br><span class="line">void print(int a[],int n) &#123;</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		printf(&quot;%d&quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;全排列 </span><br><span class="line">void perm(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	&#x2F;&#x2F;直到取到结束下标为止 </span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		&#x2F;&#x2F;重复的数不必再排列 </span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			for(j &#x3D; p; j &lt; i; j++) &#123;</span><br><span class="line">				if(a[j] &#x3D;&#x3D; a[i]) &#123;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if(i &#x3D;&#x3D; j) &#123;</span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换数据 </span><br><span class="line">				perm(a,p+1,q);&#x2F;&#x2F;对剩余的数进行全排列 </span><br><span class="line">				swap(a,p,i);&#x2F;&#x2F;交换回来 </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">void perm2(int a[],int p,int q) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(q&#x3D;&#x3D;p) &#123;</span><br><span class="line">		print(a,q+1);</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		for(int i&#x3D;p; i&lt;&#x3D;q; i++) &#123;</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">			perm(a,p+1,q);</span><br><span class="line">			swap(a,p,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n;</span><br><span class="line">	printf(&quot;请输入数据个数：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	int a[n]; </span><br><span class="line">	printf(&quot;\n请输入数据：&quot;);</span><br><span class="line">	for(int i&#x3D;0; i&lt;n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	perm(a,0,n-1);printf(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;) ;</span><br><span class="line">	</span><br><span class="line">	perm2(a,0,n-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -1874,25 +1891,6 @@
 
 <p><strong>示例代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;先进行heapify，使父节点最大，如，根节点 5 左右节点 6 9 那么就将子节点9与父节点5交换形成堆</span><br><span class="line">&#x2F;&#x2F;对于一个完全二叉树，从倒数第二层进行heapify,直到根节点，让完全二叉树形成堆</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;交换函数</span><br><span class="line">void swap(int tree[],int i,int j)&#123;</span><br><span class="line">	int temp&#x3D;tree[i];</span><br><span class="line">	tree[i]&#x3D;tree[j];</span><br><span class="line">	tree[j]&#x3D;temp;</span><br><span class="line">&#125; </span><br><span class="line">&#x2F;*</span><br><span class="line"> *tree[]:数组或者说一棵树</span><br><span class="line"> *n:树里面有多少个结点</span><br><span class="line"> *i:树里第几个结点 </span><br><span class="line"> *c1&lt;n和c2&lt;n 判断是否出界 </span><br><span class="line"> *&#x2F;</span><br><span class="line">void heapify(int tree[],int n,int i)&#123;</span><br><span class="line">	</span><br><span class="line">	if(n&lt;&#x3D;i) return ;</span><br><span class="line">	int c1&#x3D;(2*i)+1;&#x2F;&#x2F;第i个结点的左子节点 </span><br><span class="line">	int c2&#x3D;(2*i)+2; &#x2F;&#x2F;第i个结点的右子节点</span><br><span class="line">	&#x2F;&#x2F;从三个结点中找出最大值</span><br><span class="line">	int max&#x3D;i;</span><br><span class="line">	if(c1&lt;n &amp;&amp; tree[max]&lt;tree[c1])&#123;</span><br><span class="line">		max&#x3D;c1;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	if(c2&lt;n &amp;&amp; tree[max]&lt;tree[c2])&#123;</span><br><span class="line">		max&#x3D;c2;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;如果最大值的结点不是第i个结点，就交换值 </span><br><span class="line">	if(max !&#x3D; i)&#123;</span><br><span class="line">		&#x2F;&#x2F;交换两个结点</span><br><span class="line">		swap(tree,max,i); </span><br><span class="line">		&#x2F;&#x2F;对下面节点继续做heapify </span><br><span class="line">		heapify(tree,n,max);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构建堆</span><br><span class="line">void build_heap(int tree[],int n)&#123;</span><br><span class="line">	int last_node&#x3D;n-1;</span><br><span class="line">	int parent &#x3D; (last_node-1)&#x2F;2;</span><br><span class="line">	int i;</span><br><span class="line">	for (i&#x3D;parent;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">		heapify(tree,n,i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;堆排序，树经过heapify操作后，保证了根节点是堆中最大的数</span><br><span class="line">&#x2F;&#x2F;将根节点与最后与一个结点交换，拿出根节点</span><br><span class="line">&#x2F;&#x2F;交换最后一个结点，拿出根节点后，再对当前数进行heapify操作</span><br><span class="line">&#x2F;&#x2F;按此步骤继续，直至取到只剩一个结点</span><br><span class="line">void heap_sort(int tree[],int n)&#123;</span><br><span class="line">	&#x2F;&#x2F;建堆</span><br><span class="line">	build_heap(tree,n);</span><br><span class="line">	int i;</span><br><span class="line">	for(i&#x3D;n-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">		&#x2F;&#x2F;每次交换根节点和最后一个结点</span><br><span class="line">	</span><br><span class="line">		swap(tree,i,0);</span><br><span class="line">		heapify(tree,i,0); 	&#x2F;&#x2F;printf(&quot;%d &quot;,tree[i]);</span><br><span class="line">	&#125; </span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">	int tree[100];</span><br><span class="line">	int n;</span><br><span class="line">	int i;</span><br><span class="line">	printf(&quot;堆排序\n请输入数组长度：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	printf(&quot;请输入%d个整型数据：\n&quot;,n);</span><br><span class="line">	for(i &#x3D; 0;i &lt; n; i ++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;tree[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	heap_sort(tree,n);</span><br><span class="line">	printf(&quot;堆排序结果：\n&quot;);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		printf(&quot;%d &quot;,tree[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-广搜</title>
-    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%B9%BF%E6%90%9C/</url>
-    <content><![CDATA[<h4><span id="广度优先搜索bfs">广度优先搜索(BFS)</span></h4><p><strong>基本思想：广度优先搜索是最简便的图的搜索算法之一，层层遍历，不考虑结果可能出现的位置，彻底遍历完整张图，直至找到结果。</strong></p>
-<span id="more"></span>![3.1](/6.png)
-
-<p><strong>演示：若A为开始的点，就将A先压入队列，遍历与A相邻的点，A出队，BCD入队，遍历B点的相邻的点，B出队，E入队。此时队列为CDE，遍历与C相邻的点，C出队，F入队。此时队列为DEF，遍历与D相邻的点，D出队，G入队。此时队列为EFG,遍历与E相邻的点，E没有相邻的点，E出队。此时队列为FG，遍历与F相邻的点，F出队，H入队。此时队列为GH，遍历与G相邻的点，由于H和D都已经被遍历过，所有不存在与G相邻且没有遍历过的点，G出队。此时队列为H，遍历与H相邻的点，不存在与H相邻且没有遍历过的点，H出队。所以图6用广度优先搜索的顺序是ABCDEFGH。</strong></p>
-<p><strong>示例：迷宫最短路径问题</strong></p>
-<p><strong>分析：从开始点遍历点的上下左右并过滤非通路的点，且对已遍历的点标记和记录通路点到起点的位置，选择一个通路的点遍历该点的上下左右，如此循环直至找到迷宫终点。广度优先一层层扩散，第一次寻找到终点即最短的路径。</strong></p>
-<p><strong>示例代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *宽度有限搜索</span><br><span class="line"> *迷宫最短路径问题，起始点为S，结束点为G 二维图形有</span><br><span class="line">  m&#x3D;10 n&#x3D;10；</span><br><span class="line">#S######.#</span><br><span class="line">......#..#</span><br><span class="line">.#.##.##.#</span><br><span class="line">.#........</span><br><span class="line">##.##.####</span><br><span class="line">....#....#</span><br><span class="line">.#######.#</span><br><span class="line">....#.....</span><br><span class="line">.####.###.</span><br><span class="line">....#...G#</span><br><span class="line"> *&#x2F;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">&#x2F;&#x2F;定义结构体</span><br><span class="line">typedef pair&lt;int,int &gt; P;</span><br><span class="line">const int MAX &#x3D;100;</span><br><span class="line">&#x2F;&#x2F;迷宫的二维图像数组</span><br><span class="line">char maze[MAX][MAX+1];</span><br><span class="line">int m,n;&#x2F;&#x2F;几行几列</span><br><span class="line">int sx,sy;&#x2F;&#x2F;起点坐标</span><br><span class="line">int gx,gy;&#x2F;&#x2F;终点坐标</span><br><span class="line">&#x2F;&#x2F;上下左右</span><br><span class="line">int dx[4]&#x3D; &#123;1,0,-1,0&#125;;</span><br><span class="line">int dy[4]&#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">&#x2F;&#x2F;记录当前遍历点的坐标，及该点到起始点的距离 </span><br><span class="line">int d[MAX][MAX+1];</span><br><span class="line">&#x2F;&#x2F;广度优先搜索 </span><br><span class="line">int bfs() &#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	&#x2F;&#x2F;定义队列que</span><br><span class="line">	queue&lt;P&gt; que;</span><br><span class="line">	&#x2F;&#x2F;寻找起始坐标</span><br><span class="line">	for(i &#x3D; 0; i &lt; m; i ++) &#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">			if(maze[i][j ]&#x3D;&#x3D; &#39;S&#39;) &#123;</span><br><span class="line">				sx &#x3D; i;</span><br><span class="line">				sy&#x3D;j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">			if(maze[i][j] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">				gx &#x3D; i;</span><br><span class="line">				gy &#x3D; j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 *将数组d初始化为无穷大</span><br><span class="line">	 *作用1：d数组记录这个点到开始点的最小步数</span><br><span class="line">	 *作用2：d数组标记这个点是否被遍历过，如果为值为无穷大就代表这个点没有被遍历过</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	memset(d,INF,sizeof(d));</span><br><span class="line">	&#x2F;&#x2F;将初始转态压入队列</span><br><span class="line">	que.push(P(sx,sy));</span><br><span class="line">	&#x2F;&#x2F;初始化距离为0； </span><br><span class="line">	d[sx][sy] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">	while(que.size()) &#123;</span><br><span class="line">		int i; </span><br><span class="line">		&#x2F;&#x2F;取出队头</span><br><span class="line">		P p &#x3D; que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		&#x2F;&#x2F;移动位置nx,ny</span><br><span class="line">		int nx &#x3D; p.first;</span><br><span class="line">		int ny &#x3D; p.second;</span><br><span class="line">		if(nx &#x3D;&#x3D; gx &amp;&amp; ny &#x3D;&#x3D; gy) break;</span><br><span class="line">		&#x2F;&#x2F;遍历点的上下左右</span><br><span class="line">		for(i &#x3D; 0; i &lt; 4; i ++) &#123;</span><br><span class="line">			&#x2F;&#x2F;移动后的位置记为（nx,ny）</span><br><span class="line">			nx &#x3D; p.first + dx[i];</span><br><span class="line">			ny &#x3D; p.second + dy[i];</span><br><span class="line">			&#x2F;&#x2F;限制边界，查看点是否遍历过，查看点是否是通路的点 </span><br><span class="line">			if(nx &gt;&#x3D; 0 &amp;&amp; ny &gt;&#x3D; 0 &amp;&amp; nx &lt; m &amp;&amp; ny &lt; n &amp;&amp; d[nx][ny] &#x3D;&#x3D; INF &amp;&amp; maze[nx][ny] !&#x3D; &#39;#&#39;) &#123;</span><br><span class="line">				&#x2F;&#x2F;如果该点合法 d数组值加一 </span><br><span class="line">				d[nx][ny] &#x3D; d[p.first][p.second] + 1;</span><br><span class="line">				&#x2F;&#x2F;把该点压入队列 </span><br><span class="line">				que.push(P(nx,ny));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return d[gx][gy];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0; i&lt;m; i++)</span><br><span class="line">		cin&gt;&gt;maze[i];</span><br><span class="line">	cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2024,6 +2022,25 @@
 <p>代码实现：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void merge(int a[],int l,int m,int r)&#123;</span><br><span class="line">	int LEFT_SIZE&#x3D;m-l;&#x2F;&#x2F;left[]的长度 </span><br><span class="line">	int RIGHT_SIZE&#x3D;r-m+1;&#x2F;&#x2F;right[]的长度 </span><br><span class="line">	&#x2F;&#x2F;a[5]&#x3D;&#123;1,2,5,3,1&#125;</span><br><span class="line">	int left[LEFT_SIZE];</span><br><span class="line">	int right[LEFT_SIZE];</span><br><span class="line">	int i,k,j;</span><br><span class="line">	&#x2F;&#x2F;将数组分成左右两个数组 </span><br><span class="line">	for(i&#x3D;l;i&lt;&#x3D;m-1;i++)&#123;</span><br><span class="line">		left[i-l]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	for(i&#x3D;m;i&lt;&#x3D;r;i++)&#123;</span><br><span class="line">		right[i-m]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	i&#x3D;0;&#x2F;&#x2F;&#39;i&#39;,指left[]的首地址 </span><br><span class="line">	j&#x3D;0;&#x2F;&#x2F;&#39;j&#39;,指right[]的首地址 </span><br><span class="line">	k&#x3D;l;&#x2F;&#x2F;&#39;k&#39;,指a[]的首地址</span><br><span class="line">	&#x2F;</span><br><span class="line">	 把left[]和right[]重新有序地放到a[]中 </span><br><span class="line">	 &#x2F; </span><br><span class="line"></span><br><span class="line">	 &#x2F;&#x2F;如果right[]和left[]数组中都存在着数据，那么比较 </span><br><span class="line">	while(i&lt;LEFT_SIZE&amp;&amp;j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		if(left[i]&lt;right[j])&#123;</span><br><span class="line">			a[k]&#x3D;left[i];</span><br><span class="line">			i++;k++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			a[k]&#x3D;right[j];</span><br><span class="line">			j++;k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，left[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(i&lt;LEFT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;left[i];i++;k++;&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，right[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;right[j];</span><br><span class="line">		j++;k++;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;LEFT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,left[t]);	</span><br><span class="line">&#x2F;&#x2F;	printf(&quot; sdfadf &quot;,a[r]);</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;RIGHT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,right[t]);</span><br><span class="line">&#x2F;&#x2F;	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">void mergesort(int a[],int l,int r)&#123;</span><br><span class="line">	if(l&lt;r)&#123;</span><br><span class="line">		int m&#x3D;(r+l)&#x2F;2;</span><br><span class="line">			</span><br><span class="line">		mergesort(a,l,m);</span><br><span class="line">		mergesort(a,m+1,r);</span><br><span class="line">		&#x2F;</span><br><span class="line">		for(int t&#x3D;l;t&lt;&#x3D;m;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">			printf(&quot; sdfadf &quot;);</span><br><span class="line">		for(int t&#x3D;m+1;t&lt;&#x3D;r;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">		&#x2F;</span><br><span class="line">	merge(a,l,m+1,r);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	</span><br><span class="line">	int n,i;</span><br><span class="line">	int a[100];</span><br><span class="line">	printf(&quot;合并排序\n请输入数组长度：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	printf(&quot;请输入%d个整型数据：\n&quot;,n);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	int l&#x3D;0;&#x2F;&#x2F;l首地址 </span><br><span class="line">	int r&#x3D;n-1;&#x2F;&#x2F;r尾地址 </span><br><span class="line">	mergesort(a,l,r);</span><br><span class="line">	printf(&quot;排序结果：\n&quot;);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-广搜</title>
+    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%B9%BF%E6%90%9C/</url>
+    <content><![CDATA[<h4><span id="广度优先搜索bfs">广度优先搜索(BFS)</span></h4><p><strong>基本思想：广度优先搜索是最简便的图的搜索算法之一，层层遍历，不考虑结果可能出现的位置，彻底遍历完整张图，直至找到结果。</strong></p>
+<span id="more"></span>![3.1](/6.png)
+
+<p><strong>演示：若A为开始的点，就将A先压入队列，遍历与A相邻的点，A出队，BCD入队，遍历B点的相邻的点，B出队，E入队。此时队列为CDE，遍历与C相邻的点，C出队，F入队。此时队列为DEF，遍历与D相邻的点，D出队，G入队。此时队列为EFG,遍历与E相邻的点，E没有相邻的点，E出队。此时队列为FG，遍历与F相邻的点，F出队，H入队。此时队列为GH，遍历与G相邻的点，由于H和D都已经被遍历过，所有不存在与G相邻且没有遍历过的点，G出队。此时队列为H，遍历与H相邻的点，不存在与H相邻且没有遍历过的点，H出队。所以图6用广度优先搜索的顺序是ABCDEFGH。</strong></p>
+<p><strong>示例：迷宫最短路径问题</strong></p>
+<p><strong>分析：从开始点遍历点的上下左右并过滤非通路的点，且对已遍历的点标记和记录通路点到起点的位置，选择一个通路的点遍历该点的上下左右，如此循环直至找到迷宫终点。广度优先一层层扩散，第一次寻找到终点即最短的路径。</strong></p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *宽度有限搜索</span><br><span class="line"> *迷宫最短路径问题，起始点为S，结束点为G 二维图形有</span><br><span class="line">  m&#x3D;10 n&#x3D;10；</span><br><span class="line">#S######.#</span><br><span class="line">......#..#</span><br><span class="line">.#.##.##.#</span><br><span class="line">.#........</span><br><span class="line">##.##.####</span><br><span class="line">....#....#</span><br><span class="line">.#######.#</span><br><span class="line">....#.....</span><br><span class="line">.####.###.</span><br><span class="line">....#...G#</span><br><span class="line"> *&#x2F;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">&#x2F;&#x2F;定义结构体</span><br><span class="line">typedef pair&lt;int,int &gt; P;</span><br><span class="line">const int MAX &#x3D;100;</span><br><span class="line">&#x2F;&#x2F;迷宫的二维图像数组</span><br><span class="line">char maze[MAX][MAX+1];</span><br><span class="line">int m,n;&#x2F;&#x2F;几行几列</span><br><span class="line">int sx,sy;&#x2F;&#x2F;起点坐标</span><br><span class="line">int gx,gy;&#x2F;&#x2F;终点坐标</span><br><span class="line">&#x2F;&#x2F;上下左右</span><br><span class="line">int dx[4]&#x3D; &#123;1,0,-1,0&#125;;</span><br><span class="line">int dy[4]&#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">&#x2F;&#x2F;记录当前遍历点的坐标，及该点到起始点的距离 </span><br><span class="line">int d[MAX][MAX+1];</span><br><span class="line">&#x2F;&#x2F;广度优先搜索 </span><br><span class="line">int bfs() &#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	&#x2F;&#x2F;定义队列que</span><br><span class="line">	queue&lt;P&gt; que;</span><br><span class="line">	&#x2F;&#x2F;寻找起始坐标</span><br><span class="line">	for(i &#x3D; 0; i &lt; m; i ++) &#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">			if(maze[i][j ]&#x3D;&#x3D; &#39;S&#39;) &#123;</span><br><span class="line">				sx &#x3D; i;</span><br><span class="line">				sy&#x3D;j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">			if(maze[i][j] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">				gx &#x3D; i;</span><br><span class="line">				gy &#x3D; j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 *将数组d初始化为无穷大</span><br><span class="line">	 *作用1：d数组记录这个点到开始点的最小步数</span><br><span class="line">	 *作用2：d数组标记这个点是否被遍历过，如果为值为无穷大就代表这个点没有被遍历过</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	memset(d,INF,sizeof(d));</span><br><span class="line">	&#x2F;&#x2F;将初始转态压入队列</span><br><span class="line">	que.push(P(sx,sy));</span><br><span class="line">	&#x2F;&#x2F;初始化距离为0； </span><br><span class="line">	d[sx][sy] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">	while(que.size()) &#123;</span><br><span class="line">		int i; </span><br><span class="line">		&#x2F;&#x2F;取出队头</span><br><span class="line">		P p &#x3D; que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		&#x2F;&#x2F;移动位置nx,ny</span><br><span class="line">		int nx &#x3D; p.first;</span><br><span class="line">		int ny &#x3D; p.second;</span><br><span class="line">		if(nx &#x3D;&#x3D; gx &amp;&amp; ny &#x3D;&#x3D; gy) break;</span><br><span class="line">		&#x2F;&#x2F;遍历点的上下左右</span><br><span class="line">		for(i &#x3D; 0; i &lt; 4; i ++) &#123;</span><br><span class="line">			&#x2F;&#x2F;移动后的位置记为（nx,ny）</span><br><span class="line">			nx &#x3D; p.first + dx[i];</span><br><span class="line">			ny &#x3D; p.second + dy[i];</span><br><span class="line">			&#x2F;&#x2F;限制边界，查看点是否遍历过，查看点是否是通路的点 </span><br><span class="line">			if(nx &gt;&#x3D; 0 &amp;&amp; ny &gt;&#x3D; 0 &amp;&amp; nx &lt; m &amp;&amp; ny &lt; n &amp;&amp; d[nx][ny] &#x3D;&#x3D; INF &amp;&amp; maze[nx][ny] !&#x3D; &#39;#&#39;) &#123;</span><br><span class="line">				&#x2F;&#x2F;如果该点合法 d数组值加一 </span><br><span class="line">				d[nx][ny] &#x3D; d[p.first][p.second] + 1;</span><br><span class="line">				&#x2F;&#x2F;把该点压入队列 </span><br><span class="line">				que.push(P(nx,ny));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return d[gx][gy];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0; i&lt;m; i++)</span><br><span class="line">		cin&gt;&gt;maze[i];</span><br><span class="line">	cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2492,8 +2509,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4><span id="复制远程服务器文件到本地">复制远程服务器文件到本地</span></h4><ul>
-<li>scp <a href="mailto:&#x73;&#x79;&#x2d;&#x64;&#x65;&#x76;&#111;&#x70;&#115;&#x2d;&#117;&#x73;&#101;&#114;&#x40;&#x34;&#55;&#x2e;&#x39;&#x39;&#x2e;&#50;&#51;&#x36;&#46;&#x31;&#56;&#x31;">&#x73;&#x79;&#x2d;&#x64;&#x65;&#x76;&#111;&#x70;&#115;&#x2d;&#117;&#x73;&#101;&#114;&#x40;&#x34;&#55;&#x2e;&#x39;&#x39;&#x2e;&#50;&#51;&#x36;&#46;&#x31;&#56;&#x31;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#115;&#x79;&#x2d;&#x64;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#117;&#x73;&#x65;&#114;&#64;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#x31;">&#115;&#x79;&#x2d;&#x64;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#117;&#x73;&#x65;&#114;&#64;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#49;">&#x73;&#121;&#45;&#100;&#101;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#x38;&#x31;">&#x73;&#121;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4><span id="linux解压和压缩">Linux解压和压缩</span></h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
@@ -2617,5 +2634,27 @@
       <tags>
         <tag>TCP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>嵌入视频测试</title>
+    <url>/2021/04/18/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E5%A4%B9/Untitled/</url>
+    <content><![CDATA[<iframe src="//player.bilibili.com/player.html?aid=710997965&bvid=BV1iD4y1D714&cid=201014583&page=1" width="100%" height="315"> </iframe>
+]]></content>
+  </entry>
+  <entry>
+    <title>加密文章测试</title>
+    <url>/2021/04/16/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E5%A4%B9/%E8%AF%97%E9%9B%86/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="5548bc4e49839f0d42a491ec4991391f0b99c3833aa2a771c7036ee906d2e192">6031008eaf30dfa9f6cee48a6a69006e31c708eb00d953d40ac7e8a807d41619aea42c633277d3c6479ef025be688f90def368c9a68682b810075ae4d11ccd7778728a629439943216483c161142baabee911b07427f799edad6606e8d242592c7e8425daa606df181b9e3186a50aa399aa69d8d5d99db07fc2cada4ca39f40e79b5d7ee036c45acbaef9613e17f4756606352949b9e16e309b21b6a3c7da663eaa29f8c09453a530141a5420c2bdd7fac8a3da4d32a30cf66fbcf4873dad7f8ab7024b6e05ea31d10daaa75bf924fbf1afbde211632f9788b68279219394ab9e5204c5608ef0527881e23fef7d4b6632351ef7474f30be60631e6e8517890de062b39a87e788f0c92b32e6cac8bac72c170e5727736db5a13e15769047303a60a79674373b82da02c502cf7e16089a6a4c4eb690af1683cde78018fb5ef44740a0708ba879b7d6f1d54672ffa79dcdf6b3770af66153950a7a5868c98ce1d42024795047c3161d4bfb706b930a859c7fb4032ccf3e9643fe1517756cb6d3910</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
 </search>
