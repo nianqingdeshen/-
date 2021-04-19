@@ -262,7 +262,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4 id="代码合并提交标准"><a href="#代码合并提交标准" class="headerlink" title="代码合并提交标准"></a>代码合并提交标准</h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#102;&#105;&#x78;&#x40;&#x30;&#46;&#x31;&#x2e;&#x31;">&#102;&#105;&#x78;&#x40;&#x30;&#46;&#x31;&#x2e;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#x66;&#105;&#x78;&#x40;&#x30;&#x2e;&#49;&#x2e;&#x31;">&#x66;&#105;&#x78;&#x40;&#x30;&#x2e;&#49;&#x2e;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4 id="上次远程仓库"><a href="#上次远程仓库" class="headerlink" title="上次远程仓库"></a>上次远程仓库</h4><ul>
 <li>git add .</li>
@@ -593,24 +593,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Android开发</title>
-    <url>/2021/04/10/android%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[
-
-	<div class="row">
-    <embed src="pdf.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-]]></content>
-      <categories>
-        <category>开发</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>引用pdf测试</title>
     <url>/2021/04/04/book/</url>
     <content><![CDATA[
@@ -695,6 +677,24 @@
       </categories>
       <tags>
         <tag>存储过程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android开发</title>
+    <url>/2021/04/10/android%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[
+
+	<div class="row">
+    <embed src="pdf.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1474,135 +1474,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法-Floyd</title>
-    <url>/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/</url>
-    <content><![CDATA[<h4 id="floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h4><p><strong>Flody算法：寻找给的定权图中节点间的最短路径。（插点法）</strong></p>
-<p><strong>核心依据：以下图为例</strong></p>
-<span id="more"></span>
-
-<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.1.png" alt="7.1"></p>
-<p>①如果某个节点位于从起点到终点的最短路径上：</p>
-<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.2.png" alt="7.2"></p>
-<p>②如果某个节点不在从起点到终点的最短路径上：</p>
-<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.3.png" alt="7.3"></p>
-<p>由①转化为代码就是distance[i][k]+distance[k][j]&lt;distance[i][j]，即起始点到中间节点距离+中间节点到终点距离是否小于起始点到终点的距离（如果不能直接到达，初始化为无穷大），如果小于就更新起始点到终点的距离，即distance[i][j]=distance[i][k]+distance[k][j]，同时更新路径path[i][j]=path[i][k]。</p>
-<p>示例分析：构建两个二维数组distance[5][5]，path[5][5]，distance[5][5]代表两个节点间的最短距离，path[5][5]代表最短路径。如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>D（节点）</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>-3</td>
-<td>2</td>
-<td>-4</td>
-</tr>
-<tr>
-<td>1</td>
-<td>3</td>
-<td>0</td>
-<td>-4</td>
-<td>1</td>
-<td>-1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>7</td>
-<td>4</td>
-<td>0</td>
-<td>5</td>
-<td>3</td>
-</tr>
-<tr>
-<td>3</td>
-<td>2</td>
-<td>-1</td>
-<td>-5</td>
-<td>0</td>
-<td>-2</td>
-</tr>
-<tr>
-<td>4</td>
-<td>8</td>
-<td>5</td>
-<td>1</td>
-<td>6</td>
-<td>0</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>p（节点）</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>-1</td>
-<td>4</td>
-<td>4</td>
-<td>4</td>
-<td>4</td>
-</tr>
-<tr>
-<td>1</td>
-<td>3</td>
-<td>-1</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>-1</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0</td>
-<td>2</td>
-<td>2</td>
-<td>-1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>4</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-<td>-1</td>
-</tr>
-</tbody></table>
-<p>示例代码：<strong>flody.cpp</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*弗洛伊德算法（flody），求有向图最短路径问题*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#define F 90</span><br><span class="line">#define VERTICES 5 &#x2F;&#x2F;顶点个数 </span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;初始化</span><br><span class="line">	&#x2F;&#x2F;结点间的最短距离</span><br><span class="line">	int distance[VERTICES][VERTICES]&#x3D; &#123;</span><br><span class="line">		&#123;F,3,8,F,-4&#125;,</span><br><span class="line">		&#123;F,F,F,1,7&#125;,</span><br><span class="line">		&#123;F,4,F,F,F&#125;,</span><br><span class="line">		&#123;2,F,-5,F,F&#125;,</span><br><span class="line">		&#123;F,F,F,6,F&#125;</span><br><span class="line">	&#125;;&#x2F;&#x2F;0代表到自身</span><br><span class="line">	&#x2F;&#x2F;结点间最短距离的路径</span><br><span class="line">	int path[VERTICES][VERTICES]&#x3D; &#123;</span><br><span class="line">		&#123;-1,1,2,3,4&#125;,</span><br><span class="line">		&#123;0,-1,2,3,4&#125;,</span><br><span class="line">		&#123;0,1,-1,3,4&#125;,</span><br><span class="line">		&#123;0,1,2,-1,4&#125;,</span><br><span class="line">		&#123;0,1,2,3,-1&#125;</span><br><span class="line">	&#125;; &#x2F;&#x2F;-1代表没有上一个节点</span><br><span class="line">	int i,j,k;</span><br><span class="line">	for(k&#x3D;0; k&lt;VERTICES; k++) &#123;</span><br><span class="line">		for(i&#x3D;0; i&lt;VERTICES; i++)</span><br><span class="line">			for(j&#x3D;0; j&lt;VERTICES; j++) &#123;</span><br><span class="line">				if(distance[i][k]+distance[k][j]&lt;distance[i][j]) &#123;</span><br><span class="line">					distance[i][j]&#x3D;distance[i][k]+distance[k][j];</span><br><span class="line">					path[i][j]&#x3D;path[i][k];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	int s, en;</span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;s,&amp;en);</span><br><span class="line">	int f&#x3D;s;</span><br><span class="line">	while (f!&#x3D;en) &#123;</span><br><span class="line">		 printf(&quot;%d-&gt;&quot;,f);</span><br><span class="line">		 f&#x3D;path[f][en];</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;,en);</span><br><span class="line">	printf(&quot;\n%d&quot;,distance[s][en]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法-KMP</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-KMP/</url>
     <content><![CDATA[<h4 id="kmp字符串匹配算法"><a href="#KMP-字符串匹配算法" class="headerlink" title="KMP(字符串匹配算法)"></a>KMP(字符串匹配算法)</h4><p><strong>理解：KMP算法是优化的字符串匹配算法，核心是通过利用匹配失败后的信息，尽量减少要查询的字符串与模板字符串的比较。</strong></p>
@@ -1753,6 +1624,135 @@
 
 <p><strong>暴力字符串匹配示例代码：kmp0.cpp</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int t;</span><br><span class="line">bool check(char a[],char b[],int s1,int n,int s2,int m)&#123;</span><br><span class="line">	int l&#x3D;s1;</span><br><span class="line">	t&#x3D;0;</span><br><span class="line">	for(int i&#x3D;s2;i&lt;&#x3D;m;i++)&#123;</span><br><span class="line">		if(a[l]&#x3D;&#x3D;b[i])</span><br><span class="line">			t++;l++;</span><br><span class="line">	&#125;</span><br><span class="line">	if(t&#x3D;&#x3D;l) return true;</span><br><span class="line">	if(l&#x3D;&#x3D;m) return false;</span><br><span class="line">	check(a,b,s1+1,n,s2,m);	</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	char a[n];</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;n;i++)</span><br><span class="line">		a[i]&#x3D;getchar();</span><br><span class="line">		</span><br><span class="line">	int m;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;m);</span><br><span class="line">	char b[m];</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;m;i++)</span><br><span class="line">		b[m]&#x3D;getchar();</span><br><span class="line">		</span><br><span class="line">	if(check(a,b,0,n,0,m))</span><br><span class="line">		printf(&quot;true&quot;);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;false&quot;);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-Floyd</title>
+    <url>/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/</url>
+    <content><![CDATA[<h4 id="floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h4><p><strong>Flody算法：寻找给的定权图中节点间的最短路径。（插点法）</strong></p>
+<p><strong>核心依据：以下图为例</strong></p>
+<span id="more"></span>
+
+<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.1.png" alt="7.1"></p>
+<p>①如果某个节点位于从起点到终点的最短路径上：</p>
+<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.2.png" alt="7.2"></p>
+<p>②如果某个节点不在从起点到终点的最短路径上：</p>
+<p><img src="/2021/04/10/%E7%AE%97%E6%B3%95-Floyd/7.3.png" alt="7.3"></p>
+<p>由①转化为代码就是distance[i][k]+distance[k][j]&lt;distance[i][j]，即起始点到中间节点距离+中间节点到终点距离是否小于起始点到终点的距离（如果不能直接到达，初始化为无穷大），如果小于就更新起始点到终点的距离，即distance[i][j]=distance[i][k]+distance[k][j]，同时更新路径path[i][j]=path[i][k]。</p>
+<p>示例分析：构建两个二维数组distance[5][5]，path[5][5]，distance[5][5]代表两个节点间的最短距离，path[5][5]代表最短路径。如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>D（节点）</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>-3</td>
+<td>2</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>-4</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>7</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>-1</td>
+<td>-5</td>
+<td>0</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8</td>
+<td>5</td>
+<td>1</td>
+<td>6</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>p（节点）</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>-1</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>-1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>-1</td>
+</tr>
+</tbody></table>
+<p>示例代码：<strong>flody.cpp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*弗洛伊德算法（flody），求有向图最短路径问题*&#x2F;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#define F 90</span><br><span class="line">#define VERTICES 5 &#x2F;&#x2F;顶点个数 </span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;初始化</span><br><span class="line">	&#x2F;&#x2F;结点间的最短距离</span><br><span class="line">	int distance[VERTICES][VERTICES]&#x3D; &#123;</span><br><span class="line">		&#123;F,3,8,F,-4&#125;,</span><br><span class="line">		&#123;F,F,F,1,7&#125;,</span><br><span class="line">		&#123;F,4,F,F,F&#125;,</span><br><span class="line">		&#123;2,F,-5,F,F&#125;,</span><br><span class="line">		&#123;F,F,F,6,F&#125;</span><br><span class="line">	&#125;;&#x2F;&#x2F;0代表到自身</span><br><span class="line">	&#x2F;&#x2F;结点间最短距离的路径</span><br><span class="line">	int path[VERTICES][VERTICES]&#x3D; &#123;</span><br><span class="line">		&#123;-1,1,2,3,4&#125;,</span><br><span class="line">		&#123;0,-1,2,3,4&#125;,</span><br><span class="line">		&#123;0,1,-1,3,4&#125;,</span><br><span class="line">		&#123;0,1,2,-1,4&#125;,</span><br><span class="line">		&#123;0,1,2,3,-1&#125;</span><br><span class="line">	&#125;; &#x2F;&#x2F;-1代表没有上一个节点</span><br><span class="line">	int i,j,k;</span><br><span class="line">	for(k&#x3D;0; k&lt;VERTICES; k++) &#123;</span><br><span class="line">		for(i&#x3D;0; i&lt;VERTICES; i++)</span><br><span class="line">			for(j&#x3D;0; j&lt;VERTICES; j++) &#123;</span><br><span class="line">				if(distance[i][k]+distance[k][j]&lt;distance[i][j]) &#123;</span><br><span class="line">					distance[i][j]&#x3D;distance[i][k]+distance[k][j];</span><br><span class="line">					path[i][j]&#x3D;path[i][k];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	int s, en;</span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;s,&amp;en);</span><br><span class="line">	int f&#x3D;s;</span><br><span class="line">	while (f!&#x3D;en) &#123;</span><br><span class="line">		 printf(&quot;%d-&gt;&quot;,f);</span><br><span class="line">		 f&#x3D;path[f][en];</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;,en);</span><br><span class="line">	printf(&quot;\n%d&quot;,distance[s][en]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1921,137 +1921,6 @@
 <p><strong>分析：从开始点遍历点的上下左右并过滤非通路的点，且对已遍历的点标记和记录通路点到起点的位置，选择一个通路的点遍历该点的上下左右，如此循环直至找到迷宫终点。广度优先一层层扩散，第一次寻找到终点即最短的路径。</strong></p>
 <p><strong>示例代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *宽度有限搜索</span><br><span class="line"> *迷宫最短路径问题，起始点为S，结束点为G 二维图形有</span><br><span class="line">  m&#x3D;10 n&#x3D;10；</span><br><span class="line">#S######.#</span><br><span class="line">......#..#</span><br><span class="line">.#.##.##.#</span><br><span class="line">.#........</span><br><span class="line">##.##.####</span><br><span class="line">....#....#</span><br><span class="line">.#######.#</span><br><span class="line">....#.....</span><br><span class="line">.####.###.</span><br><span class="line">....#...G#</span><br><span class="line"> *&#x2F;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">&#x2F;&#x2F;定义结构体</span><br><span class="line">typedef pair&lt;int,int &gt; P;</span><br><span class="line">const int MAX &#x3D;100;</span><br><span class="line">&#x2F;&#x2F;迷宫的二维图像数组</span><br><span class="line">char maze[MAX][MAX+1];</span><br><span class="line">int m,n;&#x2F;&#x2F;几行几列</span><br><span class="line">int sx,sy;&#x2F;&#x2F;起点坐标</span><br><span class="line">int gx,gy;&#x2F;&#x2F;终点坐标</span><br><span class="line">&#x2F;&#x2F;上下左右</span><br><span class="line">int dx[4]&#x3D; &#123;1,0,-1,0&#125;;</span><br><span class="line">int dy[4]&#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">&#x2F;&#x2F;记录当前遍历点的坐标，及该点到起始点的距离 </span><br><span class="line">int d[MAX][MAX+1];</span><br><span class="line">&#x2F;&#x2F;广度优先搜索 </span><br><span class="line">int bfs() &#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	&#x2F;&#x2F;定义队列que</span><br><span class="line">	queue&lt;P&gt; que;</span><br><span class="line">	&#x2F;&#x2F;寻找起始坐标</span><br><span class="line">	for(i &#x3D; 0; i &lt; m; i ++) &#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">			if(maze[i][j ]&#x3D;&#x3D; &#39;S&#39;) &#123;</span><br><span class="line">				sx &#x3D; i;</span><br><span class="line">				sy&#x3D;j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">			if(maze[i][j] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">				gx &#x3D; i;</span><br><span class="line">				gy &#x3D; j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 *将数组d初始化为无穷大</span><br><span class="line">	 *作用1：d数组记录这个点到开始点的最小步数</span><br><span class="line">	 *作用2：d数组标记这个点是否被遍历过，如果为值为无穷大就代表这个点没有被遍历过</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	memset(d,INF,sizeof(d));</span><br><span class="line">	&#x2F;&#x2F;将初始转态压入队列</span><br><span class="line">	que.push(P(sx,sy));</span><br><span class="line">	&#x2F;&#x2F;初始化距离为0； </span><br><span class="line">	d[sx][sy] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">	while(que.size()) &#123;</span><br><span class="line">		int i; </span><br><span class="line">		&#x2F;&#x2F;取出队头</span><br><span class="line">		P p &#x3D; que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		&#x2F;&#x2F;移动位置nx,ny</span><br><span class="line">		int nx &#x3D; p.first;</span><br><span class="line">		int ny &#x3D; p.second;</span><br><span class="line">		if(nx &#x3D;&#x3D; gx &amp;&amp; ny &#x3D;&#x3D; gy) break;</span><br><span class="line">		&#x2F;&#x2F;遍历点的上下左右</span><br><span class="line">		for(i &#x3D; 0; i &lt; 4; i ++) &#123;</span><br><span class="line">			&#x2F;&#x2F;移动后的位置记为（nx,ny）</span><br><span class="line">			nx &#x3D; p.first + dx[i];</span><br><span class="line">			ny &#x3D; p.second + dy[i];</span><br><span class="line">			&#x2F;&#x2F;限制边界，查看点是否遍历过，查看点是否是通路的点 </span><br><span class="line">			if(nx &gt;&#x3D; 0 &amp;&amp; ny &gt;&#x3D; 0 &amp;&amp; nx &lt; m &amp;&amp; ny &lt; n &amp;&amp; d[nx][ny] &#x3D;&#x3D; INF &amp;&amp; maze[nx][ny] !&#x3D; &#39;#&#39;) &#123;</span><br><span class="line">				&#x2F;&#x2F;如果该点合法 d数组值加一 </span><br><span class="line">				d[nx][ny] &#x3D; d[p.first][p.second] + 1;</span><br><span class="line">				&#x2F;&#x2F;把该点压入队列 </span><br><span class="line">				que.push(P(nx,ny));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return d[gx][gy];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0; i&lt;m; i++)</span><br><span class="line">		cin&gt;&gt;maze[i];</span><br><span class="line">	cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-归并排序</title>
-    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>分治思想、二路归并。</p>
-<ol>
-<li><p>将数列从中间分开，对两边排序。</p>
-</li>
-<li><p>将两个有序数组进行合并。</p>
-<span id="more"></span></li>
-</ol>
-<p>例子：</p>
-<table>
-<thead>
-<tr>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10</td>
-<td>4</td>
-<td>6</td>
-<td>3</td>
-<td>8</td>
-<td>2</td>
-<td>5</td>
-<td>7</td>
-</tr>
-</tbody></table>
-<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.1.png" alt="2.1"></p>
-<center>过程图2.1</center>
-
-<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.2.png" alt="2.1"></p>
-<center>过程图2.2</center>
-
-<p>第一趟归并后</p>
-<table>
-<thead>
-<tr>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>4</td>
-<td>10</td>
-<td>3</td>
-<td>6</td>
-<td>2</td>
-<td>8</td>
-<td>5</td>
-<td>7</td>
-</tr>
-</tbody></table>
-<p>第二趟归并后</p>
-<table>
-<thead>
-<tr>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>3</td>
-<td>4</td>
-<td>6</td>
-<td>10</td>
-<td>2</td>
-<td>5</td>
-<td>7</td>
-<td>8</td>
-</tr>
-</tbody></table>
-<p>第三趟归并后</p>
-<table>
-<thead>
-<tr>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>10</td>
-</tr>
-</tbody></table>
-<p>具体过程如2.2 ：数组先往左分，直至不可再分即“[0]”，再返回上一个结点即“[0,1]”，再将“[0,1]”往右分，直至不可再分即“[1]”,“[0,1]”结点左右分完以后或者说往右分的“[1]”结点不可再分就对“[0,1]”的左右结点进行二路归并，即将“[0]”“[1]”排序合并。</p>
-<p>“[0,1]”结点左右分完，再返回上上个结点即“[0,3]”，对“[0,3]”结点往左分，往左分完，在往右分，分完在合并，重复上述操作，直至所有结点分完且合并。最终归为一个父节点即“[0,7]”，输出结果。</p>
-<p>总结对一个结点左右皆不可再分或已经分过进行归并，优先级先分左边再分右边，分完左右排序合并。</p>
-<p>细节：mergeSort(a,s,e); “a”指数列数组，”s”指数组首地址，”e”指数组尾地址。</p>
-<p>代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void merge(int a[],int l,int m,int r)&#123;</span><br><span class="line">	int LEFT_SIZE&#x3D;m-l;&#x2F;&#x2F;left[]的长度 </span><br><span class="line">	int RIGHT_SIZE&#x3D;r-m+1;&#x2F;&#x2F;right[]的长度 </span><br><span class="line">	&#x2F;&#x2F;a[5]&#x3D;&#123;1,2,5,3,1&#125;</span><br><span class="line">	int left[LEFT_SIZE];</span><br><span class="line">	int right[LEFT_SIZE];</span><br><span class="line">	int i,k,j;</span><br><span class="line">	&#x2F;&#x2F;将数组分成左右两个数组 </span><br><span class="line">	for(i&#x3D;l;i&lt;&#x3D;m-1;i++)&#123;</span><br><span class="line">		left[i-l]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	for(i&#x3D;m;i&lt;&#x3D;r;i++)&#123;</span><br><span class="line">		right[i-m]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	i&#x3D;0;&#x2F;&#x2F;&#39;i&#39;,指left[]的首地址 </span><br><span class="line">	j&#x3D;0;&#x2F;&#x2F;&#39;j&#39;,指right[]的首地址 </span><br><span class="line">	k&#x3D;l;&#x2F;&#x2F;&#39;k&#39;,指a[]的首地址</span><br><span class="line">	&#x2F;</span><br><span class="line">	 把left[]和right[]重新有序地放到a[]中 </span><br><span class="line">	 &#x2F; </span><br><span class="line"></span><br><span class="line">	 &#x2F;&#x2F;如果right[]和left[]数组中都存在着数据，那么比较 </span><br><span class="line">	while(i&lt;LEFT_SIZE&amp;&amp;j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		if(left[i]&lt;right[j])&#123;</span><br><span class="line">			a[k]&#x3D;left[i];</span><br><span class="line">			i++;k++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			a[k]&#x3D;right[j];</span><br><span class="line">			j++;k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，left[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(i&lt;LEFT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;left[i];i++;k++;&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，right[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;right[j];</span><br><span class="line">		j++;k++;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;LEFT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,left[t]);	</span><br><span class="line">&#x2F;&#x2F;	printf(&quot; sdfadf &quot;,a[r]);</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;RIGHT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,right[t]);</span><br><span class="line">&#x2F;&#x2F;	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">void mergesort(int a[],int l,int r)&#123;</span><br><span class="line">	if(l&lt;r)&#123;</span><br><span class="line">		int m&#x3D;(r+l)&#x2F;2;</span><br><span class="line">			</span><br><span class="line">		mergesort(a,l,m);</span><br><span class="line">		mergesort(a,m+1,r);</span><br><span class="line">		&#x2F;</span><br><span class="line">		for(int t&#x3D;l;t&lt;&#x3D;m;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">			printf(&quot; sdfadf &quot;);</span><br><span class="line">		for(int t&#x3D;m+1;t&lt;&#x3D;r;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">		&#x2F;</span><br><span class="line">	merge(a,l,m+1,r);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	</span><br><span class="line">	int n,i;</span><br><span class="line">	int a[100];</span><br><span class="line">	printf(&quot;合并排序\n请输入数组长度：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	printf(&quot;请输入%d个整型数据：\n&quot;,n);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	int l&#x3D;0;&#x2F;&#x2F;l首地址 </span><br><span class="line">	int r&#x3D;n-1;&#x2F;&#x2F;r尾地址 </span><br><span class="line">	mergesort(a,l,r);</span><br><span class="line">	printf(&quot;排序结果：\n&quot;);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2287,6 +2156,156 @@
       </tags>
   </entry>
   <entry>
+    <title>算法-深搜</title>
+    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/</url>
+    <content><![CDATA[<h4 id="深度优先搜索dfs"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a>深度优先搜索（DFS）</h4><p>概念思想：DFS属于图算法的一种，从一个顶点开始向下搜索没有遍历过的结点，直至不能再深入为止，且每个结点只能遍历一次。</p>
+<span id="more"></span>
+
+<p>例子解释：如图从A结点开始深搜，遍历的过程为：A-&gt;D-&gt;G-&gt;H-&gt;C-&gt;F-&gt;B-E</p>
+<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/3.png" alt="3.1"></p>
+<p><strong>对二维网络进行深度优先搜索，遇到1则向其八个方向搜索，其他八个方向也有1则以这个点为原点向它的八个方向搜索，已经遍历过的点，不再遍历。直至遍历的都为0，则在返回上一个点，换个方向继续搜索，如例子解释的遍历方式一样。如例题遍历到的第一个1数组下标为[1,4]，从这个点的上方开始围绕着这个点其它八个方向的点遍历，遍历到右边是遇到第二个为1的点数组下标[1,5],继续上述操作。即遍历一次经[1,4]-&gt;[1,5]-&gt;[2,6]-&gt;[2,5]-&gt;[2,4]-&gt;[2,3]。</strong></p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;多少岛屿及最大岛屿问题 </span><br><span class="line">&#x2F;*</span><br><span class="line">8 16</span><br><span class="line">0000000000000000</span><br><span class="line">0000110011000000</span><br><span class="line">0001111000111000</span><br><span class="line">0000000000000000</span><br><span class="line">0011111100000110</span><br><span class="line">0011100000000000</span><br><span class="line">0100001111111100</span><br><span class="line">0000000000000000</span><br><span class="line">*&#x2F;   </span><br><span class="line">int a[500][500];</span><br><span class="line">int n, m, c, max;&#x2F;&#x2F;c:面积 </span><br><span class="line">void dfs(int x, int y)&#123;</span><br><span class="line">	if(a[x][y]&#x3D;&#x3D;0)	</span><br><span class="line">		return;	</span><br><span class="line">	c ++;	</span><br><span class="line">	a[x][y] &#x3D; 0;</span><br><span class="line">	dfs(x,y+1);	</span><br><span class="line">	dfs(x,y-1);	</span><br><span class="line">	dfs(x-1,y);	</span><br><span class="line">	dfs(x+1,y);	</span><br><span class="line">	dfs(x+1,y+1);	</span><br><span class="line">	dfs(x+1,y-1);	</span><br><span class="line">	dfs(x-1,y+1);	</span><br><span class="line">	dfs(x-1,y-1);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int k, i, j, sum;</span><br><span class="line">	printf(&quot;求二维网络岛屿数及最大岛屿面积，0代表海域，1代表岛屿\n&quot;); </span><br><span class="line">	printf(&quot;请输入行列值：&quot;); </span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;n, &amp;m);</span><br><span class="line">	printf(&quot;请输入由0和1组成的%d行%d列的二维网络\n&quot;,n,m);</span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			scanf(&quot;%1d&quot;,&amp;a[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i  ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			if(a[i][j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">				sum ++;</span><br><span class="line">				c &#x3D; 0;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">				if(c &gt; max)</span><br><span class="line">					max &#x3D; c ;	</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;岛屿总数量为：%d，最大岛屿面积为：%d\n&quot;,sum,max);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法-归并排序</title>
+    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><p>分治思想、二路归并。</p>
+<ol>
+<li><p>将数列从中间分开，对两边排序。</p>
+</li>
+<li><p>将两个有序数组进行合并。</p>
+<span id="more"></span></li>
+</ol>
+<p>例子：</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>4</td>
+<td>6</td>
+<td>3</td>
+<td>8</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.1.png" alt="2.1"></p>
+<center>过程图2.1</center>
+
+<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/2.2.png" alt="2.1"></p>
+<center>过程图2.2</center>
+
+<p>第一趟归并后</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4</td>
+<td>10</td>
+<td>3</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+<td>5</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>第二趟归并后</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+<td>10</td>
+<td>2</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>第三趟归并后</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<p>具体过程如2.2 ：数组先往左分，直至不可再分即“[0]”，再返回上一个结点即“[0,1]”，再将“[0,1]”往右分，直至不可再分即“[1]”,“[0,1]”结点左右分完以后或者说往右分的“[1]”结点不可再分就对“[0,1]”的左右结点进行二路归并，即将“[0]”“[1]”排序合并。</p>
+<p>“[0,1]”结点左右分完，再返回上上个结点即“[0,3]”，对“[0,3]”结点往左分，往左分完，在往右分，分完在合并，重复上述操作，直至所有结点分完且合并。最终归为一个父节点即“[0,7]”，输出结果。</p>
+<p>总结对一个结点左右皆不可再分或已经分过进行归并，优先级先分左边再分右边，分完左右排序合并。</p>
+<p>细节：mergeSort(a,s,e); “a”指数列数组，”s”指数组首地址，”e”指数组尾地址。</p>
+<p>代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void merge(int a[],int l,int m,int r)&#123;</span><br><span class="line">	int LEFT_SIZE&#x3D;m-l;&#x2F;&#x2F;left[]的长度 </span><br><span class="line">	int RIGHT_SIZE&#x3D;r-m+1;&#x2F;&#x2F;right[]的长度 </span><br><span class="line">	&#x2F;&#x2F;a[5]&#x3D;&#123;1,2,5,3,1&#125;</span><br><span class="line">	int left[LEFT_SIZE];</span><br><span class="line">	int right[LEFT_SIZE];</span><br><span class="line">	int i,k,j;</span><br><span class="line">	&#x2F;&#x2F;将数组分成左右两个数组 </span><br><span class="line">	for(i&#x3D;l;i&lt;&#x3D;m-1;i++)&#123;</span><br><span class="line">		left[i-l]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	for(i&#x3D;m;i&lt;&#x3D;r;i++)&#123;</span><br><span class="line">		right[i-m]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	i&#x3D;0;&#x2F;&#x2F;&#39;i&#39;,指left[]的首地址 </span><br><span class="line">	j&#x3D;0;&#x2F;&#x2F;&#39;j&#39;,指right[]的首地址 </span><br><span class="line">	k&#x3D;l;&#x2F;&#x2F;&#39;k&#39;,指a[]的首地址</span><br><span class="line">	&#x2F;</span><br><span class="line">	 把left[]和right[]重新有序地放到a[]中 </span><br><span class="line">	 &#x2F; </span><br><span class="line"></span><br><span class="line">	 &#x2F;&#x2F;如果right[]和left[]数组中都存在着数据，那么比较 </span><br><span class="line">	while(i&lt;LEFT_SIZE&amp;&amp;j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		if(left[i]&lt;right[j])&#123;</span><br><span class="line">			a[k]&#x3D;left[i];</span><br><span class="line">			i++;k++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			a[k]&#x3D;right[j];</span><br><span class="line">			j++;k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，left[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(i&lt;LEFT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;left[i];i++;k++;&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，right[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;right[j];</span><br><span class="line">		j++;k++;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;LEFT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,left[t]);	</span><br><span class="line">&#x2F;&#x2F;	printf(&quot; sdfadf &quot;,a[r]);</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;RIGHT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,right[t]);</span><br><span class="line">&#x2F;&#x2F;	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">void mergesort(int a[],int l,int r)&#123;</span><br><span class="line">	if(l&lt;r)&#123;</span><br><span class="line">		int m&#x3D;(r+l)&#x2F;2;</span><br><span class="line">			</span><br><span class="line">		mergesort(a,l,m);</span><br><span class="line">		mergesort(a,m+1,r);</span><br><span class="line">		&#x2F;</span><br><span class="line">		for(int t&#x3D;l;t&lt;&#x3D;m;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">			printf(&quot; sdfadf &quot;);</span><br><span class="line">		for(int t&#x3D;m+1;t&lt;&#x3D;r;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">		&#x2F;</span><br><span class="line">	merge(a,l,m+1,r);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	</span><br><span class="line">	int n,i;</span><br><span class="line">	int a[100];</span><br><span class="line">	printf(&quot;合并排序\n请输入数组长度：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	printf(&quot;请输入%d个整型数据：\n&quot;,n);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	int l&#x3D;0;&#x2F;&#x2F;l首地址 </span><br><span class="line">	int r&#x3D;n-1;&#x2F;&#x2F;r尾地址 </span><br><span class="line">	mergesort(a,l,r);</span><br><span class="line">	printf(&quot;排序结果：\n&quot;);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-最小生成树</title>
     <url>/2021/04/10/%E7%AE%97%E6%B3%95-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</url>
     <content><![CDATA[<h4 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h4><p><strong>概念：保持图连通的最少边的树称为生成树，n个结点的生成树，有n-1条边，当边的权值和最小称为最小生成树，也称最小权值生成树。</strong></p>
@@ -2359,25 +2378,6 @@
 <p><strong>示例代码：</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;八皇后问题</span><br><span class="line">&#x2F;*</span><br><span class="line"> *在8x8的棋盘上合法放置八个皇后，即每个皇后不和其他皇后在同一列、行和对角线上</span><br><span class="line"> *方法：回溯（确定每一行只能放置一个皇后，且合法，遍历每一行位置放置皇后，直至放置八个为止）</span><br><span class="line"> *返回上一层选择不同的位置放置皇后，直至到第一次的所有位置，即穷举所有可能。 </span><br><span class="line">*&#x2F; </span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int solution&#x3D;0;&#x2F;&#x2F;方案</span><br><span class="line">int arr[8][8]; &#x2F;&#x2F;棋盘</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;检查点是否合法（即是否存在其他的皇后在该点所在的列、行、左右对角线 ）</span><br><span class="line">int check(int i, int j)&#123; &#x2F;&#x2F;i行j列 </span><br><span class="line">	int k,h;</span><br><span class="line">	&#x2F;&#x2F;判断列是否合法（遍历每层只放一个皇后，所有不用再重复检查一行是否有其他皇后）</span><br><span class="line">	for(k &#x3D; 0; k &lt; 8 ; k ++)&#123;</span><br><span class="line">		if(arr[k][j] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;判断左对角线是否合法</span><br><span class="line">	for(k &#x3D; i - 1,h &#x3D; j - 1; k &gt;&#x3D; 0 &amp;&amp; h &gt;&#x3D; 0; k --, h--)&#123;</span><br><span class="line">		if(arr[k][h] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;判断右对角线是否合法</span><br><span class="line">	for(k &#x3D; i - 1,h &#x3D; j + 1; k &gt;&#x3D; 0 &amp;&amp; h &lt; 8; k --, h ++)&#123;</span><br><span class="line">		if(arr[k][h] &#x3D;&#x3D; 1)&#123;</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	return 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;放置皇后,i指棋盘层数 </span><br><span class="line">void queen(int i) &#123;</span><br><span class="line">	int j;</span><br><span class="line">	if(i &gt; 7)&#123;</span><br><span class="line">		solution ++; </span><br><span class="line">		return ;</span><br><span class="line">	&#125; </span><br><span class="line">	&#x2F;&#x2F;遍历棋盘的每一点 深度回溯</span><br><span class="line">	for(j &#x3D; 0; j &lt; 8; j ++) &#123;</span><br><span class="line">		if(check(i,j))&#123;</span><br><span class="line">			arr[i][j] &#x3D; 1;&#x2F;&#x2F;放置皇后</span><br><span class="line">			queen(i + 1);&#x2F;&#x2F;遍历下一层 </span><br><span class="line">			arr[i][j] &#x3D; 0;&#x2F;&#x2F;将此点重置为零，避免回溯出现脏数据</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	queen(0);</span><br><span class="line">	printf(&quot;%d\n&quot;,solution);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-深搜</title>
-    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/</url>
-    <content><![CDATA[<h4 id="深度优先搜索dfs"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a>深度优先搜索（DFS）</h4><p>概念思想：DFS属于图算法的一种，从一个顶点开始向下搜索没有遍历过的结点，直至不能再深入为止，且每个结点只能遍历一次。</p>
-<span id="more"></span>
-
-<p>例子解释：如图从A结点开始深搜，遍历的过程为：A-&gt;D-&gt;G-&gt;H-&gt;C-&gt;F-&gt;B-E</p>
-<p><img src="/2021/04/09/%E7%AE%97%E6%B3%95-%E6%B7%B1%E6%90%9C/3.png" alt="3.1"></p>
-<p><strong>对二维网络进行深度优先搜索，遇到1则向其八个方向搜索，其他八个方向也有1则以这个点为原点向它的八个方向搜索，已经遍历过的点，不再遍历。直至遍历的都为0，则在返回上一个点，换个方向继续搜索，如例子解释的遍历方式一样。如例题遍历到的第一个1数组下标为[1,4]，从这个点的上方开始围绕着这个点其它八个方向的点遍历，遍历到右边是遇到第二个为1的点数组下标[1,5],继续上述操作。即遍历一次经[1,4]-&gt;[1,5]-&gt;[2,6]-&gt;[2,5]-&gt;[2,4]-&gt;[2,3]。</strong></p>
-<p><strong>示例代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F;多少岛屿及最大岛屿问题 </span><br><span class="line">&#x2F;*</span><br><span class="line">8 16</span><br><span class="line">0000000000000000</span><br><span class="line">0000110011000000</span><br><span class="line">0001111000111000</span><br><span class="line">0000000000000000</span><br><span class="line">0011111100000110</span><br><span class="line">0011100000000000</span><br><span class="line">0100001111111100</span><br><span class="line">0000000000000000</span><br><span class="line">*&#x2F;   </span><br><span class="line">int a[500][500];</span><br><span class="line">int n, m, c, max;&#x2F;&#x2F;c:面积 </span><br><span class="line">void dfs(int x, int y)&#123;</span><br><span class="line">	if(a[x][y]&#x3D;&#x3D;0)	</span><br><span class="line">		return;	</span><br><span class="line">	c ++;	</span><br><span class="line">	a[x][y] &#x3D; 0;</span><br><span class="line">	dfs(x,y+1);	</span><br><span class="line">	dfs(x,y-1);	</span><br><span class="line">	dfs(x-1,y);	</span><br><span class="line">	dfs(x+1,y);	</span><br><span class="line">	dfs(x+1,y+1);	</span><br><span class="line">	dfs(x+1,y-1);	</span><br><span class="line">	dfs(x-1,y+1);	</span><br><span class="line">	dfs(x-1,y-1);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int k, i, j, sum;</span><br><span class="line">	printf(&quot;求二维网络岛屿数及最大岛屿面积，0代表海域，1代表岛屿\n&quot;); </span><br><span class="line">	printf(&quot;请输入行列值：&quot;); </span><br><span class="line">	scanf(&quot;%d%d&quot;,&amp;n, &amp;m);</span><br><span class="line">	printf(&quot;请输入由0和1组成的%d行%d列的二维网络\n&quot;,n,m);</span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			scanf(&quot;%1d&quot;,&amp;a[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	for (i &#x3D; 0; i &lt; n; i  ++)&#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">			if(a[i][j] &#x3D;&#x3D; 1) &#123;</span><br><span class="line">				sum ++;</span><br><span class="line">				c &#x3D; 0;</span><br><span class="line">				dfs(i,j);</span><br><span class="line">				if(c &gt; max)</span><br><span class="line">					max &#x3D; c ;	</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;岛屿总数量为：%d，最大岛屿面积为：%d\n&quot;,sum,max);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2520,8 +2520,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4 id="复制远程服务器文件到本地"><a href="#复制远程服务器文件到本地" class="headerlink" title="复制远程服务器文件到本地"></a>复制远程服务器文件到本地</h4><ul>
-<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#x76;&#x6f;&#x70;&#115;&#45;&#117;&#x73;&#101;&#x72;&#x40;&#x34;&#x37;&#x2e;&#57;&#x39;&#46;&#50;&#x33;&#54;&#x2e;&#49;&#56;&#49;">&#x73;&#121;&#45;&#100;&#101;&#x76;&#x6f;&#x70;&#115;&#45;&#117;&#x73;&#101;&#x72;&#x40;&#x34;&#x37;&#x2e;&#57;&#x39;&#46;&#50;&#x33;&#54;&#x2e;&#49;&#56;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#x73;&#x79;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#x2d;&#x75;&#115;&#101;&#114;&#x40;&#x34;&#x37;&#46;&#x39;&#x39;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#x38;&#x31;">&#x73;&#x79;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#x2d;&#x75;&#115;&#101;&#114;&#x40;&#x34;&#x37;&#46;&#x39;&#x39;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#115;&#121;&#x2d;&#x64;&#x65;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#56;&#x31;">&#115;&#121;&#x2d;&#x64;&#x65;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#115;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#56;&#x31;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#x73;&#121;&#x2d;&#100;&#x65;&#x76;&#111;&#112;&#115;&#x2d;&#x75;&#x73;&#101;&#114;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#49;&#56;&#49;">&#x73;&#121;&#x2d;&#100;&#x65;&#x76;&#111;&#112;&#115;&#x2d;&#x75;&#x73;&#101;&#114;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#49;&#56;&#49;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4 id="linux解压和压缩"><a href="#Linux解压和压缩" class="headerlink" title="Linux解压和压缩"></a>Linux解压和压缩</h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
@@ -2691,7 +2691,7 @@
     <title>私密文章</title>
     <url>/2021/04/18/%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E5%A4%B9/%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="7adfe67412ebe10a067a66a5646efadeae75d036e0b254c1b7572473e6ec0bd7">664409823499d5cb01b284302c5d7e5f0f1d3556406c5ff5ee7bf056ee3c6a897caff569c52b93b92b900476f9fea4b6f4b07f399101347a5fee702545e3fe82b774e460a8fdf8fe974a4c07f0d9a41c4d64f71e0b0bce70ddc71d30beb70d27e3218f3f3cf888a60440843b696a0a236b201bb4bb5cb151bb9388232ad5cdc7a8cc63ccf588b2c687c4282a20b655b8</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="4e0bc372c20bfa01b3eaf58598a176881ff7e8a56269b34714294aa77e8fc693">664409823499d5cb01b284302c5d7e5f0f1d3556406c5ff5ee7bf056ee3c6a897caff569c52b93b92b900476f9fea4b6f4b07f399101347a5fee702545e3fe82b774e460a8fdf8fe974a4c07f0d9a41c4d64f71e0b0bce70ddc71d30beb70d27e3218f3f3cf888a60440843b696a0a2342227b6eb2c44c0520129b669b6b27b97ed6f61f8eff212e96ff4e87c2056661</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
