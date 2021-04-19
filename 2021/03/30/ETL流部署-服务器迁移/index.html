@@ -428,7 +428,7 @@
 <p>老的服务器版本：CentOS Linux release 7.6.1810</p>
 <p>新的服务器版本：CentOS Linux release 7.9.2009</p>
 <p>新服务器位置：华东2（上海）syp-etl</p>
-<h3><span id="一-创建分用户">一、创建分用户</span></h3><ul>
+<h3 id="一-创建分用户"><a href="#一、创建分用户" class="headerlink" title="一、创建分用户"></a>一、创建分用户</h3><ul>
 <li><p>一版情况下禁止以root用户登录系统</p>
 </li>
 <li><p>创建分用户sy-devops-user，开启sudo权限</p>
@@ -436,7 +436,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">为普通用户添加sudo权限</span><br><span class="line">1.root用户下创建分用户</span><br><span class="line">eg: useradd syp-devops-user</span><br><span class="line">2.vim &#x2F;etc&#x2F;sudoers &#x2F;&#x2F;打开sudo的配置文件</span><br><span class="line">3.在“root ALL&#x3D;(ALL)ALL”这一行下面，加入一行： 用户名 ALL&#x3D;(ALL) ALL</span><br><span class="line">eg:syp-devops-user ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
 
-<h3><span id="二-安装相关服务">二、安装相关服务</span></h3><ul>
+<h3 id="二-安装相关服务"><a href="#二、安装相关服务" class="headerlink" title="二、安装相关服务"></a>二、安装相关服务</h3><ul>
 <li>sftp</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.安装&#x2F;卸载vsftpd服务</span><br><span class="line">yum -y install vsftpd</span><br><span class="line">yun remove vsftpd</span><br><span class="line">2.创建sftp用户</span><br><span class="line">useradd -d &#x2F;home&#x2F;username username</span><br><span class="line">3.启动|关闭|重启|查看vsftpd服务器</span><br><span class="line">service vsftpd start|stop|restart|status</span><br><span class="line">4.设置sftp用户密码，尽量与原来密码一致</span><br><span class="line">passwd username</span><br><span class="line">5.通知Allergan配置数据库访问白名单 </span><br><span class="line">6.通知供应商上传服务器ip改变</span><br><span class="line">7.设置开机启动</span><br><span class="line">systemctl enable vsftpd.service</span><br></pre></td></tr></table></figure>
@@ -471,7 +471,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.查看当前语言</span><br><span class="line">echo $LANG</span><br><span class="line">2.查看当前支持的所有语言，如果有“zh_cn”则有中文</span><br><span class="line">locale</span><br><span class="line">3.安装中文语言包</span><br><span class="line"> centos7：yum install kde-l10n-Chinese   centos6:yum groupinstall Chinese-support</span><br><span class="line">4.查看是否安装成功</span><br><span class="line">locale -a | grep &quot;zh_CN&quot;</span><br><span class="line">5.备份修改配置文件</span><br><span class="line">cp &#x2F;etc&#x2F;locale.conf &#x2F;home&#x2F;locale.conf.backup</span><br><span class="line">vim &#x2F;etc&#x2F;locale.conf</span><br><span class="line">将LANG&#x3D;en_US.UTF-8改成 LANG&#x3D;zh_CN.UTF-8</span><br><span class="line">保存退出</span><br><span class="line">6.重启</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
-<h3><span id="三-迁移相关文件">三、迁移相关文件</span></h3><ul>
+<h3 id="三-迁移相关文件"><a href="#三、迁移相关文件" class="headerlink" title="三、迁移相关文件"></a>三、迁移相关文件</h3><ul>
 <li>新建文件夹</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">脚本存储位置：mkdir &#x2F;data&#x2F;work&#x2F;scripts</span><br><span class="line">数据文件存储位置:mkdir &#x2F;data&#x2F;allergan</span><br><span class="line">日志存储位置：mkdir &#x2F;data&#x2F;work&#x2F;logs</span><br><span class="line">根据业务创建不同文件夹存储不同的数据</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_ali_online</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_finance</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_calls-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_sales_ab-csv</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_dingtalk</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;from_transit_computer</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrmdata</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;etocrm_data</span><br><span class="line">mkdir &#x2F;data&#x2F;allergan&#x2F;allergan_members&#x2F;executed_file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -486,12 +486,12 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方法一：</span><br><span class="line">使用xftp等工具，将老的Etl服务器的脚本拿出，再通过xftp等工具放入到新的服务器中</span><br><span class="line">方法二：</span><br><span class="line">进入老的ETL服务器终端直接使用命令</span><br><span class="line">eg:</span><br><span class="line">scp &#x2F;data&#x2F;allergan -r  root@etl.idata.mobi:&#x2F;data&#x2F;</span><br><span class="line">scp &#x2F;data&#x2F;work&#x2F;scripts -r  root@etl.idata.mobi:&#x2F;data&#x2F;work&#x2F;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="四-配置启动相关任务">四、配置启动相关任务</span></h3><ul>
+<h3 id="四-配置启动相关任务"><a href="#四、配置启动相关任务" class="headerlink" title="四、配置启动相关任务"></a>四、配置启动相关任务</h3><ul>
 <li>crontab 定时任务</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1.crontab定时任务配置</span><br><span class="line">eg:crontab -e </span><br><span class="line">写入</span><br><span class="line">00 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans&#x2F;tools.sh</span><br><span class="line">30 07 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;members_fans_azure&#x2F;tools.sh</span><br><span class="line">25 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires&#x2F;tools.sh</span><br><span class="line">30 06 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_questionnaires_azure&#x2F;tools.sh</span><br><span class="line">20 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors&#x2F;tools.sh</span><br><span class="line">30 19 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;user_behaviors_azure&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab&#x2F;tools.sh</span><br><span class="line">00 00 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;sales_ab_azure&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap&#x2F;tools.sh</span><br><span class="line"># 00 06 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;amap_azure&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami&#x2F;tools.sh</span><br><span class="line">30 22 * * 0 &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">00 01 * * * &#x2F;data&#x2F;work&#x2F;scripts&#x2F;allergan&#x2F;transit_computer_azure&#x2F;tools.sh</span><br><span class="line">2.注意修改文件为可执行文件</span><br><span class="line">eg:chmod +x &#x2F;data&#x2F;work&#x2F;scritps&#x2F;allergan&#x2F;digital_ami_azure&#x2F;tools.sh</span><br><span class="line">2.重启crontab</span><br><span class="line">service crond restart</span><br></pre></td></tr></table></figure>
 
-<h3><span id="五-其他修改新增">五、其他(修改+新增)</span></h3><ul>
+<h3 id="五-其他修改新增"><a href="#五、其他-修改-新增" class="headerlink" title="五、其他(修改+新增)"></a>五、其他(修改+新增)</h3><ul>
 <li>中转机ETL流任务修改</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有两个ETL流任务中需要添加一个sftp上传,将销售相关数据上传一份到新的ETL流服务器</span><br><span class="line">脚本位置：</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl.kjb</span><br><span class="line">D:&#x2F;customer-client&#x2F;allergan_data_etl_hospital.kjb</span><br></pre></td></tr></table></figure>
@@ -534,7 +534,7 @@
 
 <p>官方文档地址：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/68911">https://developer.aliyun.com/article/68911</a>  ［ETL实践指南］基于Kettle的MaxCompute插件实现数据上云</p>
 <p>AccessID和Accesskey获取：阿里云账号头像-&gt;Accesskey管理-&gt;创建AccessKey-&gt;得到AccessKey ID (AccessID)和 AccessKey Secret(AccessKey)  </p>
-<h3><span id="六-疑问">六、疑问</span></h3><ul>
+<h3 id="六-疑问"><a href="#六、疑问" class="headerlink" title="六、疑问"></a>六、疑问</h3><ul>
 <li>中转机</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.在allergan_data_etl.job中有取自Pchina_calls_tables.txt的表的同步任务，不知道做什么用</span><br><span class="line">2.除了D:\customer-client\allergan_data_every_day.kjb任务的脚本定时任务，其他任务的定时任务脚本不知道在哪里设置的·</span><br></pre></td></tr></table></figure>
@@ -665,7 +665,7 @@
               
                 <a href="">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -814,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">一、创建分用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">二、安装相关服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">三、迁移相关文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">四、配置启动相关任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">五、其他(修改+新增)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">六、疑问</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-%E5%88%9B%E5%BB%BA%E5%88%86%E7%94%A8%E6%88%B7"><span class="nav-number">1.</span> <span class="nav-text">一、创建分用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">二、安装相关服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E8%BF%81%E7%A7%BB%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">三、迁移相关文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E7%9B%B8%E5%85%B3%E4%BB%BB%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">四、配置启动相关任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94-%E5%85%B6%E4%BB%96%E4%BF%AE%E6%94%B9%E6%96%B0%E5%A2%9E"><span class="nav-number">5.</span> <span class="nav-text">五、其他(修改+新增)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD-%E7%96%91%E9%97%AE"><span class="nav-number">6.</span> <span class="nav-text">六、疑问</span></a></li></ol></div>
             
 
           </div>
@@ -848,7 +848,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.2k</span>
+    <span title="Site words total count">36.4k</span>
   
 </div>
 

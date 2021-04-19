@@ -425,9 +425,9 @@
 </blockquote>
 <span id="more"></span>
 
-<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+<h4 id="1创建表语句"><a href="#1-创建表语句" class="headerlink" title="1.创建表语句"></a>1.创建表语句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
 
-<h4><span id="2常用的开窗函数">2.常用的开窗函数</span></h4><ul>
+<h4 id="2常用的开窗函数"><a href="#2-常用的开窗函数" class="headerlink" title="2.常用的开窗函数"></a>2.常用的开窗函数</h4><ul>
 <li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
@@ -457,7 +457,7 @@
 <li><p><strong>聚合开窗函数-cume_dist()</strong></p>
 </li>
 </ul>
-<h4><span id="3几种排序函数区别">3.几种排序函数区别</span></h4><ul>
+<h4 id="3几种排序函数区别"><a href="#3-几种排序函数区别" class="headerlink" title="3.几种排序函数区别"></a>3.几种排序函数区别</h4><ul>
 <li><p>row_number() over()：对相等的值不进行区分，相等的值对应的排名相同，序号从1到n连续。</p>
 </li>
 <li><p>rank() over()：相等的值排名相同，但若有相等的值，则序号从1到n不连续。如果有两个人都排在第3名，则没有第4名。</p>
@@ -599,7 +599,7 @@
               
                 <a href="">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -748,7 +748,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.创建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.常用的开窗函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3.几种排序函数区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E5%88%9B%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.</span> <span class="nav-text">1.创建表语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">2.常用的开窗函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">3.几种排序函数区别</span></a></li></ol></div>
             
 
           </div>
@@ -782,7 +782,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">35.2k</span>
+    <span title="Site words total count">36.4k</span>
   
 </div>
 
