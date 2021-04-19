@@ -262,7 +262,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4><span id="代码合并提交标准">代码合并提交标准</span></h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#102;&#x69;&#x78;&#64;&#48;&#46;&#49;&#x2e;&#49;">&#102;&#x69;&#x78;&#64;&#48;&#46;&#49;&#x2e;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#x66;&#x69;&#x78;&#64;&#x30;&#x2e;&#49;&#46;&#x31;">&#x66;&#x69;&#x78;&#64;&#x30;&#x2e;&#49;&#46;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4><span id="上次远程仓库">上次远程仓库</span></h4><ul>
 <li>git add .</li>
@@ -320,38 +320,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>QlikView基础使用</title>
-    <url>/2021/04/09/QlikView/</url>
-    <content><![CDATA[<blockquote>
-<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等。附加实战项目DEMO的用户手册，简单介绍Qlikview报表的使用和基础功能。</p>
-</blockquote>
-<span id="more"></span>
-
-<h4><span id="基础使用">基础使用</span></h4>
-
-	<div class="row">
-    <embed src="./QlikView.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-
-
-<h4><span id="demo">DEMO</span></h4>
-
-	<div class="row">
-    <embed src="./MenariniQlikview.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-
-
-]]></content>
-      <categories>
-        <category>BI</category>
-      </categories>
-      <tags>
-        <tag>QlikView</tag>
       </tags>
   </entry>
   <entry>
@@ -544,21 +512,35 @@
       </tags>
   </entry>
   <entry>
-    <title>数据库SQL基础</title>
-    <url>/2021/04/07/SQL%E5%9F%BA%E7%A1%80/</url>
+    <title>QlikView基础使用</title>
+    <url>/2021/04/09/QlikView/</url>
     <content><![CDATA[<blockquote>
-<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+<p>本文主要介绍QlikView的基础使用。包括下载安装、配置ODBC数据源、根据数据简单拖拉报表、数据源导入、导出QVD文件等。附加实战项目DEMO的用户手册，简单介绍Qlikview报表的使用和基础功能。</p>
 </blockquote>
 <span id="more"></span>
 
-<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+<h4><span id="基础使用">基础使用</span></h4>
 
-<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>]]></content>
+	<div class="row">
+    <embed src="./QlikView.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<h4><span id="demo">DEMO</span></h4>
+
+	<div class="row">
+    <embed src="./MenariniQlikview.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+]]></content>
       <categories>
-        <category>数据库</category>
+        <category>BI</category>
       </categories>
       <tags>
-        <tag>SQL基础</tag>
+        <tag>QlikView</tag>
       </tags>
   </entry>
   <entry>
@@ -597,6 +579,24 @@
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库SQL基础</title>
+    <url>/2021/04/07/SQL%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<blockquote>
+<p>本文主要介绍数据库SQL基础语法及相应函数。包含表的增删改查。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4><span id="1创建表语句">1.创建表语句</span></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2避免在索引上使用计算">2.避免在索引上使用计算</span></h4>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>SQL基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1900,6 +1900,25 @@
       </tags>
   </entry>
   <entry>
+    <title>算法-广搜</title>
+    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%B9%BF%E6%90%9C/</url>
+    <content><![CDATA[<h4><span id="广度优先搜索bfs">广度优先搜索(BFS)</span></h4><p><strong>基本思想：广度优先搜索是最简便的图的搜索算法之一，层层遍历，不考虑结果可能出现的位置，彻底遍历完整张图，直至找到结果。</strong></p>
+<span id="more"></span>![3.1](/6.png)
+
+<p><strong>演示：若A为开始的点，就将A先压入队列，遍历与A相邻的点，A出队，BCD入队，遍历B点的相邻的点，B出队，E入队。此时队列为CDE，遍历与C相邻的点，C出队，F入队。此时队列为DEF，遍历与D相邻的点，D出队，G入队。此时队列为EFG,遍历与E相邻的点，E没有相邻的点，E出队。此时队列为FG，遍历与F相邻的点，F出队，H入队。此时队列为GH，遍历与G相邻的点，由于H和D都已经被遍历过，所有不存在与G相邻且没有遍历过的点，G出队。此时队列为H，遍历与H相邻的点，不存在与H相邻且没有遍历过的点，H出队。所以图6用广度优先搜索的顺序是ABCDEFGH。</strong></p>
+<p><strong>示例：迷宫最短路径问题</strong></p>
+<p><strong>分析：从开始点遍历点的上下左右并过滤非通路的点，且对已遍历的点标记和记录通路点到起点的位置，选择一个通路的点遍历该点的上下左右，如此循环直至找到迷宫终点。广度优先一层层扩散，第一次寻找到终点即最短的路径。</strong></p>
+<p><strong>示例代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *宽度有限搜索</span><br><span class="line"> *迷宫最短路径问题，起始点为S，结束点为G 二维图形有</span><br><span class="line">  m&#x3D;10 n&#x3D;10；</span><br><span class="line">#S######.#</span><br><span class="line">......#..#</span><br><span class="line">.#.##.##.#</span><br><span class="line">.#........</span><br><span class="line">##.##.####</span><br><span class="line">....#....#</span><br><span class="line">.#######.#</span><br><span class="line">....#.....</span><br><span class="line">.####.###.</span><br><span class="line">....#...G#</span><br><span class="line"> *&#x2F;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">&#x2F;&#x2F;定义结构体</span><br><span class="line">typedef pair&lt;int,int &gt; P;</span><br><span class="line">const int MAX &#x3D;100;</span><br><span class="line">&#x2F;&#x2F;迷宫的二维图像数组</span><br><span class="line">char maze[MAX][MAX+1];</span><br><span class="line">int m,n;&#x2F;&#x2F;几行几列</span><br><span class="line">int sx,sy;&#x2F;&#x2F;起点坐标</span><br><span class="line">int gx,gy;&#x2F;&#x2F;终点坐标</span><br><span class="line">&#x2F;&#x2F;上下左右</span><br><span class="line">int dx[4]&#x3D; &#123;1,0,-1,0&#125;;</span><br><span class="line">int dy[4]&#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">&#x2F;&#x2F;记录当前遍历点的坐标，及该点到起始点的距离 </span><br><span class="line">int d[MAX][MAX+1];</span><br><span class="line">&#x2F;&#x2F;广度优先搜索 </span><br><span class="line">int bfs() &#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	&#x2F;&#x2F;定义队列que</span><br><span class="line">	queue&lt;P&gt; que;</span><br><span class="line">	&#x2F;&#x2F;寻找起始坐标</span><br><span class="line">	for(i &#x3D; 0; i &lt; m; i ++) &#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">			if(maze[i][j ]&#x3D;&#x3D; &#39;S&#39;) &#123;</span><br><span class="line">				sx &#x3D; i;</span><br><span class="line">				sy&#x3D;j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">			if(maze[i][j] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">				gx &#x3D; i;</span><br><span class="line">				gy &#x3D; j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 *将数组d初始化为无穷大</span><br><span class="line">	 *作用1：d数组记录这个点到开始点的最小步数</span><br><span class="line">	 *作用2：d数组标记这个点是否被遍历过，如果为值为无穷大就代表这个点没有被遍历过</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	memset(d,INF,sizeof(d));</span><br><span class="line">	&#x2F;&#x2F;将初始转态压入队列</span><br><span class="line">	que.push(P(sx,sy));</span><br><span class="line">	&#x2F;&#x2F;初始化距离为0； </span><br><span class="line">	d[sx][sy] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">	while(que.size()) &#123;</span><br><span class="line">		int i; </span><br><span class="line">		&#x2F;&#x2F;取出队头</span><br><span class="line">		P p &#x3D; que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		&#x2F;&#x2F;移动位置nx,ny</span><br><span class="line">		int nx &#x3D; p.first;</span><br><span class="line">		int ny &#x3D; p.second;</span><br><span class="line">		if(nx &#x3D;&#x3D; gx &amp;&amp; ny &#x3D;&#x3D; gy) break;</span><br><span class="line">		&#x2F;&#x2F;遍历点的上下左右</span><br><span class="line">		for(i &#x3D; 0; i &lt; 4; i ++) &#123;</span><br><span class="line">			&#x2F;&#x2F;移动后的位置记为（nx,ny）</span><br><span class="line">			nx &#x3D; p.first + dx[i];</span><br><span class="line">			ny &#x3D; p.second + dy[i];</span><br><span class="line">			&#x2F;&#x2F;限制边界，查看点是否遍历过，查看点是否是通路的点 </span><br><span class="line">			if(nx &gt;&#x3D; 0 &amp;&amp; ny &gt;&#x3D; 0 &amp;&amp; nx &lt; m &amp;&amp; ny &lt; n &amp;&amp; d[nx][ny] &#x3D;&#x3D; INF &amp;&amp; maze[nx][ny] !&#x3D; &#39;#&#39;) &#123;</span><br><span class="line">				&#x2F;&#x2F;如果该点合法 d数组值加一 </span><br><span class="line">				d[nx][ny] &#x3D; d[p.first][p.second] + 1;</span><br><span class="line">				&#x2F;&#x2F;把该点压入队列 </span><br><span class="line">				que.push(P(nx,ny));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return d[gx][gy];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0; i&lt;m; i++)</span><br><span class="line">		cin&gt;&gt;maze[i];</span><br><span class="line">	cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法-归并排序</title>
     <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h4><span id="归并排序">归并排序</span></h4><p>分治思想、二路归并。</p>
@@ -2022,25 +2041,6 @@
 <p>代码实现：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void merge(int a[],int l,int m,int r)&#123;</span><br><span class="line">	int LEFT_SIZE&#x3D;m-l;&#x2F;&#x2F;left[]的长度 </span><br><span class="line">	int RIGHT_SIZE&#x3D;r-m+1;&#x2F;&#x2F;right[]的长度 </span><br><span class="line">	&#x2F;&#x2F;a[5]&#x3D;&#123;1,2,5,3,1&#125;</span><br><span class="line">	int left[LEFT_SIZE];</span><br><span class="line">	int right[LEFT_SIZE];</span><br><span class="line">	int i,k,j;</span><br><span class="line">	&#x2F;&#x2F;将数组分成左右两个数组 </span><br><span class="line">	for(i&#x3D;l;i&lt;&#x3D;m-1;i++)&#123;</span><br><span class="line">		left[i-l]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	for(i&#x3D;m;i&lt;&#x3D;r;i++)&#123;</span><br><span class="line">		right[i-m]&#x3D;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	i&#x3D;0;&#x2F;&#x2F;&#39;i&#39;,指left[]的首地址 </span><br><span class="line">	j&#x3D;0;&#x2F;&#x2F;&#39;j&#39;,指right[]的首地址 </span><br><span class="line">	k&#x3D;l;&#x2F;&#x2F;&#39;k&#39;,指a[]的首地址</span><br><span class="line">	&#x2F;</span><br><span class="line">	 把left[]和right[]重新有序地放到a[]中 </span><br><span class="line">	 &#x2F; </span><br><span class="line"></span><br><span class="line">	 &#x2F;&#x2F;如果right[]和left[]数组中都存在着数据，那么比较 </span><br><span class="line">	while(i&lt;LEFT_SIZE&amp;&amp;j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		if(left[i]&lt;right[j])&#123;</span><br><span class="line">			a[k]&#x3D;left[i];</span><br><span class="line">			i++;k++;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			a[k]&#x3D;right[j];</span><br><span class="line">			j++;k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，left[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(i&lt;LEFT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;left[i];i++;k++;&#125;</span><br><span class="line">	&#x2F;&#x2F;如果比较完以后，right[]数组中仍存在数据，就依次放入a[]数组中 </span><br><span class="line">	while(j&lt;RIGHT_SIZE)&#123;</span><br><span class="line">		a[k]&#x3D;right[j];</span><br><span class="line">		j++;k++;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;LEFT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,left[t]);	</span><br><span class="line">&#x2F;&#x2F;	printf(&quot; sdfadf &quot;,a[r]);</span><br><span class="line">&#x2F;&#x2F;	for(int t&#x3D;0;t&lt;RIGHT_SIZE;t++)</span><br><span class="line">&#x2F;&#x2F;		printf(&quot;%d &quot;,right[t]);</span><br><span class="line">&#x2F;&#x2F;	printf(&quot;\n&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">void mergesort(int a[],int l,int r)&#123;</span><br><span class="line">	if(l&lt;r)&#123;</span><br><span class="line">		int m&#x3D;(r+l)&#x2F;2;</span><br><span class="line">			</span><br><span class="line">		mergesort(a,l,m);</span><br><span class="line">		mergesort(a,m+1,r);</span><br><span class="line">		&#x2F;</span><br><span class="line">		for(int t&#x3D;l;t&lt;&#x3D;m;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">			printf(&quot; sdfadf &quot;);</span><br><span class="line">		for(int t&#x3D;m+1;t&lt;&#x3D;r;t++)</span><br><span class="line">		printf(&quot;%d &quot;,a[t]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">		&#x2F;</span><br><span class="line">	merge(a,l,m+1,r);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	</span><br><span class="line">	int n,i;</span><br><span class="line">	int a[100];</span><br><span class="line">	printf(&quot;合并排序\n请输入数组长度：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	printf(&quot;请输入%d个整型数据：\n&quot;,n);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	int l&#x3D;0;&#x2F;&#x2F;l首地址 </span><br><span class="line">	int r&#x3D;n-1;&#x2F;&#x2F;r尾地址 </span><br><span class="line">	mergesort(a,l,r);</span><br><span class="line">	printf(&quot;排序结果：\n&quot;);</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		printf(&quot;%d &quot;,a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法-广搜</title>
-    <url>/2021/04/09/%E7%AE%97%E6%B3%95-%E5%B9%BF%E6%90%9C/</url>
-    <content><![CDATA[<h4><span id="广度优先搜索bfs">广度优先搜索(BFS)</span></h4><p><strong>基本思想：广度优先搜索是最简便的图的搜索算法之一，层层遍历，不考虑结果可能出现的位置，彻底遍历完整张图，直至找到结果。</strong></p>
-<span id="more"></span>![3.1](/6.png)
-
-<p><strong>演示：若A为开始的点，就将A先压入队列，遍历与A相邻的点，A出队，BCD入队，遍历B点的相邻的点，B出队，E入队。此时队列为CDE，遍历与C相邻的点，C出队，F入队。此时队列为DEF，遍历与D相邻的点，D出队，G入队。此时队列为EFG,遍历与E相邻的点，E没有相邻的点，E出队。此时队列为FG，遍历与F相邻的点，F出队，H入队。此时队列为GH，遍历与G相邻的点，由于H和D都已经被遍历过，所有不存在与G相邻且没有遍历过的点，G出队。此时队列为H，遍历与H相邻的点，不存在与H相邻且没有遍历过的点，H出队。所以图6用广度优先搜索的顺序是ABCDEFGH。</strong></p>
-<p><strong>示例：迷宫最短路径问题</strong></p>
-<p><strong>分析：从开始点遍历点的上下左右并过滤非通路的点，且对已遍历的点标记和记录通路点到起点的位置，选择一个通路的点遍历该点的上下左右，如此循环直至找到迷宫终点。广度优先一层层扩散，第一次寻找到终点即最短的路径。</strong></p>
-<p><strong>示例代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> *宽度有限搜索</span><br><span class="line"> *迷宫最短路径问题，起始点为S，结束点为G 二维图形有</span><br><span class="line">  m&#x3D;10 n&#x3D;10；</span><br><span class="line">#S######.#</span><br><span class="line">......#..#</span><br><span class="line">.#.##.##.#</span><br><span class="line">.#........</span><br><span class="line">##.##.####</span><br><span class="line">....#....#</span><br><span class="line">.#######.#</span><br><span class="line">....#.....</span><br><span class="line">.####.###.</span><br><span class="line">....#...G#</span><br><span class="line"> *&#x2F;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">&#x2F;&#x2F;定义结构体</span><br><span class="line">typedef pair&lt;int,int &gt; P;</span><br><span class="line">const int MAX &#x3D;100;</span><br><span class="line">&#x2F;&#x2F;迷宫的二维图像数组</span><br><span class="line">char maze[MAX][MAX+1];</span><br><span class="line">int m,n;&#x2F;&#x2F;几行几列</span><br><span class="line">int sx,sy;&#x2F;&#x2F;起点坐标</span><br><span class="line">int gx,gy;&#x2F;&#x2F;终点坐标</span><br><span class="line">&#x2F;&#x2F;上下左右</span><br><span class="line">int dx[4]&#x3D; &#123;1,0,-1,0&#125;;</span><br><span class="line">int dy[4]&#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">&#x2F;&#x2F;记录当前遍历点的坐标，及该点到起始点的距离 </span><br><span class="line">int d[MAX][MAX+1];</span><br><span class="line">&#x2F;&#x2F;广度优先搜索 </span><br><span class="line">int bfs() &#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	&#x2F;&#x2F;定义队列que</span><br><span class="line">	queue&lt;P&gt; que;</span><br><span class="line">	&#x2F;&#x2F;寻找起始坐标</span><br><span class="line">	for(i &#x3D; 0; i &lt; m; i ++) &#123;</span><br><span class="line">		for(j &#x3D; 0; j &lt; n; j++) &#123;</span><br><span class="line">			if(maze[i][j ]&#x3D;&#x3D; &#39;S&#39;) &#123;</span><br><span class="line">				sx &#x3D; i;</span><br><span class="line">				sy&#x3D;j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">			if(maze[i][j] &#x3D;&#x3D; &#39;G&#39;) &#123;</span><br><span class="line">				gx &#x3D; i;</span><br><span class="line">				gy &#x3D; j;	&#x2F;&#x2F;赋值下标</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;*</span><br><span class="line">	 *将数组d初始化为无穷大</span><br><span class="line">	 *作用1：d数组记录这个点到开始点的最小步数</span><br><span class="line">	 *作用2：d数组标记这个点是否被遍历过，如果为值为无穷大就代表这个点没有被遍历过</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	memset(d,INF,sizeof(d));</span><br><span class="line">	&#x2F;&#x2F;将初始转态压入队列</span><br><span class="line">	que.push(P(sx,sy));</span><br><span class="line">	&#x2F;&#x2F;初始化距离为0； </span><br><span class="line">	d[sx][sy] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">	while(que.size()) &#123;</span><br><span class="line">		int i; </span><br><span class="line">		&#x2F;&#x2F;取出队头</span><br><span class="line">		P p &#x3D; que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		&#x2F;&#x2F;移动位置nx,ny</span><br><span class="line">		int nx &#x3D; p.first;</span><br><span class="line">		int ny &#x3D; p.second;</span><br><span class="line">		if(nx &#x3D;&#x3D; gx &amp;&amp; ny &#x3D;&#x3D; gy) break;</span><br><span class="line">		&#x2F;&#x2F;遍历点的上下左右</span><br><span class="line">		for(i &#x3D; 0; i &lt; 4; i ++) &#123;</span><br><span class="line">			&#x2F;&#x2F;移动后的位置记为（nx,ny）</span><br><span class="line">			nx &#x3D; p.first + dx[i];</span><br><span class="line">			ny &#x3D; p.second + dy[i];</span><br><span class="line">			&#x2F;&#x2F;限制边界，查看点是否遍历过，查看点是否是通路的点 </span><br><span class="line">			if(nx &gt;&#x3D; 0 &amp;&amp; ny &gt;&#x3D; 0 &amp;&amp; nx &lt; m &amp;&amp; ny &lt; n &amp;&amp; d[nx][ny] &#x3D;&#x3D; INF &amp;&amp; maze[nx][ny] !&#x3D; &#39;#&#39;) &#123;</span><br><span class="line">				&#x2F;&#x2F;如果该点合法 d数组值加一 </span><br><span class="line">				d[nx][ny] &#x3D; d[p.first][p.second] + 1;</span><br><span class="line">				&#x2F;&#x2F;把该点压入队列 </span><br><span class="line">				que.push(P(nx,ny));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return d[gx][gy];</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0; i&lt;m; i++)</span><br><span class="line">		cin&gt;&gt;maze[i];</span><br><span class="line">	cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2509,8 +2509,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4><span id="复制远程服务器文件到本地">复制远程服务器文件到本地</span></h4><ul>
-<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#49;">&#x73;&#121;&#45;&#100;&#101;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#64;&#52;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#51;&#54;&#x2e;&#49;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#x73;&#121;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#x38;&#x31;">&#x73;&#121;&#45;&#100;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#x75;&#115;&#x65;&#x72;&#64;&#x34;&#x37;&#46;&#57;&#x39;&#46;&#x32;&#51;&#54;&#46;&#x31;&#x38;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#115;&#121;&#x2d;&#x64;&#101;&#118;&#x6f;&#112;&#x73;&#45;&#x75;&#x73;&#101;&#x72;&#64;&#x34;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#56;&#x31;">&#115;&#121;&#x2d;&#x64;&#101;&#118;&#x6f;&#112;&#x73;&#45;&#x75;&#x73;&#101;&#x72;&#64;&#x34;&#55;&#x2e;&#x39;&#x39;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#56;&#x31;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#115;&#121;&#x2d;&#100;&#101;&#x76;&#111;&#112;&#x73;&#45;&#117;&#115;&#x65;&#114;&#x40;&#52;&#x37;&#x2e;&#x39;&#x39;&#x2e;&#50;&#x33;&#x36;&#x2e;&#49;&#56;&#x31;">&#115;&#121;&#x2d;&#100;&#101;&#x76;&#111;&#112;&#x73;&#45;&#117;&#115;&#x65;&#114;&#x40;&#52;&#x37;&#x2e;&#x39;&#x39;&#x2e;&#50;&#x33;&#x36;&#x2e;&#49;&#56;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4><span id="linux解压和压缩">Linux解压和压缩</span></h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
