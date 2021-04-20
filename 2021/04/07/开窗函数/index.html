@@ -89,7 +89,7 @@
 <meta property="og:description" content="本文主要介绍常见的几种开窗函数的用法及区别。包含排序开窗函数和聚合开窗函数。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-07T00:35:31.584Z">
-<meta property="article:modified_time" content="2021-04-09T13:03:18.436Z">
+<meta property="article:modified_time" content="2021-04-20T09:28:28.703Z">
 <meta property="article:author" content="Ben">
 <meta property="article:tag" content="开窗函数">
 <meta name="twitter:card" content="summary">
@@ -102,10 +102,10 @@
     root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":{"display":"post"}}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  705
+                  699
                 </span>
               
 
@@ -425,17 +425,17 @@
 </blockquote>
 <span id="more"></span>
 
-<h4 id="1创建表语句"><a href="#1-创建表语句" class="headerlink" title="1.创建表语句"></a>1.创建表语句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists 表名 (</span><br><span class="line">    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,-- not null 非空约束；primary key 主键；auto_increment 自增</span><br><span class="line">    name VARCHAR(50) NOT NULL,</span><br><span class="line">    birth_date DATE,</span><br><span class="line">    sex varchar(4) default &#39;男&#39;, -- default 默认约束</span><br><span class="line">    phone VARCHAR(15) NOT NULL UNIQUE -- unique 唯一性约束</span><br><span class="line">    -- primary key (id) 主键定义也可写在后面</span><br><span class="line">    -- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span><br><span class="line">) ENGINE&#x3D;InnoDB AUTO_INCREMENT&#x3D;0 DEFAULT CHARSET&#x3D;utf8; </span><br><span class="line">-- engin 存储引擎；auto_increment&#x3D;0主键自增从0开始；dedault charset&#x3D;utf8 默认编码格式utf8</span><br></pre></td></tr></table></figure>
+<h4 id="1创建表语句"><a href="#1-创建表语句" class="headerlink" title="1.创建表语句"></a>1.创建表语句</h4><figure class="highlight sql"><figcaption><span>code here</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> if <span class="keyword">not</span> <span class="keyword">exists</span> 表名 (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> KEY AUTO_INCREMENT,<span class="comment">-- not null 非空约束；primary key 主键；auto_increment 自增</span></span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    birth_date <span class="type">DATE</span>,</span><br><span class="line">    sex <span class="type">varchar</span>(<span class="number">4</span>) <span class="keyword">default</span> <span class="string">&#x27;男&#x27;</span>, <span class="comment">-- default 默认约束</span></span><br><span class="line">    phone <span class="type">VARCHAR</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">UNIQUE</span> <span class="comment">-- unique 唯一性约束</span></span><br><span class="line">    <span class="comment">-- primary key (id) 主键定义也可写在后面</span></span><br><span class="line">    <span class="comment">-- 外键约束：constraint 外键名 foreign key (字段名) references 主表名(主键列)  </span></span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">0</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8; </span><br><span class="line"><span class="comment">-- engin 存储引擎；auto_increment=0主键自增从0开始；dedault charset=utf8 默认编码格式utf8</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2常用的开窗函数"><a href="#2-常用的开窗函数" class="headerlink" title="2.常用的开窗函数"></a>2.常用的开窗函数</h4><ul>
 <li><strong>排序开窗函数-分区排序：row_number () over()</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span><br><span class="line">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span><br><span class="line">select * </span><br><span class="line">from </span><br><span class="line">(	select course_name,</span><br><span class="line">		row_number()over(partition by course_name order by grades desc() ) as number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	from student_grades</span><br><span class="line">) a where a.number&lt;&#x3D;3;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询每门课程course_name前三名的学生姓名及成绩，要求输出列格式如下：</span></span><br><span class="line"><span class="comment">-- 表名：student_grades 字段名：course_name, number, stu_name, grades</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">(	<span class="keyword">select</span> course_name,</span><br><span class="line">		<span class="built_in">row_number</span>()<span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> course_name <span class="keyword">order</span> <span class="keyword">by</span> grades <span class="keyword">desc</span>() ) <span class="keyword">as</span> number ,</span><br><span class="line">		stu_name,</span><br><span class="line">		grades</span><br><span class="line">	<span class="keyword">from</span> student_grades</span><br><span class="line">) a <span class="keyword">where</span> a.number<span class="operator">&lt;=</span><span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>聚合开窗函数-count()</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select studentId,math,departmentId,classId,</span><br><span class="line">-- 以符合条件的所有行作为窗口</span><br><span class="line">count(math) over() as count1,</span><br><span class="line">-- 以按classId分组的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId) as count2,</span><br><span class="line">-- 以按classId分组、按math排序的所有行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math) as count3,</span><br><span class="line">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span><br><span class="line">count(math) over(partition by classId order by math rows between 1 preceding and 2 following) as count4</span><br><span class="line">from student_scores where departmentId&#x3D;&#39;department1&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> studentId,math,departmentId,classId,</span><br><span class="line"><span class="comment">-- 以符合条件的所有行作为窗口</span></span><br><span class="line"><span class="built_in">count</span>(math) <span class="keyword">over</span>() <span class="keyword">as</span> count1,</span><br><span class="line"><span class="comment">-- 以按classId分组的所有行作为窗口</span></span><br><span class="line"><span class="built_in">count</span>(math) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> classId) <span class="keyword">as</span> count2,</span><br><span class="line"><span class="comment">-- 以按classId分组、按math排序的所有行作为窗口</span></span><br><span class="line"><span class="built_in">count</span>(math) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> classId <span class="keyword">order</span> <span class="keyword">by</span> math) <span class="keyword">as</span> count3,</span><br><span class="line"><span class="comment">-- 以按classId分组、按math排序、按 当前行+往前1行+往后2行的行作为窗口</span></span><br><span class="line"><span class="built_in">count</span>(math) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> classId <span class="keyword">order</span> <span class="keyword">by</span> math <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">1</span> preceding <span class="keyword">and</span> <span class="number">2</span> following) <span class="keyword">as</span> count4</span><br><span class="line"><span class="keyword">from</span> student_scores <span class="keyword">where</span> departmentId<span class="operator">=</span><span class="string">&#x27;department1&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p><strong>聚合开窗函数-sum()</strong></p>
@@ -467,7 +467,7 @@
 <li><p>ntile( n ) over()：可以看作是把有序的数据集合平均分配到指定的数量n的桶中,将桶号分配给每一行，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select id,stu_name,course_name,grades</span><br><span class="line">		row_number() over(order by grades) as row_num,</span><br><span class="line">		rank() over(order by grades) as rank,</span><br><span class="line">		desen_rank() over(order by grades) as desen_rank,</span><br><span class="line">		ntile(5) over(order by grades) as ntile</span><br><span class="line">from student_grades;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,stu_name,course_name,grades</span><br><span class="line">		<span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> grades) <span class="keyword">as</span> row_num,</span><br><span class="line">		<span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> grades) <span class="keyword">as</span> rank,</span><br><span class="line">		desen_rank() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> grades) <span class="keyword">as</span> desen_rank,</span><br><span class="line">		<span class="built_in">ntile</span>(<span class="number">5</span>) <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> grades) <span class="keyword">as</span> ntile</span><br><span class="line"><span class="keyword">from</span> student_grades;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -782,7 +782,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.5k</span>
+    <span title="Site words total count">35.9k</span>
   
 </div>
 
@@ -816,6 +816,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1295,6 +1297,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

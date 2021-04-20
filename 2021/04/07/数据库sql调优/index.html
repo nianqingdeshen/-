@@ -89,7 +89,7 @@
 <meta property="og:description" content="本文主要介绍SQL的调优。SQL调优对项目的性能来讲至关重要,所有掌握常见的SQL调优方式是必不可少的,下面介绍几种常见的SQL的调优方式,供借鉴学习。来源于 CSDN lss0555">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-06T23:32:48.975Z">
-<meta property="article:modified_time" content="2021-04-09T13:03:18.437Z">
+<meta property="article:modified_time" content="2021-04-20T09:24:20.098Z">
 <meta property="article:author" content="Ben">
 <meta property="article:tag" content="SQL优化">
 <meta name="twitter:card" content="summary">
@@ -102,10 +102,10 @@
     root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":{"display":"post"}}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -432,10 +432,10 @@
 <li>一个表的索引数最好不要超过6个，若太多则应考虑一些不常使用到的列上建的索引是否有 必要。索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
 </ul>
 <h4 id="2避免在索引上使用计算"><a href="#2-避免在索引上使用计算" class="headerlink" title="2.避免在索引上使用计算"></a>2.避免在索引上使用计算</h4><p>效率低：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where salary*22&gt;11000(salary是索引列)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> salary<span class="operator">*</span><span class="number">22</span><span class="operator">&gt;</span><span class="number">11000</span>(salary是索引列)</span><br></pre></td></tr></table></figure>
 
 <p>效率高：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where salary&gt;11000&#x2F;22(salary是索引列)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> salary<span class="operator">&gt;</span><span class="number">11000</span><span class="operator">/</span><span class="number">22</span>(salary是索引列)</span><br></pre></td></tr></table></figure>
 
 <h4 id="3使用预编译查询"><a href="#3-使用预编译查询" class="headerlink" title="3.使用预编译查询"></a>3.使用预编译查询</h4><p>程序中通常是根据用户的输入来动态执行SQL，这时应该尽量使用参数化SQL,这样不仅可以避免SQL注入漏洞<br>攻击，最重要数据库会对这些参数化SQL进行预编译，这样第一次执行的时候DBMS会为这个SQL语句进行查询优化<br>并且执行预编译，这样以后再执行这个SQL的时候就直接使用预编译的结果，这样可以大大提高执行的速度。</p>
 <h4 id="4调整where字句中的连接顺序"><a href="#4-调整Where字句中的连接顺序" class="headerlink" title="4.调整Where字句中的连接顺序"></a>4.调整Where字句中的连接顺序</h4><p>DBMS一般采用自下而上的顺序解析where字句，根据这个原理表连接最好写在其他where条件之前，那些可以<br>过滤掉最大数量记录。</p>
@@ -448,32 +448,27 @@
 <h4 id="11尽量避免使用游标"><a href="#11-尽量避免使用游标" class="headerlink" title="11.尽量避免使用游标"></a>11.尽量避免使用游标</h4><p>尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据超过1万行，那么就应该考虑改写。</p>
 <h4 id="12用varcharnvarchar-代替-charnchar"><a href="#12-用varchar-nvarchar-代替-char-nchar" class="headerlink" title="12.用varchar/nvarchar 代替 char/nchar"></a>12.用varchar/nvarchar 代替 char/nchar</h4><p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。<br>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL也包含在内），都是占用 100个字符的空间的，如果是varchar这样的变长字段， null 不占用空间。</p>
 <h4 id="13查询select语句优化"><a href="#13-查询select语句优化" class="headerlink" title="13.查询select语句优化"></a>13.查询select语句优化</h4><p>1.任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回用不到的任何字段<br>2.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，<br>如：</p>
-<pre><code> select id from t where num is null           
+<pre><code> select id from t where num is null      
 </code></pre>
 <p>可以在num上设置默认值0，确保表中num列没有null值，<br>然后这样查询：</p>
 <pre><code>  select id from t where num=0
-  select id from t where num=10 or num=20
+  select id from t where num=10 or num=20```
 </code></pre>
 <p>可以这样查询：</p>
 <pre><code>  select id from t where num=10
    union all
-  select id from t where num=20
+  select id from t where num=20```
 </code></pre>
 <p>4.不能前置百分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id from t where name like ‘%abc%’</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id <span class="keyword">from</span> t <span class="keyword">where</span> name <span class="keyword">like</span> ‘<span class="operator">%</span>abc<span class="operator">%</span>’</span><br></pre></td></tr></table></figure>
 <p>若要提高效率，可以考虑全文检索。</p>
-<pre><code> select id from t where num in(1,2,3)
-</code></pre>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id <span class="keyword">from</span> t <span class="keyword">where</span> num <span class="keyword">in</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 <p>5.对于连续的数值，能用 between 就不要用 in 了：</p>
-<pre><code>select id from t where num between 1 and 3 
-</code></pre>
-<p>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from A where cc in (select cc from B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line">select * from A where exists(select cc from B where cc&#x3D;A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
+<p>   select id from t where num between 1 and 3<br>6.如果查询的两个表大小相当，那么用in和exists差别不大。<br>例如：表A（小表），表B（大表）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> A <span class="keyword">where</span> cc <span class="keyword">in</span> (<span class="keyword">select</span> cc <span class="keyword">from</span> B) 效率低，用到了A表上cc列的索引；     </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> A <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> cc <span class="keyword">from</span> B <span class="keyword">where</span> cc<span class="operator">=</span>A.cc)   效率高，用到了B表上cc列的索引。   </span><br></pre></td></tr></table></figure>
 
 <p>相反的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from B where cc in (select cc from A)  效率高，用到了B表上cc列的索引；</span><br><span class="line">select * from B where exists(select cc from A where cc&#x3D;B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> B <span class="keyword">where</span> cc <span class="keyword">in</span> (<span class="keyword">select</span> cc <span class="keyword">from</span> A)  效率高，用到了B表上cc列的索引；</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> B <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> cc <span class="keyword">from</span> A <span class="keyword">where</span> cc<span class="operator">=</span>B.cc)  效率低，用到了A表上cc列的索引。</span><br></pre></td></tr></table></figure>
 
 <h4 id="14更新update语句优化"><a href="#14-更新Update语句优化" class="headerlink" title="14.更新Update语句优化"></a>14.更新Update语句优化</h4><p>如果只更改1、2个字段，不要Update全部字段，否则频繁调用会引起明显的性能消耗，同时带来大量日志。</p>
 <h4 id="15插入insert语句优化"><a href="#15-插入Insert语句优化" class="headerlink" title="15.插入Insert语句优化"></a>15.插入Insert语句优化</h4><p>在新建临时表时，如果一次性插入数据量很大，那么可以使用 select into 代替 create table，避免造成大量 log ，以提高速度；如果数据量不大，为了缓和系统表的资源，应先create table，然后insert。</p>
@@ -790,7 +785,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.5k</span>
+    <span title="Site words total count">35.9k</span>
   
 </div>
 
@@ -824,6 +819,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1303,6 +1300,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 

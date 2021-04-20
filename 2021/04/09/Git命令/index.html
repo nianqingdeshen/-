@@ -102,10 +102,10 @@
     root: '',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":{"display":"post"}}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -469,7 +469,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4 id="代码合并提交标准"><a href="#代码合并提交标准" class="headerlink" title="代码合并提交标准"></a>代码合并提交标准</h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#102;&#105;&#x78;&#64;&#48;&#x2e;&#49;&#46;&#x31;">&#102;&#105;&#x78;&#64;&#48;&#x2e;&#49;&#46;&#x31;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#x66;&#x69;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;">&#x66;&#x69;&#120;&#x40;&#x30;&#46;&#49;&#46;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4 id="上次远程仓库"><a href="#上次远程仓库" class="headerlink" title="上次远程仓库"></a>上次远程仓库</h4><ul>
 <li>git add .</li>
@@ -834,7 +834,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">36.5k</span>
+    <span title="Site words total count">35.9k</span>
   
 </div>
 
@@ -868,6 +868,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1347,6 +1349,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 
