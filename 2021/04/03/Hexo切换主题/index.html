@@ -89,7 +89,7 @@
 <meta property="og:description" content="本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-03T06:40:44.251Z">
-<meta property="article:modified_time" content="2021-04-20T09:08:37.723Z">
+<meta property="article:modified_time" content="2021-04-28T15:17:44.664Z">
 <meta property="article:author" content="Ben">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -226,12 +226,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-poem">
+          <a href="/poem" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
             
-            关于
+            poem
           </a>
         </li>
       
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.9k
+                  3k
                 </span>
               
 
@@ -468,7 +468,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # if auto, trigger search by changing input</span><br><span class="line">  # if manual, trigger search by pressing enter key or search button</span><br><span class="line">  trigger: auto</span><br><span class="line">  # show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br></pre></td></tr></table></figure>
 
-<h4 id="设置代码高亮"><a href="#设置代码高亮" class="headerlink" title="设置代码高亮"></a>设置代码高亮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br></pre></td></tr></table></figure>
+<h4 id="设置代码高亮"><a href="#设置代码高亮" class="headerlink" title="设置代码高亮"></a>设置代码高亮</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https:&#x2F;&#x2F;github.com&#x2F;chriskempson&#x2F;tomorrow-theme</span><br><span class="line">highlight_theme: night</span><br><span class="line"># 需要在 &#96;&#96;&#96;后加相应的语言  如：&#96;&#96;&#96;SQL    代码     &#96;&#96;&#96;</span><br></pre></td></tr></table></figure>
 
 <h4 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h4><p>j进入<code>\languages</code>文件夹，有zh-Hans.yml 文件 修改名称为zh-CN.yml ,然后设置主题语言选项为zh-CN</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">language: zh-CN</span><br></pre></td></tr></table></figure>
@@ -580,6 +580,9 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">+ guestbook: 留言</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>禁用评论，只需要再文章title中添加 comments: false 即可</li>
+</ul>
 <h4 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h4><p>需要安装“ hexo-blog-encrypt”扩展实现加密</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
 
@@ -668,7 +671,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/03/30/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/" rel="next" title="ETL流服务器迁移部署">
+              <a href="/2021/03/30/%E6%95%B0%E6%8D%AE%E5%92%8CETL/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/" rel="next" title="ETL流服务器迁移部署">
                 <i class="fa fa-chevron-left"></i> ETL流服务器迁移部署
               </a>
             
@@ -678,8 +681,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/04/04/book/" rel="prev" title="引用pdf测试">
-                引用pdf测试 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E5%92%8CETL/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="ETL基础知识">
+                ETL基础知识 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
