@@ -82,7 +82,7 @@
 <li>set LESSCHARSET=utf-8</li>
 </ul>
 <h4 id="代码合并提交标准"><a href="#代码合并提交标准" class="headerlink" title="代码合并提交标准"></a>代码合并提交标准</h4><ul>
-<li>eg：git commit -m “<a href="mailto:&#102;&#105;&#x78;&#64;&#x30;&#46;&#49;&#x2e;&#49;">&#102;&#105;&#x78;&#64;&#x30;&#46;&#49;&#x2e;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
+<li>eg：git commit -m “<a href="mailto:&#x66;&#105;&#x78;&#x40;&#48;&#x2e;&#49;&#x2e;&#49;">&#x66;&#105;&#x78;&#x40;&#48;&#x2e;&#49;&#x2e;&#49;</a>/21(city): 修正店铺信息与城市的硬关联”</li>
 </ul>
 <h4 id="上次远程仓库"><a href="#上次远程仓库" class="headerlink" title="上次远程仓库"></a>上次远程仓库</h4><ul>
 <li>git add .</li>
@@ -568,8 +568,8 @@
 <li>ls | grep digital 抓取关键字搜索</li>
 </ul>
 <h4 id="复制远程服务器文件到本地"><a href="#复制远程服务器文件到本地" class="headerlink" title="复制远程服务器文件到本地"></a>复制远程服务器文件到本地</h4><ul>
-<li>scp <a href="mailto:&#x73;&#x79;&#45;&#x64;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#117;&#x73;&#101;&#x72;&#x40;&#x34;&#55;&#46;&#57;&#57;&#46;&#x32;&#51;&#54;&#x2e;&#x31;&#56;&#49;">&#x73;&#x79;&#45;&#x64;&#101;&#x76;&#111;&#x70;&#x73;&#45;&#117;&#x73;&#101;&#x72;&#x40;&#x34;&#55;&#46;&#57;&#57;&#46;&#x32;&#51;&#54;&#x2e;&#x31;&#56;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
-<li>scp <a href="mailto:&#x73;&#x79;&#45;&#100;&#x65;&#x76;&#111;&#112;&#115;&#45;&#x75;&#115;&#101;&#114;&#64;&#52;&#55;&#46;&#57;&#57;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#x38;&#49;">&#x73;&#x79;&#45;&#100;&#x65;&#x76;&#111;&#112;&#115;&#45;&#x75;&#115;&#101;&#114;&#64;&#52;&#55;&#46;&#57;&#57;&#x2e;&#x32;&#x33;&#x36;&#46;&#49;&#x38;&#49;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+<li>scp <a href="mailto:&#x73;&#x79;&#45;&#100;&#101;&#x76;&#x6f;&#x70;&#x73;&#x2d;&#x75;&#x73;&#101;&#x72;&#64;&#x34;&#55;&#x2e;&#x39;&#x39;&#46;&#x32;&#x33;&#54;&#x2e;&#49;&#x38;&#49;">&#x73;&#x79;&#45;&#100;&#101;&#x76;&#x6f;&#x70;&#x73;&#x2d;&#x75;&#x73;&#101;&#x72;&#64;&#x34;&#55;&#x2e;&#x39;&#x39;&#46;&#x32;&#x33;&#54;&#x2e;&#49;&#x38;&#49;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#115;&#121;&#x2d;&#100;&#x65;&#118;&#111;&#112;&#x73;&#45;&#x75;&#x73;&#101;&#114;&#64;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#x32;&#x33;&#54;&#x2e;&#x31;&#56;&#x31;">&#115;&#121;&#x2d;&#100;&#x65;&#118;&#111;&#112;&#x73;&#45;&#x75;&#x73;&#101;&#114;&#64;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#x32;&#x33;&#54;&#x2e;&#x31;&#56;&#x31;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
 </ul>
 <h4 id="linux解压和压缩"><a href="#Linux解压和压缩" class="headerlink" title="Linux解压和压缩"></a>Linux解压和压缩</h4><ul>
 <li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
@@ -2702,49 +2702,8 @@
       </tags>
   </entry>
   <entry>
-    <title>测试文章目录跳转</title>
-    <url>/2021/04/19/%E8%AF%97%E9%9B%86/Untitled%201/</url>
-    <content><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>ETL即数据抽取（Extract）、转换（Transform）、装载（Load）的过程。</p>
-<h3 id="抽取策略"><a href="#抽取策略" class="headerlink" title="抽取策略"></a>抽取策略</h3><ul>
-<li>时间戳方式</li>
-</ul>
-<p>需要在<em>OLTP</em>（<strong>联机事务处理系统）</strong>系统中业务表中统一添加时间字段作为时戳（如表中已有相应的时间字段，可以不必添加），每当<em>OLTP</em>系统中更新修改业务数据时，必须同时修改时戳字段值。当作<em>ETL</em>加载时，通过系统时间与时戳字段的比较来决定进行何种数据抽取。</p>
-<p>​    优点：<em>ETL</em>系统设计清晰，源数据抽取相对清楚简单，速度快。<strong>可以实现数据的递增加载</strong>。</p>
-<p>​    缺点：时戳维护需要由<em>OLTP</em>系统完成，需要修改原<em>OLTP</em>系统中业务表结构；且所有添加时戳的表，在业务系统中，数据发生变化时，同时更新时戳字段，需要对原<em>OLTP</em>系统业务操作程序作修改，工作量大，改动面大，风险大。但如果业务表在最初设计的时候考虑到这点，应用此方案是最好的选择。</p>
-<ul>
-<li>日志表方式</li>
-</ul>
-<p>在<em>OLTP</em>系统中添加系统日志表，当业务数据发生变化时，更新维护日志表内容，当作<em>ETL</em>加载时，通过读日志表数据决定加载那些数据及如何加载。</p>
-<p>​    优点：不需要修改<em>OLTP</em>表结构，源数据抽取清楚，速度较快。<strong>可以实现数据的递增加载。</strong></p>
-<p>​    缺点：日志表维护需要由<em>OLTP</em>系统完成，需要对<em>OLTP</em>系统业务操作程序作修改，记录日志信息。日志表维护较为麻烦，对原有系统有较大影响。工作量较大，改动较大，有一定风险。</p>
-<ul>
-<li>全表比对方式</li>
-</ul>
-<p>在<em>ETL</em>过程中，抽取所有源数据，并进行相应规则转换，完成后先不插入目标，而对每条数据进行目标表比对。根据主键值进行插入与更新的判定，目标表已存在该主键值的，表示该记录已有，并进行其余字段比对，如有不同，进行<em>Update</em>操作，如目标表没有存在该主键值，表示该记录还没有，即进行<em>Insert</em>操作。</p>
-<p>优点：对已有系统表结构不产生影响，不需要修改业务操作程序，所有抽取规则由<em>ETL</em>完成，管理维护统一，可以实现数据的递增加载，没有风险。</p>
-<p>缺点：<em>ETL</em>比对较复杂，设计较为复杂，速度较慢</p>
-<ul>
-<li>全表删除插入方式</li>
-</ul>
-<p>每次<em>ETL</em>操作均删除目标表数据，由<em>ETL</em>全新加载数据。</p>
-<p>​    优点：<em>ETL</em>加载规则简单，速度快。</p>
-<p>​    缺点：对于维表加代理键不适应，当<em>OLTP</em>系统产生删除数据操作时，<em>OLAP</em>层将不会记录到所删除的历史数据。不可以实现数据的递增加载。</p>
-<ul>
-<li>设置触发器方式</li>
-</ul>
-<p>通过在源系统的数据库中设置触发器，每当有<em>Update</em>、<em>Insert</em>、<em>Delete</em>操作时触发一个事件将发生改变的记录抽取到相应的临时表中。</p>
-<p>​    优点：<em>ETL</em>加载规则简单，速度快，不需要修改<em>OLTP</em>表结构，可以实现数据的递增加载。</p>
-<p>​    缺点：对源系统性能有一些影响。需建立一张临时表。</p>
-<ul>
-<li>Oracle 变化数据捕捉（CDC 方式）</li>
-</ul>
-<p><em>CDC</em>特性是在<em>Oracle9i</em>数据库中引入的，它简化了识别自上次提取后发生变化的数据的过程。<em>CDC</em>能够帮助识别从上次提取之后发生变化的数据。利用<em>CDC</em>，在对源表进行<em>Update</em>、<em>Insert</em>或<em>Delete</em>等操作的同时就可以提取数据，并且变化的数据被保存在数据库的变化表中。这样就可以捕获发生变化的数据，然后利用数据库视图以一种可控的方式提供给目标系统。</p>
-<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><h4 id="oltp-olap"><a href="#OLTP-OLAP" class="headerlink" title="OLTP OLAP"></a>OLTP OLAP</h4><p>从字面上来看OLTP是做事务处理，OLAP是做分析处理。从对数据库操作来看，OLTP主要是对数据的增删改，OLAP是对数据的查询。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>回忆</title>
-    <url>/2021/01/11/%E8%AF%97%E9%9B%86/poem/</url>
+    <url>/2021/01/11/%E8%AF%97%E9%9B%86/%E5%9B%9E%E5%BF%86/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
   <script id="hbeData" type="hbeData" data-hmacdigest="5fd14075916e591ea30cb95dba6b7cf6e31329502daca19f86c4593a26ff63a3">b2973d86e879527b6f7ef720454daee8904fc6c99aa379799ba0d9bd40ff4de4623543c93c28a7bf8f0c3724f8e05fc95968361b5db39f484c031d5e0ceb9a4a616731411ce0898061ea43da7426415e0e875d6bf54403009e61a398a068cf872cb84bd42eef48b5253e302926f313e1eeae0d6db28a1da9b402a3fb4e235358922562d6e11dc8c841fe5b02f00ed0b33f0cc7c8b0cdae6806389f215a53b3ba8dea5cc2dd4a7f9f2a76789cba8d97eeb5fe2a9196ee54ef7da2d643781cc3dc37cec760e4cbe2ea403ba7b5b30be92f68e91c85dc8a2b4dda5d3058cbddc468e5b29bb21a40a4258a7d6d88d71e93d6dba7de0db4050128dc3b2ad560d498d829958aa46bf0b0ac95cd18d2799f58e105eb17ed9f00dc777626b66d9c70f4d744f19befaf045ebb0740166a33a3b80f2acdb911e28936949a383dccca88363635a3cb533fd2e8fd736dd49f8cae0bda8e771427850fd524944ba169f4608a82cd688a0a9c4bd84dfa8a55f34cbc9f2741eab0b356f6ef701ccdc22285fdef8a621354c03f7a0ec80412c3fdef09321efeafcf6baacf4949c6f872c28162b0f4cb2483afd7b3aa4dd2bc5b98bbdcbe6d210e054b86579020aeb37bf3d411e243965b0c249136c73eecc384ff0b024b57cf5f945c09d749ed38c3bc4b3e9bea2f897dda6b5a86ed8a79bd4843fd38ae136ae71f2865f02929f3faba7dff62370c6ae8021d2591b4bf5f09e2f359ab8a411f2e76b9f12d9958dfdf7a13cd7a5d9bcf913d580c8b15eeeb87a22b8faa67f7ee8129ecb9d6ee2dcf7a92a5ed32e4a11f0470f13136c59550af60be11fc6418c38b67e35eac4a39c6bf6d6a11a57d681c891e417fc564f36ee615f095d82599f0e2cfa2856afa3e99c18911c5e6c8136cbbe8d21f126990bb837b3eb33f5a7c9e8e08b824e1eea57dcb5d8f2e70e9692c4c17aed3d0b52b9f8d0b84bbc10c4985c22b7805c89f0939d43879f3d85a9f0aca7027df6c9d0628388d9679e839cae89399df25cbd9b082752cf1c41decd441add4c7dd31d36935414af1a872df6197742ee54be440063f80996a7ca73d30d94cbaa8b6ed9c42658c21148ce38a111e79f13c76097634559ddff98a57826db4c659d7660cbb82f4332ea1f4dad808359a1bdea98adc9ed16df7661f5189108b7db65d7f87b0b219fbef496d22b096bc94921d4c40ddcea8bfe0fe4199f49b1efdf75236b8c6424ad47b090f9694f2c05712e4a9b41a2700971194c5e4f720fef2d4ae7df39bee6f479a2a6040ffd3989aed61409de47a36283c860134f59ddd98a652c07bac614549dd922cb28092aedfb134a1856f76385ba5b82309412fe7ad36e1cbefa790fdfd1eeb8d07daf52b95fd8ffe64a04414986b6e1fd308a5b02f588e9b394e10d1a012b5e60f31e77c4801dc3a78c5ae886d5bf48d3f9b9d5faac615b4903e6c988e9cd959ce8e8d</script>
   <div class="hbe hbe-content">
@@ -2765,10 +2724,10 @@
       </tags>
   </entry>
   <entry>
-    <title>回忆</title>
-    <url>/2021/01/11/%E8%AF%97%E9%9B%86/%E5%9B%9E%E5%BF%86/</url>
+    <title>我最爱的人</title>
+    <url>/2021/01/11/%E8%AF%97%E9%9B%86/%E6%88%91%E6%9C%80%E7%88%B1%E7%9A%84%E4%BA%BA/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="5fd14075916e591ea30cb95dba6b7cf6e31329502daca19f86c4593a26ff63a3">b2973d86e879527b6f7ef720454daee8904fc6c99aa379799ba0d9bd40ff4de4623543c93c28a7bf8f0c3724f8e05fc95968361b5db39f484c031d5e0ceb9a4a616731411ce0898061ea43da7426415e0e875d6bf54403009e61a398a068cf872cb84bd42eef48b5253e302926f313e1eeae0d6db28a1da9b402a3fb4e235358922562d6e11dc8c841fe5b02f00ed0b33f0cc7c8b0cdae6806389f215a53b3ba8dea5cc2dd4a7f9f2a76789cba8d97eeb5fe2a9196ee54ef7da2d643781cc3dc37cec760e4cbe2ea403ba7b5b30be92f68e91c85dc8a2b4dda5d3058cbddc468e5b29bb21a40a4258a7d6d88d71e93d6dba7de0db4050128dc3b2ad560d498d829958aa46bf0b0ac95cd18d2799f58e105eb17ed9f00dc777626b66d9c70f4d744f19befaf045ebb0740166a33a3b80f2acdb911e28936949a383dccca88363635a3cb533fd2e8fd736dd49f8cae0bda8e771427850fd524944ba169f4608a82cd688a0a9c4bd84dfa8a55f34cbc9f2741eab0b356f6ef701ccdc22285fdef8a621354c03f7a0ec80412c3fdef09321efeafcf6baacf4949c6f872c28162b0f4cb2483afd7b3aa4dd2bc5b98bbdcbe6d210e054b86579020aeb37bf3d411e243965b0c249136c73eecc384ff0b024b57cf5f945c09d749ed38c3bc4b3e9bea2f897dda6b5a86ed8a79bd4843fd38ae136ae71f2865f02929f3faba7dff62370c6ae8021d2591b4bf5f09e2f359ab8a411f2e76b9f12d9958dfdf7a13cd7a5d9bcf913d580c8b15eeeb87a22b8faa67f7ee8129ecb9d6ee2dcf7a92a5ed32e4a11f0470f13136c59550af60be11fc6418c38b67e35eac4a39c6bf6d6a11a57d681c891e417fc564f36ee615f095d82599f0e2cfa2856afa3e99c18911c5e6c8136cbbe8d21f126990bb837b3eb33f5a7c9e8e08b824e1eea57dcb5d8f2e70e9692c4c17aed3d0b52b9f8d0b84bbc10c4985c22b7805c89f0939d43879f3d85a9f0aca7027df6c9d0628388d9679e839cae89399df25cbd9b082752cf1c41decd441add4c7dd31d36935414af1a872df6197742ee54be440063f80996a7ca73d30d94cbaa8b6ed9c42658c21148ce38a111e79f13c76097634559ddff98a57826db4c659d7660cbb82f4332ea1f4dad808359a1bdea98adc9ed16df7661f5189108b7db65d7f87b0b219fbef496d22b096bc94921d4c40ddcea8bfe0fe4199f49b1efdf75236b8c6424ad47b090f9694f2c05712e4a9b41a2700971194c5e4f720fef2d4ae7df39bee6f479a2a6040ffd3989aed61409de47a36283c860134f59ddd98a652c07bac614549dd922cb28092aedfb134a1856f76385ba5b82309412fe7ad36e1cbefa790fdfd1eeb8d07daf52b95fd8ffe64a04414986b6e1fd308a5b02f588e9b394e10d1a012b5e60f31e77c4801dc3a78c5ae886d5bf48d3f9b9d5faac615b4903e6c988e9cd959ce8e8d</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="3a9f0769a1a0385afc280f74284972e405d55890914ad0fee04bcc0253e6033a">b2973d86e879527b6f7ef720454daee8904fc6c99aa379799ba0d9bd40ff4de4623543c93c28a7bf8f0c3724f8e05fc95968361b5db39f484c031d5e0ceb9a4a4c7a7ad71ea0106ff2dd229c898ca6ceed7472ad72531fb47649d951509e66579584ed58b7ef040066151074808540b6f587c70c7b5fefa1eb53927a26f236bddc3d622e38c9d60e6701f34a5c783b109de80b410197ddaa6a1b673c0babc6fddb9c5c662b4c8576abc02c26fbcf641c146c5808164a69a68eac5a4d09e34536ae215298c89bd568729d7912e77e53772042c7a41dfad7894940c350919d7a566f7cec16b46b98a8654bbf59910ceff044fc9f557194fff4e60b4b6a0d8724bedf3cd0dc550b869edfa3b706ee67fbda7a3301c6aea450efdcb9173f80013e4d619de21bfdf73ec032ed7e5e78510589b59d132bac20bd94fbd2c5e70ab8faefa367d6f51f911164aa1f4aa7d49a006ca93f4500c217a9c969671d440511398e8815143f20c3be3de950d109c1c293bc626eef4b8b4abda47531248fdd9e8c6d2b31f60c8c0dac745fe8aec755a73731d3d3cdf94c35e15cc48dd2f14350b0c62fa99d9da25329ec6342dfaff4788e42185dd363a27bd24f84e5dc3f49396a332ed1dbc790009880cdc4bfa75cf6d3da24797739c0aa7ccc5bfd4d50b26b0c462fdc3a94f22946f0309dde880f459d0a130bb7c7606b08c58754f90111569afc622bf4cd76997653fd1373cfd57fbdb1a65386529fe21984ab2c97cec6b9efa568f49bcc3f84dc63ee2ffd6466a909dc368cd6e110a37c684fbff886264e0aa5ad41ec43d1ff47667456bae5fa63ff4263bb33cd74d414fe9859877e8df6b30ace63ae2733cb0db56672d7a6ec1ba6c43dc2e23e9a0ecaed0a55574e674269e91ee2d5f061d3afb37172654ab2267ce7a7434e6cb1da6e85ac45b2494599cfe8c89852bcce328f6e1930d65567789f98b6f79589d4f818fee834369213dde7a1301afa33ad51e2d2df79bd5098f632d3c38244a7a1c626f2c29763953ed8c23ac2abe8f5a889010064298bdd952c68e10635d42d85b1367caaa6401a584b1ec189d9dfd8d7e0da16ca94d477c1fab84cbfc69b8a19739cce7902cc1d60643f8ebcae6d7a273dba80d9ae83d39f6b40d2f76296266162d746fc7f0232ab71dd62e9a2be93ca7df2b45cad4f7f48c9293584a8b9d9ab5f0b5cecf35542a903ddfb599447afce6f152e433359be9ad4d10f518bcba4b40d7367ee93197495f39f6bbec81655b0a3a46652a21ce1d8452e44a25ff052fad72d0f4068356fa9e95c0a4dfac86b69615340975903e57ffb155bc988fcefbccc0f7ce3f98d66d4ee95863ee2cded121cd88273d64fc5418f59387d3e82dc39f79e03fd8082613baa34cf6f156b98478ecaae98e69568cdb137b62fcbd033da301d9632b930839a31a331cab2579f4f20067824aa0147ac3bc13538eca5cd000c3af03970d3cf4526b52e62b967095ec26a7736036456db4ec783f7b726275c84f6cb5df92f0bea771dd7d755505c931efea2a6e9bd9a4ab5cb9e40b8a69536004f7efb695f5c5b9568c54ded4198985d1794ae71a8109911600539e7d29c0460d652a1535f0781d82d740dd47183316b66e307088bbdba22e6a0d5d6b0e5844e19fd1568f66f4181b481f316a149a451180df2ab1dd38eb88eaa2affc48e6493d5fc54c52edde3bcf532f2e7185c908b032fa131b17262fb2a63fa3d17b7fa1e5c6eb8b9e9488fd5c4c5e13b3be7564969a160584cfba159404845472712ce5fc66c0109248eaa9716d5a2243f77556cfc8e2a0e0c676df06d2116e820010a51c829c412cdff08eb357f4525cd4a655c33267811696fd0ca7eafd9d461d1b35c8a0805b84dc8384b1cfb54a01613286d809728657453f0d274231285dc35180e395066f185ba39af081424371af794f1756e7542cea891fddbebd425608d1367fd0a9ccd7f9cf7ec9c82cec320ecb2f3a5082efe776aceb82d21253e6284ff665b5d144539fc65f9e57b02b5ea65536fb90dc985072e6af6743c8baf589c054acc94a17a668f4a11a6602bb6472eaa0aa8b55b4df3359fabe36fafc835f202411c0b5e76198510d207f0628d5280785bb7a1f014e894a177071df2e1aa425bd101984507d9b90b9ba2733f39473a9d07b631f5098f2456ed2f3d0b96df0569a87e294c2f4ff2d0bae42b0c048afeffbed9e377366d70da34ba9f38312e20e9fb03a768685c4e26d5c1b3d7147f5180b63f8b50fd813f85663125a2ce0f065e59511a41f381b9ef1ac435da26f06ce90833793e56f48df76737fb5edc9e45c91d2e6ae10243097f64aeed2fdba1ac8213433966e56a70a14871d941e45f5aff259531d2a83d374739e1c1d5df822e200063093ec0f2dd73f4e1a41663ff6c23815f3d054f35b9cb1b13e694a8dabf262d8c469c8810c9775edca91513b918747387c67f498910da2100c7e3fb10d4230a3b59df318752f0d8ce573e2be252e1b1006ea26fb9df0ae56649d560ecdeae819d24bd2888bdb333c24ed043c53bf52d7190435d18af5884365521524e08d483b9633cc71d8b040a200467e390d5c608f805c632864168f29f8932f7d704ff936d80a0388b781aec66a2cb16bc139c86f46b996e9b3abfe46927960080025343562a1984386104649be8fc2513d17f25101481426abc2f56aeb992c8df7d193518f15cd220aab08e47feb507b4343ee44939a91eb2754a2788fe79b486fbe3e531316ddd761e70417ceb29ea138e13ab2bf842474705e690e2a868e8413018fad6ceb75f71f9e02a73069bafd9ca1b625638a1b0f659166459ee4dc376fac1ae48822df862f5d3c6d2fe38d22b352e5f167c3bc68aafc9f88f16da23868948fc3520d52eba6d15f9a53fe5c00fde75c15ca1297a03677f415d06312409fd8dfcfad741a0aa03923fc4209ed86fd608872090e663a564df7aa483cfb27697e38b39bd101ccea526caf857358a4c5ec164eb820ef1ce83ad6bde329f7861ccb257a5e6b8735c8a06ae03ae149ce7cfda53be98ca86a5f2aed1dcaecf5bd1d9ee98642a63d3aecf03c435dd6b6f95822cef74d848923f783535fe6affab4c7696af2fc5062a2b751f2f68c3774cab73429cd17ed587edfeb9010f759b0c9442ddab97eba734a9d5b64903f4c6a349c06c334197b0d673626bc0db03526c8a68a5a9b82ded2f852e91634d170375a374773f30aa6acba4fe0156411b215f7c59ef30d2c414e518be75a5518a7b1ff753fa960c1095f3a9af8b6df5d8948b56f7bb0e0569e42aff7e1b65f3a3491d4f280a85cf0a2c95bc3c54f3ea98236e433c7c61d775e22a970a0d2f7f96c7a36a05b08194d956686b56e2996f062da7c98ace3b6284d7c65cc737b39a5a66eed89fd29a0116d00fc1b21249d31aa240cec7fea50bb4c7ffa0a263a8fd19f1dab660a2c48b6f06efaaadc40cf25e</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
