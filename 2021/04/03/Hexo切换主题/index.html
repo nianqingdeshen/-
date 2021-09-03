@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/true" title="Ben's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo切换主题">
+<meta property="og:url" content="http://example.com/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/index.html">
+<meta property="og:site_name" content="Ben&#39;s Blog">
+<meta property="og:description" content="本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-03T06:40:44.251Z">
+<meta property="article:modified_time" content="2021-08-12T08:43:45.893Z">
+<meta property="article:author" content="Ben">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/04/03/Hexo切换主题/"/>
+
+
+
+
+
+  <title>Hexo切换主题 | Ben's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ben's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comment"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/03/Hexo%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ben's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo切换主题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-03T14:40:44+08:00">
+                2021/04/03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要介绍如何修改Hexo主题，包含一些详细配置如：配置标签、配置分类、配置站内搜索功能、设置代码高亮、设置头像、设置Next主题、设置文章内容加载图片、上传pdf并展示。其中也有一些错误记录。整体按照顺序描述配置过程。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4 id="hexogithub搭建个人博客"><a href="#hexo-github搭建个人博客" class="headerlink" title="hexo+github搭建个人博客"></a>hexo+github搭建个人博客</h4><p>百度 hexo+github有很多教程，安装教程就不写了</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html">https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html</a></p>
+<h4 id="获取开源的-hexo-主题"><a href="#获取开源的-Hexo-主题" class="headerlink" title="获取开源的 Hexo 主题"></a>获取开源的 Hexo 主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;iissnan&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改主题-_configyml"><a href="#修改主题-config-yml" class="headerlink" title="修改主题 _config.yml"></a>修改主题 _config.yml</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错一</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--hexo使用theme出现“ &#123;% extends ‘_layout.swig‘ %&#125; &#123;% import ‘_macro&#x2F;post.swig‘ as post_template %&#125;“问题</span><br><span class="line">-- 原因是hexo在5.0之后把swig给删除了需要自己手动安装</span><br><span class="line">-- 解决办法：</span><br><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页面报错二</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cannot GET &#x2F;%20%20</span><br><span class="line">原因:主题配置文件 || 之后加多了空格</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置标签和分类"><a href="#配置标签和分类" class="headerlink" title="配置标签和分类"></a>配置标签和分类</h4><ul>
+<li>在git bash 中输入以下代码创建相应的page：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在第一步完成后会在source文件夹中出现tags和categories的文件夹，在各自的文件夹里打开index.md文件进行修改(多加上一个type属性、注意其他主题可能是layout属性)：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-03-15 14:19:53</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置搜索功能"><a href="#配置搜索功能" class="headerlink" title="配置搜索功能"></a>配置搜索功能</h4><ul>
+<li>next自带一个搜索功能，可以实现对站内内容的搜索。<br>首先需要通过如下命令安装对应的搜索插件：<br>然后在全局的配置文件（hexoblog目录下的_config.yml）中，增加配置如下内容：</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Search Config</span><br><span class="line"><span class="function">search:</span></span><br><span class="line"><span class="function">  <span class="title">path</span>: <span class="title">search.xml</span></span></span><br><span class="line"><span class="function">  <span class="title">field</span>: <span class="title">post</span></span></span><br><span class="line"><span class="function">  <span class="title">format</span>: <span class="title">html</span></span></span><br><span class="line"><span class="function">  <span class="title">limit</span>: 100</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后在git hash 中加载相应的插件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开主题内的配置文件，找到 local_search 属性，配置开启本地搜索功能。</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">local_search:</span></span><br><span class="line"><span class="function">  <span class="title">enable</span>: <span class="title">true</span></span></span><br><span class="line"><span class="function">  # <span class="title">if</span> <span class="title">auto</span>, <span class="title">trigger</span> <span class="title">search</span> <span class="title">by</span> <span class="title">changing</span> <span class="title">input</span></span></span><br><span class="line"><span class="function">  # <span class="title">if</span> <span class="title">manual</span>, <span class="title">trigger</span> <span class="title">search</span> <span class="title">by</span> <span class="title">pressing</span> <span class="title">enter</span> <span class="title">key</span> <span class="title">or</span> <span class="title">search</span> <span class="title">button</span></span></span><br><span class="line"><span class="function">  <span class="title">trigger</span>: <span class="title">auto</span></span></span><br><span class="line"><span class="function">  # <span class="title">show</span> <span class="title">top</span> <span class="title">n</span> <span class="title">results</span> <span class="title">per</span> <span class="title">article</span>, <span class="title">show</span> <span class="title">all</span> <span class="title">results</span> <span class="title">by</span> <span class="title">setting</span> <span class="title">to</span> -1</span></span><br><span class="line"><span class="function">  <span class="title">top_n_per_article</span>: 1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置代码高亮"><a href="#设置代码高亮" class="headerlink" title="设置代码高亮"></a>设置代码高亮</h4><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available value: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="function">highlight_theme: <span class="title">night</span></span></span><br><span class="line"><span class="function"># 需要在 ```后加相应的语言  如：```<span class="title">SQL</span>    代码     ```</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h4><p>j进入<code>\languages</code>文件夹，有zh-Hans.yml 文件 修改名称为zh-CN.yml ,然后设置主题语言选项为zh-CN</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">language: <span class="title">zh</span>-<span class="title">CN</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avatar: &#x2F;images&#x2F;avatar.gif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>修改头像为圆形、旋转动画</p>
+</li>
+<li><p>修改<code>themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>,新增以下代码:</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.site-author-image</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: $site-author-image-padding;</span><br><span class="line">  <span class="attribute">max-width</span>: $site-author-image-width;</span><br><span class="line">  <span class="attribute">height</span>: $site-author-image-height;</span><br><span class="line">  <span class="attribute">border</span>: $site-author-image-border-width solid $site-author-image-border-color;</span><br><span class="line">  //设置圆形</span><br><span class="line">+  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">+  <span class="attribute">transition</span>: <span class="number">2s</span> all;</span><br><span class="line">&#125;</span><br><span class="line">   //旋转</span><br><span class="line">+ <span class="selector-class">.site-author-image</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">+   <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span><br><span class="line">+ &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主题设定"><a href="#主题设定" class="headerlink" title="主题设定"></a>主题设定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h4 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h4><ul>
+<li>修改主配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>图片引用设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在source下创建&#x2F;images文件夹，先把图片xx.jpg&#x2F;png复制到这个文件夹</span><br><span class="line">最后在xxxx.md中想引入图片时，只需要在xxxx.md中按照markdown的格式引入图片：</span><br><span class="line">![想输入的提示名字，可不输入](&#x2F;images&#x2F;xx.jpg)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>遇到错误</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运行之后遇到以下错误</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;blog\source_posts\article-name\image-20210309010643180.png</span><br><span class="line">update link as:--&gt;&#x2F;.com&#x2F;&#x2F;image-20210309010643180.png</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决办法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 在hexo的目录下执行</span><br><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;CodeFalling&#x2F;hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="上传pdf"><a href="#上传pdf" class="headerlink" title="上传pdf"></a>上传pdf</h4><ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置页面</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 基于上传图片，与上传图片类似，只是将链接引用换成pdf</span><br><span class="line">-- 在source下创建&#x2F;pfd文件夹，先把pdf复制到这个文件夹</span><br><span class="line">-- 最后在xxxx.md中想引入pdf时，只需要在xxxx.md中按照相应格式引入pdf：</span><br><span class="line">外部链接：</span><br><span class="line">&#123;% pdf http:&#x2F;&#x2F;7xov2f.com1.z0.glb.clouddn.com&#x2F;bash_freshman.pdf %&#125;</span><br><span class="line">本地连接：</span><br><span class="line">&#123;% pdf .&#x2F;pdf名字.pdf %&#125;</span><br><span class="line">-- 图片使用中文名称引用时会造成中文会乱码，无法正常显示，暂时没有解决</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改标签云颜色"><a href="#修改标签云颜色" class="headerlink" title="修改标签云颜色"></a>修改标签云颜色</h4><ul>
+<li>修改<code>themes/next/layout/page.swig</code>文件，加入自定义样式:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- &#123;&#123; tagcloud(&#123;min_font: 12, max_font: 30, amount: 300, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;&#125;) &#125;&#125;</span><br><span class="line">+ &#123;&#123; tagcloud(&#123;min_font: 13, max_font: 31, amount: 1000, color: true, start_color: &#39;#9733EE&#39;, end_color: &#39;#FF512F&#39;&#125;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改首页文章间隔宽度"><a href="#修改首页文章间隔宽度" class="headerlink" title="修改首页文章间隔宽度"></a>修改首页文章间隔宽度</h4><ul>
+<li>打开<code>\themes\next\source\css\_schemes\Mist\_posts-expanded.styl</code> ，修改.post{}</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.post</span> &#123; <span class="attribute">margin-top</span>: <span class="number">12px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改文章页宽"><a href="#修改文章页宽" class="headerlink" title="修改文章页宽"></a>修改文章页宽</h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- $content-desktop-large          &#x3D; 900px</span><br><span class="line">+ $content-desktop-large          &#x3D; 1000px</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改首页文章页宽"><a href="#修改首页文章页宽" class="headerlink" title="修改首页文章页宽"></a>修改首页文章页宽</h4><ul>
+<li>打开<code>themes/next/source/css/_variables/base.styl</code>，找到以下字段并修改为合适的宽度：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- $content-desktop          	  &#x3D; 700px</span><br><span class="line">+ $content-desktop                &#x3D; 900px</span><br></pre></td></tr></table></figure>
+
+<h4 id="翻页按钮错误显示"><a href="#翻页按钮错误显示" class="headerlink" title="翻页按钮错误显示"></a>翻页按钮错误显示</h4><p>打开<code>next &gt; layout &gt; _partials &gt; pagination.swig</code> ，将错误的html代码改为‘下一页’和‘上一页’即可！</p>
+<h4 id="sidebar中post点击出错"><a href="#sidebar中post点击出错" class="headerlink" title="sidebar中post点击出错"></a>sidebar中post点击出错</h4><p>我是直接将链接去除了。打开<code>next &gt; layout &gt; _macro &gt; sidebar.swig</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(theme.menu.archives).split(&#39;||&#39;)[0] | trim &#125;&#125;&quot;&gt;</span><br><span class="line">- &lt;a href&#x3D;&quot;&#123;&#123; url_for(config.archive_dir) &#125;&#125;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br><span class="line">+ &lt;a href&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="主页footer内容不居中"><a href="#主页footer内容不居中" class="headerlink" title="主页footer内容不居中"></a>主页footer内容不居中</h4><p>打开<code>next\source\css\_schemes\Mist\index.styl</code>，.footer-inner中的text-align改为center</p>
+<h4 id="添加背景音乐"><a href="#添加背景音乐" class="headerlink" title="添加背景音乐"></a>添加背景音乐</h4><p>注册网易云音乐，分享歌单，获取外链播放器</p>
+<p>修改 <code>themes/next/layout/_macro/sidebar.swig</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 111行左右 &#123;% endif %&#125;后</span><br><span class="line">&lt;!-- 音乐播放器 --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;iframe frameborder&#x3D;&quot;no&quot; border&#x3D;&quot;0&quot; marginwidth&#x3D;&quot;0&quot; marginheight&#x3D;&quot;0&quot; width&#x3D;330 height&#x3D;110 src&#x3D;&quot;&#123;&#123; theme.background_music&#125;&#125;&quot;&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>themes/next/_config.yml</code> 配置文件中添加歌单地址配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background_music: &#x2F;&#x2F;music.163.com&#x2F;outchain&#x2F;player?type&#x3D;0&amp;id&#x3D;2120628564&amp;auto&#x3D;1&amp;height&#x3D;66</span><br></pre></td></tr></table></figure>
+
+<p>上面过程能够实现背景音乐的添加，但是一刷新页面就会导致音乐重放回到初始状态。使用 <code>Pajx</code> 实现背景音乐全局播放</p>
+<h4 id="添加评论和留言板"><a href="#添加评论和留言板" class="headerlink" title="添加评论和留言板"></a>添加评论和留言板</h4><p>本来是想使用多说的评论系统，但是貌似停止服务了。而disqus需要翻墙。所以目前使用的评论系统是来必力，韩国的。</p>
+<ul>
+<li><p>注册账号：来必力官网<a target="_blank" rel="noopener" href="https://livere.com/">https://livere.com</a></p>
+</li>
+<li><p>安装免费的city版本</p>
+</li>
+<li><p>复制data-uuid</p>
+</li>
+<li><p>打开主题目录下的 <code>blog/themes/next/_config.yml</code> 配置文件，定位到 <code>livere_uid</code> 字段，粘贴上刚刚复制的UID。</p>
+</li>
+</ul>
+<p>留言板的设置与标签、分类、搜索配置类似</p>
+<ul>
+<li><p>进入到博客的根目录，运行命令：hexo new page guestbook</p>
+</li>
+<li><p>生成<code>index.md</code>，在里面可以写一些留言板介绍内容等-</p>
+</li>
+<li><p>修改菜单目录在themes/next/_config.yml中修改配置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;||home</span><br><span class="line">  tags: &#x2F;tags||tags</span><br><span class="line">  categories: &#x2F;categories&#x2F;||th</span><br><span class="line">  archives: &#x2F;archives&#x2F;||archive</span><br><span class="line">  about: &#x2F;about||user</span><br><span class="line">+ guestbook: &#x2F;guestbook&#x2F;||comment #留言</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置语言。找到 <code>languages</code> 文件夹里面的 <code>zh-Hans.yml</code> 文件，<code>menu</code> 子项中添加留言：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">+ guestbook: 留言</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>禁用评论，只需要再文章title中添加 comments: false 即可</li>
+</ul>
+<h4 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h4><p>需要安装“ hexo-blog-encrypt”扩展实现加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-blog-encrypt</span><br></pre></td></tr></table></figure>
+
+<p>修改文章信息头</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2020-03-13 21:12:21</span><br><span class="line">password: 123456</span><br></pre></td></tr></table></figure>
+
+<h4 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h4><p>这里的草稿相当于很多博客都有的“私密文章”功能。</p>
+<p>会在source/drafts目录下生成一个new-draft.md文件。但是这个文件不被显示在页面上，链接也访问不到。也就是说如果你想把某一篇文章移除显示，又不舍得删除，可以把它移动到drafts目录之中。</p>
+<p>我没有类似需求，所以没有做，具体实现请参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e1cf1ca131b">https://www.jianshu.com/p/8e1cf1ca131b</a>  </p>
+<h4 id="关于资源文件夹"><a href="#关于资源文件夹" class="headerlink" title="关于资源文件夹"></a>关于资源文件夹</h4><p>_posts下md文件过多杂乱，可以在__posts文件夹下，按照类型自己创建文件夹，但是引用图片或pdf时要注意路径。</p>
+<h4 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-video</span><br></pre></td></tr></table></figure>
+
+<p>可以将腾讯、优酷、bilibili等网站的视频嵌入到文章中</p>
+<p>如 哔哩哔哩 视频有分享按钮，会生成嵌入代码。直接将嵌入代码粘贴到md就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src&#x3D;&quot;&#x2F;&#x2F;player.bilibili.com&#x2F;player.html?aid&#x3D;710997965&amp;bvid&#x3D;BV1iD4y1D714&amp;cid&#x3D;201014583&amp;page&#x3D;1&quot; width&#x3D;&quot;100%&quot; height&#x3D;&quot;315&quot; &gt; &lt;&#x2F;iframe&gt; </span><br></pre></td></tr></table></figure>
+
+<h4 id="文章列表目录跳转"><a href="#文章列表目录跳转" class="headerlink" title="文章列表目录跳转"></a>文章列表目录跳转</h4><p>正常的next主题的文章目录跳转是可以的。但是我的不行。next版本5.1.4</p>
+<ul>
+<li>1.渲染错误</li>
+</ul>
+<p>典型特征就是目录上的超链接为undefined,或者点击的时候报错 ：cannot read property ‘replace’ of null</p>
+<ul>
+<li>1.解决办法</li>
+</ul>
+<p>进入你项目根目录的 <code>node_modules\hexo-toc\lib\filter.js</code> 中，把 28 行～31 行修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$title.attr(&#39;id&#39;, id);</span><br><span class="line">&#x2F;&#x2F; $title.children(&#39;a&#39;).remove();</span><br><span class="line">&#x2F;&#x2F; $title.html( &#39;&lt;span id&#x3D;&quot;&#39; + id + &#39;&quot;&gt;&#39; + $title.html() + &#39;&lt;&#x2F;span&gt;&#39; );</span><br><span class="line">&#x2F;&#x2F; $title.removeAttr(&#39;id&#39;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.超链接乱码</li>
+</ul>
+<p>渲染没有问题，但是点击目录链接会在控制台报错：cannot read property ‘top’ of undefined。打开我们打开控制台，查看目录的的超链接标签，会看到 href 是一串乱码。我们去找他对应的标题，实际上直接点击这个超链接是可以跳转的，但是点目录却不行。这是因为标题 id 是中文，但是目录的连接是中文乱码，代码里头的 JQuery 选择器拿着乱码是没法找到对应 id 的标题的。</p>
+<ul>
+<li>2.解决办法</li>
+</ul>
+<p>这个错误很明显，因为控制台已经告诉我错误代码在 <code>post-details.js</code>里了，顺着提示找到 <code>themes\next\source\js\src\post-details.js</code>，找到第 73 行为目录绑定点击事件的方法，会看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> $(&#39;.post-toc a&#39;).on(&#39;click&#39;, function (e) &#123;</span><br><span class="line">   e.preventDefault();</span><br><span class="line">   var targetSelector &#x3D; NexT.utils.escapeSelector(this.getAttribute(&#39;href&#39;));</span><br><span class="line">&#x2F;&#x2F;对获取到的URL进行重编码</span><br><span class="line">targetSelector &#x3D; decodeURI(this.getAttribute(&#39;href&#39;))</span><br><span class="line">   var offset &#x3D; $(targetSelector).offset().top;</span><br></pre></td></tr></table></figure>
+
+<p><code>targetSelector</code>就是对应标题的 id，我们在他被塞到选择器之前重新编码一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对获取到的url进行重编码</span><br><span class="line">targetSelector &#x3D; decodeURI(this.getAttribute(&#39;href&#39;))</span><br></pre></td></tr></table></figure>
+
+<p>我首先遇到第一个问题，按照解决办法解决后，又遇到第二个问题。目前记录的两种办法正对我的问题。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Createsequence/p/14150758.html">https://www.cnblogs.com/Createsequence/p/14150758.html</a></p>
+<p>​            <a target="_blank" rel="noopener" href="https://convivae.top/posts/hexo-bo-ke-cai-keng/#%E6%96%B9%E6%B3%95-2">https://convivae.top/posts/hexo-bo-ke-cai-keng/#%E6%96%B9%E6%B3%95-2</a></p>
+<h4 id="关于存储"><a href="#关于存储" class="headerlink" title="关于存储"></a>关于存储</h4><ul>
+<li>插入图片、pfd、视频最好使用在线资源，这样并不占用github空间。我使用的是七牛云存储。免费存储，配置域名，可以获得文件的公开url。唯一就是限制访问流量大约1G左右。付费100G 一年 19￥。</li>
+</ul>
+<h4 id="显示滚动百分比"><a href="#显示滚动百分比" class="headerlink" title="显示滚动百分比"></a>显示滚动百分比</h4><ul>
+<li>主题配置文件 修改</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b2t: false</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置侧边栏位置和显示时机"><a href="#配置侧边栏位置和显示时机" class="headerlink" title="配置侧边栏位置和显示时机"></a>配置侧边栏位置和显示时机</h4><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">sidebar:</span></span><br><span class="line"><span class="function">  # <span class="title">Sidebar</span> <span class="title">Position</span>, <span class="title">available</span> <span class="title">value</span>: <span class="title">left</span> | <span class="title">right</span> (<span class="title">only</span> <span class="title">for</span> <span class="title">Pisces</span> | <span class="title">Gemini</span>).</span></span><br><span class="line"><span class="function">  <span class="title">position</span>: <span class="title">left</span></span></span><br><span class="line"><span class="function">  #<span class="title">position</span>: <span class="title">right</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Manual</span> <span class="title">define</span> <span class="title">the</span> <span class="title">sidebar</span> <span class="title">width</span>.</span></span><br><span class="line"><span class="function">  # <span class="title">If</span> <span class="title">commented</span>, <span class="title">will</span> <span class="title">be</span> <span class="title">default</span> <span class="title">for</span>:</span></span><br><span class="line"><span class="function">  # <span class="title">Muse</span> | <span class="title">Mist</span>: 320</span></span><br><span class="line"><span class="function">  # <span class="title">Pisces</span> | <span class="title">Gemini</span>: 240</span></span><br><span class="line"><span class="function">  #<span class="title">width</span>: 300</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Sidebar</span> <span class="title">Display</span>, <span class="title">available</span> <span class="title">value</span> (<span class="title">only</span> <span class="title">for</span> <span class="title">Muse</span> | <span class="title">Mist</span>):</span></span><br><span class="line"><span class="function">  #  - <span class="title">post</span>    <span class="title">expand</span> <span class="title">on</span> <span class="title">posts</span> <span class="title">automatically</span>. <span class="title">Default</span>.</span></span><br><span class="line"><span class="function">  #  - <span class="title">always</span>  <span class="title">expand</span> <span class="title">for</span> <span class="title">all</span> <span class="title">pages</span> <span class="title">automatically</span></span></span><br><span class="line"><span class="function">  #  - <span class="title">hide</span>    <span class="title">expand</span> <span class="title">only</span> <span class="title">when</span> <span class="title">click</span> <span class="title">on</span> <span class="title">the</span> <span class="title">sidebar</span> <span class="title">toggle</span> <span class="title">icon</span>.</span></span><br><span class="line"><span class="function">  #  - <span class="title">remove</span>  <span class="title">Totally</span> <span class="title">remove</span> <span class="title">sidebar</span> <span class="title">including</span> <span class="title">sidebar</span> <span class="title">toggle</span>.</span></span><br><span class="line"><span class="function">  <span class="title">display</span>: <span class="title">post</span></span></span><br><span class="line"><span class="function">  #<span class="title">display</span>: <span class="title">always</span></span></span><br><span class="line"><span class="function">  #<span class="title">display</span>: <span class="title">hide</span></span></span><br><span class="line"><span class="function">  #<span class="title">display</span>: <span class="title">remove</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Sidebar</span> <span class="title">offset</span> <span class="title">from</span> <span class="title">top</span> <span class="title">menubar</span> <span class="title">in</span> <span class="title">pixels</span> (<span class="title">only</span> <span class="title">for</span> <span class="title">Pisces</span> | <span class="title">Gemini</span>).</span></span><br><span class="line"><span class="function">  <span class="title">offset</span>: 12</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Back</span> <span class="title">to</span> <span class="title">top</span> <span class="title">in</span> <span class="title">sidebar</span> (<span class="title">only</span> <span class="title">for</span> <span class="title">Pisces</span> | <span class="title">Gemini</span>).</span></span><br><span class="line"><span class="function">  <span class="title">b2t</span>: <span class="title">false</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Scroll</span> <span class="title">percent</span> <span class="title">label</span> <span class="title">in</span> <span class="title">b2t</span> <span class="title">button</span>.</span></span><br><span class="line"><span class="function">  <span class="title">scrollpercent</span>: <span class="title">true</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  # <span class="title">Enable</span> <span class="title">sidebar</span> <span class="title">on</span> <span class="title">narrow</span> <span class="title">view</span> (<span class="title">only</span> <span class="title">for</span> <span class="title">Muse</span> | <span class="title">Mist</span>).</span></span><br><span class="line"><span class="function">  <span class="title">onmobile</span>: <span class="title">false</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="链接站内文章"><a href="#链接站内文章" class="headerlink" title="链接站内文章"></a>链接站内文章</h4><ul>
+<li>官网: “在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期”。我试过之后只有_post文件夹下可以不引用路径，post分文件夹下任要写路径。</li>
+<li>可以做自定义菜单。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post_link 路径&#x2F;文件名 &#39;笔名（可选）&#39; %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加看板娘"><a href="#添加看板娘" class="headerlink" title="添加看板娘"></a>添加看板娘</h4><ul>
+<li>下载live2D文件 ，推荐：<a target="_blank" rel="noopener" href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a>   直接下zip包</li>
+<li>解压到<code>themes/next/source/live2d-widget</code>文件夹下</li>
+<li>更改live2d-widget下的autoload.js文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//const live2d_path = &quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/&quot;;</span><br><span class="line">const live2d_path = &quot;/live2d-widget/&quot;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>/themes/next/layout/</code>下的_layout.swing或者_layout.swig文件，在head标签中添加一行代码。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在theme/next/_config.yml中,新增如下内容：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 看板娘配置</span><br><span class="line">live2d:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>部署 -博客根目录</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css</li>
+</ul>
+<h4 id="未解决问题"><a href="#未解决问题" class="headerlink" title="未解决问题"></a>未解决问题</h4><ul>
+<li>背景音乐刷新会被重置，并且播放音乐不切换头像</li>
+<li>评论系统的评论有可能会被墙掉</li>
+<li>文章发布上去UI会有变化</li>
+<li>包含在html中的字统计不了字数</li>
+</ul>
+<h4 id="优秀博客推荐"><a href="#优秀博客推荐" class="headerlink" title="优秀博客推荐"></a>优秀博客推荐</h4><p><a target="_blank" rel="noopener" href="https://www.itrhx.com/friends/">https://www.itrhx.com/friends/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/30/%E6%95%B0%E6%8D%AE%E5%92%8CETL/ETL%E6%B5%81%E9%83%A8%E7%BD%B2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%81%E7%A7%BB/" rel="next" title="ETL流服务器迁移部署">
+                <i class="fa fa-chevron-left"></i> ETL流服务器迁移部署
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/04/%E6%95%B0%E6%8D%AE%E5%92%8CETL/ETL%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="ETL基础知识">
+                ETL基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/true" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vk.com/yourname" target="_blank" title="VK Group">
+                      
+                        <i class="fa fa-fw fa-vk"></i>VK Group</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/yourname" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:yourname?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+		  <!-- 音乐播放器
+<div>
+
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
+	src=""></iframe>
+
+</div> -->
+
+
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexogithub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">hexo+github搭建个人博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BC%80%E6%BA%90%E7%9A%84-hexo-%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">获取开源的 Hexo 主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98-_configyml"><span class="nav-number">3.</span> <span class="nav-text">修改主题 _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">运行测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%A0%87%E7%AD%BE%E5%92%8C%E5%88%86%E7%B1%BB"><span class="nav-number">5.</span> <span class="nav-text">配置标签和分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">配置搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">7.</span> <span class="nav-text">设置代码高亮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="nav-number">8.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F"><span class="nav-number">9.</span> <span class="nav-text">设置头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E8%AE%BE%E5%AE%9A"><span class="nav-number">10.</span> <span class="nav-text">主题设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87"><span class="nav-number">11.</span> <span class="nav-text">加载图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0pdf"><span class="nav-number">12.</span> <span class="nav-text">上传pdf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%A0%87%E7%AD%BE%E4%BA%91%E9%A2%9C%E8%89%B2"><span class="nav-number">13.</span> <span class="nav-text">修改标签云颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%A6%96%E9%A1%B5%E6%96%87%E7%AB%A0%E9%97%B4%E9%9A%94%E5%AE%BD%E5%BA%A6"><span class="nav-number">14.</span> <span class="nav-text">修改首页文章间隔宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E7%AB%A0%E9%A1%B5%E5%AE%BD"><span class="nav-number">15.</span> <span class="nav-text">修改文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%A6%96%E9%A1%B5%E6%96%87%E7%AB%A0%E9%A1%B5%E5%AE%BD"><span class="nav-number">16.</span> <span class="nav-text">修改首页文章页宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BF%BB%E9%A1%B5%E6%8C%89%E9%92%AE%E9%94%99%E8%AF%AF%E6%98%BE%E7%A4%BA"><span class="nav-number">17.</span> <span class="nav-text">翻页按钮错误显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sidebar%E4%B8%ADpost%E7%82%B9%E5%87%BB%E5%87%BA%E9%94%99"><span class="nav-number">18.</span> <span class="nav-text">sidebar中post点击出错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5footer%E5%86%85%E5%AE%B9%E4%B8%8D%E5%B1%85%E4%B8%AD"><span class="nav-number">19.</span> <span class="nav-text">主页footer内容不居中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90"><span class="nav-number">20.</span> <span class="nav-text">添加背景音乐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%92%8C%E7%95%99%E8%A8%80%E6%9D%BF"><span class="nav-number">21.</span> <span class="nav-text">添加评论和留言板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86"><span class="nav-number">22.</span> <span class="nav-text">文章加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8D%89%E7%A8%BF"><span class="nav-number">23.</span> <span class="nav-text">草稿</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">24.</span> <span class="nav-text">关于资源文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E8%A7%86%E9%A2%91"><span class="nav-number">25.</span> <span class="nav-text">插入视频</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E7%9B%AE%E5%BD%95%E8%B7%B3%E8%BD%AC"><span class="nav-number">26.</span> <span class="nav-text">文章列表目录跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%98%E5%82%A8"><span class="nav-number">27.</span> <span class="nav-text">关于存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%BB%9A%E5%8A%A8%E7%99%BE%E5%88%86%E6%AF%94"><span class="nav-number">28.</span> <span class="nav-text">显示滚动百分比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BE%A7%E8%BE%B9%E6%A0%8F%E4%BD%8D%E7%BD%AE%E5%92%8C%E6%98%BE%E7%A4%BA%E6%97%B6%E6%9C%BA"><span class="nav-number">29.</span> <span class="nav-text">配置侧边栏位置和显示时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E7%AB%99%E5%86%85%E6%96%87%E7%AB%A0"><span class="nav-number">30.</span> <span class="nav-text">链接站内文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98"><span class="nav-number">31.</span> <span class="nav-text">添加看板娘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AA%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="nav-number">32.</span> <span class="nav-text">未解决问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%A7%80%E5%8D%9A%E5%AE%A2%E6%8E%A8%E8%8D%90"><span class="nav-number">33.</span> <span class="nav-text">优秀博客推荐</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ben</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">40.6k</span>
+  
+</div>
+
+
+   <div class="powered-by">Email:que_wen_bin@163.com</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+</body>
+</html>

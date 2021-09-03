@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="终端命令," />
+
+
+
+
+
+  <link rel="alternate" href="/true" title="Ben's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="主要记录终端命令包含Windows和Linux 命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终端命令">
+<meta property="og:url" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Ben&#39;s Blog">
+<meta property="og:description" content="主要记录终端命令包含Windows和Linux 命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software/有道云/data/que_wen_bin@163.com/a4213457c36f4e45997cc2c13d4c8dee/image(1).png">
+<meta property="og:image" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software/有道云/data/que_wen_bin@163.com/b0b94bfb820d4a4c85dfcb1e307c0062/ru5erkjggg==.png">
+<meta property="og:image" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software/有道云/data/que_wen_bin@163.com/667a46a3f4954b748e171db5c2e33692/image(2).png">
+<meta property="og:image" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software/有道云/data/que_wen_bin@163.com/92ce4b87b4ea40fa8d7db8a276dfc5a6/suvork5cyii=.png">
+<meta property="article:published_time" content="2021-04-10T11:29:23.007Z">
+<meta property="article:modified_time" content="2021-08-02T05:45:09.000Z">
+<meta property="article:author" content="Ben">
+<meta property="article:tag" content="终端命令">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software/有道云/data/que_wen_bin@163.com/a4213457c36f4e45997cc2c13d4c8dee/image(1).png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2021/04/10/终端命令/"/>
+
+
+
+
+
+  <title>终端命令 | Ben's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ben's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comment"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ben's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">终端命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T19:29:23+08:00">
+                2021/04/10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>主要记录终端命令包含Windows和Linux 命令</p>
+</blockquote>
+<span id="more"></span>
+
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><h4 id="cmd打开软件"><a href="#cmd打开软件" class="headerlink" title="cmd打开软件"></a>cmd打开软件</h4><ul>
+<li>打开软件根目录即exe文件目录</li>
+<li>doskey “标记”=“目录” ex：doskey IJ =”D:\apps\IntelliJ IDEA 2019.1.3\bin\idea64.exe” 目录有空格加“”号</li>
+<li>在终端直接输入标记</li>
+</ul>
+<h4 id="chcp"><a href="#chcp" class="headerlink" title="chcp"></a>chcp</h4><ul>
+<li>chcp 65001 换成UTF-8代码页</li>
+<li>chcp 936 可以换回默认的GBK</li>
+<li>chcp 437 是美国英语 </li>
+</ul>
+<h4 id="在终端上查看vnc在linux服务器上的端口号"><a href="#在终端上查看vnc在Linux服务器上的端口号" class="headerlink" title="在终端上查看vnc在Linux服务器上的端口号"></a>在终端上查看vnc在Linux服务器上的端口号</h4><ul>
+<li>netstat -lp|grep -i vnc</li>
+</ul>
+<h4 id="退出远程桌面全屏"><a href="#退出远程桌面全屏" class="headerlink" title="退出远程桌面全屏"></a>退出远程桌面全屏</h4><ul>
+<li>ctrl+ALt+break / ctrl +alt +fn+b</li>
+</ul>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><h4 id="远程服务器"><a href="#远程服务器" class="headerlink" title="远程服务器"></a>远程服务器</h4><ul>
+<li>crontab -l 根据关键字查看日志</li>
+<li>ls | grep digital 抓取关键字搜索</li>
+</ul>
+<h4 id="复制远程服务器文件到本地"><a href="#复制远程服务器文件到本地" class="headerlink" title="复制远程服务器文件到本地"></a>复制远程服务器文件到本地</h4><ul>
+<li>scp <a href="mailto:&#x73;&#121;&#45;&#x64;&#101;&#x76;&#111;&#x70;&#115;&#x2d;&#117;&#115;&#x65;&#114;&#x40;&#x34;&#55;&#x2e;&#57;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#49;&#56;&#x31;">&#x73;&#121;&#45;&#x64;&#101;&#x76;&#111;&#x70;&#115;&#x2d;&#117;&#115;&#x65;&#114;&#x40;&#x34;&#55;&#x2e;&#57;&#x39;&#46;&#x32;&#51;&#x36;&#46;&#49;&#56;&#x31;</a>:/data/work/scripts/allergan/user_behaviors/user_behavior.kjb D:\Data_work\etl</li>
+<li>scp <a href="mailto:&#x73;&#x79;&#x2d;&#x64;&#x65;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#x40;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#50;&#x33;&#54;&#x2e;&#x31;&#56;&#49;">&#x73;&#x79;&#x2d;&#x64;&#x65;&#118;&#111;&#x70;&#x73;&#x2d;&#x75;&#x73;&#x65;&#x72;&#x40;&#x34;&#x37;&#x2e;&#x39;&#57;&#x2e;&#50;&#x33;&#54;&#x2e;&#x31;&#56;&#49;</a>:/data/work/scripts/allergan/digital_ami_azure/exam.ktr C:\</li>
+</ul>
+<h4 id="linux解压和压缩"><a href="#Linux解压和压缩" class="headerlink" title="Linux解压和压缩"></a>Linux解压和压缩</h4><ul>
+<li>zip -r archive_name.zip filename   （-r是压缩文件）</li>
+<li>unzip archive_name.zip        （解压文件在当前文件下）</li>
+<li>unzip archive_name.zip -d new_dir  （解压文件可以将文件解压缩至一个你指定的的目录，使用-d参数）</li>
+</ul>
+<h4 id="linux-重命名文件"><a href="#linux-重命名文件" class="headerlink" title="linux 重命名文件"></a>linux 重命名文件</h4><ul>
+<li>eg:将目录A重命名B</li>
+<li>mv a b</li>
+<li>eg:将/a目录移动到/b下</li>
+<li>并重命名c</li>
+<li>mv /a /b/c</li>
+</ul>
+<h4 id="linux-创建文件和文件夹"><a href="#linux-创建文件和文件夹" class="headerlink" title="linux 创建文件和文件夹"></a>linux 创建文件和文件夹</h4><ul>
+<li>mkdir</li>
+</ul>
+<p><img src="/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software\有道云\data\que_wen_bin@163.com\a4213457c36f4e45997cc2c13d4c8dee\image(1).png" alt="img"></p>
+<p><img src="/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software\有道云\data\que_wen_bin@163.com\b0b94bfb820d4a4c85dfcb1e307c0062\ru5erkjggg==.png" alt="img"></p>
+<p><img src="/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software\有道云\data\que_wen_bin@163.com\667a46a3f4954b748e171db5c2e33692\image(2).png" alt="img"></p>
+<p><img src="/2021/04/10/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/software\有道云\data\que_wen_bin@163.com\92ce4b87b4ea40fa8d7db8a276dfc5a6\suvork5cyii=.png" alt="img"></p>
+<h4 id="输入法仅桌面"><a href="#输入法（仅桌面）" class="headerlink" title="输入法（仅桌面）"></a>输入法（仅桌面）</h4><ul>
+<li>cmd ctfmon</li>
+</ul>
+<h4 id="linux定位日志文件错误信息"><a href="#linux定位日志文件错误信息" class="headerlink" title="linux定位日志文件错误信息**"></a>linux定位日志文件错误信息**</h4><h4 id="定位日志文件错误信息"><a href="#定位日志文件错误信息" class="headerlink" title="定位日志文件错误信息"></a>定位日志文件错误信息</h4><p>示例：</p>
+<p>cat all_info.log | grep “错误的关键信息提示” -C 10</p>
+<h4 id="修改文件所有者和组"><a href="#修改文件所有者和组" class="headerlink" title="修改文件所有者和组"></a>修改文件所有者和组</h4><p> <strong>chgrp groupb filea</strong>   <strong>–改变filea所属群组</strong></p>
+<p><strong>chown [-R] 账号名称   文件/目录</strong></p>
+<h4 id="修改用户主目录"><a href="#修改用户主目录" class="headerlink" title="修改用户主目录"></a>修改用户主目录</h4><p>1.直接编辑 /etc/passwd</p>
+<p>2.usermod -d /usr/newfolder -u uid         id username:查ID</p>
+<h4 id="linux-根据关键字查找文件且输出文件名"><a href="#linux-根据关键字查找文件，且输出文件名" class="headerlink" title="linux 根据关键字查找文件，且输出文件名"></a>linux 根据关键字查找文件，且输出文件名</h4><p>sudo find /data/allergan/allergan_members -name ‘wechat_members*’ | head -n 1 | sed ‘s#.*/##’</p>
+<h4 id="linux-将命令结果赋值给变量"><a href="#linux-将命令结果赋值给变量" class="headerlink" title="linux 将命令结果赋值给变量"></a>linux 将命令结果赋值给变量</h4><p>log=<code>ls</code></p>
+<p>echo $log</p>
+<p>log=$(ls)</p>
+<p>echo $log</p>
+<h4 id="linux-查看文件大小"><a href="#linux-查看文件大小" class="headerlink" title="linux 查看文件大小"></a>linux 查看文件大小</h4><p>du -sh *查看当前目录下各个文件及目录占用空间大小</p>
+<p>du -sh 查看当前目录的总大小</p>
+<p>df -h 查看系统中文件的使用情况</p>
+<p>## Linux 查看当前目录</p>
+<p>pwd</p>
+<h4 id="linux-创建脚本文件"><a href="#Linux-创建脚本文件" class="headerlink" title="Linux 创建脚本文件"></a>Linux 创建脚本文件</h4><p>touch clear_logs.sh</p>
+<h4 id="linux-删除一个文件夹下所有文件"><a href="#linux-删除一个文件夹下所有文件" class="headerlink" title="linux  删除一个文件夹下所有文件"></a>linux  删除一个文件夹下所有文件</h4><p>cd 目录</p>
+<p>rm -rf *</p>
+<h4 id="linux-删除一个文件夹"><a href="#Linux-删除一个文件夹" class="headerlink" title="Linux 删除一个文件夹"></a>Linux 删除一个文件夹</h4><p>rm -rf /目录</p>
+<p>## 删除文件时出现 “操作无法完成，因为文件已在另一个程序中打开”</p>
+<p>解决方法：</p>
+<p>启动任务管理器——性能——资源监视器——CPU选项卡——关联的句柄——搜索句柄</p>
+<p>——（输入）要删除的文件夹名——搜索到与文件夹名句柄相关联的进程 （由于此程序进程正在调用文件夹，才造成了对该文件夹删除的失败。）</p>
+<p>——(右键)该进程——结束进程——弹出警告对话框——确认后即可结束该进程，然后就 可以完美删除该文件夹或者文件了。</p>
+<h4 id="查看进程端口号"><a href="#查看进程端口号" class="headerlink" title="查看进程端口号"></a>查看进程端口号</h4><p>  netstat -ano</p>
+<h4 id="查看指定端口占用情况"><a href="#查看指定端口占用情况" class="headerlink" title="查看指定端口占用情况"></a>查看指定端口占用情况</h4><p>netstat -ano|findstr “8080”</p>
+<h4 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程**"></a>关闭进程**</h4><p>tasklist|findstr “127704”</p>
+<h4 id="修改linux-服务器桌面分辨率"><a href="#修改linux-服务器桌面分辨率" class="headerlink" title="修改linux 服务器桌面分辨率"></a>修改linux 服务器桌面分辨率</h4><p>– xrandr</p>
+<p>– xrandr -s 1920x1080</p>
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><p>sudo systemctl stop iptables</p>
+<h4 id="重启crontab"><a href="#重启crontab" class="headerlink" title="重启crontab"></a>重启crontab</h4><p>sudo systemctl restart crond</p>
+<h4 id="kettle闪退"><a href="#kettle闪退" class="headerlink" title="kettle闪退"></a>kettle闪退</h4><p>“$_PENTAHO_JAVA” $OPT -jar “$STARTUP” -lib $LIBPATH “${1+$@}” 2&gt;&amp;1</p>
+<h4 id="切换桌面环境"><a href="#切换桌面环境" class="headerlink" title="切换桌面环境"></a>切换桌面环境</h4><p>startx 或者 init 5</p>
+<h4 id="查看ftp用户"><a href="#查看ftp用户" class="headerlink" title="查看ftp用户"></a>查看ftp用户</h4><p>cat /etc/passwd | grep ftp</p>
+<h4 id="重启vsftpd服务器"><a href="#重启vsFTPd服务器" class="headerlink" title="重启vsFTPd服务器"></a>重启vsFTPd服务器</h4><p>service vsftpd restart</p>
+<h4 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h4><p>:w      - 保存文件，不退出 vim</p>
+<p>:w file -将修改另外保存到 file 中，不退出 vim</p>
+<p>:w!     -强制保存，不退出 vim</p>
+<p>:wq     -保存文件，退出 vim</p>
+<p>:wq!    -强制保存文件，退出 vim</p>
+<p>:q      -不保存文件，退出 vim</p>
+<p>:q!     -不保存文件，强制退出 vim</p>
+<p>:e!     -放弃所有修改，从上次保存文件开始再编辑</p>
+<p>ctrl+s 锁住  ctrl + q 解除锁定</p>
+<h4 id="改变文件夹所属用户和组"><a href="#改变文件夹所属用户和组" class="headerlink" title="改变文件夹所属用户和组"></a>改变文件夹所属用户和组</h4><p>chown -R 所有者用户名.组名 文件夹名称</p>
+<p>例如：chown -R zdz.nginx KooBox</p>
+<h4 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h4><p>添加用户并设置主目录</p>
+<p>useradd -d /home/www -g ftpgroup ftptest</p>
+<p>删除用户</p>
+<p>userdel -r ftptest</p>
+<p>用户列表</p>
+<p>cat /etc/passwd</p>
+<h4 id="设置sftp-并设置主目录但是限制在主目录中禁止返回上级目录amp禁止用于系统登录没有实现"><a href="#设置sftp-并设置主目录（但是限制在主目录中，禁止返回上级目录-amp-禁止用于系统登录没有实现）" class="headerlink" title="设置sftp ,并设置主目录（但是限制在主目录中，禁止返回上级目录&amp;禁止用于系统登录没有实现）"></a>设置sftp ,并设置主目录（但是限制在主目录中，禁止返回上级目录&amp;禁止用于系统登录没有实现）</h4><p>安装/卸载vsftpd服务</p>
+<p>yum -y install vsftpd</p>
+<p>yun remove vsftpd</p>
+<h4 id="配置vsftpd配置文件"><a href="#配置vsftpd配置文件" class="headerlink" title="配置vsftpd配置文件"></a>配置vsftpd配置文件</h4><p>vi /etc/vsftpd/vsftpd.conf</p>
+<h4 id="启动重启关闭状态"><a href="#启动-重启-关闭-状态" class="headerlink" title="启动/重启/关闭/状态"></a>启动/重启/关闭/状态</h4><p>service vsftpd start/restart/stop/status </p>
+<h4 id="创建ftp用户"><a href="#创建ftp用户" class="headerlink" title="创建ftp用户"></a>创建ftp用户</h4><p>useradd -d /home/username username</p>
+<h4 id="创建用户组"><a href="#创建用户组" class="headerlink" title="创建用户组"></a>创建用户组</h4><p>groupadd ftpgroups</p>
+<h4 id="ssh无法远程报错system-is-booting-up-see-pam_nologin8"><a href="#ssh无法远程-报错”System-is-booting-up-See-pam-nologin-8-”" class="headerlink" title="ssh无法远程,报错”System is booting up. See pam_nologin(8)”"></a>ssh无法远程,报错”System is booting up. See pam_nologin(8)”</h4><p>修改文件： /etc/pam.d/sshd</p>
+<p>vim /etc/pam.d/sshd</p>
+<p>注释account required pam_nologin.so。即在这一行前边加#。保存即可</p>
+<h4 id="为普通用户添加sudo权限"><a href="#为普通用户添加sudo权限" class="headerlink" title="为普通用户添加sudo权限"></a>为普通用户添加sudo权限</h4><p>root用户</p>
+<p>vim /etc/sudoers //打开sudo的配置文件</p>
+<p>在“root ALL=(ALL)ALL”这一行下面，加入如下图所示的一行 用户名 ALL=(ALL) ALL</p>
+<h4 id="windows-具有管理员权限的账号或administrator-修改其他用户密码"><a href="#windows-具有管理员权限的账号或administrator-修改其他用户密码" class="headerlink" title="windows 具有管理员权限的账号或administrator 修改其他用户密码"></a>windows 具有管理员权限的账号或administrator 修改其他用户密码</h4><p>打开Windows PowerShell(管理员)</p>
+<p>例：修改administrator密码为123456</p>
+<p>net user administrator 123456</p>
+<h4 id="查看centos版本"><a href="#查看CentOS版本" class="headerlink" title="查看CentOS版本"></a>查看CentOS版本</h4><p>cat /etc/redhat-release</p>
+<h4 id="批量修改文件为可执行文件"><a href="#批量修改文件为可执行文件" class="headerlink" title="批量修改文件为可执行文件"></a>批量修改文件为可执行文件</h4><p>chmod +x test2.sh</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/" rel="tag"># 终端命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/10/android%E5%BC%80%E5%8F%91/" rel="next" title="Android开发">
+                <i class="fa fa-chevron-left"></i> Android开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/10/RPA/" rel="prev" title="RPA">
+                RPA <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/true" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yourname@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vk.com/yourname" target="_blank" title="VK Group">
+                      
+                        <i class="fa fa-fw fa-vk"></i>VK Group</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/yourname" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/yourname" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="skype:yourname?call|chat" target="_blank" title="Skype">
+                      
+                        <i class="fa fa-fw fa-skype"></i>Skype</a>
+                  </span>
+                
+            </div>
+          
+		  <!-- 音乐播放器
+<div>
+
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
+	src=""></iframe>
+
+</div> -->
+
+
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#windows"><span class="nav-number">1.</span> <span class="nav-text">windows</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cmd%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">cmd打开软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chcp"><span class="nav-number">1.2.</span> <span class="nav-text">chcp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%8A%E6%9F%A5%E7%9C%8Bvnc%E5%9C%A8linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">1.3.</span> <span class="nav-text">在终端上查看vnc在Linux服务器上的端口号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%85%A8%E5%B1%8F"><span class="nav-number">1.4.</span> <span class="nav-text">退出远程桌面全屏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux"><span class="nav-number">2.</span> <span class="nav-text">linux</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">远程服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="nav-number">2.2.</span> <span class="nav-text">复制远程服务器文件到本地</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux%E8%A7%A3%E5%8E%8B%E5%92%8C%E5%8E%8B%E7%BC%A9"><span class="nav-number">2.3.</span> <span class="nav-text">Linux解压和压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">linux 重命名文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.5.</span> <span class="nav-text">linux 创建文件和文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%B3%95%E4%BB%85%E6%A1%8C%E9%9D%A2"><span class="nav-number">2.6.</span> <span class="nav-text">输入法（仅桌面）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux%E5%AE%9A%E4%BD%8D%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="nav-number">2.7.</span> <span class="nav-text">linux定位日志文件错误信息**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="nav-number">2.8.</span> <span class="nav-text">定位日志文件错误信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E6%9C%89%E8%80%85%E5%92%8C%E7%BB%84"><span class="nav-number">2.9.</span> <span class="nav-text">修改文件所有者和组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E4%B8%BB%E7%9B%AE%E5%BD%95"><span class="nav-number">2.10.</span> <span class="nav-text">修改用户主目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E6%A0%B9%E6%8D%AE%E5%85%B3%E9%94%AE%E5%AD%97%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%E4%B8%94%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">2.11.</span> <span class="nav-text">linux 根据关键字查找文件，且输出文件名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E5%B0%86%E5%91%BD%E4%BB%A4%E7%BB%93%E6%9E%9C%E8%B5%8B%E5%80%BC%E7%BB%99%E5%8F%98%E9%87%8F"><span class="nav-number">2.12.</span> <span class="nav-text">linux 将命令结果赋值给变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.13.</span> <span class="nav-text">linux 查看文件大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-number">2.14.</span> <span class="nav-text">Linux 创建脚本文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6"><span class="nav-number">2.15.</span> <span class="nav-text">linux  删除一个文件夹下所有文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux-%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.16.</span> <span class="nav-text">Linux 删除一个文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">2.17.</span> <span class="nav-text">查看进程端口号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%87%E5%AE%9A%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%83%85%E5%86%B5"><span class="nav-number">2.18.</span> <span class="nav-text">查看指定端口占用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.19.</span> <span class="nav-text">关闭进程**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9linux-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A1%8C%E9%9D%A2%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">2.20.</span> <span class="nav-text">修改linux 服务器桌面分辨率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">2.21.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%90%AFcrontab"><span class="nav-number">2.22.</span> <span class="nav-text">重启crontab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kettle%E9%97%AA%E9%80%80"><span class="nav-number">2.23.</span> <span class="nav-text">kettle闪退</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83"><span class="nav-number">2.24.</span> <span class="nav-text">切换桌面环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bftp%E7%94%A8%E6%88%B7"><span class="nav-number">2.25.</span> <span class="nav-text">查看ftp用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%90%AFvsftpd%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.26.</span> <span class="nav-text">重启vsFTPd服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vim"><span class="nav-number">2.27.</span> <span class="nav-text">vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E5%A4%B9%E6%89%80%E5%B1%9E%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84"><span class="nav-number">2.28.</span> <span class="nav-text">改变文件夹所属用户和组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C"><span class="nav-number">2.29.</span> <span class="nav-text">用户操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEsftp-%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%B8%BB%E7%9B%AE%E5%BD%95%E4%BD%86%E6%98%AF%E9%99%90%E5%88%B6%E5%9C%A8%E4%B8%BB%E7%9B%AE%E5%BD%95%E4%B8%AD%E7%A6%81%E6%AD%A2%E8%BF%94%E5%9B%9E%E4%B8%8A%E7%BA%A7%E7%9B%AE%E5%BD%95amp%E7%A6%81%E6%AD%A2%E7%94%A8%E4%BA%8E%E7%B3%BB%E7%BB%9F%E7%99%BB%E5%BD%95%E6%B2%A1%E6%9C%89%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.30.</span> <span class="nav-text">设置sftp ,并设置主目录（但是限制在主目录中，禁止返回上级目录&amp;禁止用于系统登录没有实现）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEvsftpd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.31.</span> <span class="nav-text">配置vsftpd配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%87%8D%E5%90%AF%E5%85%B3%E9%97%AD%E7%8A%B6%E6%80%81"><span class="nav-number">2.32.</span> <span class="nav-text">启动&#x2F;重启&#x2F;关闭&#x2F;状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAftp%E7%94%A8%E6%88%B7"><span class="nav-number">2.33.</span> <span class="nav-text">创建ftp用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%BB%84"><span class="nav-number">2.34.</span> <span class="nav-text">创建用户组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh%E6%97%A0%E6%B3%95%E8%BF%9C%E7%A8%8B%E6%8A%A5%E9%94%99system-is-booting-up-see-pam_nologin8"><span class="nav-number">2.35.</span> <span class="nav-text">ssh无法远程,报错”System is booting up. See pam_nologin(8)”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0sudo%E6%9D%83%E9%99%90"><span class="nav-number">2.36.</span> <span class="nav-text">为普通用户添加sudo权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#windows-%E5%85%B7%E6%9C%89%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E7%9A%84%E8%B4%A6%E5%8F%B7%E6%88%96administrator-%E4%BF%AE%E6%94%B9%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="nav-number">2.37.</span> <span class="nav-text">windows 具有管理员权限的账号或administrator 修改其他用户密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bcentos%E7%89%88%E6%9C%AC"><span class="nav-number">2.38.</span> <span class="nav-text">查看CentOS版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B8%BA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-number">2.39.</span> <span class="nav-text">批量修改文件为可执行文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ben</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">40.6k</span>
+  
+</div>
+
+
+   <div class="powered-by">Email:que_wen_bin@163.com</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  
+</body>
+</html>
